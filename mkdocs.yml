@@ -1,0 +1,7 @@
+site_name: Data Processing Handbook - DCAN Labs
+theme: readthedocs
+plugins:
+  - search
+docs_dir: docs
+nav:
+  - Table of contents: index.md
