@@ -5,3 +5,46 @@ plugins:
 docs_dir: docs
 nav:
   - Table of contents: index.md
+  - Slurm: slurm.md
+  - Interactive High Performance Computing (HPC) Resources: hpc.md
+  - MSI Partitions: partitions.md
+  - Slurm Parameters:
+    - sbatch: sbatch.md
+    - srun: srun.md
+  - fairshare: fairshare.md
+  - MSI Module System: modules.md
+  - Miniconda Environments: miniconda.md
+  - Virtual Machine: vm.md
+  - DICOM to BIDS conversion: dcm2bids.md
+  - NORDIC Denoising and BIDS NORDIC Wrapper: nordic.md
+  - BIDS Validation:
+    - CuBIDS: cubids.md
+    - Additional BIDS Validation: bids.md
+  - Storage Allocation Estimates: storage.md
+  - S3: s3.md
+  - Optimizing sbatch Parameters: optimizing.md
+  - Pipelines:
+    - fMRIprep: fmriprep.md
+    - NiBabies: nibabies.md
+    - ABCD-BIDS: abcd.md
+    - XCP-D: xcpd.md
+    - DCAN Infant: infant.md
+    - BIBSnet (CABINET): bibsnet.md
+  - S3 Pipeline Wrappers: wrappers.md
+  - file-mapper: filemapper.md
+  - Precision Mapping Wrapper: precision.md
+  - Job Submissions: jobs.md
+  - Containers: containers.md
+  - Processing Status: status.md
+  - Troubleshooting and Image Viewing:
+    - DCAN Infant: infant-trouble.md
+    - ABCD-BIDS: abcd-trouble.md
+    - NiBabies and fMRIprep: niprep-trouble.md
+    - XCP-D: xcpd-trouble.md
+    - S3 Wrappers: s3-trouble.md
+  - Fast Track QC Comparison (ABCD): fasttrack.md
+  - Data Uploads and Transfer:
+    - Upload Documentation: upload.md
+    - Data Upload and Transfer Steps: steps.md
+    - Globus: globus.md
+  - Common MSI Roadblocks: roadblocks.md
