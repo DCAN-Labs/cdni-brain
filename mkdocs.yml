@@ -23,7 +23,13 @@ nav:
   - Storage Allocation Estimates: storage.md
   - S3: s3.md
   - Optimizing sbatch Parameters: optimizing.md
-  - Pipelines: pipelines.md
+  - Pipelines:
+    - 'fMRIprep': 'pipelines/fmriprep.md'
+    - 'NiBabies': 'pipelines/nibabies.md'
+    - 'ABCD-BIDS': 'pipelines/abcd.md'
+    - 'XCP-D': 'pipelines/xcpd.md'
+    - 'DCAN Infant': 'pipelines/infant.md'
+    - 'BIBSnet (CABINET)': 'pipelines/bibsnet.md'
   - S3 Pipeline Wrappers: wrappers.md
   - file-mapper: filemapper.md
   - Precision Mapping Wrapper: precision.md
