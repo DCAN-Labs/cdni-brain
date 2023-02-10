@@ -1,11 +1,13 @@
-# fMRIprep
+# Pipelines
 
-# NiBabies
+## 1. fMRIprep
 
-# ABCD-BIDS
+## 2. NiBabies
 
-# XCP-D
+## 3. ABCD-BIDS
 
-# DCAN Infant
+## 4. XCP-D
 
-# BIBSnet (CABINET)
+## 5. DCAN Infant
+
+## 6. BIBSnet (CABINET)
