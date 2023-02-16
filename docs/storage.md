@@ -10,6 +10,6 @@ Figure out the approximate average storage impact your jobs (inputs and outputs)
 
 17. Put the input data where it needs to be. This will more than likely always be on the S3.
 
-    - If on the S3, make a bucket and give permissions to the appropriate individuals (see section [here](#14-s3)), and sync the data there.
+    - If on the S3, make a bucket and give permissions to the appropriate individuals (see section [here](s3.md)), and sync the data there.
 
     - If on tier 1, fill out the request form (if above 1 TB).

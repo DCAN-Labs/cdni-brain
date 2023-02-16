@@ -1,6 +1,6 @@
 # Optimizing SBATCH parameters 
 
-21. Run a few subjects with the pipeline. You can use the same 3-5 jobs you used for [storage estimates](#13-storage-allocation-estimates) to estimate job specifications.
+21. Run a few subjects with the pipeline. You can use the same 3-5 jobs you used for [storage estimates](storage.md) to estimate job specifications.
 
 22. Run seff on the jobs 
 

@@ -8,9 +8,7 @@ nav:
   - Slurm: slurm.md
   - Interactive High Performance Computing (HPC) Resources: hpc.md
   - MSI Partitions: partitions.md
-  - Slurm Parameters:
-    - sbatch: sbatch.md
-    - srun: srun.md
+  - Slurm Parameters: slurm-params.md
   - fairshare: fairshare.md
   - MSI Module System: modules.md
   - Miniconda Environments: miniconda.md
@@ -28,15 +26,7 @@ nav:
   - Job Submissions: jobs.md
   - Containers: containers.md
   - Processing Status: status.md
-  - Troubleshooting and Image Viewing:
-    - DCAN Infant: infant-trouble.md
-    - ABCD-BIDS: abcd-trouble.md
-    - NiBabies and fMRIprep: niprep-trouble.md
-    - XCP-D: xcpd-trouble.md
-    - S3 Wrappers: s3-trouble.md
+  - Troubleshooting and Image Viewing: troubleshooting.md
   - Fast Track QC Comparison (ABCD): fasttrack.md
-  - Data Uploads and Transfer:
-    - Upload Documentation: upload.md
-    - Data Upload and Transfer Steps: steps.md
-    - Globus: globus.md
+  - Data Uploads and Transfer: uploads.md
   - Common MSI Roadblocks: roadblocks.md
