@@ -1,4 +1,4 @@
-# Troubleshooting
+# Troubleshooting and Image Viewing
 
 ## DCAN Infant
 

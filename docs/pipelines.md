@@ -47,7 +47,7 @@ A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing o
     
     31. -w /work : used to specify a working directory within the same path as the sbatch, named_ /work_.
 
-60. If an error is encountered, document it [here](https://docs.google.com/document/d/16qSEPV1_FHOHBq2eJOuZLqISv-0zCbpOJQ7HesEQCv4/edit#heading=h.13assk4h50o4). Also, see [Troubleshooting](troubleshooting.md).
+60. If an error is encountered, document it [here](https://docs.google.com/document/d/16qSEPV1_FHOHBq2eJOuZLqISv-0zCbpOJQ7HesEQCv4/edit#heading=h.13assk4h50o4). Also, see [Troubleshooting](troubleshooting.md/#nibabies-and-fmriprep).
 
 61. Example command:
 
@@ -82,7 +82,7 @@ Nibabies is a robust pre-processing MRI and fMRI workflow that is also a part of
     
     - -w /work : used to specify a working directory within the container’s filesystem, named _/work_.
 
-63. If an error is encountered, document it [here](https://docs.google.com/document/d/16qSEPV1_FHOHBq2eJOuZLqISv-0zCbpOJQ7HesEQCv4/edit#heading=h.13assk4h50o4). Also, see [Troubleshooting](troubleshooting.md).
+63. If an error is encountered, document it [here](https://docs.google.com/document/d/16qSEPV1_FHOHBq2eJOuZLqISv-0zCbpOJQ7HesEQCv4/edit#heading=h.13assk4h50o4). Also, see [Troubleshooting](troubleshooting.md/#nibabies-and-fmriprep).
 
 64. Example command:
 
@@ -112,7 +112,7 @@ This pipeline provides an interface for processing BIDS-formatted MRI datasets u
     
     - --bandstop \ : Parameters for motion regressor band-stop filter. It is recommended for the boundaries to match the inter-quartile range for participant group respiratory rate (breaths per minute), or to match [BIDS physio data directly](https://www.biorxiv.org/content/10.1101/337360v1). These parameters are highly recommended for data acquired with a frequency of greater than 1 Hz (TR less than 1 second). Default is no filter. Suggested filter ranges can also be found in [this table](https://xcp-d.readthedocs.io/en/latest/generalworkflow.html#id3).
 
-66. If an error is encountered, document it [here](https://docs.google.com/document/d/1pu6QU32aoKBH1LKNFivYFRvFvZa6lfCETEKYfspy4As/edit). Also, see [Troubleshooting](troubleshooting.md).
+66. If an error is encountered, document it [here](https://docs.google.com/document/d/1pu6QU32aoKBH1LKNFivYFRvFvZa6lfCETEKYfspy4As/edit). Also, see [Troubleshooting](troubleshooting.md/#abcd-bids).
 
 67. Example command:
 
@@ -146,7 +146,7 @@ The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of
     
     11. -w /work :  used to specify a working directory within the container’s filesystem, named _/work_.
 
-2. If an error is encountered, see [Troubleshooting](troubleshooting.md).
+2. If an error is encountered, see [Troubleshooting](troubleshooting.md/#xcp-d).
 
 3. Example command: 
 
@@ -190,7 +190,7 @@ Overview: fMRI -> anatomical registration - no boundary based registration, use 
 
 1. For further information on DCAN Infant Pipeline flags, see the [readthedocs section here](https://dcanlab.readthedocs.io/en/latest/manualpro/infant/pipeline/#pipeline-optional-flags-and-example).
 
-2. If an error is encountered, document it [here](https://docs.google.com/document/d/1FEcHVf34hWy9o0V0GKka5b2VKw5ndRt8/edit). Also, see [Troubleshooting](troubleshooting.md).
+2. If an error is encountered, document it [here](https://docs.google.com/document/d/1FEcHVf34hWy9o0V0GKka5b2VKw5ndRt8/edit). Also, see [Troubleshooting](troubleshooting.md/#dcan-infant).
 
 3. Example command:
 
