@@ -19,11 +19,11 @@ After data has been fully processed, it's important to ask yourself these questi
 
 Use services like s3 sync, rsync, and globus to sync data / upload data to the appropriate locations. You generally want to use the easiest method for transferring data. Instructions on setting up an .s3cfg are as follows:
 
-1. Create a specific .s3cfg-RANDOM file somewhere in your home directory. You can name it whatever you want, except ".s3cfg". I recommend naming it something easily identifiable for you.
+1. Create a specific `.s3cfg-RANDOM` file somewhere in your home directory. You can name it whatever you want, except "`.s3cfg`". I recommend naming it something easily identifiable for you.
 
-2. Run this command and give the _Access Key ID_ and _Secret Access Key_ when prompted. You should not have to fill in any other fields unless it is hosted by something other than _s3.amazonaws.com_: s3cmd -c ~/.s3cfg-RANDOM --configure                                                Note: the .s3cfg-RANDOM here is the one you made in step one.
+2. Run this command and give the _Access Key ID_ and _Secret Access Key_ when prompted. You should not have to fill in any other fields unless it is hosted by something other than _s3.amazonaws.com_: s3cmd -c ~/.`s3cfg-RANDOM --configure`                                                Note: the `.s3cfg-RANDOM` here is the one you made in step one.
 
-3. Test your access through an ls command - the s3cmd -c ~/.s3cfg-RANDOM will have to be part of every command you run to access the buckets that require the credentials you provided.
+3. Test your access through an `ls` command - the `s3cmd -c ~/.s3cfg-RANDOM` will have to be part of every command you run to access the buckets that require the credentials you provided.
 
 ## Globus
 

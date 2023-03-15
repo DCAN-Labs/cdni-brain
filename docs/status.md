@@ -2,13 +2,13 @@
 
 Produce status html on the output data to see how many processing jobs succeeded and failed (only available for abcd-hcp and infant-abcd-bids pipelines).
 
-1. If your dataset is more than 10 subjects, start an interactive session first: srun -N 1 --cpus-per-task=1  --mem-per-cpu=5gb -A feczk001 -t 6:00:00 -p interactive --x11 --pty bash
+1. If your dataset is more than 10 subjects, start an interactive session first: `srun -N 1 --cpus-per-task=1  --mem-per-cpu=5gb -A feczk001 -t 6:00:00 -p interactive --x11 --pty bash`
 
-2. Load lab-wide miniconda3 environment and activate the abcd-hcp-pipeline_audit: source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
+2. Load lab-wide miniconda3 environment and activate the abcd-hcp-pipeline_audit: source `/home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh`
 
     conda activate abcd-hcp-pipeline_audit
 
-3. Navigate to the correct directory: cd /home/faird/shared/code/internal/utilities/abcd-hcp-pipeline_audit
+3. Navigate to the correct directory: cd `/home/faird/shared/code/internal/utilities/abcd-hcp-pipeline_audit`
 
 4. To run on data that's on the s3, s3 keys are needed(run s3info in the command line, then see 1.). To run on tier 1, see 2.
 

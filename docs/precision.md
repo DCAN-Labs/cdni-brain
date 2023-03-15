@@ -10,7 +10,7 @@
 The general form of the run command is 
 
 
-sbatch /home/faird/shared/code/internal/analytics/precision_mapping_for_workshop/code_sorted/main_run_script_reliability_curve.sh &lt;DERIVATIVESDIR> &lt;OUTDIR> &lt;SUB> &lt;SES> &lt;TASK> &lt;FD> &lt;NUM> &lt;MIN>   , where: 
+`sbatch /home/faird/shared/code/internal/analytics/precision_mapping_for_workshop/code_sorted/main_run_script_reliability_curve.sh <DERIVATIVESDIR> <OUTDIR> <SUB> <SES> <TASK> <FD> <NUM> <MIN>`   , where: 
 
 
     DERIVATIVESDIR = Path to an XCP-D BIDS derivatives directory
