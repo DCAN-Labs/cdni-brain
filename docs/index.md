@@ -1,3 +1,3 @@
 # Data Processing Handbook
 
-Placeholder index file
+This handbook outlines key data processing tools and resources used by [DCAN Labs](https://innovation.umn.edu/developmental-cognition-and-neuroimaging-lab/). Topics covered include MSI basics and the Slurm job scheduler, MRI data conversion and initial quality control, data processing pipelines, post-processing quality control, and best practices for data storage and transfer.

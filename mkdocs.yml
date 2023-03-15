@@ -4,7 +4,7 @@ plugins:
   - search
 docs_dir: docs
 nav:
-  - Table of contents: index.md
+  - Overview: index.md
   - Slurm: slurm.md
   - Interactive High Performance Computing (HPC) Resources: hpc.md
   - MSI Partitions: partitions.md
