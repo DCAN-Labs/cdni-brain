@@ -1,4 +1,4 @@
-1. Slurm
+# Slurm
 
 **  	**Read:
 
@@ -123,17 +123,17 @@
 
     1. View all jobs submitted by a given user:  squeue -u username (one can also use squeue -al --me when trying to determine specific jobs for their own account) or squeue -A group_name to check the queue for all groups one is under to determine which to submit under 
     2. Cancel a submitted job: scancel jobID_number
-        1. scancel can also be used for job arrays by listing the job ID numbers as a comma separated list.
+        - scancel can also be used for job arrays by listing the job ID numbers as a comma separated list.
     3. Display accounting data for all jobs and job steps in the Slurm job accounting log or Slurm database: sacct 
-        2. See the below command to check the status of a job even after it has exited. JOBID_ARRAY can also just be the JOBID, if you didn't submit an array
+        - See the below command to check the status of a job even after it has exited. JOBID_ARRAY can also just be the JOBID, if you didn't submit an array
 
             sacct -X -j JOBID_ARRAY# -o JobID,NNodes,State,ExitCode,DerivedExitCode,Comment
 
-        3. Check the jobs you have in queue by using squeue -al --me
+        - Check the jobs you have in queue by using squeue -al --me
     4. Change job account (each PI in the lab has their own Slurm group account with its own allocation of resources and queue priority. It is sometimes useful to change accounts to distribute resource requests for large processing jobs, or when an account has low queue priority due to heavy usage) : scontrol update JobId=#### Account=new_group
-        4. An example command has _Job 234293_ originally submitted under default account _miran045_, and to change it to _feczk001 _one would use: scontrol update JobId=234293 Account=feczk001
+        - An example command has _Job 234293_ originally submitted under default account _miran045_, and to change it to _feczk001 _one would use: scontrol update JobId=234293 Account=feczk001
     5. To change a slurm job partition use: scontrol update JobId=#### Partition=new_partition 
-        5. An example command has _Job 234293_ originally submitted with the partition _msismall_, and to change it to _msigpu _one would use: scontrol update JobId=234293 Partition=msigpu
+        - An example command has _Job 234293_ originally submitted with the partition _msismall_, and to change it to _msigpu _one would use: scontrol update JobId=234293 Partition=msigpu
     6. To change the amount of time a slurm job runs for, use: scontrol update JobId=#### EndTime=HH:MM:SS 
-        6. To find time information, first use scontrol show JobId=####
-        7. An example command has _Job 234293_ originally submitted at the following time for 96 hours: _StartTime=2022-08-29T13:04:45_, and to change it to 48 hours one would use: scontrol update JobId=234293 EndTime=2022-08-31T13:04:45
+        - To find time information, first use scontrol show JobId=####
+        - An example command has _Job 234293_ originally submitted at the following time for 96 hours: _StartTime=2022-08-29T13:04:45_, and to change it to 48 hours one would use: scontrol update JobId=234293 EndTime=2022-08-31T13:04:45
