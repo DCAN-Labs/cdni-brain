@@ -65,3 +65,15 @@ For a comprehensive document on troubleshooting nibabies and fmriprep errors, [s
 For common troubleshooting processes and a deeper dive into the utilization of XCP-D, [see here](https://umn.app.box.com/folder/149404140292?s=3gmexhky3rtxafdo118rh1c0c2x35jl6).
 
 ## S3 Wrappers
+
+
+**If there are run files:**
+
+
+Errors are common when running preliminary tests on s3 wrappers. In order to troubleshoot these errors, the first step is to grab an[ interactive session](slurm-params.md#srun-immediately-run-a-command-using-the-specified-compute-resources). Next, run the content of one run file by copying and pasting the contents into the terminal step-by-step in order to see the outputs of each command in real time, which will uncover the step in which the error is occurring. Once the error is reproduced, incorporate the fix, then rerun make_run_files.sh and a test subject for the submitter script.
+
+
+**If there are not run files:**
+
+
+The issue should be regarding the paths to the files in make_run_files.sh. With make_run_files.sh opened, copy and paste the contents of the file into the terminal in order to see if the conditional statements match the necessary paths of the files that need to be included. 
