@@ -13,8 +13,7 @@
 
     Slurm also has “interactive” jobs, which allow access to compute resources directly from the terminal, as opposed to batch job submissions which run in the background.
 
-
-        **_NOTE: Login nodes, e.g. “ah1001”, “ln1001” should only be used for minimal tasks like batch script submission, filesystem browsing, small file transfers, and text editing.  Jobs requiring more time or resources should be run via sbatch submission, srun, or interactive session with dedicated compute resources i.e. NICE. Processes on login nodes are automatically terminated after 15 minutes. _** 
+    * **NOTE**: Login nodes, e.g. “ah1001”, “ln1001” should only be used for minimal tasks like batch script submission, filesystem browsing, small file transfers, and text editing.  Jobs requiring more time or resources should be run via sbatch submission, srun, or interactive session with dedicated compute resources i.e. NICE. **Processes on login nodes are automatically terminated after 15 minutes.** 
 
 
     Also available are various commands for job accounting, job management, and environment configuration. (See cheat sheet linked below)
@@ -32,7 +31,7 @@
    </td>
   </tr>
   <tr>
-   <td>#!/bin/bash -l 
+   <td>#!/bin/bash -l  
    </td>
    <td><em>Required for sbatch.</em> Specifies how the Slurm file should be read (by the bash interpreter). A statement like this is required to be the first time of a Slurm script
    </td>

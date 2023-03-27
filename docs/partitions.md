@@ -2,6 +2,7 @@
 
 Read:  [Partitions @ MSI](https://www.msi.umn.edu/partitions)
 
+![Partions of MSI](img/partitions-example.jpeg)
 
 Each partition you may choose is specific to the HPC resource that is being used. 
 
