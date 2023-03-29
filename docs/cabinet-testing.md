@@ -32,7 +32,7 @@ Duplicate `cabinet_testing.sh`
 
     1. `-B /path/to/code/file.py:/path/in/cabinet`
 
-    1. To find path in cabinet use singularity shell --nv container_path.sif (note flags on shell command need to match the .sh file singularity run flags)
+    1. To find path in cabinet use `singularity shell --nv container_path.sif` (note flags on shell command need to match the .sh file singularity run flags)
 
 ### Edit sif file:
 
