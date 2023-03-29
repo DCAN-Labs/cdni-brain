@@ -12,25 +12,25 @@ Duplicate `cabinet_testing.sh`
 
 ### Edit sbatch:
 
-1. SBATCH –mail-user=YOUR EMAIL
+1. `SBATCH –mail-user=YOUR EMAIL`
 
-1. SBATCH -o /path/to/logs/dir (has to exist already)
+1. `SBATCH -o /path/to/logs/dir` (has to exist already)
 
-1. SBATCH -e /path/to/logs/dir (can be same as above)
+1. `SBATCH -e /path/to/logs/dir` (can be same as above)
 
-1. Might need to edit SBATCH -A for fairshare optimization
+1. Might need to edit `SBATCH -A` for fairshare optimization
 
-1. Might have to edit SBATCH -p for other partitions when using Mesabi/Agate/Mangi
+1. Might have to edit `SBATCH -p` for other partitions when using Mesabi/Agate/Mangi
 
 ### Edit Binds:
 
-1. Input bind: -B /path/to/input/:/input \ 
+1. Input bind: `-B /path/to/input/:/input \ `
 
-1. Output bind: -B /path/to/output/:/output \
+1. Output bind: `-B /path/to/output/:/output \`
 
 1. Might need to edit the code binds depending on what code changes you made and where:
 
-    1. -B /path/to/code/file.py:/path/in/cabinet
+    1. `-B /path/to/code/file.py:/path/in/cabinet`
 
     1. To find path in cabinet use singularity shell --nv container_path.sif (note flags on shell command need to match the .sh file singularity run flags)
 
@@ -44,15 +44,15 @@ Duplicate `cabinet_testing.sh`
 
 ### Edit App flags:
 
-1. --participant-label (number after sub- for the participant you want to run)
+1. `--participant-label` (number after sub- for the participant you want to run)
 
 1. Start and end flags
 
-    1. --start prebibsnet (always start here probably)
+    1. `--start prebibsnet` (usually start here)
 
-    1. --end postbibsnet (change depending on how much you want to run)
+    1. `--end postbibsnet` (change depending on how much you want to run)
 
-1. --work (optional, depends on what you are testing)
+1. `--work` (optional, depends on what you are testing)
 
 ## Prepare testing directories
 
@@ -66,7 +66,7 @@ These are the directories you specified in the `cabinet_testing.sh` file
 
 `mkdir input` 
 
-- Optional, can use input in segpipeline_testing
+- Optional, can use `segpipeline_testing/input`
 
 - Either way, make sure the appropriate inputs are in here.
 
@@ -87,7 +87,7 @@ You will get emails about how it's going.
 - Make sure you put your email in the steps above!
 
 Your logs will go to the logs path specified above
-- make sure you this directory exists!
+- make sure this directory exists!
 
 ## Did it work?
 
