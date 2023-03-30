@@ -1,6 +1,6 @@
 # Storage Allocation Estimates
 
-Figure out the approximate average storage impact your jobs (inputs and outputs) will have and estimate the total storage impact. For processing and analyzing a sample of individual subjects, run 3-5 different subjects’ jobs on Tier 1 and take the largest output and multiply it by the total number of subjects: du -sh --total /subject/output/path
+Figure out the approximate average storage impact your jobs (inputs and outputs) will have and estimate the total storage impact. For processing and analyzing a sample of individual subjects, run 3-5 different subjects’ jobs on Tier 1 and take the largest output and multiply it by the total number of subjects: `du -sh --total /subject/output/path`
 
 16. Make the decision of where the processing will take place
 
