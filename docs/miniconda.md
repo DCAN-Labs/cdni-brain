@@ -18,11 +18,11 @@ DCAN Labs maintains lab-wide shared miniconda environments which are configured 
     To create a new conda environment, follow these instructions:
 
 1. Load the miniconda3 base environment - as seen above
-2. Check to make sure your environment does not already exist by running conda info --envs
-3. Run conda create --name your_env_name
-4. Run conda activate your_env_name
-5. If you need to install with pip, run conda install pip 
-6. For installs on things included with miniconda3 run conda install package_name1 package_name2
+2. Check to make sure your environment does not already exist by running `conda info --envs`
+3. Run `conda create --name your_env_name`
+4. Run `conda activate your_env_name`
+5. If you need to install with pip, run `conda install pip` 
+6. For installs on things included with miniconda3 run `conda install package_name1 package_name2`
 
     Note: It is a list without commas. You can also install one by one.
 
@@ -30,8 +30,8 @@ DCAN Labs maintains lab-wide shared miniconda environments which are configured 
     You can also create an environment with a YAML file of requirements.
 
 1. Load the miniconda3 base environment - as seen above
-2. Check to make sure your environment does not already exist by using conda info --envs
-3. Run conda env create -f /path/to/yaml/for/build.yml
-4. Run conda activate the_env_name
+2. Check to make sure your environment does not already exist by using `conda info --envs`
+3. Run `conda env create -f /path/to/yaml/for/build.yml`
+4. Run `conda activate the_env_name`
 
     Also, check out the [conda user documentation](https://docs.conda.io/projects/conda/en/stable/index.html) and [cheat sheet](https://docs.conda.io/projects/conda/en/stable/user-guide/cheatsheet.html) for further information.
