@@ -18,6 +18,6 @@ Produce status html on the output data to see how many processing jobs succeeded
 
     2. Tier 1: 
 
-            python3 run.py --report_output_dir path/to/the/directory/where/you/want/the/outputs/ /tier1/path/input/ /tier1/path/output/ group
+            python3 run.py --report_output_dir path/to/the/directory/where/you/want/the/outputs/ /tier1_path/input/ /tier1_path/output/ group
 
 5. Will produce a s3_status_report.html and .csv. These files give information on the results of each processing step for each subject/session pair. A tip for determining subjects’ processing status counts is to download the .csv into excel, create a pivot table of the data, and provide session ID in the values section and the name of the last column in the rows section. 

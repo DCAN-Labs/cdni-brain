@@ -22,31 +22,31 @@ In the Infant section above, points c-d can be generalized for ABCD troubleshoot
 
 1. For the abcd-hcp-pipeline functional spot check example, our goal is to get a scaffolding of brain activity. In order to see if brain activity is well represented as functional connectivity, we have to look at the BOLD data (a functional output image). This process can give insights as to whether the processing pipeline has an underlying issue that's been overlooked or if the data has been collected poorly. (Note: workbench works best on MSI’s NICE system; with NICE no `ssh` into an HPC is required.).
 
-    1. Run `module load workbench`
+    * Run `module load workbench`
 
-    2. Navigate to your output directory. This is an example output directory: `cd /home/feczk001/shared/data/ABCC_year2_sites/sub-####/ses-$$$$/files/MNINonLinear/fsaverage_LR32k`
+    * Navigate to your output directory. This is an example output directory: `cd /home/feczk001/shared/data/ABCC_year2_sites/sub-####/ses-$$$$/files/MNINonLinear/fsaverage_LR32k`
 
-    3. Run `wb_view` then select _Open _and _Load _for all the files
+    * Run `wb_view` then select *Open* and *Load* for all the files
 
-    4. In the _Montage Selection_ section, switch the selected surfaces from _midthickness_ to_ very_inflated_
+    * In the _Montage Selection_ section, switch the selected surfaces from _midthickness_ to *very_inflated*
 
-    5. Deselect all three of the layers in the _Overlay Toolbox/Layers_ section 
+    * Deselect all three of the layers in the _Overlay Toolbox/Layers_ section 
 
-    6. Go to _File _and _Open File_, switch the _Files of type_ section to _CIFTI - Dense Data Series Files (*.dtseries.nii)_
+    * Go to *File* and *Open File*, switch the _Files of type_ section to _CIFTI - Dense Data Series Files (*.dtseries.nii)_
 
-    7. Navigate up one directory then down into the _Results _folder
+    * Navigate up one directory then down into the *Results* folder
 
-    8. Select a _task_rest dtseries.nii_ and open it 
+    * Select a _task_rest dtseries.nii_ and open it 
     
-    9. Go to _File _and _Open File, _and navigate to the parent folder (`feczk001/shared/`). From here open _ROI_sets_, _Surface_schemes_, _Human_, _Gordon_, and _fsLR_
+    * Go to *File* and *Open File*, and navigate to the parent folder (`feczk001/shared/`). From here open _ROI_sets_, _Surface_schemes_, _Human_, _Gordon_, and _fsLR_
     
-    10. Switch the _Files of type_ section to _CIFTI - Dense Label Files (*.dlabel.nii)_
+    * Switch the _Files of type_ section to _CIFTI - Dense Label Files (*.dlabel.nii)_
     
-    11. Open the _Gordon.networks _file
+    * Open the *Gordon.networks* file
     
-    12. Back in the _Overlay Toolbox/Layers/File _section, switch the first two files to the _Gordon.networks _file and the _dyconn - task-rest_ file, and check the box under _On_ for those two files
+    * Back in the _Overlay Toolbox/Layers/File_ section, switch the first two files to the *Gordon.networks* file and the *dyconn - task-rest* file, and check the box under _On_ for those two files
     
-    13. For the _Gordon.networks _file, click the wrench icon under _Settings_ and in the _Labels/Drawing Type _section, select _Outline Label Color_, then select _Close_.
+    * For the *Gordon.networks* file, click the wrench icon under *Settings* and in the *Labels/Drawing Type* section, select *Outline Label Color*, then select *Close*.
 
         From here, select points on the brain images to see if the more yellow colors in the _dyconn_ file correspond to the areas outlined by the _Gordon.networks_ file. Focus on distinct networks like the Visual, Motor, and Default Mode. If the seed maps (_dyconn _file) don’t correspond well with the networks, there may be an issue with the data acquisition or the pipeline. For a more in-depth look at this process, see [here](https://umn.app.box.com/file/980329914631). 
 
