@@ -1,7 +1,6 @@
 # Slurm
 
-**  	**Read:
-
+Read:
 
 
 * [Slurm @ MSI documentation ](https://www.msi.umn.edu/slurm)
@@ -13,7 +12,7 @@
 
     Slurm also has “interactive” jobs, which allow access to compute resources directly from the terminal, as opposed to batch job submissions which run in the background.
 
-    * **NOTE**: Login nodes, e.g. “ah1001”, “ln1001” should only be used for minimal tasks like batch script submission, filesystem browsing, small file transfers, and text editing.  Jobs requiring more time or resources should be run via sbatch submission, srun, or interactive session with dedicated compute resources i.e. NICE. **Processes on login nodes are automatically terminated after 15 minutes.** 
+    * **NOTE**: Login nodes, e.g. “ah1001”, “ln1001” should only be used for minimal tasks like batch script submission, filesystem browsing, small file transfers, and text editing.  Jobs requiring more time or resources should be run via sbatch submission, srun, or interactive session with dedicated compute resources. **Processes on login nodes are automatically terminated after 15 minutes.** 
 
 
     Also available are various commands for job accounting, job management, and environment configuration. (See cheat sheet linked below)
@@ -114,7 +113,7 @@
 
 
 
-        *--mem is the amount of RAM (random access memory) on a CPU (central processing unit), while --tmp indicates the amount of temporary storage that you can utilize for a job. With whatever storage amount is specified for --tmp, that amount will be created for you within the /tmp folder to output your processing derivatives. 
+*`--mem` is the amount of RAM (random access memory) on a CPU (central processing unit), while `--tmp` indicates the amount of temporary storage that you can utilize for a job. With whatever storage amount is specified for `--tmp`, that amount will be created for you within the /tmp folder to output your processing derivatives. 
 
 **Other useful commands:**
 

@@ -20,15 +20,15 @@
 
         ![Example Seff Output](img/seff-output-example.png)
 
-        - _Nodes _can be manipulated in the sbatch by the `--nodes` flag. 
+        - *Nodes* can be manipulated in the sbatch by the `--nodes` flag. 
 
-        - _Cores per node_ can be manipulated with the `--ntasks-per-node` flag. 
+        - *Cores per node* can be manipulated with the `--ntasks-per-node` flag. 
 
         - _Job Wall-clock time_ is the length of the job in real hours, and can be manipulated with the `-t` or `--time` flags. Based on this output, a time specification of `72:00:00` should suffice. 
 
-        - _Memory Utilized _can be manipulated with the `--mem` flag. Based on this output, a 40 GB specification of memory will allow for a more efficient job versus 60 GB. 
+        - *Memory Utilized* can be manipulated with the `--mem` flag. Based on this output, a 40 GB specification of memory will allow for a more efficient job versus 60 GB. 
         
-        - _CPU Utilized _is the total CPU hours that were allocated based on the request.
+        - *CPU Utilized* is the total CPU hours that were allocated based on the request.
         
         - _CPU Efficiency_ is the proportion of the CPU that was utilized for the job compared to the total core-walltime of the CPU.
 
