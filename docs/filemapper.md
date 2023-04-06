@@ -4,12 +4,12 @@ File mapper maps processed outputs into the BIDS format for the abcd-hcp and inf
 
 1. File-mapper usage:
 
-    1. File-mapper is located in: `/home/faird/shared/code/internal/utilities/file-mapper`
+    * File-mapper is located in: `/home/faird/shared/code/internal/utilities/file-mapper`
 
-    2. Select an example mapping json file from the “examples” folder in this location or create your own
+    * Select an example mapping json file from the “examples” folder in this location or create your own
     
-    3. Run with the following command: python3 `./file_mapper_script.py <selected json file> -a copy -sp [full output directory of a single subject down to /file] -dp [output dir] -t SUBJECT=[part after “sub-”],SESSION=[part after “ses-”],PIPELINE=[folder name (e.g. abcd-bids)]`
+    * Run with the following command: `python3 ./file_mapper_script.py <selected json file> -a copy -sp [full output directory of a single subject down to /file] -dp [output dir] -t SUBJECT=[part after “sub-”],SESSION=[part after “ses-”],PIPELINE=[folder name (e.g. abcd-bids)]`
 
-        1. `PIPELINE` refers to the directory your outputs are in which are inside the derivatives folder.
+        * `PIPELINE` refers to the directory your outputs are in which are inside the derivatives folder.
 
 2. See the Example 2 [here](https://github.com/DCAN-Labs/file-mapper) for a more in-depth explanation.

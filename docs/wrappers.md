@@ -59,8 +59,8 @@ Current list of wrappers developed for s3 integration:
 
 3. Generate run files by executing `make_run_files.sh`. This script uses a series of `awk` commands to pull out subject and session ids from input data within your data bucket and creates a run file for each subject under `run_files.abcd-hcp-pipeline_full`. First review the `make_run_files.sh` script to check that the data directory paths look correct and then execute via `./make_run_files.sh`. Note that you may need to grab a node first to run this script if you have a large number of subjects.
 
-    1. Before moving on to the submission step, if you are transferring the data via globus, make sure to properly set up the endpoints. See [the section on globus transfers](uploads.md#Globus) for more information.
+    * Before moving on to the submission step, if you are transferring the data via globus, make sure to properly set up the endpoints. See [the section on globus transfers](uploads.md#Globus) for more information.
 
-4. Submit run files to queue w/ `submit_abcd-hcp-pipeline_full_run.sh` with the runs as input. For example if you want to submit subjects 0 through 20 and 25, execute the following from the command line: `./submit_abcd-hcp-pipeline_full_run.sh` 0-20,25 **Note that you most likely want to test your wrapper on one subject before running multiple.**_
+4. Submit run files to queue w/ `submit_abcd-hcp-pipeline_full_run.sh` with the runs as input. For example if you want to submit subjects 0 through 20 and 25, execute the following from the command line: `./submit_abcd-hcp-pipeline_full_run.sh` 0-20,25. **Note that you most likely want to test your wrapper on one subject before running multiple.**
 
-    2. If an error is encountered, see the[ troubleshooting section for s3 wrappers](#23-5-s3-wrapper-troubleshooting-process).
+    * If an error is encountered, see the[ troubleshooting section for s3 wrappers](#23-5-s3-wrapper-troubleshooting-process).
