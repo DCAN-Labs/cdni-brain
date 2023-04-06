@@ -1,4 +1,4 @@
-9. DICOM to BIDS Conversion (Dcm2bids)
+# DICOM to BIDS Conversion (Dcm2bids)
 
 	Read: [Dcm2bids documentation page](https://unfmontreal.github.io/Dcm2Bids/docs/get-started/)
 
@@ -15,7 +15,7 @@
 
 
 
-    11. dcm2bids requires a configuration file specifically tailored to the contents of the JSON “sidecar” files that contain metadata for the image files. The config file is a way to uniquely identify each file that needs to be converted.
+    11. `dcm2bids` requires a configuration file specifically tailored to the contents of the JSON “sidecar” files that contain metadata for the image files. The config file is a way to uniquely identify each file that needs to be converted.
         * Example section: 
         
         ![example dcm2bids](img/dcm2bids-example.png)
@@ -73,10 +73,10 @@
 
         ![example dcm2bids](img/dcm2bids-example2.png)
         
-        - In the run command, `-c` is the usage for creating the relevant config file, `-l` is the list of subjects being converted, `-o` is where the outputs are being stored, --temp is the path to the directory where temp files will be stored, and  --download will specify where the ABCD data will be downloaded.
+        - In the run command, `-c` is the usage for creating the relevant config file, `-l` is the list of subjects being converted, `-o` is where the outputs are being stored, `--temp` is the path to the directory where temp files will be stored, and  `--download` will specify where the ABCD data will be downloaded.
         
         - For more information on arguments, see the ReadMe section on Optional Arguments [here](https://github.com/DCAN-Labs/abcd-dicom2bids).
         
-        - For running multiple subjects, it is advised to use a [wrapper ](#17-s3-pipeline-wrappers)to submit one subject/session at a time. There is a wrapper for tier 1 here: /`home/faird/shared/code/internal/utilities/slurm_pipeline_wrappers/slurm_abcd-hcp-pipeline_scripts` and a wrapper for tier 2 here: `/home/faird/shared/code/internal/utilities/slurm_pipeline_wrappers/slurm_abcd-hcp-pipeline_scripts_with_s3_routines_with_ses`
+        - For running multiple subjects, it is advised to use a [wrapper ](#17-s3-pipeline-wrappers)to submit one subject/session at a time. There is a wrapper for tier 1 here: `/home/faird/shared/code/internal/utilities/slurm_pipeline_wrappers/slurm_abcd-hcp-pipeline_scripts` and a wrapper for tier 2 here: `/home/faird/shared/code/internal/utilities/slurm_pipeline_wrappers/slurm_abcd-hcp-pipeline_scripts_with_s3_routines_with_ses`
             
-            * Note: if you do not have access to the faird share, please email [hough129@umn.edu](mailto:hough129@umn.edu) and they will provide you with the codebase.
+            * Note: if you do not have access to the faird share, please fill out [this contact form](https://innovation.umn.edu/developmental-cognition-and-neuroimaging-lab/contact-us/) to request access.
