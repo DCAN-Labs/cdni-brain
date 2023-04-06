@@ -26,12 +26,13 @@ DCAN Labs maintains lab-wide shared miniconda environments which are configured 
 
     Note: It is a list without commas. You can also install one by one.
 
+    ** **
 
-    You can also create an environment with a YAML file of requirements.
+You can also create an environment with a YAML file of requirements.
 
 1. Load the miniconda3 base environment - as seen above
 2. Check to make sure your environment does not already exist by using `conda info --envs`
 3. Run `conda env create -f /path/to/yaml/for/build.yml`
 4. Run `conda activate the_env_name`
 
-    Also, check out the [conda user documentation](https://docs.conda.io/projects/conda/en/stable/index.html) and [cheat sheet](https://docs.conda.io/projects/conda/en/stable/user-guide/cheatsheet.html) for further information.
+    Check out the [conda user documentation](https://docs.conda.io/projects/conda/en/stable/index.html) and [cheat sheet](https://docs.conda.io/projects/conda/en/stable/user-guide/cheatsheet.html) for further information.

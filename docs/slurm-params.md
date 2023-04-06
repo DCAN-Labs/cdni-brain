@@ -7,7 +7,7 @@ Read: [Interactive queue use with srun @ MSI](https://www.msi.umn.edu/content/in
 1. **srun** is primarily useful for jobs that will take longer than 10-15 minutes to run on a login node; 15 minutes is the maximum runtime on the login node (the login node is the node you are on after logging into mesabi/agate/mangi). However, they are also very useful for loading a Matlab session (or something similar) with sufficient resources. 
 2. This will allow you to work directly in a terminal, allowing you to run (resource intensive) software on it; you get the results in your terminal and you cannot write other commands until it is finished. (If you append the “&” symbol to the srun command it will execute in the background, allowing continued use of the current terminal.)
     * Results that are displayed in the terminal will typically be the steps outputted when opening an application. Terminal outputs from an interactive session are known as `stdout` and `stderr` files for an [sbatch](slurm-params.md#4-2-sbatch-copies-the-script-in-an-internal-storage-and-then-uploads-it-on-the-compute-node-when-the-job-starts) job.
-3. If you disconnect, you will lose control over srun jobs, or they might be killed (depending on whether they use stdout or not). They will also be killed if the machine to which you connect to submit jobs is rebooted. NICE or NX are recommended to prevent this, as the virtual desktops save your working environment. 
+3. If you disconnect, you will lose control over srun jobs, or they might be killed (depending on whether they use stdout or not). They will also be killed if the machine to which you connect to submit jobs is rebooted.  
 4. Ex: `srun --time=8:00:00 --mem-per-cpu=8GB --cpus-per-task=4  -A feczk001 --tmp=20gb  -p interactive --x11 --pty bash`
     * This interactive job is grabbing 8 hours on 4 cpus on the interactive partition with 8 gigabytes of memory per cpu, 20gb of temporary storage total, x11 enabled, and the ability to use your terminal, utilizing the feczk001 account’s allocated resources.
     * Use `groupquota` to check which account you are currently using. If the account you specified in the interactive job does not match the account listed when you run `groupquota`, then use `sg {share}` to switch to the specified account. Then use `groupquota` again to make sure you are now on the correct share.
@@ -17,7 +17,7 @@ Read: [Interactive queue use with srun @ MSI](https://www.msi.umn.edu/content/in
 
 Read: [Job Submission & Scheduling @ MSI](https://www.msi.umn.edu/content/job-submission-and-scheduling-slurm)
 
-    The job script needs to stay the same until the job starts to produce the correct results. If you make changes to a script before the job starts, those edits will be reflected in the job. 
+The job script needs to stay the same until the job starts to produce the correct results. If you make changes to a script before the job starts, those edits will be reflected in the job. 
 
 1. Results are written out as your script specifies. `stdout` and `stderr` will be outputted if the `-o` and `-e` flags are specified, and you can submit other commands right away.
 2. An sbatch job is handled by Slurm; you can disconnect (not run interactively), kill your terminal, etc. with no consequence
