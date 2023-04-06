@@ -1,5 +1,5 @@
 # Precision Mapping Wrapper
-* Related reading:_ [Rapid Precision Functional Mapping of Individuals Using Multi-Echo fMRI ](https://pubmed.ncbi.nlm.nih.gov/33357444/)_(Lynch et al. 2020)
+Read:_ [Rapid Precision Functional Mapping of Individuals Using Multi-Echo fMRI ](https://pubmed.ncbi.nlm.nih.gov/33357444/)_(Lynch et al. 2020)
 
 **Parcellated functional connectivity (FC)**
 
@@ -28,7 +28,7 @@ The general form of the run command is
     TASK = BIDS task name (without the “task-”)
 
 
-    FD = Framewise displacement (FD) threshold, in mm. Is **not **required to be the same FD threshold used with XCP-D. Recommended: between 0.1 and 0.2.
+    FD = Framewise displacement (FD) threshold, in mm. Is **not** required to be the same FD threshold used with XCP-D. Recommended: between 0.1 and 0.2.
 
 
     NUM = Number of permutations to run. (In each permutation, a block of consecutive minutes is sampled   The final reliability values in the curve will be an average over all iterations. Amount of time needed to run increases with the number of iterations.  Recommended: 10 or more.
@@ -40,7 +40,7 @@ The general form of the run command is
 _Notes:_
 
 * XCP-D version must be >= 0.3.0
-* XCP-D must be run with both --cifti   (CIFTI output) and   --m (concatenate the runs within each BIDS task)
+* XCP-D must be run with both `--cifti`   (CIFTI output) and   `--m` (concatenate the runs within each BIDS task)
 * Currently only Gordon333 parcellated timeseries are supported  (*_space-fsLR_atlas-Gordon_den-91k_timeseries.ptseries.nii).
 
 **(TBA - FC reliability matrix, dense FC curve, dense FC matrix)**
