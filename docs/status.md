@@ -14,7 +14,7 @@ Produce status html on the output data to see how many processing jobs succeeded
 
     1. S3: 
 
-            python3 run.py --s3_access_key CENSORED --s3_secret_key CENSORED --report_output_dir path/to/the/directory/where/you/want/the/outputs/ s3://bucket_name/ s3://bucket_name/path/to/tier2/outputs group
+            python3 run.py --s3_access_key CENSORED --s3_secret_key CENSORED --report_output_dir path/to/the/directory/where/you/want/the/outputs/ s3://bucket_name/path/to/tier2/inputs s3://bucket_name/path/to/tier2/outputs group
 
     2. Tier 1: 
 
