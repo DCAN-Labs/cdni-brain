@@ -47,7 +47,7 @@ Current list of wrappers developed for s3 integration:
 
     1. `./make_run_files.sh`
 
-    2. `./submit_ALL.sh` 0-467 (Note: any number scheme may be used provided it is listed as a comma separated list, or as stated in the example, or a combination of both)
+    2. `./submit_ALL.sh` 0-467 (Note: any number scheme may be used provided as long as it is listed as a comma separated list, or as stated in the example, or a combination of both)
 
 **Steps to modify and run pipeline wrappers (using abcd-hcp-pipeline as an example)**
 

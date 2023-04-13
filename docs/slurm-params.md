@@ -42,7 +42,7 @@ The job script needs to stay the same until the job starts to produce the correc
         1. The input and output directory paths are bound to the container’s filesystem using the `-B` syntax. There is also a path to a `.sif` file that will utilize the jobs resources in order to produce the desired outputs using what's in the input directory. This .sif file is a[ singularity image ](containers.md)that is being run on the specified input files. The input path is described above as `/home/faird/shared/projects/teaching/practicals/experiments/dcm2bids_output2/derivatives/nibabies/`. The output path is `/home/faird/shared/projects/teaching/practicals/experiments/dcm2bids_output2/derivatives/XCPD/` and the path to the singularity image is `/home/faird/shared/code/external/pipelines/ABCD-XCP/xcp-d_unstable04152022a.sif`  
             * Note: these input, output and singularity image paths need to exist prior to running the sbatch. 
         2. The pipeline specific flags `--cifti` `-m` `--participant-label` and `-w`.
-            * --cifti will postprocess cifti files instead of niftis
-            * -m will combine all the runs into one file
-            * --participant-label is a space delimited list of participant identifiers or a single identifier
-            * -w is the path to where intermediate results should be stored. In the above sbatch, it is specified in the line that reads `-B /home/feczk001/shared/projects/Jacob_test/work/:/work \` and is called on again later in this line `-w /work \`
+            * `--cifti` will postprocess cifti files instead of niftis
+            * `-m` will combine all the runs into one file
+            * `--participant-label` is a space delimited list of participant identifiers or a single identifier
+            * `-w` is the path to where intermediate results should be stored. In the above sbatch, it is specified in the line that reads `-B /home/feczk001/shared/projects/Jacob_test/work/:/work \` and is called on again later in this line `-w /work \`
