@@ -2,7 +2,7 @@
 
 DCAN Labs has access to a Virtual Machine (VM) for the purpose of building Docker application containers (Docker builds require root access, which is not permitted to general users on the main MSI clusters, thus the need for the VM). The process to sign up for access to MIDB's VM for use with container developing is as follows:
 
-1. Reach out to Tim, hendr522@umn.edu that you would like access to the container and indicate what project or projects that you will need it for
+1. Reach out to Tim (hendr522@umn.edu) that you would like access to the container and indicate what project or projects that you will need it for
 2. Read through the [documentation ](https://docs.google.com/document/d/1w1g0kLSchPKvEI9pZIBmhavFd2Mq2-r82ozVaBuL9EI/edit)on how to use the VM appropriately put together by Audrey 
 3. Tim will submit a ticket to OIT on your behalf. Once you hear back from Tim that you do have access try to attempt the following test below to ensure that your access is working
     * Run `ssh <x500>@umii-midbig-dev-docker.oit.umn.edu`

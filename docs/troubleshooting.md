@@ -8,9 +8,9 @@ Image viewing is a necessary process to conclude if a pipeline job finished succ
 
 ## infant-abcd-bids-pipeline (DCAN Infant Pipeline)
 
-1. First follow established SOPs to check that the input data is high quality enough to be processed: see _Structural Pre-Processing Quality Assessment of BIDS _under [Quality Control for Infant Data](https://dcanlab.readthedocs.io/en/latest/manualpro/infant/qc/) on the DCAN Labs RTDs 
+1. First follow established SOPs to check that the input data is high quality enough to be processed: see *Structural Pre-Processing Quality Assessment of BIDS* under [Quality Control for Infant Data](https://dcanlab.readthedocs.io/en/latest/manualpro/infant/qc/) on the DCAN Labs RTDs 
 
-2. Check the executive summary to spot errors/quality issues in the pipeline outputs: see _Input Data_ and _Post-Processing Quality Assessment from Executive Summary _under [Quality Control for Infant Data](https://dcanlab.readthedocs.io/en/latest/manualpro/infant/qc/) on the DCAN Labs RTDs 
+2. Check the executive summary to spot errors/quality issues in the pipeline outputs: see _Input Data_ and *Post-Processing Quality Assessment from Executive Summary* under [Quality Control for Infant Data](https://dcanlab.readthedocs.io/en/latest/manualpro/infant/qc/) on the DCAN Labs RTDs 
 
 3. For more in-depth quality assessment that involves inspecting intermediary pipeline outputs, see the [Troubleshooting](https://dcanlab.readthedocs.io/en/latest/manualpro/infant/troubleshooting/) section of DCAN Labs RTDs (includes information on inspecting file outputs from PreFreeSurfer, atlas registration, and functional/structural registration)
 
@@ -18,7 +18,7 @@ Image viewing is a necessary process to conclude if a pipeline job finished succ
 
 ## ABCD-BIDS
 
-In the Infant section above, points c-d can be generalized for ABCD troubleshooting as well, but are typically errors more commonly found with infant vs adult processing. For a generalized spot check of abcd-hcp-pipeline outputs for functional data, use workbench view: 
+In the Infant section above, points 3-4 can be generalized for ABCD troubleshooting as well, but are typically errors more commonly found with infant vs adult processing. For a generalized spot check of abcd-hcp-pipeline outputs for functional data, use workbench view: 
 
 1. For the abcd-hcp-pipeline functional spot check example, our goal is to get a scaffolding of brain activity. In order to see if brain activity is well represented as functional connectivity, we have to look at the BOLD data (a functional output image). This process can give insights as to whether the processing pipeline has an underlying issue that's been overlooked or if the data has been collected poorly.
 
