@@ -122,53 +122,72 @@ Look inside the `.err` and `.out` files in the specified log directory
 Check out the [CABINET documentation](https://github.com/DCAN-Labs/CABINET/blob/main/README.md) and double check that you didn't miss anything in your command
 
 Ensure that the input data is [BIDS](dcm2bids.md) valid
+  
   * [Run CuBIDS on the dataset](bids.md)
 
   * If it isn't BIDS valid, fix the BIDS validity errors and run CABINET again
 
+
 Look at anatomical input BIDS filenames to see if there are a mix of rec-normalized and regular T1w/T2ws:
+  
   * This can lead to the average T1w and/or T2w that is not meaningful and will not work well within CABINET.
 
   * We want either all rec-normalized T1ws and/or T2ws or all regular T1w/T2ws, not both.
 
   * If the anat directory includes both rec-normalized and regular T1w/T2ws, remove one of the options and re-run CABINET (this will be taken care of with a .bidsignore eventually, but it is currently a manual process).
 
+
 Look at anatomical images to check the quality of the input anatomical images
+  
   * This will mostly be motion artifacts.
 
   * If there are poor quality images, remove those images and re-run CABINET.
 
+
 Look at the averaged T1w and T2w to ensure it looks “normal” (`derivatives/prebibsnet/sub-*/ses-*/averaged/sub-*_ses-*_000(0|1).nii.gz`)
+  
   * There shouldn’t be “bad” average anatomical images here if all of the above conditions are satisfied.
 
   * If there are, post a Github issue [here](https://github.com/DCAN-Labs/CABINET/issues).
 
+
 Look at the cropped T1w and T2w to ensure it is not overcropped or undercropped. (`derivatives/prebibsnet/sub-*/ses-*/cropped/T(1|2)w/sub-*_ses-*_000(0|1).nii.gz`)
+ 
   * If it is overcropped or undercropped, [add a brain_z_size column to your participants.tsv](https://github.com/DCAN-Labs/CABINET#participantstsv) with z sizes more appropriate for your dataset/subjects/study and re-run CABINET
 
+
 Look at both resizing outputs to see if either alignment (xfms[non-ACPC] or ACPC_align) option leads to a properly aligned T1w and T2w (`derivatives/prebibsnet/sub-*/ses-*/resized/(ACPC_align|xfms)/`)
+ 
   * If neither image pair looks aligned to each other, post a Github issue [here](https://github.com/DCAN-Labs/CABINET/issues). We only need one of the pairs to be aligned to each other. It’s okay if one of them looks bad, we’re making a choice in the next step.
 
   * Note: be sure to check different areas throughout the brain.
 
+
 Look at the BIBSnet input and ensure it chose the properly aligned pair of T1w and T2w images. (`derivatives/bibsnet/sub-*/ses-*/input/`)
+ 
   * To do this, I open the corresponding files in the `derivatives/prebibsnet/sub-*/ses-*/resized/(ACPC_align|xfms)/` and `derivatives/bibsnet/sub-*/ses-*/input/` to ensure the T1ws match the T1ws and the T2ws match the T2ws.
 
   * If it chose the wrong pair, post a Github issue [here](https://github.com/DCAN-Labs/CABINET/issues).
 
   * For the sake of time, you can copy and rename the properly aligned image pair into that directory, mirroring the naming schema present in that directory.
 
+
 Look at the BIBSnet output and ensure there are not any holes in the segmentation. (`derivatives/bibsnet/sub-*/ses-*/output/`)
+
   * Load into your image viewer of choice the BIBSnet input file and the BIBSnet output file with the segmentation on top. 
 
   * If there are holes in the segmentation and you used the correct resources for you job, post a Github issue [here](https://github.com/DCAN-Labs/CABINET/issues).
 
   * It is okay if the chirality does not match, this will *hopefully* be fixed in postBIBSnet.
 
+
 Look at the chirality corrected outputs to ensure the chirality matches the proper hemisphere and there are no holes. (`/derivatives/precomputed/sub-*/ses-*/chirality_correction/`)
+  
   * If the segmentation doesn’t have the proper chirality, post a Github issue [here](https://github.com/DCAN-Labs/CABINET/issues).
   
   * If the segmentation has holes, post a Github issue [here](https://github.com/DCAN-Labs/CABINET/issues).
 
+
 Look at the precomputed file to make sure it’s aligned to the T1 (T1 and T2 model, T1-only model) or the T2 (T2-only model).
+ 
   * If misaligned, post a Github issue [here](https://github.com/DCAN-Labs/CABINET/issues).
