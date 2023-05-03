@@ -1,5 +1,7 @@
 # Pipelines
 
+This page has the recommended flags and example commands for the major pipelines we use for data processing. To determine the resources needed to run each pipeline, see [here](optimizing.md). 
+
 <table>
   <tr>
    <td>
@@ -35,8 +37,6 @@ A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing o
     
     * `--cifti-output 91k \` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinate can be specified (default is 91k, which equates to 2mm resolution). Default: False
     
-    *  `--topup-max-vols 2 \` [**Deprecated as of 22.1.0]**: used to limit frames per run to use from PEPolar fmaps, useful when there are more than one pair of runs that have type _dir-AP _and _dir-PA_ in the /fmap directory to prevent topup distortion correction from taking excessively long. 
-    
     * `--nprocs 32 \` : maximum number of threads across all processes **(if used, this should match the number of cpus allotted for your sbatch job)**
     
     * `--omp-nthreads 3 \` : maximum number of threads per-process
@@ -71,8 +71,6 @@ Nibabies is a robust pre-processing MRI and fMRI workflow that is also a part of
     - `--derivatives /derivatives \` : Nibabies will use a segmentation from the segmentation pipeline (pre-postBIBSnet). This flag is used to clarify that the precomputed segmentation directory is being utilized. 
     
     - `--cifti-output 91k \` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinate can be specified (default is 91k, which equates to 2mm resolution). Default: False
-    
-    - `--topup-max-vols 2 \` [**Deprecated as of 22.2.0] **:used to limit frames per run to use from PEPolar fmaps, useful when there are more than one pair of runs that have type _dir-AP _and _dir-PA_ in the /fmap directory to prevent topup distortion correction from taking excessively long 
     
     - `-vv \` : level 2 verbose log output, useful for troubleshooting
     

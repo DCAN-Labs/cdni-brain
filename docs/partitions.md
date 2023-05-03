@@ -4,7 +4,7 @@ Read:  [Partitions @ MSI](https://www.msi.umn.edu/partitions)
 
 ![Partions of MSI](img/partitions-example.jpeg)
 
-Each partition you may choose is specific to the HPC resource that is being used. 
+Each partition you may choose is specific to the HPC resource that is being used. Each node (mangi/agate/mesabi) has different partitions. Some partitions are able to be accessed from any login node.
 
 
 In the table linked above, **"Partition name"** specifies the string for the partition. Note that some partitions are only accessible if connected to a corresponding login node, e.g. **ahXXXX** for Agate. “Federated” partitions such as **msismall** can be used from any login node, and automatically delegate jobs to a partition accessible via the current login node. 

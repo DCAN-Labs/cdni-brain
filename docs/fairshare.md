@@ -2,7 +2,7 @@
 
 Read: [HPC Fairshare scheduling @ MSI](https://www.msi.umn.edu/content/hpc)
 
-The goal is to increase the priority when scheduling jobs. When a group has recently used a large amount of resources, the priorities of their waiting jobs will be negatively affected until their usage decreases.
+The goal of fairshare is to increase the priority when scheduling jobs. When a group has recently used a large amount of resources, the priorities of their waiting jobs will be negatively affected until their usage decreases.
 
 `sshare -U x500`: checks all of the accounts a user has access to at once
 

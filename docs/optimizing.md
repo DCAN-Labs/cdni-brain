@@ -1,5 +1,7 @@
 # Optimizing SBATCH parameters 
 
+In order to create a sbatch for a script, you need to know how many resources the job will need to run. To get an estimate, you can run just a few subjects to get an idea of how much resources a single subject uses. We also have guidelines for how many resources each pipeline needs. 
+
 21. Run a few subjects with the pipeline. You can use the same 3-5 jobs you used for [storage estimates](storage.md) to estimate job specifications.
 
 22. Run `seff` on the jobs 

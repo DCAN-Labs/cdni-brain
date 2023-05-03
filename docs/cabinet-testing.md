@@ -1,4 +1,7 @@
 # Testing CABINET
+
+This is still a developing pipeline that is being frequently tested and changed. Here we provide guidelines for testing the code and how to interpret the results. 
+
 ## Make changes to the code
 - Write code however you want then put the changes (use github!) on `/home/feczk001/shared/code/internal/pipelines/CABINET`
     - check that nobody else is using this directory for other testing. If they are you can use the miran045 share
