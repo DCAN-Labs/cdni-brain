@@ -1,5 +1,7 @@
 # sbatch/srun Parameters 
 
+srun and sbatch are used for running jobs on MSI. srun is for running more interactive jobs, where you are running commands in the terminal. sbatch is for submitting job scripts, where you can still work on MSI while the job is running in the background. 
+
 ## srun: immediately run a command using the specified compute resources
 
 Read: [Interactive queue use with srun @ MSI](https://www.msi.umn.edu/content/interactive-queue-use-srun)

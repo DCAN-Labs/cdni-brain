@@ -3,7 +3,7 @@
 Read: [Interactive HPC @ MSI](https://www.msi.umn.edu/content/interactive-hpc)
 
 
-MSI offers several options to remotely access HPC resources
+MSI offers several options to remotely access HPC resources. These will allow you to access stored data, run processing jobs, and other computing heavy tasks. **Note:** The first Wednesday of every month, MSI will be down for maintenance. Sometimes this spills over and can effect MSI performance for the whole week. 
 
 * **Open OnDemand**: A web portal to access MSI's compute clusters in your browser, which can be used for accessing MSI files and running jobs.
     * Select *Interactive Apps* at the top and select which Desktop you would like

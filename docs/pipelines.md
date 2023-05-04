@@ -1,5 +1,7 @@
 # Pipelines
 
+This page has the recommended flags and example commands for the major pipelines we use for data processing. To determine the resources needed to run each pipeline, see [here](optimizing.md). 
+
 <table>
   <tr>
    <td>
@@ -35,8 +37,6 @@ A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing o
     
     * `--cifti-output 91k \` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinate can be specified (default is 91k, which equates to 2mm resolution). Default: False
     
-    *  `--topup-max-vols 2 \` [**Deprecated as of 22.1.0]**: used to limit frames per run to use from PEPolar fmaps, useful when there are more than one pair of runs that have type _dir-AP _and _dir-PA_ in the /fmap directory to prevent topup distortion correction from taking excessively long. 
-    
     * `--nprocs 32 \` : maximum number of threads across all processes **(if used, this should match the number of cpus allotted for your sbatch job)**
     
     * `--omp-nthreads 3 \` : maximum number of threads per-process
@@ -51,7 +51,7 @@ A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing o
 
 61. Example command:
 
-    ![Example fMRIprep Command](img/fmriprep-example.png)
+    ![Example fMRIprep Command](img/fmri_run_example.png)
 
 
 ## 2. NiBabies
@@ -67,12 +67,12 @@ Nibabies is a robust pre-processing MRI and fMRI workflow that is also a part of
     - `--participant-label \` : a space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)
     
     - `--age-months \`: used to specify the age in months of the participant that is being processed 
+
+    - `--session-id \`: when running a subject with multiple sessions, need to specify which session is being processed as well as the age 
     
     - `--derivatives /derivatives \` : Nibabies will use a segmentation from the segmentation pipeline (pre-postBIBSnet). This flag is used to clarify that the precomputed segmentation directory is being utilized. 
     
     - `--cifti-output 91k \` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinate can be specified (default is 91k, which equates to 2mm resolution). Default: False
-    
-    - `--topup-max-vols 2 \` [**Deprecated as of 22.2.0] **:used to limit frames per run to use from PEPolar fmaps, useful when there are more than one pair of runs that have type _dir-AP _and _dir-PA_ in the /fmap directory to prevent topup distortion correction from taking excessively long 
     
     - `-vv \` : level 2 verbose log output, useful for troubleshooting
     
@@ -86,9 +86,9 @@ Nibabies is a robust pre-processing MRI and fMRI workflow that is also a part of
 
 64. Example command:
 
-    ![Example NiBabies Command](img/nibabies-example.png)
+    ![Example NiBabies Command](img/updated_nibabies_example.png)
 
-## 3. ABCD-BIDS
+## 3. ABCD-HCP-BIDS
 
 Read: [abcd-hcp-pipeline @ Github](https://github.com/DCAN-Labs/abcd-hcp-pipeline)
 
@@ -116,7 +116,7 @@ This pipeline provides an interface for processing BIDS-formatted MRI datasets u
 
 67. Example command:
 
-    ![Example abcd-hcp Command](img/abcd-hcp-example.png)
+    ![Example abcd-hcp Command](img/abcd_hcp_pipeline_run_example.png)
 
 ## 4. XCP-D
 
