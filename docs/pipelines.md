@@ -51,7 +51,7 @@ A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing o
 
 61. Example command:
 
-    ![Example fMRIprep Command](img/fmriprep-example.png)
+    ![Example fMRIprep Command](img/fmri_run_example.png)
 
 
 ## 2. NiBabies
@@ -67,6 +67,8 @@ Nibabies is a robust pre-processing MRI and fMRI workflow that is also a part of
     - `--participant-label \` : a space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)
     
     - `--age-months \`: used to specify the age in months of the participant that is being processed 
+
+    - `--session-id \`: when running a subject with multiple sessions, need to specify which session is being processed as well as the age 
     
     - `--derivatives /derivatives \` : Nibabies will use a segmentation from the segmentation pipeline (pre-postBIBSnet). This flag is used to clarify that the precomputed segmentation directory is being utilized. 
     
@@ -84,9 +86,9 @@ Nibabies is a robust pre-processing MRI and fMRI workflow that is also a part of
 
 64. Example command:
 
-    ![Example NiBabies Command](img/nibabies-example.png)
+    ![Example NiBabies Command](img/updated_nibabies_example.png)
 
-## 3. ABCD-BIDS
+## 3. ABCD-HCP-BIDS
 
 Read: [abcd-hcp-pipeline @ Github](https://github.com/DCAN-Labs/abcd-hcp-pipeline)
 
@@ -114,7 +116,7 @@ This pipeline provides an interface for processing BIDS-formatted MRI datasets u
 
 67. Example command:
 
-    ![Example abcd-hcp Command](img/abcd-hcp-example.png)
+    ![Example abcd-hcp Command](img/abcd_hcp_pipeline_run_example.png)
 
 ## 4. XCP-D
 
