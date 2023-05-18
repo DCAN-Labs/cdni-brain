@@ -51,7 +51,7 @@ A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing o
 
 61. Example command:
 
-    ![Example fMRIprep Command](img/fmri_run_example.png)
+    ![Example fMRIprep Command](img/fmriprep_updated_example.png)
 
 
 ## 2. NiBabies
@@ -78,7 +78,7 @@ Nibabies is a robust pre-processing MRI and fMRI workflow that is also a part of
     
     - `--nprocs 32 \` : maximum number of threads across all processes
     
-    - `-`-omp-nthreads 3 \` : maximum number of threads per-process
+    - `--omp-nthreads 3 \` : maximum number of threads per-process
     
     - `-w /work` : used to specify a working directory within the container’s filesystem, named _/work_.
 
@@ -86,7 +86,7 @@ Nibabies is a robust pre-processing MRI and fMRI workflow that is also a part of
 
 64. Example command:
 
-    ![Example NiBabies Command](img/updated_nibabies_example.png)
+    ![Example NiBabies Command](img/nibabies_updated_example.png)
 
 ## 3. ABCD-HCP-BIDS
 

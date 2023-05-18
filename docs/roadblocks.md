@@ -16,7 +16,9 @@
 
     * Check the status of MSI [here](https://status.msi.umn.edu/)
 
-33. If you get this error when trying to use Firefox "Firefox is already running, but is not responding. To use Firefox, you must first close the existing Firefox process, restart your device, or use a different profile.":
+33. If you get this error when trying to use Firefox:
+            
+            "Firefox is already running, but is not responding. To use Firefox, you must first close the existing Firefox process, restart your device, or use a different profile."
 
     * In the terminal, run `firefox -P` and select default 
 
