@@ -150,7 +150,7 @@ The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of
 
 3. Example command: 
 
-    ![Example xcpd Command](img/xcpd-example.png)
+    ![Example xcpd Command](img/xcp-d_updated_example.png)
 
 ## 5. DCAN Infant
 
