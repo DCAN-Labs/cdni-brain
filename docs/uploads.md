@@ -37,4 +37,4 @@ Using [this link](https://www.globus.org/), follow the instructions to install g
 
 ## DCAN Data Transfer
 
-If you would like to transfer data to/from/between the UMN MSI servers and would like help from the DCAN computing team, fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSd84tpEaXS4C9afAneGUGnW6dUtMhS1J9zunWgn5VFQjgRhYA/viewform)
+If you would like to transfer data to/from/between the UMN MSI servers and would like help from the DCAN computing team, see [this page](requests.md)
