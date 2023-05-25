@@ -23,7 +23,7 @@ MSI offers several options to remotely access HPC resources. These will allow yo
 * **srun:**  Submit an interactive job on the current HPC system (OOD or Terminal) to provide a command line or graphical interface to interactively run software.
     * Needed for running programs / visualizing data for more than 15 minutes on any system listed above
 
-# Connecting to MSI with VS Code
+## Connecting to MSI with VS Code
 
 First, if you have not downloaded VS Code, [install it](https://code.visualstudio.com/download) on your local computer. 
 
@@ -90,11 +90,11 @@ Time to actually connect to MSI!
 
  - Under the View tab, open the Command Palette and search for Remote SSH: Connect to Host. Mangi and Mesabi should both be listed as options.
 
- ![Command Palette](command_palette.png)
+    ![Command Palette](img/command_palette.png)
 
- ![Remote SSH: Connect to Host](remote_ssh.png)
+    ![Remote SSH: Connect to Host](img/remote_ssh.png)
 
- ![Clusters](msi_clusters.png)
+    ![Clusters](img/msi_clusters.png)
 
  - Select a cluster, this is open a new window that will prompt you for the ssh password you set up when you set up your keys
 

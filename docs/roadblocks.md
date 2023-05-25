@@ -41,3 +41,17 @@
     * Run `chmod gu+rwx path/to/file/or/dir -R` (`-R` only needed for directories)
 
     * This will open up read, write, and execute permissions for the file/directory
+
+## Other Issues 
+
+37. If you need help with data processing:
+
+    * Fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSefH4cc3PKu2mAjIVAbWarhxyuJQKOq9gudpMO8_hT338En2Q/viewform) to request that the DCAN computing team process data for you
+
+38. If you don't have access to needed data:
+
+    * Fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSdRCr8vl0wTWgMWgxjCPSLIgDRVuatU_D5nvZ5OR3NmY-MUPA/viewform) to request access to data on MSI
+
+39. If there are issues with this handbook or you have questions:
+
+    * Post an issue [on Github](https://github.com/DCAN-Labs/data-processing-handbook)

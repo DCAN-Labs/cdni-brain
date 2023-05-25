@@ -34,3 +34,7 @@ Using [this link](https://www.globus.org/), follow the instructions to install g
 
 
 **Note**: if you want to upload data from an external hard drive, go to preferences/access and add the hard drive. Visit [this link](https://www.google.com/url?q=https://blogs.iu.edu/ncgas/2021/10/19/adding-an-external-hardrive-to-your-iu-globus-account/&sa=D&source=docs&ust=1667391250182672&usg=AOvVaw3TAVihC6pc10bY2FObWl-4) for a more detailed step-by-step process. 
+
+## DCAN Data Transfer
+
+If you would like to transfer data to/from/between the UMN MSI servers and would like help from the DCAN computing team, fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSd84tpEaXS4C9afAneGUGnW6dUtMhS1J9zunWgn5VFQjgRhYA/viewform)
