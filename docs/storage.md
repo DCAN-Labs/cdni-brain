@@ -12,4 +12,4 @@ Figure out the approximate average storage impact your jobs (inputs and outputs)
 
     - If on the S3, make a bucket and give permissions to the appropriate individuals (see section [here](s3.md)), and sync the data there.
 
-    - If on tier 1, fill out the request form (if above 1 TB).
+    - If on tier 1, fill out the [request form](https://docs.google.com/forms/d/e/1FAIpQLSd1QI_Hmi3khwITVctnaDJYY2M1NegsAWYPR6AXoodUCrrpZw/viewform?usp=sf_link) (if above 1 TB).
