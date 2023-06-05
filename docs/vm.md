@@ -23,9 +23,8 @@ DCAN Labs has access to a Virtual Machine (VM) for the purpose of building Docke
     ![vm_example](img/vm_example.png)
 
 5. For troubleshooting issues, there is a tiered triage system
-    * You or whomever you select as point is the point of contact for VM access
-    * That same person and you handle minor troubleshooting
-    * If issues continue to occur, you or the point of contact reach out to Tim (hendr522@umn.edu) so that he can reach out to Doug Finley (finl0023@umn.edu)
+    * Kim and Luci will handle minor troubleshooting and access
+    * If issues continue to occur, Kim or Luci will reach out to Tim 
 
 ## How to Use the VM
 
