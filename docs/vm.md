@@ -6,12 +6,13 @@ DCAN Labs has access to a Virtual Machine (VM) for the purpose of building Docke
 
 1. Reach out to Kim (kweldon@umn.edu) or Luci (lmoore@umn.edu) and indicate that you would like access to the container, what project(s) it is needed for, and why. 
 2. Read the below *How to Use the VM section* Audrey put together on how to properly use the VM.
-3. Request access from OIT by submitting a ticket to help@umn.edu. Here is a template for the email:
+3. After you get approval to request access from Luci or Kim, request access from OIT by submitting a ticket to help@umn.edu. Here is a template for the email:
 
             Subject Line: Add me to VM: umii-midbig-dev-docker.oit.umn.edu
             Body: 
             Hello, 
-            Can you please add me to the VM: umii-midbig-dev-docker.oit.umn.edu? My x500 is <x500>. As is the case with all other users please give me SUDO privileges to the VM.
+            Can you please add me to the VM: umii-midbig-dev-docker.oit.umn.edu? My x500 is <x500>. 
+            As is the case with all other users please give me SUDO privileges to the VM.
 
 4. After you receive access, try the following test to ensure that your access is working
     * Run `ssh <x500>@umii-midbig-dev-docker.oit.umn.edu`
