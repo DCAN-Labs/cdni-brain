@@ -18,7 +18,7 @@ DCAN Labs has access to a Virtual Machine (VM) for the purpose of building Docke
     * Run `ssh <x500>@umii-midbig-dev-docker.oit.umn.edu`
     * When prompted enter your UMN ID password and two-factor authenticate with DUO
     * If that all works try testing if you have "sudo" privileges by typing `sudo docker images`
-    * If you get an output that looks like the attached picture, you are all set, if not let Tim know.
+    * If you get an output that looks like the attached picture, you are all set, if not let Kim or Luci know.
 
     ![vm_example](img/vm_example.png)
 
