@@ -94,6 +94,12 @@ If your container build was successful, then push it to Dockerhub (assuming ther
 
 - Run `sudo docker push dcanumn/container-name:container:version`
 
+If you want to push the image with multiple tags, add tags to the image before you push, then include the `--all-tags` flag when pushing. Below is an example which would label the same build with the `v1.0` tag and the `stable` tag.
+
+        sudo docker image tag container-name dcanumn/container-name:v1.0
+        sudo docker image tag container-name dcanumn/container-name:stable
+        sudo docker push --all-tags dcanumn/container-name
+
 Start an interactive job on mesabi to use to build the container, requesting about twice the amount of temp space (`--tmp`) as the size of the container
 
 - Example srun command: `srun -N 1 --ntasks-per-node=1  --tmp=100g --mem-per-cpu=30g -t 3:00:00 -p interactive --pty bash`
