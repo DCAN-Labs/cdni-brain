@@ -41,3 +41,11 @@
     * Run `chmod gu+rwx path/to/file/or/dir -R` (`-R` only needed for directories)
 
     * This will open up read, write, and execute permissions for the file/directory
+
+37. If you need to change your active group
+
+    * Run `newgrp faird` (or whichever group you need to be in)
+    
+    * This will let you make new files in the proper group
+
+    * Read more about this [here](https://opensource.com/article/19/9/linux-chgrp-and-newgrp-commands#:~:text=The%20newgrp%20command%20allows%20a%20user%20to%20override,all%20files%20must%20have%20the%20same%20group%20ownership.)
