@@ -12,6 +12,7 @@ nav:
   - fairshare: fairshare.md
   - MSI Module System: modules.md
   - Miniconda Environments: miniconda.md
+  - VS Code: vscode.md
   - Virtual Machine: vm.md
   - DICOM to BIDS conversion: dcm2bids.md
   - NORDIC Denoising and BIDS NORDIC Wrapper: nordic.md
