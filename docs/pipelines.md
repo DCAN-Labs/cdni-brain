@@ -197,20 +197,33 @@ Overview: fMRI -> anatomical registration - no boundary based registration, use 
     ![Example DCAN Infant command](img/dcan-infant-example.png)
 
 
+## 6. CABINET
 
-## 6. BIBSnet (CABINET)
+CABINET is a segmentation pipeline including stages prebibsnet, bibsnet, and postbibsnet. This pipeline will eventually also run Nibabies and XCP-D.
 
+Example command: 
 
-segmentation pipeline including stages prebibsnet, bibsnet, and postbibsnet
-
-
-
-1. How to run pipeline outside of CABINET container
-
-    _NOTE: IT IS NOT RECOMMENDED TO RUN BIBSNET OUTSIDE OF THE CONTAINER. THIS IS PURELY FOR TESTING PURPOSES FOR THOSE WORKING ON DEVELOPMENT_
+![Example CABINET run command](img/cabinet_example_command.png)
 
 
-    Run the following script: `/home/feczk001/shared/code/internal/pipelines/CABINET/run_CABINET_no_container.sh`
+ _NOTE: IT IS NOT RECOMMENDED TO RUN CABINET OUTSIDE OF THE CONTAINER._
 
 
-    When run without arguments, the usage is printed. The script starts by activating the cabinet conda environment
+For troubleshooting information, see [the Testing CABINET page.](cabinet-testing.md)
+
+Find more information about CABINET [here.](https://cabinet.readthedocs.io/en/latest/)
+
+
+## 7. BIBSnet
+
+BIBSnet segments an optimally-aligned T1 and T2 pair with a deep neural network trained via nnU-Net and SynthSeg.
+
+Example command:
+
+        singularity run --nv --cleanenv --no-home \
+        -B /path/to/input:/input \
+        -B /path/to/output:/output \
+        /path/to/BIBSNet.sif \
+        --input /input --output /output --task <task ID> --model 3d_fullres 
+
+Find more information about BIBSnet [here.](https://github.com/DCAN-Labs/BIBSnet)
