@@ -36,7 +36,7 @@ Next you will need to setup SSH keys that will allow you to connect to MSI.
 
 Now you need to edit the ssh config file on your local computer to be able to connect to MSI servers.
 
-- Copy the following text into your `~/.ssh/config` file on your local computer, changing USERNAME to your x500. The port numbers are arbitrary and can be changed freely. 
+- Copy the following text into your `~/.ssh/config` file on your local computer, changing USERNAME to your x500. The port numbers (xxxxx:localhost:xxxxx) are arbitrary and can be changed freely. 
 
         XAuthLocation /opt/X11/bin/xauth
         ServerAliveInterval 60
@@ -75,9 +75,9 @@ Time to actually connect to MSI!
 
     ![Clusters](img/msi_clusters.png)
 
- - Select a cluster, this is open a new window that will prompt you for the ssh password you set up when you set up your keys
+ - Select a cluster, this will open a new window that will prompt you for the ssh password you set up when you set up your keys
 
- - In the bottom right corner a box with pop up that says "Setting up SSH Host cluster.msi.umn.edu (details)", click details to complete the DUO authentification 
+ - In the bottom right corner a box will pop up that says "Setting up SSH Host cluster.msi.umn.edu (details)", click details to complete the DUO authentification 
 
  - Now you will need to install the same extensions as before but on the remote server  
     
@@ -96,6 +96,7 @@ It is best to not run VS Code on a login node, as it takes up a decent amount of
 - You'll be prompted to enter your ssh password and duo again
 
 - It will also ask you to save the host fingerprint, select Continue/yes then enter your ssh password again to connect
+
 
 When you are done using MSI, it is good practice to close the connection
 
@@ -147,13 +148,13 @@ Each repository should include its own conda environment so that different users
 
 `conda create --prefix /home/faird/shared/code/external/envs/custom_clean-env python=3.9 --name custom_clean`
 
-* Include a name for the environment with the `--name` flag to make it easier to activate.
+* Include a name for the environment with the `--name` flag to make it easier to activate. **Note:** If you don't name your environment when you originally create it, you cannot add a name later.
 
-* Environments that are used for ABCC related repositories are stored in `/home/rando149/shared/code/external/envs`. 
+* Environments that are used for ABCC related repositories are stored in `/home/rando149/shared/code/external/envs` otherwise store your environments in `/home/faird/shared/code/external/envs`.  
 
 ### Activating a new conda environment 
 
-With your script open, open the command pallete (Ctrl + Shift + P or in the View tab) and type "Python: Select Interpreter" (assuming you're running a python script). Here, paste the path for the environment you have for this script. Once activated, you should be able to use all the packages within that environment and add more if needed. 
+With your script open, open the command pallete (Ctrl + Shift + P or in the View tab) and type "Python: Select Interpreter" (assuming you're running a python script). Here, paste the path of the environment you have for this script. Once activated, you should be able to use all the packages within that environment and add more if needed. 
 
 ## Using the Debugger
 
@@ -161,9 +162,11 @@ The debug mode can be extremely helpful for troubleshooting code and creating ne
 
 ### Setting up the launch.json
 
-To start a debug session, open up VS Code and open the script(s) you want to test. On the left side of the screen, there is a bar of icons. Click the icon that has a play button with a bug. This will open the debug sidebar. If you haven't set up a debug session before, there should be a link in the sidebar that says "create a launch.json file". Click on this to open up the launch.json. This will allow you to feed a set input to your script, set environment variables, and create a specific debug configuration for any script. When you create the launch.json, VS Code will try to guess what debug environment you need (based on what files you have open) but if it can't, you will be able to choose manually. This will create a hidden folder in your directory called `.vscode` where the launch.json will live. 
+To start a debug session, open up VS Code and open the script(s) you want to test. On the left side of the screen, there is a bar of icons. Click the icon that has a play button with a bug. This will open the debug sidebar. If you haven't set up a debug session before, there should be a link in the sidebar that says "create a launch.json file". Click on this to open up the launch.json. This will allow you to feed a set input to your script, set environment variables, and create a specific debug configuration for any script. When you create the launch.json, VS Code will try to guess what debug environment you need (based on what files you have open) but if it can't, you will be able to choose manually (i.e. if the script is written in bash/Python/MATLAB/etc). This will create a hidden folder in your directory called `.vscode` where the launch.json will live. 
 
-To add another configuration to your launch.json, copy everything within the curly brackets under configurations and paste it after the curly brackets, adding a comma in between the two curly brackets. You can add as many configurations as you need for however many scripts you want to debug. To make this debug configuration only run on a certain script, under the program variable, add `${workspaceFolder}/my_file.py`. This will look in whatever folder you currently have open for the script you want to debug. Be sure to name this configuration something easily identifiable. If your script has arguments, add an `"args"` key. For whatever arguments you need, add them in this format `["--arg=argument, --arg2=argument2"]`. This allows you to always debug with consistent arguments without having to specify them each time. To add environment variables, add an `"env"` key. The format to add environment variables is a dictionary of the format `{"VARIABLE" : "value", "VARIABLE_2" : "value_2"}`. The environment variables in the below example will almost always be helpful to add, as they allow for a single line to run longer than the default max time of .15 seconds. This example allows for for 100 seconds for a line to run, although you can change the time to whatever you prefer. 
+![Where to find debug and launch.json](img/debug_setup_example.png)
+
+The default configuration runs a debug session on the current file that is open. To add another configuration to your launch.json, copy everything within the curly brackets under configurations and paste it after the curly brackets, adding a comma in between the two curly brackets. You can add as many configurations as you need for however many scripts you want to debug. To make this debug configuration specific to a certain script, under the program variable, add `${workspaceFolder}/my_file.py`. This will look in whatever folder you currently have open for the specific script you want to debug. Be sure to name this configuration something easily identifiable. If your script has arguments, add an `"args"` key. For whatever arguments you need, add them in this format `["--arg=argument, --arg2=argument2"]`. You can also specify flags that don't have a value. This allows you to always debug with consistent arguments without having to specify them each time. To add environment variables, add an `"env"` key. The format to add environment variables is a dictionary of the format `{"VARIABLE" : "value", "VARIABLE_2" : "value_2"}`. The environment variables in the below example will almost always be helpful to add, as they allow for a single line to run longer than the default max time of .15 seconds. This example allows for for 100 seconds for a line to run, although you can change the time to whatever you prefer. 
 
 
             {
@@ -195,7 +198,22 @@ To add another configuration to your launch.json, copy everything within the cur
 
 ### Setting up prerun tasks
 
-The task.json is used to set up tasks that need to be run before the script runs, for example if you need to load a MSI module. Open the command pallete and type "Tasks: Configure Task". This will create a tasks.json in the same .vscode folder where the launch.json lives. The "label" variable is what you will use to call the task from your launch.json. The "type" variable is the type of command that you are trying to run. The "command" is the command you want to run. Once you create this prerun task, in your launch.json, add a `"preLaunchTask"` variable in the configuration you need this task for with the value being the "label" you set in the tasks.json. 
+The task.json is used to set up tasks that need to be run before the script runs, for example if you need to load a MSI module. Open the command pallete and type "Tasks: Configure Task". This will create a tasks.json in the same .vscode folder where the launch.json lives. The "label" variable is what you will use to call the task from your launch.json. The "type" variable is the type of command that you are trying to run. The "command" is the command you want to run. Once you create this prerun task, in your launch.json, add a `"preLaunchTask"` variable in the configuration you need this task for with the value being the "label" you set in the tasks.json. Below is an example tasks.json with the corresponding line that would be added to the launch.json. 
+
+        {
+            // See https://go.microsoft.com/fwlink/?LinkId=733558
+            // for the documentation about the tasks.json format
+            "version": "2.0.0",
+            "tasks": [
+                {
+                    "label": "Load fsl",
+                    "type": "shell",
+                    "command": "./prerun.sh"
+                }
+            ]
+        }
+
+For the above tasks.json, you would add this line to your configuration in the launch.json: `"preLaunchTask: Load fsl"`
 
 Hypothetically if your command was `module load fsl` that would load FSL before your script. However, we have not been able to get this to work. Our workaround is to create a shell script that loads fsl and exports the path to your path. Create a `prerun.sh` script in the same directory where your main script lives. In your tasks.json, the command would be `./prerun.sh` and you have to add the label to your launch.json. Below is an example of a prerun script that should load FSL. When you create this file, be sure to run `chmod gu+rwx prerun.sh` to make sure that VS Code has the permissions to execute the file. If you do not do this, you might run into an exit code 126 error.
 
@@ -212,6 +230,6 @@ Hypothetically if your command was `module load fsl` that would load FSL before 
 
 ### Running the debugger
 
-Now that you are hopefully all set up for a debug session, it is time to actually run and debug your script. Click the debug icon and select whichever configuration you created for this script. If there are points in the script that you want to stop at, create breakpoints by selecting the red dot to the left of the line number(s) you want to stop at (circled in brown). This will make the program stop at these lines as its running. When you start the script, the debug toolbar (circled in purple) should appear at the top of your page. This toolbar can be used to pause/continue the script (pause/play icon), run a method as one command (not line-by-line) (curved arrow), move forward manually line by line (down arrow), finish all the lines of a method as one command (if you're inside a method)(up arrow), restart the debug session with the same configuration (green arrow), or terminate the session (red square). At the left of your screen, you should see all of the variables and their values as the script goes on (circled in red). At any point, if you want to test a block of code or run any commands, open the `Debug Console` located at the bottom of your screen (where the Terminal is also located, circled in blue). This will allow you to run commands as if they were being run in the script, meaning you will have access to the variables and their values. 
+Now that you are hopefully all set up for a debug session, it is time to actually run and debug your script. Click the debug icon and select whichever configuration you created for this script. If there are points in the script that you want to stop at, create breakpoints by selecting the red dot to the left of the line number(s) you want to stop at (circled in brown). This will make the program stop at these lines as its running. When you start the script, the debug toolbar (circled in purple) should appear at the top of your page. This toolbar can be used to pause/continue the script (pause/play icon), run a method as one command (not line-by-line) (curved arrow), move forward manually line by line (down arrow), finish all the lines of a method as one command (if you're inside a method) (up arrow), restart the debug session with the same configuration (green arrow), or terminate the session (red square). At the left of your screen, you should see all of the variables and their values as the script goes on (circled in red). At any point, if you want to test a block of code or run any commands, open the `Debug Console` located at the bottom of your screen (where the Terminal is also located, circled in blue). This will allow you to run commands as if they were being run in the script, meaning you will have access to the variables and their values. 
 
 ![Image of Debug Session](img/debug_session_example.png)

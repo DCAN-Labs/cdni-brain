@@ -214,6 +214,26 @@ For troubleshooting information, see [the Testing CABINET page.](cabinet-testing
 Find more information about CABINET [here.](https://cabinet.readthedocs.io/en/latest/)
 
 
+## Task Pipeline
+
+This pipeline performs level 1 and 2 analyses of fMRI dtseries data. 
+
+Example command: 
+
+        fsl_dir=/home/software/fsl/bin/
+        subject_ID=sub-ABCDEFGH
+        session_ID=ses-QRSTUV
+        task_name=my_task
+        study_dir=/home/users/shared/data/my_study
+        wb_command=/home/software/workbench/bin/wb_command
+        events_dir=/home/users/shared/data/task_events/
+        wrapper_dir=.
+
+        python3 pipeline_wrapper.py --subject ${subject_ID} --ses ${session_ID} --study-dir ${study_dir} --task ${task_name} 
+        --events-dir ${events_dir} --fsl-dir ${fsl_dir} --wb-command ${wb_command} --wrapper-location ${wrapper_dir}
+
+Find out more information [here.](https://github.com/DCAN-Labs/abcd-bids-tfmri-pipeline)
+
 ## 7. BIBSnet
 
 BIBSnet segments an optimally-aligned T1 and T2 pair with a deep neural network trained via nnU-Net and SynthSeg.
