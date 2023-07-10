@@ -214,7 +214,7 @@ For troubleshooting information, see [the Testing CABINET page.](cabinet-testing
 Find more information about CABINET [here.](https://cabinet.readthedocs.io/en/latest/)
 
 
-## Task Pipeline
+## 7. Task Pipeline
 
 This pipeline performs level 1 and 2 analyses of fMRI dtseries data. 
 
@@ -234,7 +234,7 @@ Example command:
 
 Find out more information [here.](https://github.com/DCAN-Labs/abcd-bids-tfmri-pipeline)
 
-## 7. BIBSnet
+## 8. BIBSnet
 
 BIBSnet segments an optimally-aligned T1 and T2 pair with a deep neural network trained via nnU-Net and SynthSeg.
 
