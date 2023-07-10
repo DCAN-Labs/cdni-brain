@@ -15,8 +15,10 @@ Singularity can pull and build Docker images from Dockerhub in Singularity forma
 
 Example:
 
+`ssh -Y mangi/mesabi/agate`
 
-`srun  -c 8 --x11 --mem=64G --tmp=200g -t 3:00:00 -p interactive --pty bash`
+
+`srun -N 1 -n 1 -c 1 --mem=128G --tmp=200G -t 720 -p interactive --pty bash`
 
 
 `module load singularity`
@@ -25,7 +27,7 @@ Example:
 `singularity pull name_of_singularity_image.sif docker://path_to_docker_image`
 
 
-Note: `name_of_singularity_image.sif` can be anything. Generally, it is advisable to name it with the name of the codebase + the date. Also, `dcanumn` will typically be involved in `/path_to_docker_image`
+Note: `name_of_singularity_image.sif` can be anything. Generally, it is advisable to name it with the name of the codebase + the date. Also, `dcanumn` will typically be involved in `/path_to_docker_image`. 
 
 
 Containers are typically run with a **singularity run** command, as demonstrated in various [sbatch script examples](pipelines.md) in this handbook.

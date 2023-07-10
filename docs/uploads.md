@@ -30,7 +30,7 @@ Use services like s3 sync, rsync, and globus to sync data / upload data to the a
 (globus tutorial video isnt uploaded correctly on google drive)
 
 
-Using [this link](https://www.globus.org/), follow the instructions to install globus connect personal and log in using UMN credentials. Next, create a personal connect point. Using the globus file manager, choose umnmsi#tier2 on one side and your connect point on the other side.
+Using [this link](https://www.globus.org/), follow the instructions to install globus connect personal and log in using UMN credentials. Next, create a personal connect point. To transfer data to tier 2 storage (an s3 bucket), using the globus file manager, choose UMN MSI Tier2 on one side and your connect point on the other side. If you are wanting to transfer data to tier 1 storage, choose UMN MSI Home as your location.
 
 
 **Note**: if you want to upload data from an external hard drive, go to preferences/access and add the hard drive. Visit [this link](https://www.google.com/url?q=https://blogs.iu.edu/ncgas/2021/10/19/adding-an-external-hardrive-to-your-iu-globus-account/&sa=D&source=docs&ust=1667391250182672&usg=AOvVaw3TAVihC6pc10bY2FObWl-4) for a more detailed step-by-step process. 
