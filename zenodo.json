@@ -1,0 +1,81 @@
+{
+    "title": "CABINET",
+    "description": "<p>This software provides the utility of creating a nnU-Net anatomical MRI segmentation and mask with a infant brain trained model for the purposes of circumventing JLF within Nibabies.</p>", 
+    "license": "BSD-3-Clause",
+    "upload_type": "software",  
+    "creators": [
+        {
+            "name": "Houghton, Audrey",
+            "affiliation": "Masonic Institute for the Developing Brain, University of Minnesota, Minneapolis, MN",
+            "orcid": "0000-0001-9426-7969"
+        }, 
+        {
+            "name": "Lundquist, Jacob",
+            "affiliation": "Masonic Institute for the Developing Brain, University of Minnesota, Minneapolis, MN",
+            "orcid": "0000-0001-9573-1954"
+        },
+        {
+            "name": "McCollum, rae",
+            "affiliation": "Masonic Institute for the Developing Brain, University of Minnesota, Minneapolis, MN",
+            "orcid": "0009-0002-3730-9995"
+        },
+        {
+            "name": "Madison, Thomas J.",
+            "affiliation": "Masonic Institute for the Developing Brain, University of Minnesota, Minneapolis, MN",
+            "orcid": "0000-0003-3030-6580"
+        },
+        {
+            "name": "Moore, Lucille A.",
+            "affiliation": "Masonic Institute for the Developing Brain, University of Minnesota, Minneapolis, MN",
+            "orcid": "0000-0002-7665-2713"
+        },
+        {
+            "name": "Conan, Greg",
+            "affiliation": "Masonic Institute for the Developing Brain, University of Minnesota, Minneapolis, MN",
+            "orcid": "0000-0002-3758-5562"
+        }, 
+        {
+            "name": "Hendrickson, Timothy J.",
+            "affiliation": "Masonic Institute for the Developing Brain, University of Minnesota, Minneapolis, MN",
+            "orcid": "0000-0001-6862-6526"
+        }, 
+        {
+            "name": "Fayzullobekova, Begim",
+            "affiliation": "Masonic Institute for the Developing Brain, University of Minnesota, Minneapolis, MN",
+            "orcid": "0009-0000-8014-4108"
+        },
+         {
+            "name": "Moser, Julia",
+            "affiliation": "Masonic Institute for the Developing Brain, University of Minnesota, Minneapolis, MN",
+            "orcid": "0000-0002-6219-415X"
+        },
+        {
+            "name": "Barry J. Tikalsky",
+            "affiliation": "Masonic Institute for the Developing Brain, University of Minnesota, Minneapolis, MN",
+            "orcid": "0009-0009-1155-5742"
+        },
+        {
+            "name": "Weldon, Kimberly B.",
+            "affiliation": "Masonic Institute for the Developing Brain, University of Minnesota, Minneapolis, MN",
+            "orcid": "0000-0003-4349-9916"
+        },
+        {
+            "name": "Perrone, Anders",
+            "affiliation": "Masonic Institute for the Developing Brain, University of Minnesota, Minneapolis, MN",
+            "orcid": ""
+        },
+        {
+            "name": "Hartman, Kayla",
+            "affiliation": "Masonic Institute for the Developing Brain, University of Minnesota, Minneapolis, MN",
+            "orcid": ""
+        },        
+    ], 
+    "access_right": "open", 
+    "related_identifiers": [
+        {
+            "scheme": "url", 
+            "identifier": "https://cabinet.readthedocs.io", 
+            "relation": "documents"
+        }
+    ]
+}
