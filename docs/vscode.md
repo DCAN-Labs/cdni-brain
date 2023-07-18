@@ -132,6 +132,7 @@ Activate your base conda environment by running `conda init` (may need to run `m
         # <<< conda initialize <<<
 
 - Now when you run `which python`, it should match the folder path above (`/panfs/roc/msisoft/anaconda/python3-2020.07-mamba/bin` in this example)
+- Note: you can use any base conda environment profile path here
 
 Your base environment is automatically located in your home directory, but you can store packages in an external file path to prevent your home directory filling up by adding a path to your .condarc. 
 
@@ -226,7 +227,7 @@ Hypothetically if your command was `module load fsl` that would load FSL before 
         PATH=${FSLDIR}/6.0.4/bin:${PATH}
         export FSLDIR PATH
 
- **NOTE** : This process still does not seem to work all the time. If just adding this task does not work, before running your script, also run `module load fsl` and `bash prerun.sh` in the terminal. 
+ **NOTE** : This process still does not seem to work all the time. If just adding this task does not work, before running your script, also run `module load fsl` and `bash prerun.sh` in the terminal. If you figure out how to make this work every time, please [post a GitHub issue](https://github.com/DCAN-Labs/data-processing-handbook/issues) informing us how to do it.
 
 ### Running the debugger
 
