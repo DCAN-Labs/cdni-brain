@@ -1,6 +1,6 @@
 {
-    "title": "CABINET",
-    "description": "<p>This software provides the utility of creating a nnU-Net anatomical MRI segmentation and mask with a infant brain trained model for the purposes of circumventing JLF within Nibabies.</p>", 
+    "title": "The DCAN Labs Data Processing Handbook",
+    "description": "Documentation on DCAN Labs repositories and the MSI", 
     "license": "BSD-3-Clause",
     "upload_type": "software",  
     "creators": [
