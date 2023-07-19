@@ -118,6 +118,14 @@ Spot check them
 
 1. See if there are any glaring holes/flaws
 
+Publishing a new version
+
+1. Update the CABINET_VERSION ENV variable in the dockerfile
+
+1. Tag on GitHub
+
+1. Build container and push to dockerhub
+
 ### **FAILED**: how do I fix it?
 
 Look inside the `.err` and `.out` files in the specified log directory
