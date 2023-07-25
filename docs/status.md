@@ -14,10 +14,12 @@ Produce status html on the output data to see how many processing jobs succeeded
 
     1. S3: 
 
-            python3 run.py --s3_access_key CENSORED --s3_secret_key CENSORED --report_output_dir path/to/the/directory/where/you/want/the/outputs/ s3://bucket_name/path/to/tier2/inputs s3://bucket_name/path/to/tier2/outputs group
-
+            python3 run.py --s3_access_key CENSORED --s3_secret_key CENSORED --report_output_dir path/to/the/directory/where/you/want/the/outputs/ s3://bucket_name/path/to/tier2/BIDS_inputs/ s3://bucket_name/path/to/tier2/outputs/ group
+    
+    **Note:** Be sure to include a backslash (/) at the end of the s3 buckets
+    
     2. Tier 1: 
 
-            python3 run.py --report_output_dir path/to/the/directory/where/you/want/the/outputs/ /path/to/tier1/input/ /path/to/tier1/output/ group
+            python3 run.py --report_output_dir path/to/the/directory/where/you/want/the/outputs/ /path/to/tier1/BIDS_inputs/ /path/to/tier1/output/ group
 
 5. Will produce a s3_status_report.html and .csv. These files give information on the results of each processing step for each subject/session pair. A tip for determining subjects’ processing status counts is to download the .csv into excel, create a pivot table of the data, and provide session ID in the values section and the name of the last column in the rows section. 
