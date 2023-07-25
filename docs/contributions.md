@@ -3,18 +3,19 @@
 Thank you to those who helped create this documentation: 
 
 - Jacob Lundquist
-- Audrey Houghton
-- Luci Moore
-- Thomas Madison
-- Tim Hendrickson
-- Barry Tikalsky
-- rae McCollum
-- Kimberly Weldon
-- Anders Perrone
+- Nora Byington 
 - Greg Conan
 - Eric Feczko
 - Kayla Hartman
+- Tim Hendrickson
+- Audrey Houghton
+- Thomas Madison
+- rae McCollum
+- Luci Moore
 - Julia Moser 
+- Anders Perrone
+- Barry Tikalsky
+- Kimberly Weldon
 
 ## References 
 
