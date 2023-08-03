@@ -27,7 +27,7 @@ Example:
 `singularity pull name_of_singularity_image.sif docker://path_to_docker_image`
 
 
-Note: `name_of_singularity_image.sif` can be anything. Generally, it is advisable to name it with the name of the codebase + the date. Also, `dcanumn` will typically be involved in `/path_to_docker_image`. 
+Note: `name_of_singularity_image.sif` can be anything. Generally, it is advisable to name it with the name of the codebase + the date. Also, `dcanumn` will typically be involved in `/path_to_docker_image`. To pull a specific tag of a docker_image, add `:tag` at the end of the `/path_to_docker_image`
 
 
 Containers are typically run with a **singularity run** command, as demonstrated in various [sbatch script examples](pipelines.md) in this handbook.
@@ -51,8 +51,6 @@ Before you build a container, you might need to get access to the VM at MSI wher
 Once you have access, open a terminal at MSI and ssh into the VM
 
 - Run `ssh umii-midbig-dev-docker.oit.umn.edu`
-
-- If you are building a CABINET container, you do not need to ssh into the VM; this container is too big to be built there and can be built directly on the Linux machine
 
 Assuming you have a github repository that has the dockerfile to build your image and any prerequisite files, download the repository to the machine
 
@@ -130,3 +128,49 @@ To build the image from docker archive, grab an srun then run:
         cd /path/to/where/container/is/stored
         singularity build name_for_singularity_image.sif docker-archive://pipeline-name.tar
 
+## Special Container Builds 
+
+**CABINET**
+CABINET is too large to be built on the VM so you do not need to ssh into the VM. It can be built directly on the Linux machine
+
+**10.5T NHP ABCD BIDS Pipeline Synth**
+
+**PLEASE NOTE**: This does NOT apply to the regular NHP ABCD BIDS pipeline.
+
+This container needs to be built on the VM, it is too large to be built on DockerHub. This container will take up around 20GB of space so make sure to first check that there is enough space on the VM to build it. 
+
+This pipeline doesn't use a layered build (with internal- and external-tools) like the normal NHP, Infant, and DCAN ACBD BIDS pipelines use. It instead uses gitsubmodules and gitlfs to link certain dependencies such as the DCAN Bold Processing repo and the macaque image templates. 
+
+In order to build this container, you first need to clone the correct repository and initialize the git submodules. You can do this by running the following commands: 
+
+                git clone git@github.com:DCAN-Labs/nhp-abcd-bids-pipeline-Synth.git
+                cd nhp-abcd-bids-pipeline-Synth
+                git submodule update --init
+
+After this, you will need to run the download script in the tools subdirectory to download the templates used in the pipeline. 
+
+- `./tools/download-templates.sh`
+
+Once you run this, check for the existance of a *templates* folder under *scripts/dcan_macaque_pipeline/global/* 
+
+Be sure that Docker BuildKit is enabled by adding `DOCKER_BUILDKIT=1` before your build command. An example docker build command would be
+
+`sudo DOCKER_BUILDKIT=1 docker build . -t dcanumn/nhp-abcd-bids-pipeline-synth:[tag]`
+
+If you need to update the link to the git submodule, for example if there are updates to the DCAN Bold Processing repo that you want to incorporate into this pipeline, this can be done by following [this example](https://stackoverflow.com/questions/1777854/how-can-i-specify-a-branch-tag-when-adding-a-git-submodule/1778247#1778247). 
+
+If you want to move the submodule to a particular tag:
+
+                cd submodule_directory
+                git checkout v1.0
+                cd ..
+                git add submodule_directory
+                git commit -m "moved submodule to v1.0"
+                git push
+
+If updating DCAN Bold Processing, the <submodule_directory> would be the path to the DCAN Bold Processing `/nhp-abcd-bids-pipeline-Synth/scripts/dcan-bold-processing/`
+
+Then, another developer who wants to have submodule_directory changed to that tag, does this
+
+                git pull
+                git submodule update --init

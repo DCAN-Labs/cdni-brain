@@ -63,7 +63,13 @@ In order to create a sbatch for a script, you need to know how many resources th
         <tr>
         <td>abcd-bids-pipeline
         </td>
-        <td>The full job will typically take no more than 48 hours. It will utilize 8 tasks on one node (1 cpu per task) with 20gb of memory and 100gb of temporary storage to run effectively. Recommended partition msismalll.
+        <td>The full job will typically take no more than 48 hours. It will utilize 8 tasks on one node (1 cpu per task) with 20gb of memory and 100gb of temporary storage to run effectively. Recommended partition msismall.
+        </td>
+        </tr>
+        <tr>
+        <td>nhp-10.5T-abcd-bids-pipeline
+        </td>
+        <td>The base amount of time needed is 24 hours for a subject but add another 4 hours per run. You will need twice the amount of cpus as the amount of runs. The needed memory will be 10 times the amount of cpus. The minimum numbers of cpus is 8 and max amount of cpus is twice the amount of functional runs. Choose the appropriate partition based on the amount of resources you need based on the numbers of runs, see [MSI partitions](partitions.md)
         </td>
         </tr>
         <tr>
