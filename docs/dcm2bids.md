@@ -46,30 +46,12 @@ Watch: [Dcm2bids DCAN tutorial recording](https://drive.google.com/drive/folders
     
 13. For ABCC data, `abcd-dicom2bids`: used for selectively downloading ABCD Study imaging DICOM data QC'ed as good by the ABCD DAIC site (fast track qc), converting it to BIDS standard input data (see [here](https://www.google.com/url?q=https://collection3165.readthedocs.io/en/stable/recommendations/%233-the-bids-quality-control-file&sa=D&source=docs&ust=1660838354455769&usg=AOvVaw1E2rTHf_kzVv2xtxsQYDlw)), selecting the best pair of spin echo field maps, and correcting the sidecar JSON files to meet the BIDS Validator specification. `abcd-dicom2bids` still uses `dicom2bids`, but uses a config file that is specific to ABCC. See more information on the [repository](https://www.google.com/url?q=https://github.com/DCAN-Labs/abcd-dicom2bids&sa=D&source=docs&ust=1660838354453985&usg=AOvVaw2qzX3n8wO5qBFYaDgbMIMn). For information on how to use the fast track qc, navigate to [this section](fasttrack.md). It is important to note that when running `abcd-dicom2bids` , cache can fill up in your home directory under `/home/{share}/x500/x500/` , so check up on and delete files within this directory when necessary. 
         
-    * List of commands to run `abcd-dicom2bids` interactively:
-
-            module load singularity
-
-
-            . "/home/faird/shared/code/external/envs/miniconda3/mini3/etc/profile.d/conda.sh"
-
-
-            export PATH="/home/faird/shared/code/external/envs/miniconda3/mini3/bin:$PATH"
-
-
-            export PATH=$PATH:/home/feczk001/shared/code/external/utilities/dcmtk-3.6.5/dcmtk-3.6.5-build/bin
-
-
-            export PATH=$PATH:/home/feczk001/shared/code/external/utilities/jq-1.5
-
-
-            python3 /home/rando149/shared/code/internal/utilities/abcd-dicom2bids_nda/abcd2bids.py /panfs/roc/msisoft/fsl/6.0.4/ /home/feczk001/shared/code/external/utilities/MATLAB_MCR/v91 -q /example/path/to/abcd_fastqc01.txt -l /example/path/to/a/subject_list_file -o /example/path/to/an/output_directory/ -p package_ID --downloadcmd /home/faird/shared/code/external/envs/miniconda3/mini3/envs/abcd-dicom2bids/bin/downloadcmd --singularity /home/rando149/shared/code/internal/utilities/abcd-dicom2bids_nda/validator_latest.sif 
 
     * Example run command for a list of subjects, with good sbatch specs:
 
-        ![example dcm2bids](img/dcm2bids-example2.png)
+        ![example dcm2bids](img/abcd_dicom2bids.png)
         
-        - In the run command, `-c` is the usage for creating the relevant config file, `-l` is the list of subjects being converted, `-o` is where the outputs are being stored, `--temp` is the path to the directory where temp files will be stored, and  `--download` will specify where the ABCD data will be downloaded.
+        - In the run command, `-q` is the path to quality control (QC) spreadsheet file downloaded from the NDA,`-l` is the list of subjects being converted, `-o` is where the outputs are being stored, `-p` is the package ID number of relevant NDA data package, `--downloadcmd` is the path where the downloadcmd has been installed.
         
         - For more information on arguments, see the ReadMe section on Optional Arguments [here](https://github.com/DCAN-Labs/abcd-dicom2bids).
         
