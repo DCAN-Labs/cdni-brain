@@ -5,6 +5,7 @@ Thank you to those who helped create this documentation:
 - Jacob Lundquist
 - Nora Byington 
 - Greg Conan
+- Begim Fayzullobekova
 - Eric Feczko
 - Kayla Hartman
 - Tim Hendrickson

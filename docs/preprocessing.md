@@ -2,7 +2,7 @@
 
 Some pipelines require the data be preprocessed in order to ensure the data works with the pipeline. 
 
-## 10.5T NHP Pipeline
+## 10.5T NHP ABCD BIDS Pipeline Synth
 
 For this pipeline, the data first needs to be converted and properly orientated before being ran.
 
@@ -70,7 +70,7 @@ For this pipeline, the data first needs to be converted and properly orientated 
 
     - For 10.5T data, there are 5 noice volumes in the fuinc runs (as opposed to the normal 3 in other NORDIC data we process)
 
-    - The wrapperr submits the NORDIC processing jobs to run in the background so to verify that they are completed, check that for each *task-restSE* file in the input a *task-restSENORDICrmnoisevols* file was created. You can also use `squeue -al --me` to check which jobs are still queued or running.
+    - The wrapper submits the NORDIC processing jobs to run in the background so to verify that they are completed, check that for each *task-restSE* file in the input a *task-restSENORDICrmnoisevols* file was created. You can also use `squeue -al --me` to check which jobs are still queued or running.
 
     - Run the wrapper cleanup script after all NORDIC jobs are done 
 
