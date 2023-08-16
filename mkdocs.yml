@@ -20,6 +20,7 @@ nav:
   - Storage Allocation Estimates: storage.md
   - S3: s3.md
   - Optimizing sbatch Parameters: optimizing.md
+  - Preprocessing: preprocessing.md
   - Pipelines: pipelines.md
   - S3 Pipeline Wrappers: wrappers.md
   - file-mapper: filemapper.md

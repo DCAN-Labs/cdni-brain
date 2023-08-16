@@ -116,9 +116,39 @@ This pipeline provides an interface for processing BIDS-formatted MRI datasets u
 
 67. Example command:
 
-    ![Example abcd-hcp Command](img/abcd_hcp_pipeline_run_example.png)
+    ![Example ABCD-HCP Command](img/abcd_hcp_pipeline_run_example.png)
 
-## 4. XCP-D
+## 4. NHP 10.5T ABCD BIDS synth
+
+This pipeline is for processing macaque data collected from a 10.5T scanner from the zlab. Before running the pipeline, check the [preprocessing page](preprocessing.md) for preprocessing steps to prepare the data to be run. This pipeline uses a fork of the original NHP ABCD BIDS pipeline that incorporates synth distortion correction for use with the 10.5T data, see [this repo](https://github.com/DCAN-Labs/nhp-abcd-bids-pipeline-synth) for more information. Read more about synth distorion [here.](https://pubmed.ncbi.nlm.nih.gov/37023632/)
+
+1. Preferred flags:
+
+    * `--bandstop 12 18`: parameters for motion regressor band-stop filter for monkeys from mid-2021 onwards, who had their respiratory rate controlled at 15 bpm. 
+
+    * `--t1-reg-method ANTS_NO_INTERMEDIATE`: registers T1w directly to reference using antsRegistrationSyN
+
+    * `--hyper-normalization-method ROI IPS`: adjusts the intensity profile of each ROI (GM, WM, CSF) separately and reassembles the parts
+
+    * `--norm-gm-std-dev-scale 0.5`: the scaling factor for the standard deviation of GM voxels in the hypernormalized FreeSurfer T1w image relative to the standard deviation of the adult reference image
+
+    * `--norm-csf-std-dev-scale 0.5`: the scaling factor for the standard deviation of GM voxels in the hypernormalized FreeSurfer T1w image relative to the standard deviation of the adult reference image
+
+    * `--norm-wm-std-dev-scale 0.5`: the scaling factor for the standard deviation of WM voxels in the hypernormalized FreeSurfer T1w image relative to the standard deviation of the adult reference image
+
+    * `--single-pass-pial`: create pial surfaces in FreeSurfer with a single pass of mris_make_surfaces using hypernormalized T1w brain
+    
+    * `--make-white-from-norm-t1`: use normalized T1w volume (if it exists) as input to FreeSurfer' mris_make_surfaces when making white surfaces
+
+    * `--multi-template-dir=`: directory for joint label fusion templates. It should only contain folders which each contain a "T1w_brain.nii.gz" and a "Segmentation.nii.gz"
+
+    * `--t1-brain-mask=`: specify the path to the mask file to apply instead of the default during the PreliminaryMasking and PreFreeSurfer stages 
+
+2. Example command:
+
+    ![Example NHP 10.5T Command](img/nhp-10.5_example_command.png)
+
+## 5. XCP-D
 
 The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of BIDS derivatives. The outputs are required to include at least anatomical and functional outputs with at least one preprocessed BOLD image. For further information, see [here](https://xcp-d.readthedocs.io/en/latest/usage.html). 
 
@@ -130,7 +160,7 @@ The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of
     
     * `--cifti` : postprocess cifti instead of nifti; this is set default for dcan and hcp input
     
-    * **[for version 0.2.0 and newer, and “develop” / “unstable” builds dated 10212022 or newer]** `--warp-surfaces-native2std` : resample surfaces to fsLR space, 32k density, and apply the transform from native T1w to MNI152NLin6Asym space output by fMRIPrep / NiBabies
+    * **[for version 0.2.0 and newer, and “develop” / “unstable” builds dated 10-21-2022 or newer]** `--warp-surfaces-native2std` : resample surfaces to fsLR space, 32k density, and apply the transform from native T1w to MNI152NLin6Asym space output by fMRIPrep / NiBabies
     
     * **[0.3.0 and newer]** `--dcan-qc` to output QC and executive summary files in similar format to DCAN HCP-based pipelines
     
@@ -152,7 +182,7 @@ The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of
 
     ![Example xcpd Command](img/xcp-d_updated_example.png)
 
-## 5. DCAN Infant
+## 6. DCAN Infant
 
 
 Read: [infant-abcd-bids-pipeline @ Github](https://github.com/DCAN-Labs/infant-abcd-bids-pipeline)
@@ -197,7 +227,7 @@ Overview: fMRI -> anatomical registration - no boundary based registration, use 
     ![Example DCAN Infant command](img/dcan-infant-example.png)
 
 
-## 6. CABINET
+## 7. CABINET
 
 CABINET is a segmentation pipeline including stages prebibsnet, bibsnet, and postbibsnet. This pipeline will eventually also run Nibabies and XCP-D.
 
@@ -214,7 +244,7 @@ For troubleshooting information, see [the Testing CABINET page.](cabinet-testing
 Find more information about CABINET [here.](https://cabinet.readthedocs.io/en/latest/)
 
 
-## 7. Task Pipeline
+## 8. Task Pipeline
 
 This pipeline performs level 1 and 2 analyses of fMRI dtseries data. 
 
@@ -234,7 +264,7 @@ Example command:
 
 Find out more information [here.](https://github.com/DCAN-Labs/abcd-bids-tfmri-pipeline)
 
-## 8. BIBSnet
+## 9. BIBSnet
 
 BIBSnet segments an optimally-aligned T1 and T2 pair with a deep neural network trained via nnU-Net and SynthSeg.
 

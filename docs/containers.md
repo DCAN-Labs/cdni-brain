@@ -27,7 +27,7 @@ Example:
 `singularity pull name_of_singularity_image.sif docker://path_to_docker_image`
 
 
-Note: `name_of_singularity_image.sif` can be anything. Generally, it is advisable to name it with the name of the codebase + the date. Also, `dcanumn` will typically be involved in `/path_to_docker_image`. 
+Note: `name_of_singularity_image.sif` can be anything. Generally, it is advisable to name it with the name of the codebase + the date. Also, `dcanumn` will typically be involved in `/path_to_docker_image`. To pull a specific tag of a docker_image, add `:tag` at the end of the `/path_to_docker_image`
 
 
 Containers are typically run with a **singularity run** command, as demonstrated in various [sbatch script examples](pipelines.md) in this handbook.
@@ -38,6 +38,7 @@ Containers are typically run with a **singularity run** command, as demonstrated
 
 `singularity shell name_of_singularity_image.sif`
 
+To leave the shell, type `exit`.
 
 For pulling Docker images, see [this document](https://docs.google.com/document/u/0/d/1w1g0kLSchPKvEI9pZIBmhavFd2Mq2-r82ozVaBuL9EI/edit). 
 
@@ -52,8 +53,6 @@ Once you have access, open a terminal at MSI and ssh into the VM
 
 - Run `ssh umii-midbig-dev-docker.oit.umn.edu`
 
-- If you are building a CABINET container, you do not need to ssh into the VM; this container is too big to be built there and can be built directly on the Linux machine
-
 Assuming you have a github repository that has the dockerfile to build your image and any prerequisite files, download the repository to the machine
 
 - Run `git clone html-to-repo --branch name-of-branch-to-clone`
@@ -64,9 +63,9 @@ Navigate into the cloned repository
 
 - Run `cd name-of-repo`
 
-Build the container with docker. The version (1.0. in the example command) is whatever you name it, check the docker documentation for acceptable container names. If there is an existing repository on Docker hub, include `dcanumn` before `/pipeline`. If you want to build using cache files from previous builds, do not include the `--no-cache` flag.
+Build the container with docker. The version (`1.0.` in the example command) is whatever you name it. Check the docker documentation for acceptable container names. If there is an existing repository on Docker hub, include `dcanumn` before `/pipeline` (i.e. `dcanumn/cabinet:2.4.3`). If you want to build using cache files from previous builds (resulting in a faster build), do not include the `--no-cache` flag.
 
-- Run `sudo docker build -t /pipeline-name:1.0. --no-cache`
+- Run `sudo docker build -t /pipeline-name:1.0. . --no-cache`
 
 While you are building the container, docker moves line by line through the Dockerfile and builds new images at various points in the build process. If you encounter an error during this building process, you can load the most recent intermediary image created during the build process and run the remaining portion of your Dockerfile from there. Below is an example of what the error message might look like. 
 
@@ -75,6 +74,10 @@ While you are building the container, docker moves line by line through the Dock
 - Run `sudo docker run -it b087e2fc15b5` to load the most recent image layer (from the above example)
 
 - If you have the line similar to the `RUN unzip ./mcr.zip`, run it without the RUN statement (`unzip ./mcr.zip`) to get a better understanding of why your command is having issues.
+
+- This will open the image (kind of like being in a singularity shell) from which you can run the next command from the Dockerfile (you don't need to include `&& \` if you're just running the one command)
+
+- Once you are done with working in this shell, run `exit` to leave it. 
 
 If the virtual machine runs out of memory while you're doing this try the following:
 
@@ -94,7 +97,7 @@ If you want to look into your container and test its behavior without running th
 
 If your container build was successful, then push it to Dockerhub (assuming there is an existing repository on Dockerhub)
 
-- Run `sudo docker push dcanumn/container-name:container:version`
+- Run `sudo docker push dcanumn/container-name:version`
 
 If you want to push the image with multiple tags, add tags to the image before you push, then include the `--all-tags` flag when pushing. Below is an example which would label the same build with the `v1.0` tag and the `stable` tag.
 
@@ -130,3 +133,50 @@ To build the image from docker archive, grab an srun then run:
         cd /path/to/where/container/is/stored
         singularity build name_for_singularity_image.sif docker-archive://pipeline-name.tar
 
+## Special Container Builds 
+
+**CABINET**
+
+CABINET is too large to be built on the VM so you do not need to ssh into the VM. It can be built directly on the Linux machine.
+
+**10.5T NHP ABCD BIDS Pipeline Synth**
+
+**PLEASE NOTE: This does NOT apply to the regular NHP ABCD BIDS pipeline.**
+
+This container needs to be built on the VM, it is too large to be built on DockerHub. This container will take up around 20GB of space so make sure to first check that there is enough space on the VM to build it. 
+
+This pipeline doesn't use a layered build (with internal- and external-tools) like the normal NHP, Infant, and DCAN ACBD BIDS pipelines use. It instead uses gitsubmodules and gitlfs to link certain dependencies such as the DCAN Bold Processing repo and the macaque image templates. 
+
+In order to build this container, you first need to clone the correct repository and initialize the git submodules. You can do this by running the following commands: 
+
+                git clone git@github.com:DCAN-Labs/nhp-abcd-bids-pipeline-synth.git
+                cd nhp-abcd-bids-pipeline-synth
+                git submodule update --init
+
+After this, you will need to run the download script in the tools subdirectory to download the templates used in the pipeline. 
+
+- `./tools/download-templates.sh`
+
+Once you run this, check for the existance of a *templates* folder under *scripts/dcan_macaque_pipeline/global/* 
+
+Be sure that Docker BuildKit is enabled by adding `DOCKER_BUILDKIT=1` before your build command. An example docker build command would be
+
+`sudo DOCKER_BUILDKIT=1 docker build . -t dcanumn/nhp-abcd-bids-pipeline-synth:[tag]`
+
+If you need to update the link to the git submodule, for example if there are updates to the DCAN Bold Processing repo that you want to incorporate into this pipeline, this can be done by following [this example](https://stackoverflow.com/questions/1777854/how-can-i-specify-a-branch-tag-when-adding-a-git-submodule/1778247#1778247) which is noted below. 
+
+If you want to move the submodule to a particular tag:
+
+                cd submodule_directory
+                git checkout v1.0
+                cd ..
+                git add submodule_directory
+                git commit -m "moved submodule to v1.0"
+                git push
+
+If updating DCAN Bold Processing, the <submodule_directory> would be the path to the DCAN Bold Processing `/nhp-abcd-bids-pipeline-synth/scripts/dcan-bold-processing/`
+
+Then, another developer who wants to have submodule_directory changed to that tag, does this
+
+                git pull
+                git submodule update --init
