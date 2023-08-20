@@ -15,4 +15,4 @@ Let me know if you need any additional information. Thanks,`
 
 -   Follow-up with MSI weekly/bi-weekly to ensure the data gets transferred.
 -   After MSI (Kimberleigh Breen or Naomi Hospodarsky-Sutherland) confirms that the data has been transferred, check that the permissions on a few of the data paths match the data that was already on the NGDR. If the data permissions aren't correct, ask for them to be corrected in the same email thread with the data transfer request and verify that the permissions have been fixed once they do so.
--   Move the hashtable from "to_transfer" to "complete" in this box folder.
+-   Move the hashtable from "to_transfer" to "complete" in [this box folder](https://umn.account.box.com/login?redirect_url=%2Ffolder%2F180135363134).
