@@ -11,6 +11,8 @@ nav:
   - Slurm Parameters: slurm-params.md
   - fairshare: fairshare.md
   - MSI Module System: modules.md
+  - Minnesota Supercomputing Institute (MSI) First Login Steps: msi-login.md
+  - How to Transfer ABCC Data to the NGDR: ngdr-transfer.md
   - Miniconda Environments: miniconda.md
   - VS Code: vscode.md
   - Virtual Machine: vm.md
