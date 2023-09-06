@@ -1,6 +1,8 @@
 # Common Roadblocks on MSI
 
-31. If you get an error (e.g. about disk space), change your group:
+31. If you get a `Disk quota exceeded` error, try changing your group:
+
+    * First check that the share isn't full: `groupquota`
 
     * One file: `chgrp faird filename`
 
