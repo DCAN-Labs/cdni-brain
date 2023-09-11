@@ -1,5 +1,9 @@
 # Common Roadblocks on MSI
 
+38. If you are experiencing errors/issues with general usage or Slurm:
+
+    * Contact the MSI help desk (help@msi.umn.edu)
+
 31. If you get a `Disk quota exceeded` error, try changing your group:
 
     * First check that the share isn't full: `groupquota`
@@ -17,6 +21,8 @@
     * Is it the first week of the month? MSI can run slow during the week of maintenance day
 
     * Check the status of MSI [here](https://status.msi.umn.edu/)
+
+    * Check the status of MSI nodes [here](https://download.genomics.umn.edu/website/slurmnodes/index.html)
 
 33. If you get this error when trying to use Firefox:
             
@@ -44,7 +50,7 @@
 
     * This will open up read, write, and execute permissions for the file/directory
 
-37. If you need to change your active group
+37. If you need to change your active group:
 
     * Run `newgrp faird` (or whichever group you need to be in)
     
