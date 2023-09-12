@@ -26,7 +26,7 @@ nav:
   - BIDS:
       - DICOM to BIDS conversion: dcm2bids.md
       - BIDS Validation: bids.md
-      - NORDIC Denoising and BIDS NORDIC Wrapper: nordic.md
+      - NORDIC Denoising and Dcm2bids3 NORDIC Wrapper: nordic.md
   - Preprocessing:
       - Preprocessing: preprocessing.md
   - Processing:
