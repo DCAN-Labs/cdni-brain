@@ -36,7 +36,7 @@ Watch: [Dcm2bids DCAN tutorial recording](https://drive.google.com/drive/folders
         
     * `conda activate dcm2bids`
             
-        - For multi-echo data, or data acquired on a scanner with the XA30 software package, use `conda activate dcm2bids3` if using the Dcm2bids3 NORDIC wrapper (note you must update your config files to be dcm2bids3 compatible --  see https://unfmontreal.github.io/Dcm2Bids/3.0.2/upgrade/#upgrading-from-2x-to-3x for a summary of breaking changes between 2.x and 3.x), else use `conda activate dcm2bids_xa30_test`
+        - For multi-echo data, or data acquired on a Siemens scanner with an XA software package (e.g. XA30), use `conda activate dcm2bids3` if using the Dcm2bids3 NORDIC wrapper (note you must update your config files to be dcm2bids3 compatible --  see https://unfmontreal.github.io/Dcm2Bids/3.0.2/upgrade/#upgrading-from-2x-to-3x for a summary of breaking changes between 2.x and 3.x), else use `conda activate dcm2bids_xa30_test`
         
     * `dcm2bids_helper -d /path/to/input/dir/ -o /path/to/output/dir/`
             
