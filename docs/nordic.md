@@ -1,18 +1,33 @@
-# NORDIC denoising and BIDS NORDIC wrapper
+# NORDIC denoising and Dcm2bids3 NORDIC wrapper
 
-NORDIC (**NO**ise **R**eduction with **DI**stribution **C**orrected) is a denoising method that can be applied to functional data. It requires that both magnitude and phase data NIfTIs exist for each run to be denoised.
+NORDIC (**NO**ise **R**eduction with **DI**stribution **C**orrected) is a denoising method that can be applied to functional data. For our use cases, each run to be denoised should have separate NIfTI timeseries for each of the magnitude and phase data.
 
+A Matlab script to apply NORDIC is located at `/home/faird/shared/code/external/utilities/NORDIC/NIFTI_NORDIC.m`
 
-A Matlab script to apply NORDIC is located at `/home/feczk001/shared/code/external/utilities/NORDIC/20211206/NIFTI_NORDIC.m`
+The recommended method to apply NORDIC denoising is using the **Dcm2bids3 NORDIC wrapper**. To use:
 
+- Make **two** dcm2bids config files for your data: the first for converting everything **except** the phase timeseries, and the second for converting **only** the phase timeseries.
+  - Note that Dcm2bids 2.x config files are **not** compatible with Dcm2bids 3!
+  - See documentation for how to "upgrade" old-version config files (https://unfmontreal.github.io/Dcm2Bids/3.0.2/upgrade/#description-keys)
+  - Also see documentation of the new "post-op" command feature (https://unfmontreal.github.io/Dcm2Bids/3.0.2/how-to/use-advanced-commands/#post_op), which we use to execute the NORDIC wrapper via sbatch job submission 
+- When specifying your `custom_entities` for magnitude and phase timeseries, use the BIDS-compliant `part-mag` and `part-phase` 
+- In the second config file, include a "post_op" command that calls the NORDIC wrapper script like this (do **not** replace "src_file" and "dst_file" with actual file paths -- Dcm2bids will do it automatically -- but **do** replace the "3" with the actual number of "noise volumes" at the end of each run)
+```
+    "post_op": [
+        {
+            "cmd": "sbatch --wait /home/faird/shared/code/internal/utilities/Dcm2bids3_NORDIC_wrapper/nordicsbatch.sh src_file dst_file 3",
+            "datatype": "func",
+            "suffix": [
+                "bold"
+            ]
+        }
+    ]
+```
+- Load the **dcm2bids3** conda environment and run dcm2bids on your dataset with the first config file (everything but phase), **then** run dcm2bids again with the second config file (to convert phase data and the post-op command to run the NORDIC wrapper)
 
-The minimum required inputs to the script are the magnitude and phase files, plus a filename for the denoised output. 
+---
 
-
-Additionally, the number of noise volumes at the end of the run should be specified with the ARG.noise_volume_last argument. Noise volumes, if present, should be removed from the output with `fslroi` (module load fsl; fslroi &lt;input> &lt;output> &lt;tmin> &lt;tsize>). “tmin” will be 0, and “tsize” should be the number of volumes in the timeseries **excluding** noise volumes at the end. 
-
-
-**Alternatively**, there is a BIDS NORDIC wrapper at `/home/faird/shared/code/internal/utilities/bids_nordic_wrapper` which takes a BIDS func directory (and number of noise volumes per scan) as input, runs the NORDIC script on the magnitude-phase file pairs, and includes a cleanup script to remove intermediate files created in the process. The wrapper expects a specific naming convention for the magnitude and phase timeseries; described in (1) below. From the README:
+**Alternatively**, there is the now-deprecated BIDS NORDIC wrapper at `/home/faird/shared/code/internal/utilities/bids_nordic_wrapper` which takes a BIDS func directory (and number of noise volumes per scan) as input, runs the NORDIC script on the magnitude-phase file pairs, and includes a cleanup script to remove intermediate files created in the process. The wrapper expects a specific naming convention for the magnitude and phase timeseries; described in (1) below. From the README:
 
 
 _Usage_
