@@ -5,7 +5,7 @@ NORDIC (**NO**ise **R**eduction with **DI**stribution **C**orrected) is a denois
 The recommended method to apply NORDIC denoising is using the **Dcm2bids3 NORDIC wrapper** with the **dcm2bids3** conda environment. To use:
 
 - Make **two** dcm2bids config files for your data: the first for converting everything **except** the phase timeseries, and the second for converting **only** the phase timeseries.
-  - Note that Dcm2bids 2.x config files are **not** compatible with Dcm2bids 3!
+  - Note that Dcm2bids 2 config files are **not** compatible with Dcm2bids 3! (The **dcm2bids** and **dcm2bids_xa30_test** environments use Dcm2bids 2)
   - See documentation for how to "upgrade" old-version config files (https://unfmontreal.github.io/Dcm2Bids/3.0.2/upgrade/#description-keys)
   - Also see documentation of the new "post-op" command feature (https://unfmontreal.github.io/Dcm2Bids/3.0.2/how-to/use-advanced-commands/#post_op), which we use to execute the NORDIC wrapper via sbatch job submission 
 - When specifying your `custom_entities` for magnitude and phase timeseries, use the BIDS-compliant `part-mag` and `part-phase` 
