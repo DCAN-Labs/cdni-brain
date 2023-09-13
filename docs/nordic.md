@@ -2,9 +2,7 @@
 
 NORDIC (**NO**ise **R**eduction with **DI**stribution **C**orrected) is a denoising method that can be applied to functional data. For our use cases, each run to be denoised should have separate NIfTI timeseries for each of the magnitude and phase data.
 
-A Matlab script to apply NORDIC is located at `/home/faird/shared/code/external/utilities/NORDIC/NIFTI_NORDIC.m`
-
-The recommended method to apply NORDIC denoising is using the **Dcm2bids3 NORDIC wrapper**. To use:
+The recommended method to apply NORDIC denoising is using the **Dcm2bids3 NORDIC wrapper** with the **dcm2bids3** conda environment. To use:
 
 - Make **two** dcm2bids config files for your data: the first for converting everything **except** the phase timeseries, and the second for converting **only** the phase timeseries.
   - Note that Dcm2bids 2.x config files are **not** compatible with Dcm2bids 3!
@@ -23,11 +21,11 @@ The recommended method to apply NORDIC denoising is using the **Dcm2bids3 NORDIC
         }
     ]
 ```
-- Load the **dcm2bids3** conda environment and run dcm2bids on your dataset with the first config file (everything but phase), **then** run dcm2bids again with the second config file (to convert phase data and the post-op command to run the NORDIC wrapper)
+- Load the **dcm2bids3** conda environment and run dcm2bids on your dataset with the first config file (everything but phase), **then** run dcm2bids again with the second config file (to convert phase data and run the NORDIC wrapper via post-op command)
 
 ---
 
-**Alternatively**, there is the now-deprecated BIDS NORDIC wrapper at `/home/faird/shared/code/internal/utilities/bids_nordic_wrapper` which takes a BIDS func directory (and number of noise volumes per scan) as input, runs the NORDIC script on the magnitude-phase file pairs, and includes a cleanup script to remove intermediate files created in the process. The wrapper expects a specific naming convention for the magnitude and phase timeseries; described in (1) below. From the README:
+**Alternatively**, there is the now-deprecated BIDS NORDIC wrapper at `/home/faird/shared/code/internal/utilities/bids_nordic_wrapper`, which should be run using the **dcm2bids_xa30_test** conda environment. It takes a BIDS func directory (and number of noise volumes per scan) as input, runs the NORDIC script on the magnitude-phase file pairs, and includes a cleanup script (to be run separately) to remove intermediate files created in the process. The wrapper expects a specific naming convention for the magnitude and phase timeseries; described in (1) below. From the README:
 
 
 _Usage_
@@ -43,6 +41,11 @@ _"task-restME" and "task-restMEph" for multi-echo_
 
 
 _(An example dcm2bids config file which outputs the expected task names is in "dcm2bids_conf_examples")_
+
+---
+
+NORDIC can also be run using standalone Matlab script at `/home/faird/shared/code/external/utilities/NORDIC/NIFTI_NORDIC.m`
+ 
 
 
 _2) Run bids_nordic_wrapper.sh (arg1= path to func dir, arg2= number of noise volumes at end of each run)_
