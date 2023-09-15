@@ -10,7 +10,7 @@ nav:
       - MSI Partitions: partitions.md
       - MSI Module System: modules.md
       - First Login Steps: msi-login.md
-      - Storage Allocation Estimates: storage.md
+      - Data Storage/Tracking: storage.md
       - S3: s3.md
       - Common MSI Roadblocks: roadblocks.md
   - Slurm/Processing Jobs:
@@ -19,16 +19,20 @@ nav:
       - Optimizing sbatch Parameters: optimizing.md
       - Job Submissions: jobs.md
       - fairshare: fairshare.md
-  - Setting up Coding Environments:
+  - Software Environments:
       - VS Code: vscode.md 
       - Miniconda Environments: miniconda.md
       - Best Coding Practices: workflow.md
+      - Containers: containers.md
+      - Virtual Machine: vm.md
   - BIDS:
       - DICOM to BIDS conversion: dcm2bids.md
       - BIDS Validation: bids.md
       - NORDIC Denoising and BIDS NORDIC Wrapper: nordic.md
   - Preprocessing:
-      - Preprocessing: preprocessing.md
+      - Infant Preprocessing: infant-preproc.md
+      - 10.5T NHP ABCD BIDS Pipeline Synth: preprocessing.md
+      - Fast Track QC Comparison (ABCD): fasttrack.md
   - Processing:
       - Pipelines: pipelines.md
       - S3 Pipeline Wrappers: wrappers.md
@@ -36,13 +40,13 @@ nav:
       - file-mapper: filemapper.md    
       - Precision Mapping Wrapper: precision.md
       - Processing Status: status.md
-      - How to Transfer ABCC Data to the NGDR: ngdr-transfer.md
   - Troubleshooting:
       - Troubleshooting and Image Viewing: troubleshooting.md
       - Testing CABINET: cabinet-testing.md
-  - Virtual Machine: vm.md
-  - Containers: containers.md
-  - Fast Track QC Comparison (ABCD): fasttrack.md
-  - Data Uploads and Transfer: uploads.md
-  - Requests and Questions: requests.md
-  - Contributors and Papers: contributions.md
+      - Requests and Questions: requests.md
+  - Data Uploads and Transfers:
+      - Data Transfers: uploads.md
+      - Transfer ABCC Data to the NGDR: ngdr-transfer.md
+  - Contributions:
+      - Contributors and Papers: contributions.md
+  - THANK YOU FOR USING THE DPH:
