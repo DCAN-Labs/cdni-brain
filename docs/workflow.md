@@ -2,7 +2,7 @@
 
 We at DCAN Labs highly value creating code and workflows that are able to be reused and shared with other institutions. This means that we should be following best practices in order to make it easy for someone outside of our lab to use and understand our code. 
 
-## NMNIND Workflow
+## NMIND Workflow
 
 When code is developed without keeping best practices and standards in mind, challenges can arise when someone who didn't develop the code tries to use it. Some challenges that can come out of this is that the code if not fully developed/bullet-proofed, it has poor documentation, there are hard-coded paths, and it's overall not designed to be reused.
 
