@@ -1,8 +1,4 @@
-# Preprocessing 
-
-Some pipelines require the data be preprocessed in order to ensure the data works with the pipeline. 
-
-## 10.5T NHP ABCD BIDS Pipeline Synth
+# 10.5T NHP ABCD BIDS Pipeline Synth
 
 For this pipeline, the data first needs to be converted and properly orientated before being ran.
 
@@ -82,3 +78,4 @@ Defacing is done by creating a rough boxy mask that cuts off the eyes/nose/mouth
 Usage for a directory that contains a subject folder, and the subject folder contains a T1w image, T2w image, or both:
 
 `python3 /home/feczk001/shared/projects/BCP_deface/code/deface.py /path/to/directory/`
+
