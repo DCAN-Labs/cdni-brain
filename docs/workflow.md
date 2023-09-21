@@ -18,4 +18,4 @@ In an ideal world, code should be:
 
 * Containerized at its final stage
 
-In order to try to fit into this ideal world, we try to follow the NMIND coding standard when developing code. A checklist of what the NMIND standards are can be found [here](https://www.nmind.org/standards-checklist/)
+In order to try to fit into this ideal world, we try to follow the NMIND coding standard when developing code. [This page](https://hackmd.io/fJjIxGqWQB-wGIYZlnk5wA) outlines the NMinD programming recommendations. A checklist of what the NMIND standards are can be found [here](https://github.com/nmind/standards-checklist/tree/98344089a6a1c4bcf46b4e7b6b7e5fafba880d87). When developing or reviewing code, the goal is to have the codebase [Bronze certified](https://github.com/nmind/standards-checklist/blob/98344089a6a1c4bcf46b4e7b6b7e5fafba880d87/checklists/bronze.md). 
