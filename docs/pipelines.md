@@ -273,16 +273,9 @@ Example command:
 
 Find out more information [here.](https://github.com/DCAN-Labs/abcd-bids-tfmri-pipeline)
 
-## 9. BIBSnet
+## 9. CABINET
 
-BIBSnet segments an optimally-aligned T1 and T2 pair with a deep neural network trained via nnU-Net and SynthSeg.
-
-Example command:
-
-        singularity run --nv --cleanenv --no-home \
-        -B /path/to/input:/input \
-        -B /path/to/output:/output \
-        /path/to/BIBSNet.sif \
-        --input /input --output /output --task <task ID> --model 3d_fullres 
-
-Find more information about BIBSnet [here.](https://github.com/DCAN-Labs/BIBSnet)
+CABINET is a tool that can be used to run multiple containers together.
+If you need to repeatedly run multiple containers back to back, consider doing it with CABINET!
+You will need to construct a parameter JSON file to tell CABINET how to run your containers.
+For examples see the [CABINET repository on GitHub](https://github.com/DCAN-Labs/CABINET)
