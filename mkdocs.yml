@@ -42,7 +42,7 @@ nav:
       - Processing Status: status.md
   - Troubleshooting:
       - Troubleshooting and Image Viewing: troubleshooting.md
-      - Testing CABINET: cabinet-testing.md
+      - Testing BIBSnet: bibsnet-testing.md
       - Requests and Questions: requests.md
   - Data Uploads and Transfers:
       - Data Transfers: uploads.md

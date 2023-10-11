@@ -24,7 +24,7 @@ Are you having any issues with any of our pipelines?
 
     * [ABCD-HCP Pipeline](https://github.com/DCAN-Labs/abcd-hcp-pipeline/issues/new/choose)
 
-    * [CABINET](https://github.com/DCAN-Labs/CABINET/issues/new/choose)
+    * [BIBSnet](https://github.com/DCAN-Labs/BIBSnet/issues/new/choose)
 
     * [DCAN Infant](https://github.com/DCAN-Labs/infant-abcd-bids-pipeline/issues/new)
 
