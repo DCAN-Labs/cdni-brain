@@ -227,21 +227,30 @@ Overview: fMRI -> anatomical registration - no boundary based registration, use 
     ![Example DCAN Infant command](img/dcan-infant-example.png)
 
 
-## 7. CABINET
+## 7. BIBSnet
 
-CABINET is a segmentation pipeline including stages prebibsnet, bibsnet, and postbibsnet. This pipeline will eventually also run Nibabies and XCP-D.
+BIBSnet is a segmentation pipeline including stages prebibsnet, bibsnet, and postbibsnet.
 
 Example command: 
 
-![Example CABINET run command](img/cabinet_example_command.png)
+```
+/usr/bin/singularity run --nv \
+-B /path/to/input/:/input \
+-B /path/to/output/:/output \
+-B /path/to/working/directory/:/work \
+/home/faird/shared/code/internal/pipelines/bibsnet_container/bibsnet_v3.0.0.sif \
+/input /output participant -start prebibsnet -end postbibsnet -v \
+--participant-label ${subject_id} \
+-w /work
+```
 
 
- _NOTE: IT IS NOT RECOMMENDED TO RUN CABINET OUTSIDE OF THE CONTAINER._
+ _NOTE: IT IS NOT RECOMMENDED TO RUN BIBSNET OUTSIDE OF THE CONTAINER._
 
 
-For troubleshooting information, see [the Testing CABINET page.](cabinet-testing.md)
+For troubleshooting information, see [the Testing BIBSnet page.](bibsnet-testing.md)
 
-Find more information about CABINET [here.](https://cabinet.readthedocs.io/en/latest/)
+Find more information about BIBSnet [here.](https://bibsnet.readthedocs.io)
 
 
 ## 8. Task Pipeline
