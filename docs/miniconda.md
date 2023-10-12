@@ -4,7 +4,7 @@ DCAN Labs maintains lab-wide shared miniconda environments which are configured 
 
 * To load the DCAN labwide miniconda3 environment, first run the following command: 
 
-            source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh 
+        source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh 
 
 * Note: It is advised to create your own environment within this miniconda3 for whatever you need miniconda3 for. That way we are not constantly changing the versioning of packages on the base environment. 
 * To activate a specific environment: 
