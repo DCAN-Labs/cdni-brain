@@ -19,5 +19,7 @@ Fill out the [Project Request Form](https://forms.gle/1ddNGf6pbe5WE2QV8) to requ
    
     ![select_study_template](img/select_study_template.png)
 
+ - Fill out the necessary information. Under **Name this Project**, make sure to include the assigned project number and use the project name approved by the PMs (if you decide you want to change it later, that's ok, just make sure to loop in the PMs so that we can adjust our tracking sheets), eg: **S1010: CABINET Development**
+
  - Add all necessary people to the project and fill out the **Project Overview** under **Docs & Files**
 
