@@ -9,6 +9,8 @@ Fill out the [Project Request Form](https://forms.gle/1ddNGf6pbe5WE2QV8) to requ
 
 2.  Set up your project on Basecamp utilizing the template:
 
+
+
  - Go to the Basecamp dashboard and select **Make a New Project** at the top of the page
  - Select **Choose a project template**
    
