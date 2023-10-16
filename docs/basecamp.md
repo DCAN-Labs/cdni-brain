@@ -8,7 +8,7 @@ Aside from personal project boards and teams, all research projects associated w
 
 Fill out the [Project Request Form](https://forms.gle/1ddNGf6pbe5WE2QV8) to request a project number. Please consult the list of [current active projects](https://docs.google.com/spreadsheets/d/1dIUyxwElnQsqXtNDvmy2NhwKTSYAJ7wqqO4j_MfoWpM/edit?usp=sharing) to make sure that your project name is distinct. The PMs will also confirm that the project name and goals are distinct from exisiting projects.   
 
-**Step 2: Set up your project on Basecamp utilizing the template**
+**Step 2: Create a new project on Basecamp utilizing the template**
 
  - Go to the Basecamp dashboard and select **Make a New Project** at the top of the page
  - Select **Choose a project template**
@@ -21,5 +21,8 @@ Fill out the [Project Request Form](https://forms.gle/1ddNGf6pbe5WE2QV8) to requ
 
  - Fill out the necessary information. Under **Name this Project**, make sure to include the assigned project number and use the project name approved by the PMs (if you decide you want to change it later, that's ok, just make sure to loop in the PMs so that we can adjust our tracking sheets), eg: **S1010: CABINET Development**
 
- - Add all necessary people to the project and fill out the **Project Overview** under **Docs & Files**
+**Step 3: Complete set up once Basecamp is created**
+
+ - Add all necessary people to the project
+ - Fill out the **Project Overview** under **Docs & Files**
 
