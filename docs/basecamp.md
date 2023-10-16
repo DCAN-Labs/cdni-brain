@@ -4,12 +4,11 @@
 
 Aside from personal project boards and teams, all research projects associated with a PI must be assigned a project number and be tracked on a new Basecamp Project board. In order to obtain a project number and set up a Basecamp, please do the following:
 
-1.  Request a project number from the project managers:
+**Step 1: Request a project number from the project managers**
+
 Fill out the [Project Request Form](https://forms.gle/1ddNGf6pbe5WE2QV8) to request a project number. Please consult the list of [current active projects](https://docs.google.com/spreadsheets/d/1dIUyxwElnQsqXtNDvmy2NhwKTSYAJ7wqqO4j_MfoWpM/edit?usp=sharing) to make sure that your project name is distinct. The PMs will also confirm that the project name and goals are distinct from exisiting projects.   
 
-2.  Set up your project on Basecamp utilizing the template:
-
-
+**Step 2: Set up your project on Basecamp utilizing the template**
 
  - Go to the Basecamp dashboard and select **Make a New Project** at the top of the page
  - Select **Choose a project template**
