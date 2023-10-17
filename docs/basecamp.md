@@ -2,7 +2,7 @@
 
 ## Adding a New Project to the [DCAN Labs Basecamp](https://3.basecamp.com/5032058/)
 
-Aside from personal project boards and teams, all research projects associated with a PI must be assigned a project number and be tracked on a new Basecamp Project board. In order to obtain a project number and set up a Basecamp, please do the following:
+Aside from personal project boards and teams, all research projects associated with a PI must be assigned a project number and be tracked on a new Basecamp Project board. If you have questions about where on Basecamp something should be tracked or whether a new Basecamp Project board is needed or not, please reach out to the DCAN project managers directly for guidance. In order to obtain a project number and set up a Basecamp, please do the following:
 
 **Step 1: Request a project number from the project managers**
 
