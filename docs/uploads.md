@@ -23,7 +23,7 @@ For information on how to use MSI to transfer/track data, see [this page.](stora
 Watch [this tutorial](https://drive.google.com/file/d/1Yb_5L9pxIl0fquAtC83XeYleRl_uJo6S/view?usp=drive_link) for how to use globus.
 
 
-Using [this link](https://docs.globus.org/globus-connect-personal/), follow the instructions to install globus connect personal and log in using UMN credentials. Next, create a personal connect point. To transfer data to tier 2 storage (an s3 bucket), using the globus file manager, choose UMN MSI Tier2 on one side and your connect point on the other side. If you are wanting to transfer data to tier 1 storage, choose UMN MSI Home as your location.
+Using [this link](https://docs.globus.org/globus-connect-personal/), follow the instructions to install globus connect personal and log in using UMN credentials. Next, create a personal connect point. To transfer data to tier 2 storage (an s3 bucket), using the globus file manager, choose **UMN MSI Tier2** on one side and your connect point on the other side. Find more information about transferring to tier 2 storage [here](https://www.msi.umn.edu/support/faq/how-do-i-use-globus-transfer-data-second-tier-storage-msi). If you are wanting to transfer data to tier 1 storage, choose **UMN MSI Home** as your location. More information about setting up globus can be found [here](https://www.msi.umn.edu/support/faq/how-do-i-use-globus-transfer-data-msi-0).
 
 
 **Note**: if you want to upload data from an external hard drive, go to preferences/access and add the hard drive. Visit [this link](https://docs.globus.org/how-to/globus-connect-personal-windows/#configuration) for a more detailed step-by-step process. 
