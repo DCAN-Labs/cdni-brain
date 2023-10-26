@@ -117,16 +117,25 @@ Dataset specific configuration is done here as well, this is where information i
 
     *Dataset specific configurations. Each dataset will have some or all of the following documents:*
     - about
+
         - Information about the study. This shows in the about section of the website. 
+
     - archived
+
         - Whether the dataset is archived. If true it can no longer be swiped on but its data is still viewable in other areas of the application
+
     - bucket
+
         - The MSI s3 bucket that the images are kept in.
+
     - exclusions
 
         *Rules for excluding files from being added to sampleCounts directly from the s3 bucket.*
+
         - fromTSV
+
             - A list of rules that use regex matching to exclude anything that matches a pattern in a TSV file
+
             ```
             "fromTSV": {
               "rules": [
@@ -139,8 +148,11 @@ Dataset specific configuration is done here as well, this is where information i
               "s3path": "bcp-subjects.tsv"
             },
             ```
+
         - substrings
+
             - A list of substrings that use substring matching to exclude any filenames where the pattern is found
+
             ```
             "substrings": [
               "InferiorTemporal-Cerebellum",
@@ -150,30 +162,49 @@ Dataset specific configuration is done here as well, this is where information i
               "_ref"
             ]
             ```
+            
     - imageType
+
         - Used to override the existing pattern matching method of determining and displaying image types throughout the app.
+
     - name
+
         - The name showed on the website. Different from the key of the record in config as the key does not allow special characters.
+
     - s3filepath
+
         - Filepath for finding images, both for displaying in the app and updating sampleCounts from the s3. {{SUBJECT}}, {{SESSION}}, and {{FILENAME}} will be replaced on a per image basis.
+
     - tutorials
+
         - Names of the tutorials required for this dataset. Keys should be true if required, can be left out if not.
 
 - errorCodes
+
     - Keys are passed around by the app and then used to grab and display the values
 
 - learn
+
     - checklists
+
         - Strings to display alongside checkboxes in the checklist component of the app
+
     - gallery
+
         - Filenames of images to display in the gallery. Keys are populated by the from end gallery add process
+
     - tutorials
+
         - The various tutorial modules in the Learn section of the app. The content key will determine what elements will appear in the tutorial page.
 
 - maintenance
+
     - bannerStatus
+
         - Whether the upcoming maintenance banner is active in the app. Boolean value.
+
     - date
+
         - The date to display in the maintenance banner. 
         - Example banner: `BrainSwipes will be unavailable on {{maintenanceDate}} for scheduled maintenance.`
 
@@ -182,10 +213,15 @@ Dataset specific configuration is done here as well, this is where information i
     *Configuration specific to a study. Each study has an entry with the following records:*
 
     - about
+
         - Information about the study. This shows in the about section of the website. 
+
     - available
+
         - Whether the dataset is open to the public. New users will see studies with ‘true’ by default. Any study with ‘false’ will require Globus authorization.
+
     - datasets
+
         - A list of datasets in the study. Each dataset will appear in the datasets document of config where its attributes are defined.
 
 
