@@ -99,8 +99,60 @@ If you modify the `express.js` the pm2 restart command will not update this file
 
 ## Management
 
-## Adding new images
-Use the tools/es2sfs_img_converter.py script to format images for use with brainswipes
+### Adding new images
+Use the `tools/get_exec_sum.sh` script to format images for use with brainswipes
 
 [Adding new studies to BrainSwipes](https://docs.google.com/document/d/1apA6hc4Oj33BoP_t7oacL-x3vDvglYWSt0CdlycPeuM/edit?usp=sharing)
 
+### Tools
+
+A description of scripts in the tools folder.
+
+#### Database Interactions
+- reconcileVotes.js
+
+  - Takes the votes document in firebase `db/datasets/{DATASET}/votes` as the source of truth and syncs sampleCounts, sampleSummary and userSeenSamples to all match with it.
+  - Run without `confirm` to only view console output of differences. Run with `confirm` to update firebase.
+  - Example run command `node reconcileVotes.js ABIDE1 confirm`
+
+- restore-sampleCounts.js
+
+  - Takes the sampleSummary document in firebase `db/datasets/{DATASET}/sampleSummary` and updates sampleCounts to restore data for any removed images.
+  - Designed to restore the dataset in cases where some images have been temporarily removed from circulation.
+  - Differs from reconcileVotes because reconcileVotes will not add new samples to sampleCounts to maintain the subset of images served to users.
+
+- s32firebase.js
+
+  - Updates sampleCounts in Firebase based on an `s3cmd ls` to the s3 bucket for the specified study.
+  - Designed for use on the production server as a cronjob to update studies regularly. `crontab -e` to view and edit cronjobs using vim.
+  - Example command: `node s32firebase.js BCPv101 localhost 8080`
+      - hostname + port will generally be `localhost 8080` if running a dev server (`npm run dev`) or `localhost 3000` for a production server (on AWS)
+
+- firebaseBackup.js
+
+  - Pulls all data from firebase as a JSON file and puts it into `s3://brainswipes-backups`
+  - Takes too much RAM to be run on Lightsail. Run regularly on your local machine to back up data.
+
+#### Making Images
+- make_gifs.py
+
+  - Script used to make gifs for DWI images, one subject at a time.
+  - See the [version used in HBCD](https://github.com/DCAN-Labs/QSIPREP_HBCD_QC) for more advanced usage.
+
+- es2sfs_img_converter.py
+
+  - Transforms executive summary images that appear in a 1x9 grid to the 3x3 grid seen in BrainSwipes
+  - Called by `bulk_es2sfs.sh` which is called by `get_exec_sum.sh`.
+
+- bulk_es2sfs.sh
+
+  - Runs `es2sfs_img_converter.py` on all .gif images in a directory.
+  - Called by `get_exec_sum.sh`. 
+
+- get_exec_sum.sh
+
+  - Connects to an s3 bucket, pulls one subject's executive summary, converts all .gif images with `bulk_es2sfs.sh`, pushes all present .png images to a new s3 bucket and then cleans up after itself. 
+
+- xcpd folder
+
+  - version of scripts that cooperates with the image sizes output by the xpcd pipeline. Place alongside `get_exec_sum.sh` to use as normal
