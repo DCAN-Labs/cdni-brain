@@ -8,6 +8,8 @@ Produce status html on the output data to see how many processing jobs succeeded
 
     `conda activate abcd-hcp-pipeline_audit`
 
+**NOTE:** You do NOT need to module load python before running the command, this is cause the audit to not work
+
 3. Navigate to the correct directory: `cd /home/faird/shared/code/internal/utilities/abcd-hcp-pipeline_audit`
 
 4. To run on data that's on the s3, s3 keys are needed (run s3info in the command line, then see 1. below). To run on tier 1, see 2.

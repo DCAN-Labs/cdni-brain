@@ -147,11 +147,11 @@ Your base environment is automatically located in your home directory, but you c
 
 Each repository should include its own conda environment so that different users are sourcing consistent packge versions. Some pacakges can also be tricky to set up, so this removes the initial work that people need to do to use a repository. The `conda create` command will create a new conda environment. In general, name your envionrment something easily identifiable to whatever repository that environment is for, with *-env* at the end. The example command below creates an environment for the custom clean repository. 
 
-`conda create --prefix /home/faird/shared/code/external/envs/custom_clean-env python=3.9 --name custom_clean`
+`conda create python=3.9 --name custom_clean` 
 
 * Include a name for the environment with the `--name` flag to make it easier to activate. **Note:** If you don't name your environment when you originally create it, you cannot add a name later.
 
-* Environments that are used for ABCC related repositories are stored in `/home/rando149/shared/code/external/envs` otherwise store your environments in `/home/faird/shared/code/external/envs`.  
+* Environments that are used for ABCC related repositories are stored in `/home/rando149/shared/code/external/envs` otherwise store your environments in `/home/faird/shared/code/external/envs`. Make sure you are in the directory where the conda environment needs to be stored when creating the environment.
 
 ### Activating a new conda environment 
 

@@ -1,4 +1,4 @@
-# Infant Preprocessing 
+# Defacing
 
 Defacing is an important preprocessing step to ensure the anonymity of the subjects. Without defacing, a subjects facial structure could theoretically be reconstructed from a MRI image. Although skull-stripping could also be done to anonymize an image, this can limit what processing can be done to those images and this is especially hard to do in infants, which is why defacing is the standard method of anonymization. 
 
