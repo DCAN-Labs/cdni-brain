@@ -19,6 +19,7 @@ nav:
       - Optimizing sbatch Parameters: optimizing.md
       - Job Submissions: jobs.md
       - fairshare: fairshare.md
+      - Queue Optimization: queue-optimization.md
   - Software Environments:
       - VS Code: vscode.md 
       - Miniconda Environments: miniconda.md
