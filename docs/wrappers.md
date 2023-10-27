@@ -37,7 +37,7 @@ Current list of wrappers developed for s3 integration:
 
 * Reliability maps
 
-* CABINET
+* BIBSnet
 
     Each wrapper should have a template file which has generalized commands with variables that get filled with the execution of `make_run_files`. Modifications will also need to be made within the `submit_{}.sh` file. 
 

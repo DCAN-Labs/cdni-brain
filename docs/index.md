@@ -14,4 +14,6 @@ You can find out more information about the lab on our [website](https://innovat
 
 This handbook outlines key data processing tools and resources used by DCAN Labs. Topics covered include MSI basics and the Slurm job scheduler, MRI data conversion and initial quality control, data processing pipelines, post-processing quality control, and best practices for data storage and transfer.
 
-[Questions?](https://github.com/DCAN-Labs/data-processing-handbook/issues)
+## Questions/Suggestions
+
+Please post any question in the form of an issue to the [data-processing-handbook](https://github.com/DCAN-Labs/data-processing-handbook/issues) repository on GitHub. This includes clarifying questions on the handbook content, reporting errors/typos, requesting additional sections/topics, etc. Note that this will require that you have a GitHub account: for further information, please refer to GitHub's documentation on how to post an issue [here](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue).

@@ -4,11 +4,11 @@ For this pipeline, the data first needs to be converted and properly orientated 
 
 1. Get DICOMS from s3 bucket (`s3://zlab-nhp`)
 
-2. Convert DICOMS to bids using dcm2bids
+1. Convert DICOMS to BIDS and apply NORDIC
+    - Use the [Dcm2bids3 NORDIC wrapper](nordic.md) -- needs a pair of 10.5T-specific config files to run, and use `--keep-non-nordic` when calling `nordicsbatch.sh` in the post-op command
+    - Confirm the number of noise volumes per run-- for the Z-Lab 10.5T data, this is usually 5 
 
-    - Need to use a 10.5T-specific config file
-
-3. Correct the orientation of the images. **NOTE**: These steps should be correct for data aquired **mid-2021 onward**, older data may be orientated differently. Please check with Thomas (tmadison@umn.edu) if you encounter data that does not match the descriptions below after performing the orientation correction. 
+1. Correct the orientation of the images. **NOTE**: These steps should be correct for data aquired **mid-2021 onward**, older data may be orientated differently. Please check with Thomas (tmadison@umn.edu) if you encounter data that does not match the descriptions below after performing the orientation correction. 
 
     To correct the fmap and func files:
     - Naviagate into the proper directory: `cd /home/faird/shared/code/internal/utilities/zlab_10p5T_nhp_processing/orientation_fix`
@@ -58,24 +58,24 @@ For this pipeline, the data first needs to be converted and properly orientated 
                 sform_yorient Posterior-to-Anterior
                 sform_zorient Inferior-to-Superior
 
-4. Run the BIDS NORDIC wrapper 
 
-    - See the [NORDIC page](nordic.md)
-
-    - NORDIC denoising is only run on the func directory 
-
-    - For 10.5T data, there are 5 noice volumes in the fuinc runs (as opposed to the normal 3 in other NORDIC data we process)
-
-    - The wrapper submits the NORDIC processing jobs to run in the background so to verify that they are completed, check that for each *task-restSE* file in the input a *task-restSENORDICrmnoisevols* file was created. You can also use `squeue -al --me` to check which jobs are still queued or running.
-
-    - Run the wrapper cleanup script after all NORDIC jobs are done 
-
-5. Make T1w brain mask (or use pre-made mask from previous session)
+1. Make T1w brain mask (or use pre-made mask from previous session)
 
     - Pre-made masks are located at `s3://zlab-nhp/macaque_masks`
 
     - Use the *dilM_edit.nii.gz* versions which have been manually edited to work better with the pipeline
 
-6. Add IntendedFor fields to fmap jsons
+1. Add IntendedFor fields to fmap jsons
 
-7. Now you are ready to run the pipeline (see [pipelines](pipelines.md) for the command)
+1. Now you are ready to run the pipeline (see [pipelines](pipelines.md) for the command)
+
+## Infant Preprocessing 
+
+Defacing is an important preprocessing step to ensure the anonymity of the subjects. Without defacing, a subjects facial structure could theoretically be reconstructed from a MRI image. Although skull-stripping could also be done to anonymize an image, this can limit what processing can be done to those images and this is especially hard to do in infants, which is why defacing is the standard method of anonymization. 
+
+Defacing is done by creating a rough boxy mask that cuts off the eyes/nose/mouth so that only the brain is left in the image. This mask is created by using an existing atlas that has a mask and registering the subject head to that atlas. A linear transform is then applied to the template mask to create a mask that is in the subject space. 
+
+Usage for a directory that contains a subject folder, and the subject folder contains a T1w image, T2w image, or both:
+
+`python3 /home/feczk001/shared/projects/BCP_deface/code/deface.py /path/to/directory/`
+

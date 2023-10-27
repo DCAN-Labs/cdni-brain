@@ -227,21 +227,30 @@ Overview: fMRI -> anatomical registration - no boundary based registration, use 
     ![Example DCAN Infant command](img/dcan-infant-example.png)
 
 
-## 7. CABINET
+## 7. BIBSnet
 
-CABINET is a segmentation pipeline including stages prebibsnet, bibsnet, and postbibsnet. This pipeline will eventually also run Nibabies and XCP-D.
+BIBSnet is a segmentation pipeline including stages prebibsnet, bibsnet, and postbibsnet.
 
 Example command: 
 
-![Example CABINET run command](img/cabinet_example_command.png)
+```
+/usr/bin/singularity run --nv \
+-B /path/to/input/:/input \
+-B /path/to/output/:/output \
+-B /path/to/working/directory/:/work \
+/home/faird/shared/code/internal/pipelines/bibsnet_container/bibsnet_v3.0.0.sif \
+/input /output participant -start prebibsnet -end postbibsnet -v \
+--participant-label ${subject_id} \
+-w /work
+```
 
 
- _NOTE: IT IS NOT RECOMMENDED TO RUN CABINET OUTSIDE OF THE CONTAINER._
+ _NOTE: IT IS NOT RECOMMENDED TO RUN BIBSNET OUTSIDE OF THE CONTAINER._
 
 
-For troubleshooting information, see [the Testing CABINET page.](cabinet-testing.md)
+For troubleshooting information, see [the Testing BIBSnet page.](bibsnet-testing.md)
 
-Find more information about CABINET [here.](https://cabinet.readthedocs.io/en/latest/)
+Find more information about BIBSnet [here.](https://bibsnet.readthedocs.io)
 
 
 ## 8. Task Pipeline
@@ -264,16 +273,9 @@ Example command:
 
 Find out more information [here.](https://github.com/DCAN-Labs/abcd-bids-tfmri-pipeline)
 
-## 9. BIBSnet
+## 9. CABINET
 
-BIBSnet segments an optimally-aligned T1 and T2 pair with a deep neural network trained via nnU-Net and SynthSeg.
-
-Example command:
-
-        singularity run --nv --cleanenv --no-home \
-        -B /path/to/input:/input \
-        -B /path/to/output:/output \
-        /path/to/BIBSNet.sif \
-        --input /input --output /output --task <task ID> --model 3d_fullres 
-
-Find more information about BIBSnet [here.](https://github.com/DCAN-Labs/BIBSnet)
+CABINET is a tool that can be used to run multiple containers together.
+If you need to repeatedly run multiple containers back to back, consider doing it with CABINET!
+You will need to construct a parameter JSON file to tell CABINET how to run your containers.
+For examples see the [CABINET repository on GitHub](https://github.com/DCAN-Labs/CABINET)

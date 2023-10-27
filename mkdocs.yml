@@ -5,6 +5,7 @@ plugins:
 docs_dir: docs
 nav:
   - Overview: index.md
+  - Basecamp: basecamp.md
   - Using MSI: 
       - Interactive High Performance Computing (HPC) Resources: hpc.md
       - MSI Partitions: partitions.md
@@ -43,12 +44,14 @@ nav:
       - Processing Status: status.md
   - Troubleshooting:
       - Troubleshooting and Image Viewing: troubleshooting.md
-      - Testing CABINET: cabinet-testing.md
+      - Testing BIBSnet: bibsnet-testing.md
       - Requests and Questions: requests.md
   - Data Uploads and Transfers:
       - Data Transfers: uploads.md
       - Transfer ABCC Data to the NGDR: ngdr-transfer.md
+  - Quality Control:
+      - BrainSwipes: brainswipes.md
   - Contributions:
       - Contributors and Papers: contributions.md
   - THANK YOU FOR USING THE DPH:
-      - blank page: blank.md
+      - _____: blank.md

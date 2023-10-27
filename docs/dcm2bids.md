@@ -1,6 +1,10 @@
 # DICOM to BIDS Conversion (Dcm2bids)
 
-Read: [Dcm2bids documentation page](https://unfmontreal.github.io/Dcm2Bids/docs/get-started/)
+**NOTE: this document describes usage of Dcm2bids 2.1.x as used in the `dcm2bids` and `dcm2bids_xa30_test` labwide conda environments -- if using the `dcm2bids3` environment (intended for use with the [Dcm2bids3 NORDIC wrapper](nordic.md), refer to the Dcm2bids 3 documentation page linked below for information on breaking changes introduced in Dcm2bids 3**
+
+Read: [Dcm2bids 2.1.9 documentation page](https://unfmontreal.github.io/Dcm2Bids/2.1.9/)
+
+Read: [Dcm2bids 3 documentation page](https://unfmontreal.github.io/Dcm2Bids/current/)
 
 Watch: [Dcm2bids DCAN tutorial recording](https://drive.google.com/drive/folders/1OgyqFfpqp3qWg4OJzY9ADTwV26j8fJYf) 
 
@@ -32,7 +36,7 @@ Watch: [Dcm2bids DCAN tutorial recording](https://drive.google.com/drive/folders
         
     * `conda activate dcm2bids`
             
-        - For multi-echo data, or data acquired on a scanner with the XA30 software package, instead use `conda activate dcm2bids_xa30_test`
+        - For multi-echo data, or data acquired on a Siemens scanner with an XA software package (e.g. XA30), use `conda activate dcm2bids3` if using the Dcm2bids3 NORDIC wrapper (note you must update your config files to be dcm2bids3 compatible --  see https://unfmontreal.github.io/Dcm2Bids/3.0.2/upgrade/#upgrading-from-2x-to-3x for a summary of breaking changes between 2.x and 3.x), else use `conda activate dcm2bids_xa30_test`
         
     * `dcm2bids_helper -d /path/to/input/dir/ -o /path/to/output/dir/`
             
@@ -40,7 +44,7 @@ Watch: [Dcm2bids DCAN tutorial recording](https://drive.google.com/drive/folders
             
         - The `-o` flag is optional. It will create a directory for the output either in your input directory or in the output directory you specify.
             
-        - The `dcm2bids_ helper` will give you an example of the sidecars. You can use the helper with the dicoms of one participant. It will utilize `dcm2niix` and save the result inside the `tmp_dcm2bids/helper` of the output directory. 
+        - The `dcm2bids_helper` will give you an example of the sidecars. You can use the helper with the dicoms of one participant. It will utilize `dcm2niix` and save the result inside the `tmp_dcm2bids/helper` of the output directory. 
         
         * After completing your config file, to run dcm2bids, first cd into your BIDS directory. Then use this command: `dcm2bids -d /path/to/input/dir/ -p participant_id -c /path/to/config_file.json`
     

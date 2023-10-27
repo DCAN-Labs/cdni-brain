@@ -63,7 +63,7 @@ Navigate into the cloned repository
 
 - Run `cd name-of-repo`
 
-Build the container with docker. The version (`1.0.` in the example command) is whatever you name it. Check the docker documentation for acceptable container names. If there is an existing repository on Docker hub, include `dcanumn` before `/pipeline` (i.e. `dcanumn/cabinet:2.4.3`). If you want to build using cache files from previous builds (resulting in a faster build), do not include the `--no-cache` flag.
+Build the container with docker. The version (`1.0.` in the example command) is whatever you name it. Check the docker documentation for acceptable container names. If there is an existing repository on Docker hub, include `dcanumn` before `/pipeline` (i.e. `dcanumn/bibsnet:3.0.0`). If you want to build using cache files from previous builds (resulting in a faster build), do not include the `--no-cache` flag.
 
 - Run `sudo docker build -t /pipeline-name:1.0. . --no-cache`
 
@@ -134,10 +134,6 @@ To build the image from docker archive, grab an srun then run:
         singularity build name_for_singularity_image.sif docker-archive://pipeline-name.tar
 
 ## Special Container Builds 
-
-**CABINET**
-
-CABINET is too large to be built on the VM so you do not need to ssh into the VM. It can be built directly on the Linux machine.
 
 **10.5T NHP ABCD BIDS Pipeline Synth**
 
