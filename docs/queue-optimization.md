@@ -25,9 +25,9 @@ Submitting jobs under multiple PI groups cannot be done in the same way as submi
 To submit the jobs, you will need to submit a subset under each group one at a time. For example, if I had 588 jobs to submit, I would submit half under the group with the highest queueing efficiency and the other half under the second highest queueing efficiency, modifying the group parameter between submissions. This is not an exact science, however, which means you might end up wanting to switch the group on some of the jobs if they've sat stagnant in the queue for awhile (days) - see scontrol under "Other useful commands" [here](slurm.md).
 
 The [SBATCH parameter](slurm-params.md) to modify to change the group is shown below:
-'''
+```
 #SBATCH -A group_name
-'''
+```
 
 ## Take Advantage of all of the Clusters
 
