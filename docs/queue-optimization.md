@@ -35,4 +35,4 @@ You can ssh into different clusters (Mesabi, Mangi, Agate) in order to submit jo
 
 ## Teamwork Makes the Dream Work
 
-Utilize your team to submit groups of jobs as well. Do not wait to do this when you've maxed out your queue. This makes things go faster no matter how many jobs you are submitting. Make sure your team members are checking their [fairshare](fairshare.md) and modifying the [SBATCH group parameter}(slurm-params.md) as well.
+Utilize your team to submit groups of jobs as well. Do not wait to do this when you've maxed out your queue. This makes things go faster no matter how many jobs you are submitting. Make sure your team members are checking their [fairshare](fairshare.md) and modifying the [SBATCH group parameter](slurm-params.md) as well.
