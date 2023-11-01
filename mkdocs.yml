@@ -25,6 +25,7 @@ nav:
       - VS Code: vscode.md 
       - Miniconda Environments: miniconda.md
       - Best Coding Practices: workflow.md
+      - Software Versioning: versioning.md
       - Containers: containers.md
       - Virtual Machine: vm.md
   - BIDS:
