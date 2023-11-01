@@ -8,7 +8,7 @@ Image viewing is a necessary process to conclude if a pipeline job finished succ
 
 ## DCAN Infant Pipeline (infant-abcd-bids-pipeline)
 
-### Common errors
+### Common errors when processing with the DCAN infant pipeline
 
 The Slurm logs will tell you which stage of the pipeline failed. The Slurm Readout prior to exiting will look something like this:
 
