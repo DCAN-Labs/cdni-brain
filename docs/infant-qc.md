@@ -1,4 +1,4 @@
-# Quality Control for Infant Date
+# Quality Control for Infant Data
 
 ## Structural Pre-Processing Quality Assessment of BIDS Input Data
 
