@@ -68,7 +68,7 @@ Note: the use of the word "segmentation" in this case is coincidence. A segmenta
 If you were using an aseg supplied from an external source (other than PreFreeSurfer) the file might have an orientation or dimension or other property that is not what FreeSurfer expected. Or, if you were using a mask from another source, the aseg file and the mask file might not have the same dimensions. Or it could just be that the aseg was not very good.
 
 
-### Troubleshooting Task Errors in Pipeline Logs
+### Troubleshooting Functional Errors in Pipeline Logs
 
 These pipeline stages process task data: FMRIVolume, FMRISurface, DCANBOLDProcessing. When you go to any of those subdirectories in the processed data logs, you will find multiple output and error files: one for each task/run combination that was processed when the pipeline failed, and, in some cases, files for setup and teardown steps.
 
