@@ -38,6 +38,7 @@ nav:
   - Processing:
       - Pipelines: pipelines.md
       - S3 Pipeline Wrappers: wrappers.md
+      - Infant Pipeline Documentation: infant-doc.md
   - After processing:
       - file-mapper: filemapper.md    
       - Precision Mapping Wrapper: precision.md
@@ -51,6 +52,7 @@ nav:
       - Transfer ABCC Data to the NGDR: ngdr-transfer.md
   - Quality Control:
       - BrainSwipes: brainswipes.md
+      - Infant Data: infant-qc.md
   - Contributions:
       - Contributors and Papers: contributions.md
   - THANK YOU FOR USING THE DPH:
