@@ -6,7 +6,41 @@ For any processing failures, we triage what happened. Most troubleshooting proce
 Image viewing is a necessary process to conclude if a pipeline job finished successfully, but it also may be necessary when a processing error has been encountered. There are a few different options for viewing anatomical images. It may be most efficient to first download the images locally and then use ITKsnap to view them. However, when working on MSI, applications such as `fslview_deprecated` or `fsleyes` can be used. For viewing functional images, `wb_view` is ideal (make sure to `module load fsl` or `module load workbench` before using these applications). For more information on nifti and cifti files (image file types), refer to the video sessions in the subfolders of [this google drive folder](https://drive.google.com/drive/u/0/folders/1yc3w2zNYVZQvTcCgxKk_j6ecZLoyWiCM).
 
 
-## infant-abcd-bids-pipeline (DCAN Infant Pipeline)
+## DCAN Infant Pipeline (infant-abcd-bids-pipeline)
+
+### Common errors
+
+The Slurm logs will tell you which stage of the pipeline failed. The Slurm Readout prior to exiting will look something like this:
+
+```
+	_cli()
+  File "/app/run.py", line 80, in _cli
+	return interface(**kwargs)
+  File "/app/run.py", line 585, in interface
+	stage.run(ncpus)
+  File "/app/pipelines.py", line 697, in run
+	self.teardown(result)
+  File "/app/pipelines.py", line 637, in teardown
+	self.__class__.__name__)
+Exception: error caught during stage: FMRISurface
+
+File "/app/run.py", line 589, in <module>
+	_cli()
+  File "/app/run.py", line 80, in _cli
+	return interface(**kwargs)
+  File "/app/run.py", line 585, in interface
+	stage.run(ncpus)
+  File "/app/pipelines.py", line 697, in run
+	self.teardown(result)
+  File "/app/pipelines.py", line 637, in teardown
+	self.__class__.__name__)
+Exception: error caught during stage: FreeSurfer stage
+```
+
+In order to assess the errors more closely, go to the logs that are output from each stage of the pipeline.
+
+
+### Inspecting the data for quality or processing issues
 
 1. First follow established SOPs to check that the input data is high quality enough to be processed: see *Structural Pre-Processing Quality Assessment of BIDS* under [Quality Control for Infant Data](https://dcanlab.readthedocs.io/en/latest/manualpro/infant/qc/) on the DCAN Labs RTDs 
 
