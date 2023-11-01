@@ -8,36 +8,42 @@ Image viewing is a necessary process to conclude if a pipeline job finished succ
 
 ## DCAN Infant Pipeline (infant-abcd-bids-pipeline)
 
-### Common errors when processing with the DCAN infant pipeline
+### Inspecting Slurm and pipeline logs for errors
 
-The Slurm logs will tell you which stage of the pipeline failed. The Slurm Readout prior to exiting will look something like this:
+Slurm logs are the stdout and stderr files from a Slurm job. The first thing to do when a job no longer is running is check the Slurm logs. Each job will have an output (`.out`) and error (`.err`) Slurm log.
 
-```
-	_cli()
-  File "/app/run.py", line 80, in _cli
-	return interface(**kwargs)
-  File "/app/run.py", line 585, in interface
-	stage.run(ncpus)
-  File "/app/pipelines.py", line 697, in run
-	self.teardown(result)
-  File "/app/pipelines.py", line 637, in teardown
-	self.__class__.__name__)
-Exception: error caught during stage: FMRISurface
+MSI outputs these into a single .out file by default, in the directory you called the submission script from.
 
-File "/app/run.py", line 589, in <module>
-	_cli()
-  File "/app/run.py", line 80, in _cli
-	return interface(**kwargs)
-  File "/app/run.py", line 585, in interface
-	stage.run(ncpus)
-  File "/app/pipelines.py", line 697, in run
-	self.teardown(result)
-  File "/app/pipelines.py", line 637, in teardown
-	self.__class__.__name__)
-Exception: error caught during stage: FreeSurfer stage
-```
+Type `scontrol show jobid -dd &lt;job id num> | grep Std` to see the paths for StdErr, StdIn (usually /dev/null), and StdOut for any slurm job currently in the queue.
 
-In order to assess the errors more closely, go to the logs that are output from each stage of the pipeline.
+Common errors include the following:
+
+#### Job Failed Before Pipeline Started
+
+The lab's scripts copy the BIDS input, templates, etc. to the node before they run the pipeline. If any of that failed, the Slurm logs should tell you what happened.
+
+Jobs (e.g. Slurm on MSI) will not start if you don’t have write access to where the logs should go
+
+
+#### Job Failed After Pipeline Started
+
+The lab's scripts print the string `RUNNING DOCKER IMAGE` just before calling the pipeline. Before starting each stage, the pipeline prints a line that says `running `followed by the name of the stage.
+
+If the job succeeded (i.e., the pipeline successfully ran all the way through all of the stages), the Slurm logs will have a message that contains `BEGINNING SUCCESS CLEANUP`. If the job failed, the slurm logs will have a message that contains `BEGINNING FAIL CLEANUP`. The most common failures are described here.
+
+
+#### Job Timed Out
+
+If the slurm logs say the job caught an exit code of 140 or 240, the job timed out. Slurm jobs in the exacloud partition time out after 36 hours. (When using the lab's scripts, jobs are allowed to run for just 34 hours so that they have a good chance of copying all the job's data back to lustre1.)
+
+Look higher in the output log to find the last stage that was started. Copy the name of the last stage exactly (case matters). Resubmit the job, starting with that stage.
+
+
+#### Job Exception During Stage
+
+If the job failed but did not time out, the Slurm error log will usually have a line that says `Exception: error caught during stage:` followed by the name of the stage. Note the stage name. That's the stage to start from when you resubmit, _after _you figure out why it failed and fix the problem. This usually requires looking at the pipeline logs. To find them, look at the bottom of the Slurm output log for the string `COPY PROCESSED DATA TO` to find the path to the data for that study. Go to that path and then into the tree for `&lt;subject>/&lt;session>/logs/&lt;stage>`.
+
+When using pipeline logs, remember: cascading errors are of no use to you; you only care about the _first _error that happened in the stage. 
 
 
 ### Inspecting the data for quality or processing issues
