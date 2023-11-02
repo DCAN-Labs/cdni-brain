@@ -53,6 +53,7 @@ nav:
   - Data Uploads and Transfers:
       - Data Transfers: uploads.md
       - Transfer ABCC Data to the NGDR: ngdr-transfer.md
+      - Collections on the NDA: nda.md
   - Lab Resources:
       - Basecamp: basecamp.md
       - Recorded Presentations: presentations.md

@@ -97,7 +97,7 @@ It is best to not run VS Code on a login node, as it takes up a decent amount of
 
 - It will also ask you to save the host fingerprint, select Continue/yes then enter your ssh password again to connect
 
-If you leave your VS Code window open for long enough, a pop up window will indicate that you have been disconnected. If you connected to a login node, you will need to start the connection progress over again (assuming that the srun has run out of time) but if you were just connected to a login node, you should be able to click "Reload Window" and it will reconnect to MSI on it's own. For those using a VPN to connect, make sure the VPN is connected and you might have to click "Reload Window" twice for it to reconnect. 
+If you leave your VS Code window open for long enough, a pop up window will indicate that you have been disconnected. If you connected to a login node, you will need to start the connection progress over again (assuming that the srun has run out of time) but if you were just connected to a login node, you should be able to click "Reload Window" and it will reconnect to MSI on it's own. For those using a VPN to connect, make sure the VPN is connected and you might have to click "Reload Window" twice for it to reconnect. This reload process can also be done after the VPN has disconnected if you log back into the VPN prior to reloading.
 
 When you are done using MSI, it is good practice to close the connection
 
