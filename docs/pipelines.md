@@ -51,7 +51,25 @@ A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing o
 
 61. Example command:
 
-    ![Example fMRIprep Command](img/fmriprep_updated_example.png)
+```
+module load singularity
+
+singularity='which singularity'
+
+${singularity} run --cleanenv \
+-B /home/faird/shared/projects/new_rae_testing/input:/data:ro \
+-B /home/faird/shared/projects/new_rae_testing/bcp_fmriprep_outputs:/out \
+-B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
+-B /tmp:/work \
+/home/faird/shared/code/external/pipelines/fmriprep/fmriprep_23.0.1.sif /data/out participant \
+--participant-label {subject_ID} \
+--cifti-output 91k \
+--omp-nthreads 3 \
+--clean-workdir \
+--resource-monitor \
+-vv \
+-w /work
+```
 
 
 ## 2. NiBabies
@@ -86,7 +104,25 @@ Nibabies is a robust pre-processing MRI and fMRI workflow that is also a part of
 
 64. Example command:
 
-    ![Example NiBabies Command](img/nibabies_updated_example.png)
+```
+module load singularity
+
+singularity='which singularity'
+
+${singularity} run --cleanenv \
+-B /home/faird/shared/projects/new_rae_testing/input/:/data:ro \
+-B /home/faird/shared/projects/new_rae_testing/bcp_nibabies_outputs/:/out \
+-B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
+-B /home/faird/shared/projects/new_rae_testing/work_dir/:/work \
+-B /home/faird/shared/projects/new_rae_testing/bibsnet_outputs/:/derivatives \
+/home/faird/shared/code/external/pipelines/nibabies/nibabies_unstable_04182023.sif /data /out participant
+--participant-label {subject_ID} --age-months {age} -s {age_mo} \
+--derivatives /derivatives \
+--cifti-output 91k \
+--omp-nthreads 3 \
+-w /work
+```
+
 
 ## 3. ABCD-HCP-BIDS
 
@@ -116,7 +152,21 @@ This pipeline provides an interface for processing BIDS-formatted MRI datasets u
 
 67. Example command:
 
-    ![Example ABCD-HCP Command](img/abcd_hcp_pipeline_run_example.png)
+```
+module load singularity
+
+singularity='which singularity'
+
+${singularity} run --cleanenv --no-home \
+-B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
+-B /path/to/BIDS/input_data:/data:ro \
+-B /path/to/outputs:/out \
+/home/faird/shared/code/internal/pipelines/ABCD-BIDS/abcd-hcp-pipeline_latest.sif /data/out \
+--freesurfer-license=/opt/freesurfer/license.txt \
+--participant-label subject_ID \
+--stages "PreFreeSurfer:ExecutiveSummary" \
+--ncpus 8
+```
 
 ## 4. NHP 10.5T ABCD BIDS synth
 
@@ -146,7 +196,30 @@ This pipeline is for processing macaque data collected from a 10.5T scanner from
 
 2. Example command:
 
-    ![Example NHP 10.5T Command](img/nhp-10.5_example_command.png)
+```    
+module load singularity; singularity exec --cleanenv \
+-B /scratch.global/tmadison/macaque_masks:/masks \
+-B /home/faird/shared/code/internal/utilities/zlab_10p5T_nhp_processing/parcellations:/opt/dcan-tools/dcan_bold_proc/templates/parcellations \ 
+-B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
+-B /home/faird/shared/code/internal/utilities/zlab_10p5T_nhp_processing/MultiTemplates/MMU46011:/MultiTemplates \
+-B /path/to/inputs/nhp_in:/bids_input:ro \
+-B /path/to/outputs/nhp_out:/output \
+/home/faird/shared/code/internal/pipelines/nhp-ABCD-BIDS/nhp-abcd-bids-pipeline-synth_0.2.11.sif /entrypoint.sh /bids_input /output \
+--freesurfer-license=/opt/freesurfer/license.txt \
+--ncpus 2 \
+--multi-template-dir=/MultiTemplates \
+--tl-reg-method ANTS_NO_INTERMEDIATE \
+--hyper-normalization-method ROI_IPS \ 
+--norm-gm-std-dev-scale 0.5 \
+--norm-csf-std-dev-scale 0.5 \
+--norm-wm-std-dev-scale 0.5 \
+--single-pass-pial \
+--participant-label {SUBJECT_ID} \
+--t1-brain-mask=/masks/sub-{SUBJECT_ID}_ses-{SESSION_ID}_T1w_pre_mask_edit_dilM_ero.nii.gz \
+--make-white-from-norm-t1 \
+--bandstop 12 18
+```
+
 
 ## 5. XCP-D
 
@@ -180,7 +253,33 @@ The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of
 
 3. Example command: 
 
-    ![Example xcpd Command](img/xcp-d_updated_example.png)
+```
+module load singularity
+
+singularity= 'which singularity'
+
+${singularity} run –cleanenv \
+-B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \ 
+-B ${fmriprep_dir}/processed/fmriprep/sub-${subj_id}_ses-${ses_id}:/fmriprep_out \
+-B ${xcpd_dir}/processed/sub-${subj_id}_ses-${ses_id}:/xcpd_out \
+-B ${xcpd_dir}/work_dir/sub-${subj_id}_ses-${ses_id}:/wkdir \
+/home/faird/shared/code/external/pipelines/xcp_d/xcp_d_unstable_05052023a.sif \
+-f 0.3 \
+--cifti \ 
+-m \
+--participant-label ${subj_id} \
+--resource-monitor \
+--dcan-qc \
+--omp-nthreads 3 \ 
+--despike \
+--motion-filter-type notch ${bandstopmin} ${bandstopmax} \ 
+--warp-surfaces-native2std \
+- vv \
+--input-type fmriprep \ #can replace with nibabies 
+#if working with nibabies, add -r {head radius in mm} 
+-w /wkdir \
+/fmriprep_out /xcpd_out participant
+```
 
 ## 6. DCAN Infant
 
@@ -224,8 +323,22 @@ Overview: fMRI -> anatomical registration - no boundary based registration, use 
 
 3. Example command:
 
-    ![Example DCAN Infant command](img/dcan-infant-example.png)
-
+```
+singularity run --cleanenv\
+-e /
+-B ${data_dir}:/bids_input \ 
+-B ${OUTPUT_DIR}:/output \
+-B ${FS_LICENSE}/license.txt:${lic_loc} \
+-B ${TEMPLATE_BIND}:/opt/pipeline/global/templates \ 
+${infant_abcd_bids_pipeline} \ 
+--freesurfer-license ${lic_loc} \ 
+--participant-label ${subj_id} \ 
+--session-id ${ses_id} \
+--hyper-normalization-method ${HNM} \ 
+--ncpus ${NCPUS} \
+/bids_input \ 
+/output
+```
 
 ## 7. BIBSnet
 
@@ -268,8 +381,7 @@ Example command:
         events_dir=/home/users/shared/data/task_events/
         wrapper_dir=.
 
-        python3 pipeline_wrapper.py --subject ${subject_ID} --ses ${session_ID} --study-dir ${study_dir} --task ${task_name} 
-        --events-dir ${events_dir} --fsl-dir ${fsl_dir} --wb-command ${wb_command} --wrapper-location ${wrapper_dir}
+         python3 pipeline_wrapper.py --subject ${subject_ID} --ses ${session_ID} --study-dir ${study_dir} --task ${task_name} --events-dir ${events_dir} --fsl-dir ${fsl_dir} --wb-command ${wb_command} --wrapper-location ${wrapper_dir}
 
 Find out more information [here.](https://github.com/DCAN-Labs/abcd-bids-tfmri-pipeline)
 
