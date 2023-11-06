@@ -5,7 +5,6 @@ plugins:
 docs_dir: docs
 nav:
   - Overview: index.md
-  - Basecamp: basecamp.md
   - Using MSI: 
       - Interactive High Performance Computing (HPC) Resources: hpc.md
       - MSI Partitions: partitions.md
@@ -15,29 +14,32 @@ nav:
       - S3: s3.md
       - Common MSI Roadblocks: roadblocks.md
   - Slurm/Processing Jobs:
-      - Slurm: slurm.md
-      - Slurm Parameters: slurm-params.md
+      - Slurm Commands: slurm.md
+      - Slurm Jobs: slurm-params.md
       - Optimizing sbatch Parameters: optimizing.md
       - Job Submissions: jobs.md
       - fairshare: fairshare.md
+      - Queue Optimization: queue-optimization.md
   - Software Environments:
       - VS Code: vscode.md 
       - Miniconda Environments: miniconda.md
       - Best Coding Practices: workflow.md
+      - Software Versioning: versioning.md
       - Containers: containers.md
       - Virtual Machine: vm.md
   - BIDS:
       - DICOM to BIDS conversion: dcm2bids.md
       - BIDS Validation: bids.md
-      - NORDIC Denoising and Dcm2bids3 NORDIC Wrapper: nordic.md
-  - Preprocessing:
-      - Infant Preprocessing: infant-preproc.md
+      - NORDIC Denoising and BIDS NORDIC Wrapper: nordic.md
+  - Before processing:
+      - Defacing: infant-preproc.md
       - 10.5T NHP ABCD BIDS Pipeline Synth: preprocessing.md
       - Fast Track QC Comparison (ABCD): fasttrack.md
   - Processing:
       - Pipelines: pipelines.md
       - S3 Pipeline Wrappers: wrappers.md
-  - Postprocessing:
+      - Infant Pipeline Documentation: infant-doc.md
+  - After processing:
       - file-mapper: filemapper.md    
       - Precision Mapping Wrapper: precision.md
       - Processing Status: status.md
@@ -45,11 +47,17 @@ nav:
       - Troubleshooting and Image Viewing: troubleshooting.md
       - Testing BIBSnet: bibsnet-testing.md
       - Requests and Questions: requests.md
+  - Quality Control:
+      - BrainSwipes: brainswipes.md
+      - Infant Data: infant-qc.md
   - Data Uploads and Transfers:
       - Data Transfers: uploads.md
       - Transfer ABCC Data to the NGDR: ngdr-transfer.md
-  - Quality Control:
-      - BrainSwipes: brainswipes.md
+      - Collections on the NDA: nda.md
+  - Lab Resources:
+      - Basecamp: basecamp.md
+      - Recorded Presentations: presentations.md
+      - UMN Recommended Courses: courses.md
   - Contributions:
       - Contributors and Papers: contributions.md
   - THANK YOU FOR USING THE DPH:

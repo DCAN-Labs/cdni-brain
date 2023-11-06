@@ -1,4 +1,4 @@
-# Slurm
+# Slurm Commands
 
 Read:
 
@@ -7,18 +7,18 @@ Read:
 * [Slurm official site](https://slurm.schedmd.com/documentation.html)
 * [Slurm commands cheat sheet](https://slurm.schedmd.com/pdfs/summary.pdf)
 
-    **Slurm** is MSI’s job scheduling system. It is responsible for managing the allocation of computing resources among MSI users and user groups. In the DCAN labs, most data processing tasks are executed via Slurm job submissions, in the form of **batch scripts** submitted with the **sbatch **command. A batch script is a text file that specifies both the resources (e.g. CPUs, RAM, time) and the commands to be run for a processing job.
+**Slurm** is MSI’s job scheduling system. It is responsible for managing the allocation of computing resources among MSI users and user groups. In the DCAN labs, most data processing tasks are executed via Slurm job submissions, in the form of **batch scripts** submitted with the **sbatch **command. A batch script is a text file that specifies both the resources (e.g. CPUs, RAM, time) and the commands to be run for a processing job.
 
 
-    Slurm also has “interactive” jobs, which allow access to compute resources directly from the terminal, as opposed to batch job submissions which run in the background.
+Slurm also has “interactive” jobs, which allow access to compute resources directly from the terminal, as opposed to batch job submissions which run in the background.
 
-    * **NOTE**: Login nodes, e.g. “ah1001”, “ln1001” should only be used for minimal tasks like batch script submission, filesystem browsing, small file transfers, and text editing.  Jobs requiring more time or resources should be run via sbatch submission, srun, or interactive session with dedicated compute resources. **Processes on login nodes are automatically terminated after 15 minutes.** 
-
-
-    Also available are various commands for job accounting, job management, and environment configuration. (See cheat sheet linked below)
+* **NOTE**: Login nodes, e.g. “ah1001”, “ln1001” should only be used for minimal tasks like batch script submission, filesystem browsing, small file transfers, and text editing.  Jobs requiring more time or resources should be run via sbatch submission, srun, or interactive session with dedicated compute resources. **Processes on login nodes are automatically terminated after 15 minutes.** 
 
 
-    **A table summarizing some commands that can be used inside Slurm job scripts ([sruns](#4-1-srun-immediately-run-a-command-using-the-specified-compute-resources) and [sbatchs](#4-2-sbatch-copies-the-script-in-an-internal-storage-and-then-uploads-it-on-the-compute-node-when-the-job-starts))**. The first four commands are required, while the other commands are optional. See [here](https://slurm.schedmd.com/sbatch.html) for a larger list of options. For parameter optimization, [refer to using seff in this section](#15-optimizing-sbatch-parameters).
+Also available are various commands for job accounting, job management, and environment configuration. (See cheat sheet linked below)
+
+
+**A table summarizing some commands that can be used inside Slurm job scripts (see [sruns and sbatch](slurm-params.md))**. The first four commands are required, while the other commands are optional. See [here](https://slurm.schedmd.com/sbatch.html) for a larger list of options. For parameter optimization, [refer to using seff in this section](#15-optimizing-sbatch-parameters).
 
 
 <table>
@@ -128,11 +128,11 @@ Read:
     - Check the jobs you have in queue by using squeue -al --me
 
 4. Change job account (each PI in the lab has their own Slurm group account with its own allocation of resources and queue priority. It is sometimes useful to change accounts to distribute resource requests for large processing jobs, or when an account has low queue priority due to heavy usage) : `scontrol update JobId=#### Account=new_group`
-    - An example command has _Job 234293_ originally submitted under default account _miran045_, and to change it to *feczk001* one would use: scontrol update JobId=234293 Account=feczk001
+    - An example command has _Job 234293_ originally submitted under default account _miran045_, and to change it to *feczk001* one would use: `scontrol update JobId=234293 Account=feczk001`
 
 5. To change a slurm job partition use: `scontrol update JobId=#### Partition=new_partition` 
-    - An example command has _Job 234293_ originally submitted with the partition _msismall_, and to change it to *msigpu* one would use: scontrol update JobId=234293 Partition=msigpu
+    - An example command has _Job 234293_ originally submitted with the partition _msismall_, and to change it to *msigpu* one would use: `scontrol update JobId=234293 Partition=msigpu`
 
 6. To change the amount of time a slurm job runs for, use: `scontrol update JobId=#### EndTime=HH:MM:SS` 
     - To find time information, first use `scontrol show JobId=####`
-    - An example command has _Job 234293_ originally submitted at the following time for 96 hours: _StartTime=2022-08-29T13:04:45_, and to change it to 48 hours one would use: scontrol update JobId=234293 EndTime=2022-08-31T13:04:45
+    - An example command has _Job 234293_ originally submitted at the following time for 96 hours: _StartTime=2022-08-29T13:04:45_, and to change it to 48 hours one would use: `scontrol update JobId=234293 EndTime=2022-08-31T13:04:45`

@@ -97,6 +97,7 @@ It is best to not run VS Code on a login node, as it takes up a decent amount of
 
 - It will also ask you to save the host fingerprint, select Continue/yes then enter your ssh password again to connect
 
+If you leave your VS Code window open for long enough, a pop up window will indicate that you have been disconnected. If you connected to a login node, you will need to start the connection progress over again (assuming that the srun has run out of time) but if you were just connected to a login node, you should be able to click "Reload Window" and it will reconnect to MSI on it's own. For those using a VPN to connect, make sure the VPN is connected and you might have to click "Reload Window" twice for it to reconnect. This reload process can also be done after the VPN has disconnected if you log back into the VPN prior to reloading.
 
 When you are done using MSI, it is good practice to close the connection
 
@@ -104,13 +105,13 @@ When you are done using MSI, it is good practice to close the connection
 
 - A command palette box will pop up in the top middle of your screen. Select Close Remote Connection.
 
-If your session keeps timing out before it connects, open VSCode settings, search for "connectTimeout" and increase "Remote SSH: Connect Timeout" to 60.
+If your session keeps timing out before it connects, open VS Code settings, search for "connectTimeout" and increase "Remote SSH: Connect Timeout" to 60.
 
 ## Conda environments
 
 ### Activating your base environment
 
-First we want to set up VSCode to automatically activate your base python envionrment. This will allow VS Code to save any python packages you download to your base by default. This way, if you already have a package available in your base directory, it will automatically use that between environments you've already activated. 
+First we want to set up VS Code to automatically activate your base python envionrment. This will allow VS Code to save any python packages you download to your base by default. This way, if you already have a package available in your base directory, it will automatically use that between environments you've already activated. 
 
 Activate your base conda environment by running `conda init` (may need to run `module load conda` first)
 
@@ -118,23 +119,23 @@ Activate your base conda environment by running `conda init` (may need to run `m
 
         # >>> conda initialize >>>
         # !! Contents within this block are managed by 'conda init' !!
-        __conda_setup="$('/panfs/roc/msisoft/anaconda/python3-2020.07-mamba/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+        __conda_setup="$('/common/software/install/migrated/anaconda/python3-2020.07-mamba/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
         if [ $? -eq 0 ]; then
             eval "$__conda_setup"
         else
-            if [ -f "/panfs/roc/msisoft/anaconda/python3-2020.07-mamba/etc/profile.d/conda.sh" ]; then
-                . "/panfs/roc/msisoft/anaconda/python3-2020.07-mamba/etc/profile.d/conda.sh"
+            if [ -f "/common/software/install/migrated/anaconda/python3-2020.07-mamba/etc/profile.d/conda.sh" ]; then
+                . "/common/software/install/migrated/anaconda/python3-2020.07-mamba/etc/profile.d/conda.sh"
             else
-                export PATH="/panfs/roc/msisoft/anaconda/python3-2020.07-mamba/bin:$PATH"
+                export PATH="/common/software/install/migrated/anaconda/python3-2020.07-mamba/bin:$PATH"
             fi
         fi
         unset __conda_setup
         # <<< conda initialize <<<
 
-- Now when you run `which python`, it should match the folder path above (`/panfs/roc/msisoft/anaconda/python3-2020.07-mamba/bin` in this example)
+- Now when you run `which python`, it should match the folder path above (`/common/software/install/migrated/anaconda/python3-2020.07-mamba/bin` in this example)
 - Note: you can use any base conda environment profile path here
 
-Your base environment is automatically located in your home directory, but you can store packages in an external file path to prevent your home directory filling up by adding a path to your .condarc. 
+Your base environment is automatically located in your home directory, but you can store packages in an external file path to prevent your home directory filling up by adding a path to your `.condarc`. 
 
 - If you do not have a `.condarc` in your home directory, run `conda config`. This should create an empty .condarc.
 
@@ -147,11 +148,11 @@ Your base environment is automatically located in your home directory, but you c
 
 Each repository should include its own conda environment so that different users are sourcing consistent packge versions. Some pacakges can also be tricky to set up, so this removes the initial work that people need to do to use a repository. The `conda create` command will create a new conda environment. In general, name your envionrment something easily identifiable to whatever repository that environment is for, with *-env* at the end. The example command below creates an environment for the custom clean repository. 
 
-`conda create --prefix /home/faird/shared/code/external/envs/custom_clean-env python=3.9 --name custom_clean`
+`conda create python=3.9 --name custom_clean` 
 
 * Include a name for the environment with the `--name` flag to make it easier to activate. **Note:** If you don't name your environment when you originally create it, you cannot add a name later.
 
-* Environments that are used for ABCC related repositories are stored in `/home/rando149/shared/code/external/envs` otherwise store your environments in `/home/faird/shared/code/external/envs`.  
+* Environments that are used for ABCC related repositories are stored in `/home/rando149/shared/code/external/envs` otherwise store your environments in `/home/faird/shared/code/external/envs`. Make sure you are in the directory where the conda environment needs to be stored when creating the environment.
 
 ### Activating a new conda environment 
 
@@ -231,6 +232,12 @@ Hypothetically if your command was `module load fsl` that would load FSL before 
 
 ### Running the debugger
 
-Now that you are hopefully all set up for a debug session, it is time to actually run and debug your script. Click the debug icon and select whichever configuration you created for this script. If there are points in the script that you want to stop at, create breakpoints by selecting the red dot to the left of the line number(s) you want to stop at (circled in brown). This will make the program stop at these lines as its running. When you start the script, the debug toolbar (circled in purple) should appear at the top of your page. This toolbar can be used to pause/continue the script (pause/play icon), run a method as one command (not line-by-line) (curved arrow), move forward manually line by line (down arrow), finish all the lines of a method as one command (if you're inside a method) (up arrow), restart the debug session with the same configuration (green arrow), or terminate the session (red square). At the left of your screen, you should see all of the variables and their values as the script goes on (circled in red). At any point, if you want to test a block of code or run any commands, open the `Debug Console` located at the bottom of your screen (where the Terminal is also located, circled in blue). This will allow you to run commands as if they were being run in the script, meaning you will have access to the variables and their values. 
+Now that you are hopefully all set up for a debug session, it is time to actually run and debug your script. Click the debug icon and select whichever configuration you created for this script. 
+
+If there are points in the script that you want to stop at, create breakpoints by selecting the red dot to the left of the line number(s) you want to stop at (circled in brown). This will make the program stop at these lines as its running. 
+
+When you start the script, the debug toolbar (circled in purple) should appear at the top of your page. This toolbar can be used to pause/continue the script (pause/play icon), run a method as one command (not line-by-line) (curved arrow), move forward manually line by line (down arrow), finish all the lines of a method as one command (if you're inside a method) (up arrow), restart the debug session with the same configuration (green arrow), or terminate the session (red square). 
+
+At the left of your screen, you should see all of the variables and their values as the script goes on (circled in red). At any point, if you want to test a block of code or run any commands, open the `Debug Console` located at the bottom of your screen (where the Terminal is also located, circled in blue). This will allow you to run commands as if they were being run in the script, meaning you will have access to the variables and their values. 
 
 ![Image of Debug Session](img/debug_session_example.png)
