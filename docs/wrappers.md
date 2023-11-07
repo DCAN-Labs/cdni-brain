@@ -52,12 +52,13 @@ Current list of wrappers developed for s3 integration:
 **Steps to modify and run pipeline wrappers (using abcd-hcp-pipeline as an example)**
 
 
+1. Copy the entire folder contents of `abcd-hcp-pipeline_scripts_with_s3_routines_with_ses` to your project folder to make changes to these scripts in your own directory
 
-1. Copy the entire folder contents of `slurm_abcd-hcp-pipeline_scripts_with_s3_routines_with_ses` to your project folder to make changes to these scripts in your own directory
+2. Modify sync and copy paths within `template.abcd-hcp-pipeline_full_run`. Be sure that the sync path is set up to have the correct structure for where you are pulling data from, some scripts assume a structure of `s3://bucket/niftis/sub-`. This script includes the actual command to run the pipeline using specified data_dir and subject ID.
 
-2. Modify sync and copy paths within `template.abcd-hcp-pipeline_full_run`. This script includes the actual command to run the pipeline using specified data_dir and subject ID.
+3. Modify `make_run_files.sh` to specify the `data_bucket` and `data_dir` (normally a tmp path) and once again check that the structure of the bucket is as expected, for example the abcd wrapper assumes the s3 bucket has a structure of `s3://bucket/sorted/sub-`. 
 
-3. Generate run files by executing `make_run_files.sh`. This script uses a series of `awk` commands to pull out subject and session ids from input data within your data bucket and creates a run file for each subject under `run_files.abcd-hcp-pipeline_full`. First review the `make_run_files.sh` script to check that the data directory paths look correct and then execute via `./make_run_files.sh`. Note that you may need to grab a node first to run this script if you have a large number of subjects.
+3. Generate run files by executing `make_run_files.sh`. This script uses a series of `awk` commands to pull out subject and session ids from input data within your data bucket and creates a run file for each subject under `run_files.abcd-hcp-pipeline_full`. Execute via `./make_run_files.sh`. Note that you may need to grab a node first to run this script if you have a large number of subjects.
 
     * Before moving on to the submission step, if you are transferring the data via globus, make sure to properly set up the endpoints. See [the section on globus transfers](uploads.md#Globus) for more information.
 
