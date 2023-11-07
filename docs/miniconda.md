@@ -15,7 +15,7 @@ DCAN Labs maintains lab-wide shared miniconda environments which are configured 
 
         conda activate environment_name 
 
-* To list the packages within an environment:
+* To list the packages within an environment (if the environment is activated you do not need to specify the name):
 
         conda list -n environment_name
 
@@ -32,7 +32,7 @@ To create a new conda environment, follow these instructions:
 
 More information about creating and using conda environments can be found [here](https://data-processing-handbook.readthedocs.io/en/latest/vscode/#conda-environments)
 
-    ** **
+** **
 
 You can also create an environment with a YAML file of requirements.
 

@@ -8,7 +8,7 @@ Produce status html on the output data to see how many processing jobs succeeded
 
     `conda activate abcd-hcp-pipeline_audit`
 
-**NOTE:** You do NOT need to module load python before running the command, this is cause the audit to not work
+**NOTE:** You do NOT need to module load python before running the command, this will cause the audit to not work
 
 3. Navigate to the correct directory: `cd /home/faird/shared/code/internal/utilities/abcd-hcp-pipeline_audit`
 

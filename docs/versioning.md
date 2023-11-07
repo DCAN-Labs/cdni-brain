@@ -90,7 +90,7 @@ Changes should be categorized using the following shorthand codes adapted from [
    <td>Refactoring (restructuring of code that does not change function input and output)
    </td>
   </tr>
-<table>
+</table>
 
 Learn more about continuous integration [here](https://resources.github.com/ci-cd/)
 
