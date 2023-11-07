@@ -21,7 +21,7 @@ Current list of wrappers developed for s3 integration:
 
 * fMRIPrep
 
-* DEAP-derivatives
+* DEAP-derivatives and sync 
 
 * CuBids
 
@@ -39,7 +39,11 @@ Current list of wrappers developed for s3 integration:
 
 * BIBSnet
 
-    Each wrapper should have a template file which has generalized commands with variables that get filled with the execution of `make_run_files`. Modifications will also need to be made within the `submit_{}.sh` file. 
+* Disk Usage (dua)
+
+* CustomClean
+
+Each wrapper should have a template file which has generalized commands with variables that get filled with the execution of `make_run_files`. Modifications will also need to be made within the `submit_{}.sh` file. 
 
 1. Submit a test job with the wrapper to assure the wrapper is doing what it should do
 
@@ -52,7 +56,7 @@ Current list of wrappers developed for s3 integration:
 **Steps to modify and run pipeline wrappers (using abcd-hcp-pipeline as an example)**
 
 
-1. Copy the entire folder contents of `abcd-hcp-pipeline_scripts_with_s3_routines_with_ses` to your project folder to make changes to these scripts in your own directory
+1. Copy the entire folder contents of `abcd-wrappers/abcd-hcp-pipeline_scripts_with_s3_routines_with_ses` to your project folder to make changes to these scripts in your own directory
 
 2. Modify sync and copy paths within `template.abcd-hcp-pipeline_full_run`. Be sure that the sync path is set up to have the correct structure for where you are pulling data from, some scripts assume a structure of `s3://bucket/niftis/sub-`. This script includes the actual command to run the pipeline using specified data_dir and subject ID.
 

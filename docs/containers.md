@@ -38,7 +38,7 @@ Containers are typically run with a **singularity run** command, as demonstrated
 
 `singularity shell name_of_singularity_image.sif`
 
-To leave the shell, type `exit`.
+To leave the shell, run `exit`
 
 For pulling Docker images, see [this document](https://docs.google.com/document/u/0/d/1w1g0kLSchPKvEI9pZIBmhavFd2Mq2-r82ozVaBuL9EI/edit). 
 
