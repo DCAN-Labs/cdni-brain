@@ -20,6 +20,7 @@ nav:
       - Job Submissions: jobs.md
       - fairshare: fairshare.md
       - Queue Optimization: queue-optimization.md
+      - Analyzing Motion Regressors: motion-regressor.md
   - Software Environments:
       - VS Code: vscode.md 
       - Miniconda Environments: miniconda.md

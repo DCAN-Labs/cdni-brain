@@ -24,4 +24,4 @@ Produce status html on the output data to see how many processing jobs succeeded
 
             python3 run.py --report_output_dir path/to/the/directory/where/you/want/the/outputs/ /path/to/tier1/BIDS_inputs/ /path/to/tier1/output/ group
 
-5. Will produce a s3_status_report.html and .csv. These files give information on the results of each processing step for each subject/session pair. A tip for determining subjects’ processing status counts is to download the .csv into excel, create a pivot table of the data, and provide session ID in the values section and the name of the last column in the rows section. 
+5. Will produce a s3_status_report.html and .csv. These files give information on the results of each processing step for each subject/session pair. A tip for determining subjects’ processing status counts is to download the .csv into excel, create a pivot table of the data, and provide session ID in the values section and the name of the last column in the rows section. For more detailed information, please refer to the [abcd-hcp-pipeline_audit repository](https://github.com/tjhendrickson/abcd-hcp-pipeline_audit) on GitHub.
