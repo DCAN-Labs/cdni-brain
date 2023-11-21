@@ -22,4 +22,4 @@ Specify the NDA Collection number. This detail is necessary for organizing and a
 
 ### CC to PI and Program Officer:
 
--In addition to the archival request, please ensure to copy your Principal Investigator (PI) and the Program Officer associated with the Collection. 
+In addition to the archival request, please ensure to copy your Principal Investigator (PI) and the Program Officer associated with the Collection. 
