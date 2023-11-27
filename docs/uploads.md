@@ -6,19 +6,37 @@ If you would like to transfer data to/from/between the UMN MSI servers and would
 
 ## Data Transfers
 
-After data has been fully processed, it's important to ask yourself these questions again: where is the data going, and who cares about it?
+The data transfer method will depend on how many datasets you are transferring, who you are transferring the data to, and what the data are.
 
-28. If it's ABCD data, it is most likely going to be an [NDA upload](https://github.com/DCAN-Labs/nda-bids-upload). 
+28. Transfers of ABCD data will most likely going include an [NDA upload](https://github.com/DCAN-Labs/nda-bids-upload). 
 
 29. If the data is being sent to a collaborator, make sure you know who the collaborator is and what method is being used to share the data. Some of DCAN Labs' more frequent collaborators include DEAP, INDI, and UPenn.
 
 30. If you are trying to upload a small testing dataset (less than 10 subject-session pairs), you will most likely be uploading to Box. Box is a HIPPA compliant secure storage service that is available across many institutions. Make sure you have already clarified where the data is going on Box. Box is **not recommended** for large amounts of data. UMN has a [set of guides](https://it.umn.edu/services-technologies/self-help-guides/box-secure-storage-work-files-folders) on how to use Box.
 
-Use services like s3 sync, rsync, and globus to sync data / upload data to the appropriate locations. You generally want to use the easiest method for transferring data. Instructions on setting up an .s3cfg can be found [here.](s3.md)
+Use services like s3 sync, rsync, and globus to sync data / upload data to the appropriate locations. Instructions on setting up an .s3cfg can be found [here.](s3.md)
 
 For information on how to use MSI to transfer/track data, see [this page.](storage.md)
 
-## Globus
+# Tier 1 to Tier 2 Using s3 sync  
+
+s3cmd sync --recursive /path/to/data/folder s3://path/to/s3/target/
+
+Tips: 
+1. Leave the trailing slash off of the data folder path
+
+# Using scp to transfer from remote server to Tier 1
+
+This options is best for single folder transfers to Tier 1. From your local computer or the source server (e.g., CMRR's servers), open a terminal. Securely copy the data folder (scp):
+
+scp -o IdentitiesOnly=yes -r /path/to/data/folder umnID@mesabi.msi.umn.edu:/path/to/msi/target/umnID/.
+
+Tips: 
+1. You will need to duo to initiate the connection and start the transfer. 
+2. Leave the trailing slash off of the data folder path.
+3. Transfers are often more successful when transferring to your MSI home directory than a shared directory (e.g., home/faird/shared). Once the data are in your home directory you can move the data to a shared directory with a mv command. 
+
+# Globus
 
 Watch [this tutorial](https://drive.google.com/file/d/1Yb_5L9pxIl0fquAtC83XeYleRl_uJo6S/view?usp=drive_link) for how to use globus.
 
