@@ -1,21 +1,29 @@
 # Minnesota Supercomputing Institute (MSI) First Login Steps
 
-To begin accessing the Minnesota Supercomputing Institute (MSI) system, follow these steps to ensure a smooth and successful login process:
+To access the Minnesota Supercomputing Institute (MSI) system smoothly, confirm your eligibility, particularly if your tasks involve data analysis or processing. Visit  [Eligibility & Access Instructions](https://www.msi.umn.edu/content/eligibility-getting-access) for more detailed guidelines on eligibility and access requirements.
 
-If you plan to analyze, process, or access data, you need access to MSI. Instructions for eligibility and access can be found at: [Eligibility & Access Instructions](https://www.msi.umn.edu/content/eligibility-getting-access).
+## Connecting to the Minnesota Supercomputing Institute (MSI) VPN
 
-## Establish VPN
+### VPN Installation:
 
-To access MSI from outside the university area, you must first establish a secure connection using a Virtual Private Network (VPN). Here is a [link](https://www.msi.umn.edu/support/faq/why-cant-i-ssh-msi-machine) for VPN instructions to access MSI. Install Cisco AnyConnect by visiting the [VPN page](https://it.umn.edu/services-technologies/virtual-private-network-vpn). Choose the appropriate installer for your operating system. Remember to select the "Split Tunnel VPN" option when logging in to AnyConnect.
+To access MSI from outside the university area, you must first establish a secure connection using a Virtual Private Network (VPN).
 
-NOTE: If you already have VPN on your computer for another institution, you will need to complete the following steps:
+- Find detailed VPN instructions on the [MSI VPN](https://it.umn.edu/services-technologies/virtual-private-network-vpn) page.
+- Scroll halfway down the page to discover installers for Cisco AnyConnect on different operating systems.
 
-* Type "tc-vpn-1.umn.edu" in the box
-* Choose "anyconnect-UofMvpnfull" from the group
-* Enter your username and password
-* This installs required setups for VPN, after which you will have a dropdown with UMN choices and you can use "split tunnel" moving forward
+### Cisco AnyConnect Installation:
 
-If you receive an error message the first time, simply re-open Cisco.
+- Download and install Cisco AnyConnect based on your operating system.
+- Follow the installation prompts to complete the setup.
+
+### VPN Connection Setup:
+
+- Launch Cisco AnyConnect on your device.
+- Log in using your credentials.
+- During login, choose the "Split Tunnel VPN" option for a streamlined experience.
+
+Once connected, you now have access to the Minnesota Supercomputing Institute resources.
+By following these steps, you'll seamlessly connect to MSI, enabling you to analyze and process data efficiently.
 
 ## Registering for Duo Security
 
