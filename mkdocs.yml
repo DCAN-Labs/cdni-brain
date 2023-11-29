@@ -62,6 +62,8 @@ nav:
       - UMN Recommended Courses: courses.md
   - GitHub:
       - GitHub History Scrub: github-scrub.md
+  - PHI:
+      - Protected Health Information (PHI): A Quick Guide: phi-quick-guide.md
   - Contributions:
       - Contributors and Papers: contributions.md
   - THANK YOU FOR USING THE DPH:
