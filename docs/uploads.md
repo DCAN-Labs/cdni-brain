@@ -4,7 +4,7 @@
 
 If you require assistance or advice from the DCAN computing team on your data transfer (within and outside of MSI), please fill out the [data transfer request form](https://docs.google.com/forms/d/e/1FAIpQLSd84tpEaXS4C9afAneGUGnW6dUtMhS1J9zunWgn5VFQjgRhYA/viewform)
 
-## Data Transfers
+## Data Transfer Methods
 
 The data transfer method will depend on how much data you are transferring (number of files and size), where you are transferring the data to, and what the data are (consider data sharing restrictions).
 
