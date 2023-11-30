@@ -28,6 +28,8 @@ nav:
       - Software Versioning: versioning.md
       - Containers: containers.md
       - Virtual Machine: vm.md
+  - GitHub:
+      - GitHub History Scrub: github-scrub.md
   - BIDS:
       - DICOM to BIDS conversion: dcm2bids.md
       - BIDS Validation: bids.md
@@ -44,6 +46,7 @@ nav:
       - file-mapper: filemapper.md    
       - Precision Mapping Wrapper: precision.md
       - Processing Status: status.md
+      - Infant Quality Assessment: infant-qa.md
   - Troubleshooting:
       - Troubleshooting and Image Viewing: troubleshooting.md
       - Testing BIBSnet: bibsnet-testing.md

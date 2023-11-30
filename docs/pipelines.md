@@ -115,7 +115,7 @@ ${singularity} run --cleanenv \
 -B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
 -B /home/faird/shared/projects/new_rae_testing/work_dir/:/work \
 -B /home/faird/shared/projects/new_rae_testing/bibsnet_outputs/:/derivatives \
-/home/faird/shared/code/external/pipelines/nibabies/nibabies_unstable_04182023.sif /data /out participant
+/home/faird/shared/code/external/pipelines/nibabies/nibabies_unstable_04182023.sif /data /out participant \
 --participant-label {subject_ID} --age-months {age} -s {age_mo} \
 --derivatives /derivatives \
 --cifti-output 91k \
@@ -275,8 +275,7 @@ ${singularity} run –cleanenv \
 --motion-filter-type notch ${bandstopmin} ${bandstopmax} \ 
 --warp-surfaces-native2std \
 - vv \
---input-type fmriprep \ #can replace with nibabies 
-#if working with nibabies, add -r {head radius in mm} 
+--input-type fmriprep \ #can replace with nibabies \ #if working with nibabies, add -r {head radius in mm} 
 -w /wkdir \
 /fmriprep_out /xcpd_out participant
 ```
@@ -324,8 +323,8 @@ Overview: fMRI -> anatomical registration - no boundary based registration, use 
 3. Example command:
 
 ```
-singularity run --cleanenv\
--e /
+singularity run --cleanenv \
+-e \
 -B ${data_dir}:/bids_input \ 
 -B ${OUTPUT_DIR}:/output \
 -B ${FS_LICENSE}/license.txt:${lic_loc} \
@@ -372,16 +371,18 @@ This pipeline performs level 1 and 2 analyses of fMRI dtseries data.
 
 Example command: 
 
-        fsl_dir=/home/software/fsl/bin/
-        subject_ID=sub-ABCDEFGH
-        session_ID=ses-QRSTUV
-        task_name=my_task
-        study_dir=/home/users/shared/data/my_study
-        wb_command=/home/software/workbench/bin/wb_command
-        events_dir=/home/users/shared/data/task_events/
-        wrapper_dir=.
+```
+fsl_dir=/home/software/fsl/bin/
+subject_ID=sub-ABCDEFGH
+session_ID=ses-QRSTUV
+task_name=my_task
+study_dir=/home/users/shared/data/my_study
+wb_command=/home/software/workbench/bin/wb_command
+events_dir=/home/users/shared/data/task_events/
+wrapper_dir=.
 
-         python3 pipeline_wrapper.py --subject ${subject_ID} --ses ${session_ID} --study-dir ${study_dir} --task ${task_name} --events-dir ${events_dir} --fsl-dir ${fsl_dir} --wb-command ${wb_command} --wrapper-location ${wrapper_dir}
+python3 pipeline_wrapper.py --subject ${subject_ID} --ses ${session_ID} --study-dir ${study_dir} --task ${task_name} --events-dir ${events_dir} --fsl-dir ${fsl_dir} --wb-command ${wb_command} --wrapper-location ${wrapper_dir}
+s```
 
 Find out more information [here.](https://github.com/DCAN-Labs/abcd-bids-tfmri-pipeline)
 
