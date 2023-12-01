@@ -13,7 +13,7 @@ nav:
       - Data Storage/Tracking: storage.md
       - S3: s3.md
       - Common MSI Roadblocks: roadblocks.md
-  - Slurm/Processing Jobs:
+  - Running Jobs:
       - Slurm Commands: slurm.md
       - Slurm Jobs: slurm-params.md
       - Optimizing sbatch Parameters: optimizing.md
@@ -24,7 +24,6 @@ nav:
   - Software Environments:
       - VS Code: vscode.md 
       - Miniconda Environments: miniconda.md
-      - Best Coding Practices: workflow.md
       - Software Versioning: versioning.md
       - Containers: containers.md
       - Virtual Machine: vm.md
