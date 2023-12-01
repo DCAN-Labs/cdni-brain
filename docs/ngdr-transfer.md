@@ -1,5 +1,7 @@
 # How to Transfer ABCC Data to the NGDR
 
+For how to gain access to the NGDR, see [here](msi-login.md) under "Gaining Access".
+
 -   Create a "hashtable" text file of the data to be transferred, including a path of where the data is now to where we want the data to be. Two example lines of a previous "hashtable" are provided below.
 ```shell 
 s3://ABCC_year2/derivatives/abcd-hcp-pipeline/sub-NDARINVXXXXXXXX/ses-2YearFollowUpYArm1/ /spaces/ngdr/ref-data/abcd/nda-3165-2020-09/derivatives/abcd-hcp-pipeline/sub-NDARINVXXXXXXXX/ses-2YearFollowUpYArm1/

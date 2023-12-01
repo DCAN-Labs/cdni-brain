@@ -1,4 +1,4 @@
-site_name: Data Processing Handbook - DCAN Labs
+site_name: DCAN Labs Informational Guide
 theme: readthedocs
 plugins:
   - search
@@ -28,6 +28,8 @@ nav:
       - Software Versioning: versioning.md
       - Containers: containers.md
       - Virtual Machine: vm.md
+  - Coding Standards:
+      - Best Practices: coding-practices.md
   - GitHub:
       - GitHub History Scrub: github-scrub.md
   - BIDS:
@@ -64,7 +66,7 @@ nav:
       - Recorded Presentations: presentations.md
       - UMN Recommended Courses: courses.md
   - PHI:
-      - Protected Health Information (PHI): A Quick Guide: phi-quick-guide.md
+      - "Protected Health Information (PHI): A Quick Guide": phi-quick-guide.md
   - Contributions:
       - Contributors and Papers: contributions.md
   - THANK YOU FOR USING THE DPH:
