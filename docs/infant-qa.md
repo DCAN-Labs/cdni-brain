@@ -1,4 +1,4 @@
-## Post-Processing Quality Assessment from Executive Summary
+# Post-Processing Quality Assessment from Executive Summary
 
 After processing infant data, the executive summary images can be used to spot issues/errors in the pipeline.
 
