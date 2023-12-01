@@ -37,7 +37,8 @@ nav:
       - BIDS Validation: bids.md
       - NORDIC Denoising and BIDS NORDIC Wrapper: nordic.md
   - Before processing:
-      - Defacing: infant-preproc.md
+      - Infant Preprocessing: infant-preproc.md
+      - Defacing: defacing.md
       - 10.5T NHP ABCD BIDS Pipeline Synth: preprocessing.md
       - Fast Track QC Comparison (ABCD): fasttrack.md
   - Processing:
@@ -55,7 +56,6 @@ nav:
       - Requests and Questions: requests.md
   - Quality Control:
       - BrainSwipes: brainswipes.md
-      - Infant Data: infant-qc.md
   - Data Uploads and Transfers:
       - Data Transfers: uploads.md
       - Transfer ABCC Data to the NGDR: ngdr-transfer.md
