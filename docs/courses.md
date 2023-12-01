@@ -2,7 +2,7 @@
 
 Here you will find a list of recommended courses curated by the PIs of the DCAN Labs. While this list provides a general overview of classes related to our field of research, we recognize the individual nature of a college education. Please feel free to reach out to a DCAN PI for one-on-one assistance in selecting courses from this list.
 
-*If any of these classes have been retired, or if you find other classes that are suitable for inclusion, please [submit a GitHub issue](https://github.com/DCAN-Labs/data-processing-handbook/issues) with your suggested edits.*
+*If any of these classes have been retired, or if you find other classes that are suitable for inclusion, please [submit a GitHub issue](https://github.com/DCAN-Labs/dcan-labs-informational-guide/issues) with your suggested edits.*
 
 ## Mathematics and Computing
 

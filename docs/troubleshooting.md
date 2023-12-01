@@ -56,7 +56,7 @@ The first stage of the pipeline is PreFreeSurfer. The most crucial file that sho
 
 If PreFreeSurfer failed to make the aseg, look in the PreFreeSurfer error file for the first error. If the error occurred in JLF, resubmit your job. JLF fails intermittently and the job may succeed next time.
 
-If the first error was before JLF, or if you run this multiple times and JLF fails each time, refer to the section on [inspecting the intermediate pipeline output files](https://github.com/DCAN-Labs/data-processing-handbook/edit/lucibranch/docs/troubleshooting.md#inspecting-the-data-for-quality-or-processing-issues) to troubleshoot.
+If the first error was before JLF, or if you run this multiple times and JLF fails each time, refer to the section on [inspecting the intermediate pipeline output files](troubleshooting.md#inspecting-the-data-for-quality-or-processing-issues) to troubleshoot.
 
 
 #### FreeSurfer failed in mri_normalize
@@ -121,9 +121,9 @@ There might be more missing ROIs; the command died at the first one.
 
 ### Inspecting the data for quality or processing issues
 
-1. First follow established SOPs to check that the input data is high quality enough to be processed: see *Structural Pre-Processing Quality Assessment of BIDS* under [Quality Control for Infant Data](https://data-processing-handbook.readthedocs.io/en/latest/infant-qc/#structural-pre-processing-quality-assessment-of-bids-input-data)
+1. First follow established SOPs to check that the input data is high quality enough to be processed: see *Structural Pre-Processing Quality Assessment of BIDS* under [Quality Control for Infant Data](infant-qc.md#structural-pre-processing-quality-assessment-of-bids-input-data)
 
-2. Check the executive summary to spot errors/quality issues in the pipeline outputs: see _Input Data_ and *Post-Processing Quality Assessment from Executive Summary* under [Quality Control for Infant Data](https://data-processing-handbook.readthedocs.io/en/latest/infant-qc/#post-processing-quality-assessment-from-executive-summary)
+2. Check the executive summary to spot errors/quality issues in the pipeline outputs: see _Input Data_ and *Post-Processing Quality Assessment from Executive Summary* under [Quality Control for Infant Data](infant-qc.md#post-processing-quality-assessment-from-executive-summary)
 
 3. For more in-depth quality assessment that involves inspecting intermediary pipeline outputs, see the [Troubleshooting](https://dcanlab.readthedocs.io/en/latest/manualpro/infant/troubleshooting/) section (includes information on inspecting file outputs from PreFreeSurfer, atlas registration, and functional/structural registration)
 

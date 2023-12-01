@@ -14,7 +14,7 @@ Do you need help transfering data to/from/between MSI servers/storage systems?
 
 Are there any issues with this handbook or things that are unclear?
 
-* Post an issue [on Github](https://github.com/DCAN-Labs/data-processing-handbook) to suggest improvements and ask questions
+* Post an issue [on Github](https://github.com/DCAN-Labs/dcan-labs-informational-guide/issues) to suggest improvements and ask questions
 
 Are you having any issues with any of our pipelines? 
 
