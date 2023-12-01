@@ -13,7 +13,7 @@ nav:
       - Data Storage/Tracking: storage.md
       - S3: s3.md
       - Common MSI Roadblocks: roadblocks.md
-  - Running Jobs:
+  - SLURM Jobs:
       - Slurm Commands: slurm.md
       - Slurm Jobs: slurm-params.md
       - Optimizing sbatch Parameters: optimizing.md
@@ -44,6 +44,7 @@ nav:
       - Pipelines: pipelines.md
       - S3 Pipeline Wrappers: wrappers.md
       - Infant Pipeline Documentation: infant-doc.md
+      - Best Practices: processing-sop.md
   - After processing:
       - file-mapper: filemapper.md    
       - Precision Mapping Wrapper: precision.md
