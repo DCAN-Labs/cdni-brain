@@ -1,6 +1,6 @@
 # Miniconda Environments (Python)
 
-DCAN Labs maintains lab-wide shared miniconda environments which are configured for ease of access to several of our commonly used Python tools such as [Dcm2bids](#9-dicom-to-bids-conversion-dcm2bids). Using the shared environment is in most cases preferred to individual users doing their own Python package installations and/or setting up environments in their MSI home directory.
+DCAN Labs maintains lab-wide shared miniconda environments which are configured for ease of access to several of our commonly used Python tools such as [Dcm2bids](dcm2bids.md). Using the shared environment is in most cases preferred to individual users doing their own Python package installations and/or setting up environments in their MSI home directory.
 
 * To load the DCAN labwide miniconda3 environment, first run the following command: 
 
