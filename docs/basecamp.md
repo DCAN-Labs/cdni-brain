@@ -25,3 +25,47 @@ Fill out the [Project Request Form](https://forms.gle/1ddNGf6pbe5WE2QV8) to requ
  - Add all necessary people to the project
  - Fill out the **Project Overview** under **Docs & Files**
 
+ ## Personal Project Board Recommendations
+
+If you do not have a personal board, you can create one for yourself following the instructions above and activate whichever tools you want to use (do not use a template). Personal boards are just that, personal. It can be used however you wish, below are some recommendations for things to add to your personal board.
+
+**To-dos**
+- Check-in related items
+    - Recurring agenda prepping reminders
+    - Items to remember to add to your agenda (this is best used for items that need to be asked about again)
+- Professional Development
+    - Recurring online course reminders
+    - Performance evaluation-related tasks
+    - Goal setting-related tasks
+    - Courses to ask leadership about
+    - Assignments within any courses you are taking
+    - Papers to read
+    - Lab meeting WIP related tasks
+- Administrative
+    - Any emails you need to send that are more personal or not specifically related to a project
+    - Benefits-related tasks
+    - Time-off related tasks like requesting coverage, prepping notes earlier than normal, etc
+    - Updating your ORCID profile
+- Workflow Improvement
+    - Adding personal SSH keys
+    - Installations
+    - Gaining access to something
+    - Set up on a given application
+    - Reminders to restart your computer
+    - Reminders to update applications
+    - Tasks to learn about how to do something that would streamline your day-to-day
+- Clean-up and Documentation
+    - Reminders to update the data storage tracking sheet
+    - Reminders to clean out frequently used testing directories and/or your home directory
+    - Reminders to add utilities to GitHub
+
+**Message Board**
+- Commands that you use frequently personally and want to be able to copy paste
+- Notes about any personal tasks, courses, or projects
+- Notes about papers you are reading
+- Links you want to remember
+
+**Docs & Files**
+- Notes for your 1:1 Check-ins
+- Personal tracking documents
+

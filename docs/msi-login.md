@@ -41,26 +41,27 @@ For additional guidance watch [MSI video tutorial](https://www.youtube.com/watch
 
 ## Permissions
 
-To ensure the data and code created can be accessed by all, update your bashrc with the following steps (this only needs to be done the first time you access MSI). See [here](https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux) for some info on what a "bashrc" is.
+To ensure the data and code created can be accessed by all, update your `.bashrc` with the following steps (this only needs to be done the first time you access MSI). See [here](https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux) for some info on what a `.bashrc` is.
 
-Open your bashrc file with a text editor, e.g. `emacs ~/.bashrc`.
-Set umask to 0007. The umask is the default permission (self, group, like faird, and all users can be given read, write, and execute access) applied to the files you create. 0007 gives read, write, and execute access to you and all group members, but no one else (this could be anyone in the university). See here for details.
+Open your `.bashrc` file with a text editor, e.g. `emacs ~/.bashrc`.
+Set umask to 0007. The umask is the default permission (self, group, like `faird`, and all users can be given read, write, and execute access) applied to the files you create. 0007 gives read, write, and execute access to you and all group members, but no one else (this could be anyone in the university). See here for details.
 Close the file and type `source ~/.bashrc` into the terminal to apply the changes.
-Your bashrc is loaded each time you log in, so you only need to source it when you edit it mid-session. 
+Your `.bashrc` is loaded each time you log in, so you only need to source it when you edit it mid-session. 
 
 ## Gaining Access
-To gain access to MSI shares containing ABCD derivatives (feczk001, miran045, rando149, smnelson), you must be an approved collaborator on the UMN DUC.
+To gain access to MSI shares containing ABCD derivatives (`feczk001`, `miran045`, `rando149`, `smnelson`), you must be an approved collaborator on the UMN DUC.
 
 * Create a [Login.gov account](https://www.login.gov/create-an-account/) 
 * Use your login.gov credentials to [access the NDA](https://nda.nih.gov/user/login_required.html?originator=%2Fuser%2Fdashboard%2Fdashboard.html) - you’ll then be prompted to create an NDA account
 * Email Borgne Raasch `braasch@umn.edu` your NDA username to be added to the next submission batch
-* Outside collaborators should follow this link ​​ [NDA - Adding Affiliated Institutions](https://docs.google.com/document/d/1w5BW14EHFSi4Lr1YDPm9CLTiy8JNdClt5KpKCOYnBH4/edit#heading=h.qdjbnp8qckwr)
+* Outside collaborators should follow this link: ​​ [NDA - Adding Affiliated Institutions](https://docs.google.com/document/d/1w5BW14EHFSi4Lr1YDPm9CLTiy8JNdClt5KpKCOYnBH4/edit#heading=h.qdjbnp8qckwr)
+* After Borgne confirms that you have been granted access to the DUC, email Russell Spafford `spaff010@umn.edu` to granted access to `feczk001`, `miran045`, `rando149`, or `smnelson` and let Borgne know if you also need access to the `NGDR`. For more information on what the `NGDR` is, see [here](https://rc.umn.edu/project/neuroimaging-and-genetic-data-resources). It is where we store our ABCC BIDS inputs and derivatives.
 
-## Setting up your .bashrc
+## Setting up your `.bashrc`
 
-.bashrc is a Bash shell script that runs every time you start an interactive session and it lives in your home directory. In order to access your .bashrc, open a new terminal in an OOD session and run `cat .bashrc` to see what it currently is or run `emacs .bashrc` to open it in an editor if you need to make changes. 
+`.bashrc` is a Bash shell script that runs every time you start an interactive session and it lives in your home directory. In order to access your `.bashrc`, open a new terminal in an OOD session and run `cat .bashrc` to see what it currently is or run `emacs .bashrc` to open it in an editor if you need to make changes. 
 
-Here is a template for what your .bashrc should look like
+Here is a template for what your `.bashrc` should look like
 
             # .bashrc startup script for login shells
             #
