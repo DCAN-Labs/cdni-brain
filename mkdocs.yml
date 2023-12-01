@@ -1,4 +1,4 @@
-site_name: Data Processing Handbook - DCAN Labs
+site_name: DCAN Labs Informational Guide
 theme: readthedocs
 plugins:
   - search
