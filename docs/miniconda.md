@@ -30,7 +30,7 @@ To create a new conda environment, follow these instructions:
 
     Note: It is a list without commas. You can also install one by one.
 
-More information about creating and using conda environments can be found [here](https://data-processing-handbook.readthedocs.io/en/latest/vscode/#conda-environments)
+More information about creating and using conda environments can be found [here](https://dcan-labs-informational-guide.readthedocs.io/en/latest/vscode/#conda-environments)
 
 ** **
 
