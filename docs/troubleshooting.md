@@ -56,7 +56,7 @@ The first stage of the pipeline is PreFreeSurfer. The most crucial file that sho
 
 If PreFreeSurfer failed to make the aseg, look in the PreFreeSurfer error file for the first error. If the error occurred in JLF, resubmit your job. JLF fails intermittently and the job may succeed next time.
 
-If the first error was before JLF, or if you run this multiple times and JLF fails each time, refer to the section on [inspecting the intermediate pipeline output files](https://github.com/DCAN-Labs/dcan-labs-informational-guide/docs/troubleshooting.md#inspecting-the-data-for-quality-or-processing-issues) to troubleshoot.
+If the first error was before JLF, or if you run this multiple times and JLF fails each time, refer to the section on [inspecting the intermediate pipeline output files](troubleshooting.md#inspecting-the-data-for-quality-or-processing-issues) to troubleshoot.
 
 
 #### FreeSurfer failed in mri_normalize
