@@ -33,6 +33,7 @@ nav:
       - DICOM to BIDS conversion: dcm2bids.md
       - BIDS Validation: bids.md
       - NORDIC Denoising and BIDS NORDIC Wrapper: nordic.md
+      - BIDS Directory Structure: bids-directory-structure.md
   - Before processing:
       - Defacing: infant-preproc.md
       - 10.5T NHP ABCD BIDS Pipeline Synth: preprocessing.md
