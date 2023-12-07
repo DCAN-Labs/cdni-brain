@@ -37,9 +37,11 @@ processed/abcd-hcp-pipeline/sub-ID/ses-{SESSION}/files/
 ```
 
 If you used fmriprep or nibabies, they are located at:
+
 ```
 work-dir/{pipeline}/sub-ID/ses-SESSION/{pipeline}_wf/single_subject_{ID}_wf/func_preproc_ses_{SESSION _task_rest_acq_noNORDIC_run_1_echo_1_wf/bold_hmc_wf/normalize_motion/motion_params.txt
- ```
+```
+
 The pipeline should be replaced with the relevant pipeline.
 
 For instance, if you're using resting state, select the task-based resting state directories and locate the "Movement_Regressors.txt" files in each run.
@@ -51,7 +53,6 @@ Copy all regressor files and rename them based on their run number, task name an
 ## Step 4: Choose the Appropriate Version
 
 In the repository, you will find three versions (ver1, ver2, ver3) for processing the data. Visually inspect your regression files and compare them with the regressor files available in each version folder to identify the most suitable one. For instance, if you notice that the number of rows and columns aligns with ver1, specify ver1 in your script. Additionally, running the provided script should display motion artifacts primarily on the y-axis with a low hertz (Hz) value, representing respiration. This information will help you choose the correct version.
-
 
 ## Step 5: Create a New MATLAB Script
 
@@ -103,6 +104,7 @@ Rerun the last line of the script [CLIM, ix_subject_scan, MU, SIGMA, P] = cat_mo
 ## Step 8: Determine Respiration Peaks:
 In the terminal, use the provided commands to identify the peaks related to respiration. 
 You can use the following function [available in 04_to_run_aliased_RR] to calculate the respiration rate based on the aliased frequencies.
+
 ```
 RR_bpm=12:3:30;% respiration rate (RR_bpm)in breaths per minute
 TR=0.8; % TR in seconds
@@ -137,6 +139,7 @@ x(peaks)
 max(x(peaks))
 %  0.4517
 ```
+
 ## Step 10: Modify pipeline
 
 Modify the bindings flag accordingly to filter the motion artifacts in your pipeline template.
