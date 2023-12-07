@@ -11,7 +11,7 @@ Hi,
 
 I am reaching out to request support for the module X to be integrated into MSI's infrastructure for Y purpose.
 
-The PI groups Fair, Feczko, Miranda Dominguez, Nelson, and Randolph would be actively using this module.
+The PI groups Fair, Feczko, Miranda Dominguez, Nelson, Tervo-Clemmens, Larson, and Randolph would be actively using this module.
 
 Link to module: [Insert Module Link]
 
@@ -24,7 +24,7 @@ Replace 'X' with the actual name of the module you are requesting support for.
 Specify 'Y' with a brief description of what the module will be used for on MSI.
 
 ### Usage Information:
-Emphasize the active involvement of the PI groups (Fair, Feczko, Miranda Dominguez, Nelson, and Randolph) in utilizing this module.
+Emphasize the active involvement of the PI groups (Fair, Feczko, Miranda Dominguez, Nelson, Tervo-Clemmens, Larson, and Randolph) in utilizing this module.
 
 ### Module Link:
 If available, provide a direct link to the module for easy reference by the support team.
