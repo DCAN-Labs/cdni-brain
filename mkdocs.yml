@@ -1,4 +1,4 @@
-site_name: Data Processing Handbook - DCAN Labs
+site_name: DCAN Labs Informational Guide
 theme: readthedocs
 plugins:
   - search
@@ -14,7 +14,7 @@ nav:
       - S3: s3.md
       - Common MSI Roadblocks: roadblocks.md
       - Requesting Module from MSI: msi-module-request.md
-  - Slurm/Processing Jobs:
+  - SLURM Jobs:
       - Slurm Commands: slurm.md
       - Slurm Jobs: slurm-params.md
       - Optimizing sbatch Parameters: optimizing.md
@@ -25,33 +25,38 @@ nav:
   - Software Environments:
       - VS Code: vscode.md 
       - Miniconda Environments: miniconda.md
-      - Best Coding Practices: workflow.md
       - Software Versioning: versioning.md
       - Containers: containers.md
       - Virtual Machine: vm.md
+  - Coding Standards:
+      - Best Practices: coding-practices.md
+  - GitHub:
+      - GitHub History Scrub: github-scrub.md
   - BIDS:
       - DICOM to BIDS conversion: dcm2bids.md
       - BIDS Validation: bids.md
       - NORDIC Denoising and BIDS NORDIC Wrapper: nordic.md
   - Before processing:
-      - Defacing: infant-preproc.md
+      - Infant Preprocessing: infant-preproc.md
+      - Defacing: defacing.md
       - 10.5T NHP ABCD BIDS Pipeline Synth: preprocessing.md
       - Fast Track QC Comparison (ABCD): fasttrack.md
   - Processing:
       - Pipelines: pipelines.md
       - S3 Pipeline Wrappers: wrappers.md
       - Infant Pipeline Documentation: infant-doc.md
+      - Best Practices: processing-sop.md
   - After processing:
       - file-mapper: filemapper.md    
       - Precision Mapping Wrapper: precision.md
       - Processing Status: status.md
+      - Infant Quality Assessment: infant-qa.md
   - Troubleshooting:
       - Troubleshooting and Image Viewing: troubleshooting.md
       - Testing BIBSnet: bibsnet-testing.md
       - Requests and Questions: requests.md
   - Quality Control:
       - BrainSwipes: brainswipes.md
-      - Infant Data: infant-qc.md
   - Data Uploads and Transfers:
       - Data Transfers: uploads.md
       - Transfer ABCC Data to the NGDR: ngdr-transfer.md
@@ -61,11 +66,9 @@ nav:
       - Basecamp: basecamp.md
       - Recorded Presentations: presentations.md
       - UMN Recommended Courses: courses.md
-  - GitHub:
-      - GitHub History Scrub: github-scrub.md
   - PHI:
-      - Protected Health Information (PHI): A Quick Guide: phi-quick-guide.md
+      - "Protected Health Information (PHI): A Quick Guide": phi-quick-guide.md
   - Contributions:
       - Contributors and Papers: contributions.md
-  - THANK YOU FOR USING THE DPH:
+  - THANK YOU FOR USING THE DIG:
       - _____: blank.md

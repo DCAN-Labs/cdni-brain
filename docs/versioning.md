@@ -90,7 +90,7 @@ Changes should be categorized using the following shorthand codes adapted from [
    <td>Refactoring (restructuring of code that does not change function input and output)
    </td>
   </tr>
-<table>
+</table>
 
 Learn more about continuous integration [here](https://resources.github.com/ci-cd/)
 
@@ -104,11 +104,11 @@ See **(link TBA)** for lab guidelines on code review and testing.
 
 **Stable releases**
 
-An RC that has been through testing and code review. In the typical workflow, a [Github pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to review and merge the changes from the development branch to the main branch, then a stable release can be created from the main branch.
+An RC (release candidate) that has been through testing and code review. In the typical workflow, a [Github pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to review and merge the changes from the development branch to the main branch, then a stable release can be created from the main branch.
 
  Stable releases should meet the requirements for the [NMIND Bronze coding standards certification](https://github.com/nmind/coding-standards-certification/tree/main/checklists)
 
-**Long term support releases (LTS)**
+**Long-term support releases (LTS)**
 
 LTS releases are stable releases for which we commit to providing longer-term user support and issue fixes. 
 

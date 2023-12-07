@@ -8,7 +8,7 @@ The recommended method to apply NORDIC denoising is using the **Dcm2bids3 NORDIC
 
   - Also see documentation of the new "post-op" command feature (https://unfmontreal.github.io/Dcm2Bids/3.0.2/how-to/use-advanced-commands/#post_op), which we use to execute the NORDIC wrapper via sbatch job submission 
 - When specifying your `custom_entities` for magnitude and phase timeseries, use the BIDS-compliant `part-mag` and `part-phase` 
-- In the second config file, include a "post_op" command that calls the NORDIC wrapper script like this (do **not** replace "src_file" and "dst_file" with actual file paths -- Dcm2bids will do it automatically -- but **do** replace the "3" with the actual number of "noise volumes" at the end of each run)
+- In the second config file, include a "post_op" command that calls the NORDIC wrapper script like this (do **not** replace "src_file" and "dst_file" with actual file paths -- Dcm2bids will do it automatically -- but **do** replace the "3" with the actual number of "noise volumes" at the end of each run. Use `--wait` so that the sbatch command returns when the submitted job completes, instead of when the job is submitted)
 ```
     "post_op": [
         {
@@ -20,7 +20,7 @@ The recommended method to apply NORDIC denoising is using the **Dcm2bids3 NORDIC
         }
     ]
 ```
-- Load the **dcm2bids3** conda environment and run dcm2bids on your dataset with the first config file (everything but phase), **then** run dcm2bids again with the second config file (to convert phase data and run the NORDIC wrapper via post-op command)
+- Load the **dcm2bids3** conda environment and run dcm2bids on your dataset with the first config file (everything but phase), **then** run dcm2bids again with the second config file (to convert phase data and run the NORDIC wrapper via post-op command). **Use the same options for input / output paths, particpant and session ids on both runs -- the only difference is the config file used).
 
 Notes:
 - Dcm2bids 2 config files are **not** compatible with Dcm2bids 3! (The **dcm2bids** and **dcm2bids_xa30_test** environments use Dcm2bids 2).
