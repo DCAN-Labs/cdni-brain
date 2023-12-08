@@ -31,6 +31,7 @@ nav:
   - Coding Standards:
       - Best Practices: coding-practices.md
   - GitHub:
+      - GitHub Tips and Tricks: github-tips.md
       - GitHub History Scrub: github-scrub.md
   - BIDS:
       - DICOM to BIDS conversion: dcm2bids.md

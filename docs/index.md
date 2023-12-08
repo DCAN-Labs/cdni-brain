@@ -18,7 +18,7 @@ This handbook outlines key tools and resources used by DCAN Labs. Topics covered
     - Best practices for codebase maintenance within the lab
 6. GitHub:
     - GitHub setup, tips, and tricks
-7. BIDS
+7. BIDS:
     - Anything to convert or validate BIDS data
 8. Before Processing:
     - Any steps the lab does before running processing (ABCD-BIDS, fMRIprep, Nibabies, etc)
