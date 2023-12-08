@@ -13,6 +13,7 @@ nav:
       - Data Storage/Tracking: storage.md
       - S3: s3.md
       - Common MSI Roadblocks: roadblocks.md
+      - Requesting Module from MSI: msi-module-request.md
   - SLURM Jobs:
       - Slurm Commands: slurm.md
       - Slurm Jobs: slurm-params.md
@@ -30,6 +31,7 @@ nav:
   - Coding Standards:
       - Best Practices: coding-practices.md
   - GitHub:
+      - GitHub Tips and Tricks: github-tips.md
       - GitHub History Scrub: github-scrub.md
   - BIDS:
       - DICOM to BIDS conversion: dcm2bids.md
