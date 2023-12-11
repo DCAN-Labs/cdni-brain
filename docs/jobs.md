@@ -29,5 +29,13 @@ python continuous_slurm_submitter.py --partition small,amdsmall --job-name abcd-
 ```
 
 26. Check the [fairshare](fairshare.md) to know which account to use for processing.
+27. If you have a command or script that outputs to a different group than your primary MSI group (i.e. the group with your home directory), you can use `sg` to run as the group that matches the output directory instead. Recommended for abcd-hcp-pipeline, infant-abcd-bids-pipeline, and nhp-abcd-bids-pipeline to avoid permission errors in the FreeSurfer stage of the pipeline.
 
-27. Make sure a ton of jobs aren’t failing right away. Permissions errors, job set up issues, and data issues are common causes.
+Example for when your output directory is on faird:
+`sg faird -c "singularity run <...>"`
+
+This includes batch scripts. (e.g. `sg faird -c "sbatch sbatchscript.sh"`)
+
+More info on sg here: https://linux.die.net/man/1/sg
+
+28. Make sure a ton of jobs aren’t failing right away. Permissions errors, job set up issues, and data issues are common causes.
