@@ -73,8 +73,14 @@ nav:
       - Figure Maker: figure-maker.md
       - Connectivity Matrices: matrices.md
       - Skinny Plot: skinny-plot.md
+  - Analysis Tools:
+      - Cifti Conn Matrix: cifti-matrix.md
+      - Seed Map Parcellation Wrapper: seed-map.md
+      - Template Matching: template-matching.md
+      - F Conn Regression: f-conn.md
+      - BWAS: bwas.md
   - PHI:
-      - Protected Health Information (PHI): A Quick Guide: phi-quick-guide.md
+      - A Quick Guide on Protected Health Information (PHI): phi-quick-guide.md
   - Contributions:
       - Contributors and Papers: contributions.md
   - THANK YOU FOR USING THE DIG:
