@@ -53,31 +53,31 @@ Watch: [Dcm2bids DCAN tutorial recording](https://drive.google.com/drive/folders
 
     * Example run command for a list of subjects, with good sbatch specs:
 
-        ```
-        #!/bin/bash -l
-        #SBATCH --job-name=abcd2bids
-        #SBATCH --time=12:00:00
-        #SBATCH --mem-per-cpu=50gb
-        #SBATCH --tmp=80gb
-        #SBATCH --output=output_logs/dicom2bids_%A_%a.out
-        #SBATCH --error=output_logs/dicom2bids_%A_%a.err
-        #SBATCH --mail-type=ALL
-        #SBATCH --mail-user=<YOUR_x500>@umn.edu
-        #SBATCH -A miran045
-        #SBATCH -p amdsmall,small
+    ```
+    #!/bin/bash -l
+    #SBATCH --job-name=abcd2bids
+    #SBATCH --time=12:00:00
+    #SBATCH --mem-per-cpu=50gb
+    #SBATCH --tmp=80gb
+    #SBATCH --output=output_logs/dicom2bids_%A_%a.out
+    #SBATCH --error=output_logs/dicom2bids_%A_%a.err
+    #SBATCH --mail-type=ALL
+    #SBATCH --mail-user=<YOUR_x500>@umn.edu
+    #SBATCH -A miran045
+    #SBATCH -p amdsmall,small
 
-        source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
+    source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
 
-        module load singularity
+    module load singularity
 
-        . "/home/faird/shared/code/external/envs/miniconda3/mini3/etc/profile.d/conda.sh"
-        export PATH="/home/faird/shared/code/external/envs/miniconda3/mini3/bin:$PATH"
-        export PATH=$PATH:/home/feczk001/shared/code/external/utilities/dcmtk-3.6.5/dcmtk-3.6.5-build/bin
-        export PATH=$PATH:/home/feczk001/shared/code/external/utilities/jq-1.5
+    . "/home/faird/shared/code/external/envs/miniconda3/mini3/etc/profile.d/conda.sh"
+    export PATH="/home/faird/shared/code/external/envs/miniconda3/mini3/bin:$PATH"
+    export PATH=$PATH:/home/feczk001/shared/code/external/utilities/dcmtk-3.6.5/dcmtk-3.6.5-build/bin
+    export PATH=$PATH:/home/feczk001/shared/code/external/utilities/jq-1.5
 
-        python3 /home/rando149/shared/code/internal/utilities/abcd-dicom2bids/abcd2bids.py /common/software/install/migrated/fsl/6.0.4/ /home/feczk001/shared/code/external/utilities/MATLAB_MCR/v91/ -q /home/rando149/shared/code/internal/utilities/abcd-dicom2bids/spreadsheets/fastqc20230912/abcd_fastqc01.txt -l /path/to/subject_list/subjects.txt -o /path/to/output_dir/ -p 1219957 --download=/path/to/raw/data/downloaded --downloadcmd /home/faird/shared/code/external/envs/miniconda3/mini3/envs/abcd-dicom2bids/bin/downloadcmd --singularity /home/rando149/shared/code/internal/utilities/abcd-dicom2bids_nda/validator_latest.sif 
+    python3 /home/rando149/shared/code/internal/utilities/abcd-dicom2bids/abcd2bids.py /common/software/install/migrated/fsl/6.0.4/ /home/feczk001/shared/code/external/utilities/MATLAB_MCR/v91/ -q /home/rando149/shared/code/internal/utilities/abcd-dicom2bids/spreadsheets/fastqc20230912/abcd_fastqc01.txt -l /path/to/subject_list/subjects.txt -o /path/to/output_dir/ -p 1219957 --download=/path/to/raw/data/downloaded --downloadcmd /home/faird/shared/code/external/envs/miniconda3/mini3/envs/abcd-dicom2bids/bin/downloadcmd --singularity /home/rando149/shared/code/internal/utilities/abcd-dicom2bids_nda/validator_latest.sif 
 
-        ```
+    ```
         
         - In the run command, `-q` is the path to quality control (QC) spreadsheet file downloaded from the NDA,`-l` is the list of subjects being converted, `-o` is where the outputs are being stored, `-p` is the package ID number of relevant NDA data package, `--downloadcmd` is the path where the downloadcmd has been installed.
         

@@ -21,7 +21,6 @@ nav:
       - Job Submissions: jobs.md
       - fairshare: fairshare.md
       - Queue Optimization: queue-optimization.md
-      - Analyzing Motion Regressors: motion-regressor.md
   - Software Environments:
       - VS Code: vscode.md 
       - Miniconda Environments: miniconda.md
@@ -43,6 +42,7 @@ nav:
       - Defacing: defacing.md
       - 10.5T NHP ABCD BIDS Pipeline Synth: preprocessing.md
       - Fast Track QC Comparison (ABCD): fasttrack.md
+      - Respiration Rate Settings: resp-rate.md
   - Processing:
       - Pipelines: pipelines.md
       - S3 Pipeline Wrappers: wrappers.md
@@ -53,6 +53,7 @@ nav:
       - Precision Mapping Wrapper: precision.md
       - Processing Status: status.md
       - Infant Quality Assessment: infant-qa.md
+      - Analyzing Motion Regressors: motion-regressor.md
   - Troubleshooting:
       - Troubleshooting and Image Viewing: troubleshooting.md
       - Testing BIBSnet: bibsnet-testing.md
@@ -68,8 +69,12 @@ nav:
       - Basecamp: basecamp.md
       - Recorded Presentations: presentations.md
       - UMN Recommended Courses: courses.md
+  - Plotting Tools:
+      - Figure Maker: figure-maker.md
+      - Connectivity Matrices: matrices.md
+      - Skinny Plot: skinny-plot.md
   - PHI:
-      - "Protected Health Information (PHI): A Quick Guide": phi-quick-guide.md
+      - Protected Health Information (PHI): A Quick Guide: phi-quick-guide.md
   - Contributions:
       - Contributors and Papers: contributions.md
   - THANK YOU FOR USING THE DIG:
