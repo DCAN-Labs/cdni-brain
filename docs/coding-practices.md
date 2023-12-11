@@ -56,3 +56,34 @@ by whom: Audrey Houghton
 ## Commenting
 - At the top of each script within a given repository, describe what that script is doing.
 - At the beginning of each function, define the purpose of the function, what its inputs are, and what its outputs are.
+
+## Obscuring Filepaths
+
+It's generally considered best practice to not share full filesystem paths on public GitHub repositories. For repositories that have file paths in the code, we therefore recommend using a config.json file when necessary to obscure file paths from your local computer, MSI, etfc:
+
+Within your local repository, create a `config.json` file that contains, for example, a tier1 path you don’t want to make available on GitHub:
+
+```
+{
+"tier1_path": "/your/file/path"
+}
+```
+
+Create a file called `.gitignore` and add `config.json` so that you or other users don't accidentally publish their local config.json to the public repository (this can of course include other files/folders to ignore, such as logs):
+
+```
+# ignore config.json
+config.json
+```
+
+Grab the path within your python script using the json module:
+
+```
+import json
+
+with open("config.json") as json_data_file:
+    data = json.load(json_data_file)
+tier1_path = data['tier1_path']
+```
+
+This way, instead of having the file path visible in the code, you are pulling it from a config file that isn't public for others to see.

@@ -69,10 +69,17 @@ nav:
       - Basecamp: basecamp.md
       - Recorded Presentations: presentations.md
       - UMN Recommended Courses: courses.md
+      - UMN Computer Installs: installs.md
   - Plotting Tools:
       - Figure Maker: figure-maker.md
       - Connectivity Matrices: matrices.md
       - Skinny Plot: skinny-plot.md
+  - Analysis Tools:
+      - Cifti Conn Matrix: cifti-matrix.md
+      - Seed Map Parcellation Wrapper: seed-map.md
+      - Template Matching: template-matching.md
+      - F Conn Regression: f-conn.md
+      - BWAS: bwas.md
   - PHI:
       - A Quick Guide on Protected Health Information (PHI): phi-quick-guide.md
   - Contributions:

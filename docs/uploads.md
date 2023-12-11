@@ -44,3 +44,28 @@ To set up Globus on your local computer or a system without Globus already insta
 To transfer data to tier 2 storage (an s3 bucket), using the Globus file manager, choose **UMN MSI Tier2** on one side and your connect point on the other side. Find more information about transferring to tier 2 storage [here](https://www.msi.umn.edu/support/faq/how-do-i-use-globus-transfer-data-second-tier-storage-msi). If you are wanting to transfer data to tier 1 storage, choose **UMN MSI Home** as your location. More information about setting up Globus can be found [here](https://www.msi.umn.edu/support/faq/how-do-i-use-globus-transfer-data-msi-0).
 
 For using Globus with command line, see [here](https://docs.globus.org/cli/reference/).
+
+## NDA Uploads
+
+The full instructions for performing an upload to the NDA can be found [here.](https://github.com/DCAN-Labs/nda-bids-upload). This section will merely provide guidelines for uploading data specifically from MSI within DCAN Labs. 
+
+The upload working directories as well as the necessary jsons and yamls can be found at `/home/rando149/shared/projects/ABCD/ABCC_Upload/`
+
+Create your own folder in the `working_directories` subfolder and name it to include the dataset, pipeline it was processed with, and the year of data you're uploading. An example of a name uploading baseline (year1) ABCC data that's been processed with the abcd-hcp-pipeline-v0.1.3 would be `ABCC_year1_v0.1.3_submission`
+
+Examples of sbatch files for the prepare.py and upload.py scripts can be found under the [utilities folder on the upload repo](https://github.com/DCAN-Labs/nda-bids-upload/tree/main/utilities). 
+
+prepare.py is not set up to work with pull data from the s3 so make sure your input data lives on tier1 (this will typically be the NGDR).
+
+After you've run prepare.py, you'll need to make an `upload_directories.txt` file that contains the datatypes that you are uploading. This is needed for the upload.py script. 
+
+When submitting the upload.py sbatch, it is important to submit them in arrays. The NDA servers can't handle too many submissions at once and will crash if they are overloaded. To prevent this, we upload batches of 500 files in groups of 5. The upload.py script is already set up to create batches of 500 files, so to submit 5 arrays, this line needs to be in your sbatch:
+
+`#SBATCH --array=0-34%5` 
+
+- This line will depend on how many datatypes you are uploading, the `34` in the example is the number of datatypes being uploaded.
+
+- The `5` is how many arrays you're submitting at once. 5 has been chosen based on past uploads and communication with the NDA, who have indicated that they can (typically) guarantee that they have 5 different servers running. 
+
+- This line will submit 5 jobs at a time and will wait for those to finish before submitting 5 more.
+
