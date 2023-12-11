@@ -69,6 +69,7 @@ nav:
       - Basecamp: basecamp.md
       - Recorded Presentations: presentations.md
       - UMN Recommended Courses: courses.md
+      - UMN Computer Installs: installs.md
   - Plotting Tools:
       - Figure Maker: figure-maker.md
       - Connectivity Matrices: matrices.md
