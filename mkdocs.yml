@@ -64,6 +64,8 @@ nav:
       - UMN Recommended Courses: courses.md
   - GitHub:
       - GitHub History Scrub: github-scrub.md
+      - GitHub A Beginner's Guide to Using GitHub for the First Time: github-quick-guide.md
+      - Setting up GitHub SSH on Your Local Computer and MSI: setting-git-ssh.md
   - PHI:
       - Protected Health Information (PHI): A Quick Guide: phi-quick-guide.md
   - Contributions:
