@@ -1,4 +1,4 @@
-site_name: Data Processing Handbook - DCAN Labs
+site_name: DCAN Labs Informational Guide
 theme: readthedocs
 plugins:
   - search
@@ -14,45 +14,54 @@ nav:
       - S3: s3.md
       - Common MSI Roadblocks: roadblocks.md
       - Requesting Module from MSI: msi-module-request.md
-  - Slurm/Processing Jobs:
+  - SLURM Jobs:
       - Slurm Commands: slurm.md
       - Slurm Jobs: slurm-params.md
       - Optimizing sbatch Parameters: optimizing.md
       - Job Submissions: jobs.md
       - fairshare: fairshare.md
       - Queue Optimization: queue-optimization.md
-      - Analyzing Motion Regressors: motion-regressor.md
   - Software Environments:
       - VS Code: vscode.md 
       - Miniconda Environments: miniconda.md
-      - Best Coding Practices: workflow.md
       - Software Versioning: versioning.md
       - Containers: containers.md
       - Virtual Machine: vm.md
+  - Coding Standards:
+      - Best Practices: coding-practices.md
+  - GitHub:
+      - GitHub Tips and Tricks: github-tips.md
+      - GitHub History Scrub: github-scrub.md
+      - GitHub Beginner's Guide: github-quick-guide.md
+      - Setting up GitHub SSH: setting-git-ssh.md
   - BIDS:
       - DICOM to BIDS conversion: dcm2bids.md
       - BIDS Validation: bids.md
       - NORDIC Denoising and BIDS NORDIC Wrapper: nordic.md
       - BIDS Directory Structure: bids-directory-structure.md
   - Before processing:
-      - Defacing: infant-preproc.md
+      - Infant Preprocessing: infant-preproc.md
+      - Defacing: defacing.md
       - 10.5T NHP ABCD BIDS Pipeline Synth: preprocessing.md
       - Fast Track QC Comparison (ABCD): fasttrack.md
+      - Respiration Rate Settings: resp-rate.md
   - Processing:
       - Pipelines: pipelines.md
       - S3 Pipeline Wrappers: wrappers.md
       - Infant Pipeline Documentation: infant-doc.md
+      - Best Practices: processing-sop.md
   - After processing:
       - file-mapper: filemapper.md    
       - Precision Mapping Wrapper: precision.md
       - Processing Status: status.md
+      - Infant Quality Assessment: infant-qa.md
+      - Analyzing Motion Regressors: motion-regressor.md
   - Troubleshooting:
       - Troubleshooting and Image Viewing: troubleshooting.md
       - Testing BIBSnet: bibsnet-testing.md
       - Requests and Questions: requests.md
   - Quality Control:
       - BrainSwipes: brainswipes.md
-      - Infant Data: infant-qc.md
   - Data Uploads and Transfers:
       - Data Transfers: uploads.md
       - Transfer ABCC Data to the NGDR: ngdr-transfer.md
@@ -62,13 +71,20 @@ nav:
       - Basecamp: basecamp.md
       - Recorded Presentations: presentations.md
       - UMN Recommended Courses: courses.md
-  - GitHub:
-      - GitHub History Scrub: github-scrub.md
-      - GitHub A Beginner's Guide to Using GitHub for the First Time: github-quick-guide.md
-      - Setting up GitHub SSH on Your Local Computer and MSI: setting-git-ssh.md
+      - UMN Computer Installs: installs.md
+  - Plotting Tools:
+      - Figure Maker: figure-maker.md
+      - Connectivity Matrices: matrices.md
+      - Skinny Plot: skinny-plot.md
+  - Analysis Tools:
+      - Cifti Conn Matrix: cifti-matrix.md
+      - Seed Map Parcellation Wrapper: seed-map.md
+      - Template Matching: template-matching.md
+      - F Conn Regression: f-conn.md
+      - BWAS: bwas.md
   - PHI:
-      - Protected Health Information (PHI): A Quick Guide: phi-quick-guide.md
+      - A Quick Guide on Protected Health Information (PHI): phi-quick-guide.md
   - Contributions:
       - Contributors and Papers: contributions.md
-  - THANK YOU FOR USING THE DPH:
+  - THANK YOU FOR USING THE DIG:
       - _____: blank.md

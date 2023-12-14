@@ -228,7 +228,7 @@ Hypothetically if your command was `module load fsl` that would load FSL before 
         PATH=${FSLDIR}/6.0.4/bin:${PATH}
         export FSLDIR PATH
 
- **NOTE** : This process still does not seem to work all the time. If just adding this task does not work, before running your script, also run `module load fsl` and `bash prerun.sh` in the terminal. If you figure out how to make this work every time, please [post a GitHub issue](https://github.com/DCAN-Labs/data-processing-handbook/issues) informing us how to do it.
+ **NOTE** : This process still does not seem to work all the time. If just adding this task does not work, before running your script, also run `module load fsl` and `bash prerun.sh` in the terminal. If you figure out how to make this work every time, please [post a GitHub issue](https://github.com/DCAN-Labs/dcan-labs-informational-guide/issues) informing us how to do it.
 
 ### Running the debugger
 

@@ -115,7 +115,7 @@ ${singularity} run --cleanenv \
 -B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
 -B /home/faird/shared/projects/new_rae_testing/work_dir/:/work \
 -B /home/faird/shared/projects/new_rae_testing/bibsnet_outputs/:/derivatives \
-/home/faird/shared/code/external/pipelines/nibabies/nibabies_unstable_04182023.sif /data /out participant
+/home/faird/shared/code/external/pipelines/nibabies/nibabies_unstable_04182023.sif /data /out participant \
 --participant-label {subject_ID} --age-months {age} -s {age_mo} \
 --derivatives /derivatives \
 --cifti-output 91k \
@@ -275,8 +275,7 @@ ${singularity} run –cleanenv \
 --motion-filter-type notch ${bandstopmin} ${bandstopmax} \ 
 --warp-surfaces-native2std \
 - vv \
---input-type fmriprep \ #can replace with nibabies 
-#if working with nibabies, add -r {head radius in mm} 
+--input-type fmriprep \ #can replace with nibabies \ #if working with nibabies, add -r {head radius in mm} 
 -w /wkdir \
 /fmriprep_out /xcpd_out participant
 ```
@@ -301,7 +300,7 @@ This fMRI minimal preprocessing pipeline is based on Washington University's HCP
     
     * Adjust class means of tissue to fit T1w contrasts.
 
-Overview: fMRI -> anatomical registration - no boundary based registration, use T2w to align. Running the PreFreeSurfer, FreeSurfer, and PostFreeSurfer stages will pre-process anatomical images. Following those with fMRIVolume and fMRISurface will pre-process functional images. For more information on the code, see[ the github link here](https://github.com/DCAN-Labs/dcan-infant-pipeline). For a more in-depth description of the pipeline, see [the readthedocs link here](https://dcanlab.readthedocs.io/en/latest/manualpro/infant/pipeline/). 
+Overview: fMRI -> anatomical registration - no boundary based registration, use T2w to align. Running the PreFreeSurfer, FreeSurfer, and PostFreeSurfer stages will pre-process anatomical images. Following those with fMRIVolume and fMRISurface will pre-process functional images. For more information on the code, see[ the github link here](https://github.com/DCAN-Labs/dcan-infant-pipeline). For a more in-depth description of the pipeline, see [this page](infant-doc.md). 
 
 1. Preferred flags:
     
@@ -317,15 +316,15 @@ Overview: fMRI -> anatomical registration - no boundary based registration, use 
     
     - `--stage \` : Specify a subset of stages to run. Can be used to rerun some or all of the pipeline after completing it once, or resume an incomplete runthrough. If a single stage name is given, the pipeline will be started at that stage. If a string with a ":" is given, a stage name before the ":" will tell the pipeline where to start and a stage name after the ":" will tell it where to stop. If no ":" is found, the pipeline will start with the stage specified and run through ExecutiveSummary (or CustomClean/ABCDTask, if specified). Valid stage names: PreFreeSurfer, FreeSurfer, PostFreeSurfer, FMRIVolume, FMRISurface, DCANBOLDProcessing, ExecutiveSummary, CustomClean'
 
-1. For further information on DCAN Infant Pipeline flags, see the [readthedocs section here](https://dcanlab.readthedocs.io/en/latest/manualpro/infant/pipeline/#pipeline-optional-flags-and-example).
+1. For further information on DCAN Infant Pipeline flags, see the [readthedocs section here](infant-doc.md#pipeline-optional-flags-and-example).
 
 2. If an error is encountered, document it [here](https://docs.google.com/document/d/1FEcHVf34hWy9o0V0GKka5b2VKw5ndRt8/edit). Also, see [Troubleshooting](troubleshooting.md#infant-abcd-bids-pipeline-dcan-infant-pipeline).
 
 3. Example command:
 
 ```
-singularity run --cleanenv\
--e /
+singularity run --cleanenv \
+-e \
 -B ${data_dir}:/bids_input \ 
 -B ${OUTPUT_DIR}:/output \
 -B ${FS_LICENSE}/license.txt:${lic_loc} \
@@ -372,16 +371,18 @@ This pipeline performs level 1 and 2 analyses of fMRI dtseries data.
 
 Example command: 
 
-        fsl_dir=/home/software/fsl/bin/
-        subject_ID=sub-ABCDEFGH
-        session_ID=ses-QRSTUV
-        task_name=my_task
-        study_dir=/home/users/shared/data/my_study
-        wb_command=/home/software/workbench/bin/wb_command
-        events_dir=/home/users/shared/data/task_events/
-        wrapper_dir=.
+```
+fsl_dir=/home/software/fsl/bin/
+subject_ID=sub-ABCDEFGH
+session_ID=ses-QRSTUV
+task_name=my_task
+study_dir=/home/users/shared/data/my_study
+wb_command=/home/software/workbench/bin/wb_command
+events_dir=/home/users/shared/data/task_events/
+wrapper_dir=.
 
-         python3 pipeline_wrapper.py --subject ${subject_ID} --ses ${session_ID} --study-dir ${study_dir} --task ${task_name} --events-dir ${events_dir} --fsl-dir ${fsl_dir} --wb-command ${wb_command} --wrapper-location ${wrapper_dir}
+python3 pipeline_wrapper.py --subject ${subject_ID} --ses ${session_ID} --study-dir ${study_dir} --task ${task_name} --events-dir ${events_dir} --fsl-dir ${fsl_dir} --wb-command ${wb_command} --wrapper-location ${wrapper_dir}
+s```
 
 Find out more information [here.](https://github.com/DCAN-Labs/abcd-bids-tfmri-pipeline)
 

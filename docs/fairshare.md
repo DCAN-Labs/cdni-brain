@@ -7,7 +7,7 @@ The goal of fairshare is to increase the priority when scheduling jobs. When a g
 `sshare -U x500`: checks all of the accounts a user has access to at once
 
    * Below is an example of a terminal output after running the above command:
-   * Based on the values in the `FairShare` column, the larger numbers will receive higher priority when running jobs. So with the above output, the user would want to submit jobs using `feczk001`.
+   * Based on the values in the `FairShare` column, the larger numbers will receive higher priority when running jobs. So with the below output, the user would want to submit jobs using `feczk001`.
 
 ![fairshare usage example](img/fairshare-example.jpeg)
 

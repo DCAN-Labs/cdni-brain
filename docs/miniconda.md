@@ -1,6 +1,6 @@
 # Miniconda Environments (Python)
 
-DCAN Labs maintains lab-wide shared miniconda environments which are configured for ease of access to several of our commonly used Python tools such as [Dcm2bids](#9-dicom-to-bids-conversion-dcm2bids). Using the shared environment is in most cases preferred to individual users doing their own Python package installations and/or setting up environments in their MSI home directory.
+DCAN Labs maintains lab-wide shared miniconda environments which are configured for ease of access to several of our commonly used Python tools such as [Dcm2bids](dcm2bids.md). Using the shared environment is in most cases preferred to individual users doing their own Python package installations and/or setting up environments in their MSI home directory.
 
 * To load the DCAN labwide miniconda3 environment, first run the following command: 
 
@@ -15,7 +15,7 @@ DCAN Labs maintains lab-wide shared miniconda environments which are configured 
 
         conda activate environment_name 
 
-* To list the packages within an environment:
+* To list the packages within an environment (if the environment is activated you do not need to specify the name):
 
         conda list -n environment_name
 
@@ -30,9 +30,9 @@ To create a new conda environment, follow these instructions:
 
     Note: It is a list without commas. You can also install one by one.
 
-More information about creating and using conda environments can be found [here](https://data-processing-handbook.readthedocs.io/en/latest/vscode/#conda-environments)
+More information about creating and using conda environments can be found [here](vscode.md#conda-environments)
 
-    ** **
+** **
 
 You can also create an environment with a YAML file of requirements.
 
