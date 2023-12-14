@@ -1,4 +1,6 @@
-## Other GitHub Tips
+# Other GitHub Tips
+
+## Good Practices
 
 1. Make your commit messages short but descriptive.
     - "changed stuff" -> "added comments to run.py funcs"
@@ -17,3 +19,11 @@
 6. Get a DOI for your codebase if it is being used by others.
     - This is usually done via zenodo.
     - People will be able to credit you and reference specific commits with this.
+
+## Watch a Repo 
+
+Watching a repo will enable email notifications any time a certain event happens on the repo. This is a good way to stay in the know about what's going on in your repo. To watch a repo, follow these steps:
+
+- On the repo you want to watch, in the upper right corner, there should be a `watch` menu that you can select
+- Select what level you want to watch at
+    * You can create a custom option if you only want to be notified of certain events (pull requests and issue postings for example)
