@@ -32,6 +32,8 @@ nav:
   - GitHub:
       - GitHub Tips and Tricks: github-tips.md
       - GitHub History Scrub: github-scrub.md
+      - GitHub Beginner's Guide: github-quick-guide.md
+      - Setting up GitHub SSH: setting-git-ssh.md
   - BIDS:
       - DICOM to BIDS conversion: dcm2bids.md
       - BIDS Validation: bids.md
