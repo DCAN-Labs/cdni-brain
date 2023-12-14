@@ -1,6 +1,6 @@
-# Common Github Commands
+# Common Git Commands
 
-This page contains common commands used to work with Github repositories. This is by no means an exhaustive list of commands. 
+This page contains common commands used to work with Github repositories via git. This is by no means an exhaustive list of commands. 
 
 ## Basics 
 
@@ -23,8 +23,6 @@ This page contains common commands used to work with Github repositories. This i
 - Add changes from a specific file/folder to your commit. To add multiple files at once there are several options:
 
     * `-A` to add all new, modified, and deleted files
-
-    * `.` to add all new and modified files but not deleted files
 
     * `-u` to add all modified and deleted files but not new files 
 
