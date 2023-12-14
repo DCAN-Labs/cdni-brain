@@ -85,6 +85,8 @@ nav:
   - PHI:
       - A Quick Guide on Protected Health Information (PHI): phi-quick-guide.md
   - Contributions:
+  - ZENODO: 
+      - ZENODO: zenodo.md
       - Contributors and Papers: contributions.md
   - THANK YOU FOR USING THE DIG:
       - _____: blank.md
