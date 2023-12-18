@@ -6,37 +6,41 @@
 
 This handbook outlines key tools and resources used by DCAN Labs. Topics covered range from using MSI to basecamp tips. For a full list of topics, see the menu to the left. The broad categories as defined as follows:
 
-1. Overview: 
+- Overview: 
     - Defining the purpose of this documentation and the labs' goals
-2. Using MSI: 
+- Using MSI: 
     - General MSI usage tips, mostly focused on storage and access
-3. SLURM Jobs:
+- SLURM Jobs:
     - Tips and notes on using SLURM on MSI
-4. Software Environments:
+- Software Environments:
     - Coding environments and how to use them
-5. Coding Standards:
+- Coding Standards:
     - Best practices for codebase maintenance within the lab
-6. GitHub:
+- GitHub:
     - GitHub setup, tips, and tricks
-7. BIDS:
+- BIDS:
     - Anything to convert or validate BIDS data
-8. Before Processing:
+- Before Processing:
     - Any steps the lab does before running processing (ABCD-BIDS, fMRIprep, Nibabies, etc)
-9. Processing:
+- Processing:
     - Running data processing pipelines on MSI (ABCD-BIDS, fMRIprep, Nibabies, etc)
-10. After Processing:
+- After Processing:
     - Any steps the lab does after running processing (ABCD-BIDS, fMRIprep, Nibabies, etc)
-11. Troubleshooting:
+- Troubleshooting:
     - Notes on troubleshooting the labs codebases
-12. Quality Control:
+- Quality Control:
     - Quality control methods within the lab
-13. Data Uploads and Transfers:
+- Data Uploads and Transfers:
     - Moving data within and outside of MSI
-14. Lab Resources:
+- Lab Resources:
     - Lab recommendations and software used outside of MSI
-15. PHI:
+- Plotting Tools:
+    - Tools used by the lab to create various figures
+- Analysis Tools:
+    - Tools used by the lab to perform various analyses 
+- PHI:
     - Quick guide on PHI for a reminder
-16. Contributions:
+- Contributions:
     - Authors of this documentation and lab papers
 
 
@@ -51,4 +55,4 @@ You can find out more information about the lab on our [website](https://innovat
 
 ## Questions/Suggestions
 
-Please post any question in the form of an issue to the [dcan-labs-informational-guide](https://github.com/DCAN-Labs/dcan-labs-informational-guide/issues) repository on GitHub. This includes clarifying questions on the guide content, reporting errors/typos, requesting additional sections/topics, etc. Note that this will require that you have a GitHub account: for further information, please refer to GitHub's documentation on how to post an issue [here](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue).
+Please post any question in the form of an issue to the [dcan-labs-informational-guide](https://github.com/DCAN-Labs/dcan-labs-informational-guide/issues) repository on GitHub. This includes clarifying questions on the guide content, reporting errors/typos, requesting additional sections/topics, etc. Note that this will require that you have a GitHub account. For further information, please refer to GitHub's documentation on how to post an issue [here](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue).

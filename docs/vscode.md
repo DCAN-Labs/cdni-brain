@@ -48,7 +48,7 @@ Now you need to edit the ssh config file on your local computer to be able to co
         LocalForward 12326 localhost:12326
 
         Host cn*
-        ser USERNAME
+        User USERNAME
         ProxyCommand ssh -L 12326:localhost:12326 -W %h:%p mangi.msi.umn.edu
         LocalForward 12326 localhost:12326
         ForwardX11Trusted yes
