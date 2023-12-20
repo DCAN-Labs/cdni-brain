@@ -15,9 +15,9 @@ In general:
 
 If the repository is available in GitHub, releases and tags should be named according to the Versioning Scheme. 
 
-*(A “tag” is a property of a Git commit; a “release” is a Github property connected to a Git tag. For details see https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases.)* 
+*(A “tag” is a property of a Git commit; a “release” is a GitHub property connected to a Git tag. For details see https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases.)* 
 
-Naming should be consistent for the Git tag, Github release and Dockerhub tag associated with any specific Git commit.
+Naming should be consistent for the Git tag, GitHub release and Dockerhub tag associated with any specific Git commit.
 
 **In-software version identification**
 
@@ -30,7 +30,7 @@ For software run from command-line:
 
 **Release notes**
 
-For each Github release, make a list detailing all changes made since the previous release within the same major version. (If the release begins a new major version, list the changes since the last release in the prior major version.) 
+For each GitHub release, make a list detailing all changes made since the previous release within the same major version. (If the release begins a new major version, list the changes since the last release in the prior major version.) 
 
 Changes should be categorized using the following shorthand codes adapted from [fMRIPrep’s release documentation](https://fmriprep.org/en/stable/changes.html):
   
@@ -98,13 +98,13 @@ Learn more about continuous integration [here](https://resources.github.com/ci-c
 
 **Release Candidates**
 
-Release Candidates (RCs) provisional builds intended for internal or limited testing to check if any critical problems have gone undetected into the code during the previous development period. These releases should be developed in a development branch and not the main branch on Github. In general, RCs should not be published publicly on Dockerhub or included in Zenodo. The “pre-release” flag in Github can be used to designate an RC. 
+Release Candidates (RCs) provisional builds intended for internal or limited testing to check if any critical problems have gone undetected into the code during the previous development period. These releases should be developed in a development branch and not the main branch on GitHub. In general, RCs should not be published publicly on Dockerhub or included in Zenodo. The “pre-release” flag in GitHub can be used to designate an RC. 
 
 See **(link TBA)** for lab guidelines on code review and testing. 
 
 **Stable releases**
 
-An RC (release candidate) that has been through testing and code review. In the typical workflow, a [Github pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to review and merge the changes from the development branch to the main branch, then a stable release can be created from the main branch.
+An RC (release candidate) that has been through testing and code review. In the typical workflow, a [GitHub pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to review and merge the changes from the development branch to the main branch, then a stable release can be created from the main branch.
 
  Stable releases should meet the requirements for the [NMIND Bronze coding standards certification](https://github.com/nmind/coding-standards-certification/tree/main/checklists)
 
@@ -118,13 +118,13 @@ When a new major release is made which breaks backward compatibility, consider d
 
 **Deprecated releases**
 
-Outdated releases where there won’t be continued development or support. Deprecated releases are older releases with no expectation of continued development or user support. These should be denoted in Github.
+Outdated releases where there won’t be continued development or support. Deprecated releases are older releases with no expectation of continued development or user support. These should be denoted in GitHub.
  
-## Github webhooks
+## GitHub webhooks
 
-[Github webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks) are used to trigger an action in a connected website or application in response to an action on Github. Examples include [initiating a Docker image build on Dockerhub](https://docs.docker.com/docker-hub/webhooks/) or [updating a Zenodo entry](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content/) 
+[GitHub webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks) are used to trigger an action in a connected website or application in response to an action on GitHub. Examples include [initiating a Docker image build on Dockerhub](https://docs.docker.com/docker-hub/webhooks/) or [updating a Zenodo entry](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content/) 
  
-Webhooks require the Github user publishing the release to have repo admin permissions. If you plan on publishing releases on the [DCAN Labs Github](https://www.github.com/DCAN-Labs), reach out to the project manager. Project managers will give you admin privileges on the repo so that webhooks will execute.
+Webhooks require the GitHub user publishing the release to have repo admin permissions. If you plan on publishing releases on the [DCAN Labs GitHub](https://www.github.com/DCAN-Labs), reach out to the project manager. Project managers will give you admin privileges on the repo so that webhooks will execute.
  
 ## Software and source code on MSI 
 

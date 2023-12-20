@@ -126,7 +126,7 @@ ${singularity} run --cleanenv \
 
 ## 3. ABCD-HCP-BIDS
 
-Read: [abcd-hcp-pipeline @ Github](https://github.com/DCAN-Labs/abcd-hcp-pipeline)
+Read: [abcd-hcp-pipeline @ GitHub](https://github.com/DCAN-Labs/abcd-hcp-pipeline)
 
 
 Read: [abcd-hcp-pipeline @ ABCC ReadTheDocs](https://collection3165.readthedocs.io/en/stable/pipeline/)
@@ -283,7 +283,7 @@ ${singularity} run –cleanenv \
 ## 6. DCAN Infant
 
 
-Read: [infant-abcd-bids-pipeline @ Github](https://github.com/DCAN-Labs/infant-abcd-bids-pipeline)
+Read: [infant-abcd-bids-pipeline @ GitHub](https://github.com/DCAN-Labs/infant-abcd-bids-pipeline)
 
 
 This fMRI minimal preprocessing pipeline is based on Washington University's HCP Pipeline. Many changes were made to accomodate the differences in the developing brain of infants. Notably:

@@ -1,47 +1,19 @@
-# S3 Pipeline wrappers
+# S3 Wrappers
 
 _Note: see [s3_wrappers_overview.mp4](https://drive.google.com/file/d/1kr9B0ZGZxHGVj4xzl1qMZYY7Qyeg8TYV/view?usp=sharing) for zoom recording of overview presented at DCAN Hackathon_
 
 
-Pipeline wrappers exist to submit one subject-session processing job (or analysis) at a time. This allows for improved queueing time of your jobs because you will be requesting less resources per job. Also, partitions have maximum time limits and memory limits that make it almost impossible to run an entire study in one job. The wrapper makes this entire process easier. 
+Wrappers exist to submit one subject-session job at a time. This allows for improved queueing time of your jobs because you will be requesting less resources per job. Also, partitions have maximum time limits and memory limits that make it almost impossible to run an entire study in one job. The wrapper makes this entire process easier. 
 
 
 Below is an overview of the s3 wrapper workflow:
 
 ![wrapper workflow chart](img/wrapper.png)
 
-Set up a wrapper to create the individual jobs per subject and session pair based on the pipeline parameters, the sbatch parameters, and the storage chosen. Gather the correct wrapper script from github: [DCAN-Labs/slurm_pipeline_wrappers](https://github.com/DCAN-Labs/slurm_pipeline_wrappers) or on MSI at `/home/faird/shared/code/internal/utilities/slurm_pipeline_wrappers/`. Then, copy the wrapper into your own working directory for your project under  `/home/{share}/shared/projects/your_project/`
+Set up a wrapper to create the individual jobs per subject and session pair based on the pipeline parameters, the SBATCH parameters, and the storage chosen. Gather the correct wrapper script from GitHub: [DCAN-Labs/SLURM_wrappers](https://github.com/DCAN-Labs/SLURM_wrappers) or on MSI at `/home/faird/shared/code/internal/utilities/SLURM_wrappers/`. Then, copy the wrapper into your own working directory for your project under  `/home/{share}/shared/projects/your_project/`
 
 
-Current list of wrappers developed for s3 integration:
-
-* QSIprep
-
-* NiBabies
-
-* fMRIPrep
-
-* DEAP-derivatives and sync 
-
-* CuBids
-
-* DCAN infant wrapper
-
-* abcd-hcp-pipeline (abcd-bids)
-
-* abcd-dcm2bids
-
-* Continuous slurm array submitter
-
-* s3tos3 file mapper
-
-* Reliability maps
-
-* BIBSnet
-
-* Disk Usage (dua)
-
-* CustomClean
+See the [GitHub repository](https://github.com/DCAN-Labs/SLURM_wrappers) for a list of current wrappers we've developed with their descriptions.
 
 Each wrapper should have a template file which has generalized commands with variables that get filled with the execution of `make_run_files`. Modifications will also need to be made within the `submit_{}.sh` file. 
 
@@ -53,7 +25,7 @@ Each wrapper should have a template file which has generalized commands with var
 
     2. `./submit_ALL.sh` 0-467 (Note: any number scheme may be used provided as long as it is listed as a comma separated list, or as stated in the example, or a combination of both)
 
-**Steps to modify and run pipeline wrappers (using abcd-hcp-pipeline as an example)**
+**Steps to modify and run pipeline wrappers (using `abcd-hcp-pipeline` as an example)**
 
 
 1. Copy the entire folder contents of `abcd-wrappers/abcd-hcp-pipeline_scripts_with_s3_routines_with_ses` to your project folder to make changes to these scripts in your own directory

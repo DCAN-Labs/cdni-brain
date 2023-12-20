@@ -30,7 +30,7 @@ A Bronze certification broadly entails the following:
 
 * License and readme
 
-* Issue tracking (typically through Github)
+* Issue tracking (typically through GitHub)
 
 * Some sort of testing 
 

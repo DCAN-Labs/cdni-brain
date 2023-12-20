@@ -80,7 +80,7 @@ Click "+" in the top right, select "New repository," fill in details, and click 
 
 **Clone the Repository:**
 
-On the Github page of your repository, select the green Code button and select HTTPS or SSH then click the double square icon to copy the URL to your clipboard.
+On the GitHub page of your repository, select the green Code button and select HTTPS or SSH then click the double square icon to copy the URL to your clipboard.
 Open the terminal on your local computer where you want to clone the repository and run the following command to clone the repository:
 
 ```
