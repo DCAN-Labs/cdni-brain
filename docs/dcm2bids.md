@@ -83,6 +83,6 @@ Watch: [Dcm2bids DCAN tutorial recording](https://drive.google.com/drive/folders
         
         - For more information on arguments, see the ReadMe section on Optional Arguments [here](https://github.com/DCAN-Labs/abcd-dicom2bids).
         
-        - For running multiple subjects, it is advised to use a [wrapper ](wrappers.md)to submit one subject/session at a time. There is a wrapper for tier 1 here: `/home/faird/shared/code/internal/utilities/slurm_pipeline_wrappers/slurm_abcd-hcp-pipeline_scripts` and a wrapper for tier 2 here: `/home/faird/shared/code/internal/utilities/slurm_pipeline_wrappers/slurm_abcd-hcp-pipeline_scripts_with_s3_routines_with_ses`
+        - For running multiple subjects, it is advised to use a [wrapper ](wrappers.md)to submit one subject/session at a time. There is a wrapper for tier 1 here: `/home/faird/shared/code/internal/utilities/SLURM_wrappers/slurm_abcd-hcp-pipeline_scripts` and a wrapper for tier 2 here: `/home/faird/shared/code/internal/utilities/SLURM_wrappers/slurm_abcd-hcp-pipeline_scripts_with_s3_routines_with_ses`
             
             * Note: if you do not have access to the faird share, please fill out [this contact form](https://innovation.umn.edu/developmental-cognition-and-neuroimaging-lab/contact-us/) to request access.

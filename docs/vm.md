@@ -38,7 +38,7 @@ Check that there is room for you to build
 
 - Run `sudo du -sh /home/*` and `sudo du -sh /tmp/*` to check the space being taken up by each user - there is 128 GB of shared space
 
-Once you know there is enough space to build your docker image, build your image based off of the dockerfile in the github repo
+Once you know there is enough space to build your docker image, build your image based off of the dockerfile in the GitHub repo
 
         git clone git_hub_url
         cd git_repo_directory

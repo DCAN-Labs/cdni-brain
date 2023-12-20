@@ -17,8 +17,14 @@
 5. Put a README.md within all your codebases, even if you are the only person using it.
     - You will forget how to run you own code, trust me.
 6. Get a DOI for your codebase if it is being used by others.
-    - This is usually done via zenodo.
+    - This is usually done via [zenodo](zenodo.md).
     - People will be able to credit you and reference specific commits with this.
+7. [Add a README.md to your profile](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme).
+    - Include your linked in, projects your working on, your focus, other websites, recent publications, etc
+    - More information on how to personalize your GitHub profile can be found [here](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/personalizing-your-profile).
+8. Keep your branches updated
+    - Frequently [pull to and sync from your local branch](https://docs.github.com/en/desktop/working-with-your-remote-repository-on-github-or-github-enterprise/syncing-your-branch-in-github-desktop)
+    - When intending to submit a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests), merge with the branch you're intending to submit the PR to locally before initiating the request. This ensures you won't have any merge conflicts.
 
 ## Watch a Repo 
 

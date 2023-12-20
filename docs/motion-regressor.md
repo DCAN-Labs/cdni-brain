@@ -1,6 +1,6 @@
 # Analyzing Motion Regressor 
 
-Motion regression is performed on neuroimaging data to reduce motion-related artifacts in the signal. This method focuses on using MATLAB scripts to process the regressor files and identify motion artifacts related to respiration. More information about the scripts can be found on the [Github repo.](https://github.com/DCAN-Labs/movement_regressors_power_plots)
+Motion regression is performed on neuroimaging data to reduce motion-related artifacts in the signal. This method focuses on using MATLAB scripts to process the regressor files and identify motion artifacts related to respiration. More information about the scripts can be found on the [GitHub repo.](https://github.com/DCAN-Labs/movement_regressors_power_plots)
 
 **NOTE:** If you are trying to use this analysis on fmriprep/nibabies outputs, you will need to save your working directory to find the movement regressor files. 
 

@@ -57,7 +57,7 @@ Assuming you have a github repository that has the dockerfile to build your imag
 
 - Run `git clone html-to-repo --branch name-of-branch-to-clone`
 
-- If you are asked for your credentials, enter your github username, then open Github and go to Settings -> Developer Settings (located at very bottom) -> Personal Access Tokens and click Generate New Token. Enter the new token ID as your password.
+- If you are asked for your credentials, enter your github username, then open GitHub and go to Settings -> Developer Settings (located at very bottom) -> Personal Access Tokens and click Generate New Token. Enter the new token ID as your password.
 
 Navigate into the cloned repository 
 
