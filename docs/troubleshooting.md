@@ -3,7 +3,7 @@
 For any processing failures, we triage what happened. Most troubleshooting processes will be needed for infant data, as their processing jobs are more prone to errors. When encountering a processing failure, first check to see if it is already documented in the following pipeline dependent links. It is also necessary and efficient to post your error and run command in #questions or the relevant channel on Slack. If you are unsure what your “relevant channel” is on Slack, ask your supervisor or just default to posting in #questions. 
 
 
-Image viewing is a necessary process to conclude if a pipeline job finished successfully, but it also may be necessary when a processing error has been encountered. There are a few different options for viewing anatomical images. It may be most efficient to first download the images locally and then use ITKsnap to view them. However, when working on MSI, applications such as `fslview_deprecated` or `fsleyes` can be used. For viewing functional images, `wb_view` is ideal (make sure to `module load fsl` or `module load workbench` before using these applications). For more information on nifti and cifti files (image file types), refer to the video sessions in the subfolders of [this google drive folder](https://drive.google.com/drive/u/0/folders/1yc3w2zNYVZQvTcCgxKk_j6ecZLoyWiCM).
+Image viewing is a necessary process to conclude if a pipeline job finished successfully, but it also may be necessary when a processing error has been encountered. There are a few different options for viewing anatomical images. It may be most efficient to first download the images locally and then use ITKsnap to view them. However, when working on MSI, applications such as `fslview_deprecated` or `fsleyes` can be used. For viewing functional images, `wb_view` is ideal (make sure to `module load fsl` or `module load workbench` before using these applications). For more information on NIfTI and CIFTI files (image file types), refer to the video sessions in the subfolders of [this google drive folder](https://drive.google.com/drive/u/0/folders/1yc3w2zNYVZQvTcCgxKk_j6ecZLoyWiCM).
 
 
 ## DCAN Infant Pipeline (infant-abcd-bids-pipeline)
@@ -170,7 +170,7 @@ In the Infant section above, points 3-4 can be generalized for ABCD troubleshoot
 ![Example of wb_view](img/wb-view3.png)
 
 
-## NiBabies and fMRIprep
+## NiBabies and fMRIPrep
 
 For a comprehensive document on troubleshooting nibabies and fmriprep errors, [see here](https://docs.google.com/document/u/0/d/16qSEPV1_FHOHBq2eJOuZLqISv-0zCbpOJQ7HesEQCv4/edit).
 

@@ -4,7 +4,7 @@ Read:_ [Rapid Precision Functional Mapping of Individuals Using Multi-Echo fMRI 
 **Parcellated functional connectivity (FC)**
 
 
-**_Time x FC reliability curve._** The script at  &lt;location> generates a reliability curve from parcellated BOLD timeseries files (.ptseries.nii) in an XCP-D derivatives directory. It is a Slurm sbatch script which requires a list of positional arguments to run. 
+**_Time x FC reliability curve._** The script at  &lt;location> generates a reliability curve from parcellated BOLD timeseries files (`.ptseries.nii`) in an XCP-D derivatives directory. It is a Slurm sbatch script which requires a list of positional arguments to run. 
 
 
 The general form of the run command is 

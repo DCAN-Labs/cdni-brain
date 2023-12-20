@@ -2,9 +2,9 @@
 
 For this pipeline, the data first needs to be converted and properly orientated before being ran.
 
-1. Get DICOMS from s3 bucket (`s3://zlab-nhp`)
+1. Get DICOMs from s3 bucket (`s3://zlab-nhp`)
 
-1. Convert DICOMS to BIDS and apply NORDIC
+1. Convert DICOMs to BIDS and apply NORDIC
     - Use the [Dcm2bids3 NORDIC wrapper](nordic.md) -- needs a pair of 10.5T-specific config files to run, and use `--keep-non-nordic` when calling `nordicsbatch.sh` in the post-op command
     - Confirm the number of noise volumes per run-- for the Z-Lab 10.5T data, this is usually 5 
 
