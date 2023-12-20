@@ -14,7 +14,7 @@ Slurm logs are the stdout and stderr files from a Slurm job. The first thing to 
 
 MSI outputs these into a single .out file by default, in the directory you called the submission script from.
 
-Type `scontrol show jobid -dd &lt;job id num> | grep Std` to see the paths for StdErr, StdIn (usually /dev/null), and StdOut for any slurm job currently in the queue.
+Type `scontrol show jobid -dd &lt;job id num> | grep Std` to see the paths for StdErr, StdIn (usually /dev/null), and StdOut for any SLURM job currently in the queue.
 
 Common errors include the following:
 
@@ -29,12 +29,12 @@ Jobs (e.g. Slurm on MSI) will not start if you don’t have write access to wher
 
 The lab's scripts print the string `RUNNING DOCKER IMAGE` just before calling the pipeline. Before starting each stage, the pipeline prints a line that says `running `followed by the name of the stage.
 
-If the job succeeded (i.e., the pipeline successfully ran all the way through all of the stages), the Slurm logs will have a message that contains `BEGINNING SUCCESS CLEANUP`. If the job failed, the slurm logs will have a message that contains `BEGINNING FAIL CLEANUP`. The most common failures are described here.
+If the job succeeded (i.e., the pipeline successfully ran all the way through all of the stages), the Slurm logs will have a message that contains `BEGINNING SUCCESS CLEANUP`. If the job failed, the SLURM logs will have a message that contains `BEGINNING FAIL CLEANUP`. The most common failures are described here.
 
 
 #### Job Timed Out
 
-If the slurm logs say the job caught an exit code of 140 or 240, the job timed out. Slurm jobs in the exacloud partition time out after 36 hours. (When using the lab's scripts, jobs are allowed to run for just 34 hours so that they have a good chance of copying all the job's data back to lustre1.)
+If the SLURM logs say the job caught an exit code of 140 or 240, the job timed out. Slurm jobs in the exacloud partition time out after 36 hours. (When using the lab's scripts, jobs are allowed to run for just 34 hours so that they have a good chance of copying all the job's data back to lustre1.)
 
 Look higher in the output log to find the last stage that was started. Copy the name of the last stage exactly (case matters). Resubmit the job, starting with that stage.
 

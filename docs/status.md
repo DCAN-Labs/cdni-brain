@@ -1,6 +1,6 @@
 # Processing Status 
 
-Produce status html on the output data to see how many processing jobs succeeded and failed (only available for abcd-hcp and infant-abcd-bids pipelines).
+Produce status html on the output data to see how many processing jobs succeeded and failed (only available for abcd-hcp-pipeline and infant-abcd-bids pipelines).
 
 1. If your dataset is more than 10 subjects, start an interactive session first: `srun -N 1 --cpus-per-task=1  --mem-per-cpu=5gb -A feczk001 -t 6:00:00 -p interactive --x11 --pty bash`
 
