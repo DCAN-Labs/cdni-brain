@@ -341,7 +341,7 @@ ${infant_abcd_bids_pipeline} \
 
 ## 7. BIBSnet
 
-BIBSnet is a segmentation pipeline including stages prebibsnet, bibsnet, and postbibsnet.
+BIBSnet is a segmentation pipeline including stages `prebibsnet`, `bibsnet`, and `postbibsnet`.
 
 Example command: 
 
@@ -357,7 +357,7 @@ Example command:
 ```
 
 
- _NOTE: IT IS NOT RECOMMENDED TO RUN BIBSNET OUTSIDE OF THE CONTAINER._
+ _NOTE: IT IS NOT RECOMMENDED TO RUN BIBSnet OUTSIDE OF THE CONTAINER._
 
 
 For troubleshooting information, see [the Testing BIBSnet page.](bibsnet-testing.md)
