@@ -21,11 +21,11 @@ This handbook outlines key tools and resources used by DCAN Labs. Topics covered
 - BIDS:
     - Anything to convert or validate BIDS data
 - Before Processing:
-    - Any steps the lab does before running processing (ABCD-BIDS, fMRIprep, Nibabies, etc)
+    - Any steps the lab does before running processing (ABCD-BIDS, fMRIPrep, NiBabies, etc)
 - Processing:
-    - Running data processing pipelines on MSI (ABCD-BIDS, fMRIprep, Nibabies, etc)
+    - Running data processing pipelines on MSI (ABCD-BIDS, fMRIPrep, NiBabies, etc)
 - After Processing:
-    - Any steps the lab does after running processing (ABCD-BIDS, fMRIprep, Nibabies, etc)
+    - Any steps the lab does after running processing (ABCD-BIDS, fMRIPrep, NiBabies, etc)
 - Troubleshooting:
     - Notes on troubleshooting the labs codebases
 - Quality Control:

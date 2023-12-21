@@ -13,7 +13,7 @@ Below are steps that should be followed in order to ensure your processing effor
 4. Once your data is on the MSI, determine if has been (properly) converted to BIDS.
     - Even if the person that provided the data to you says it has been successfully converted to BIDS, you should run [CuBIDS](bids.md) on the dataset.
     - If you're starting with DICOMs, see [here](dcm2bids.md) for BIDS conversion tips.
-    - If you have NIFTI files that are not BIDS-compliant, you will more than likely have to write a script to finish the conversion.
+    - If you have NIfTI files that are not BIDS-compliant, you will more than likely have to write a script to finish the conversion.
 5. Create a working directory in the project folder for the share you intend to work on. This is where you will put your job wrappers, logs, and status updates. Make sure to name the folder intelligently based on the study and codebase you are running.
     - Make sure to check the `groupquota` to ensure there's room for your process.
     ```groupquota -g share_name```

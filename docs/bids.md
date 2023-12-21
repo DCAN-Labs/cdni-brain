@@ -2,7 +2,7 @@
 
 ## CuBIDS (Curation of BIDS)
 
-Used to make sure the data is BIDS valid (utilizing the [bids-validator package 1.7.2](https://cubids.readthedocs.io/en/latest/installation.html#:~:text=Now%20that%20we,%24), which will already be installed on MSI) and to ensure all of the acquisition parameters of the data are what you expect them to be. If you are running CuBIDS on data that has more than ten subjects, then use an [srun ](slurm-params.md#srun)or an [sbatch](slurm-params.md#sbatch).
+Used to make sure the data is BIDS valid (utilizing the [bids-validator package 1.7.2](https://cubids.readthedocs.io/en/latest/installation.html#:~:text=Now%20that%20we,%24), which will already be installed on MSI) and to ensure all of the acquisition parameters of the data are what you expect them to be. If you are running CuBIDS on data that has more than ten subjects, then use an [srun](slurm-params.md#srun) or an [sbatch](slurm-params.md#sbatch).
 
 14. Load CuBIDS environment: 
 
@@ -10,9 +10,9 @@ Used to make sure the data is BIDS valid (utilizing the [bids-validator package 
 
         `source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh`
 
-        - This ensures that you have all of the proper packages installed to run cuBIDS.
+        - This ensures that you have all of the proper packages installed to run CuBIDS.
 
-    - Activate cuBIDS environment
+    - Activate CuBIDS environment
 
         `conda activate cubids`
 

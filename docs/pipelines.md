@@ -7,13 +7,13 @@ This page has the recommended flags and example commands for the major pipelines
    <td>
 <strong>Infants</strong>
    </td>
-   <td>Nibabies, DCAN Infant Pipeline, XCPD
+   <td>nibabies, DCAN Infant Pipeline, XCPD
    </td>
   </tr>
   <tr>
    <td><strong>Children (4 years and older) and Adults</strong>
    </td>
-   <td>Fmriprep, abcd-bids pipeline, XCPD
+   <td>fMRIPrep, ABCD-BIDS pipeline, XCPD
    </td>
   </tr>
 </table>
@@ -21,7 +21,7 @@ This page has the recommended flags and example commands for the major pipelines
 Note: the cutoff age for using an adult pipeline depends on the scope of the project
 
 
-## 1. fMRIprep
+## 1. fMRIPrep
 
 
 Read: [fMRIPrep ReadTheDocs site](https://fmriprep.org/en/stable/)
@@ -77,7 +77,7 @@ ${singularity} run --cleanenv \
 Read: [NiBabies ReadTheDocs site](https://nibabies.readthedocs.io/en/latest/)
 
 
-Nibabies is a robust pre-processing MRI and fMRI workflow that is also a part of the NiPreps family. NiBabies is designed and optimized for human infants between 0-2 years old. For more information on Nibabies code, see [here](https://github.com/nipreps/nibabies). For in-depth usage information, one can utilize [this google doc](https://docs.google.com/document/d/1PW8m1tWWqqgKCAJ9XLpJ5tycPB5gqFodrnvNOIavTAA/edit) or see the [Read the Docs here](https://nibabies.readthedocs.io/en/latest/installation.html).
+NiBabies is a robust pre-processing MRI and fMRI workflow that is also a part of the NiPreps family. NiBabies is designed and optimized for human infants between 0-2 years old. For more information on NiBabies code, see [here](https://github.com/nipreps/nibabies). For in-depth usage information, one can utilize [this google doc](https://docs.google.com/document/d/1PW8m1tWWqqgKCAJ9XLpJ5tycPB5gqFodrnvNOIavTAA/edit) or see the [Read the Docs here](https://nibabies.readthedocs.io/en/latest/installation.html).
 
 
 62. Preferred flags:
@@ -88,7 +88,7 @@ Nibabies is a robust pre-processing MRI and fMRI workflow that is also a part of
 
     - `--session-id \`: when running a subject with multiple sessions, need to specify which session is being processed as well as the age 
     
-    - `--derivatives /derivatives \` : Nibabies will use a segmentation from the segmentation pipeline (pre-postBIBSnet). This flag is used to clarify that the precomputed segmentation directory is being utilized. 
+    - `--derivatives /derivatives \` : NiBabies will use a segmentation from the segmentation pipeline (pre-postBIBSnet). This flag is used to clarify that the precomputed segmentation directory is being utilized. 
     
     - `--cifti-output 91k \` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinate can be specified (default is 91k, which equates to 2mm resolution). Default: False
     
@@ -231,7 +231,7 @@ The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of
     
     * `-f 0.3` : framewise displacement threshold for censoring.** Here,** **0.3 is preferred versus a stricter threshold to avoid excluding too much data from the regression model. Stricter thresholding can still be applied when running your analyses on the XCP-D output. **
     
-    * `--cifti` : postprocess cifti instead of nifti; this is set default for dcan and hcp input
+    * `--cifti` : postprocess cifti instead of NIfTI; this is set default for dcan and hcp input
     
     * **[for version 0.2.0 and newer, and “develop” / “unstable” builds dated 10-21-2022 or newer]** `--warp-surfaces-native2std` : resample surfaces to fsLR space, 32k density, and apply the transform from native T1w to MNI152NLin6Asym space output by fMRIPrep / NiBabies
     
@@ -245,7 +245,7 @@ The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of
     
     * `--omp-threads 3` : maximum number of threads per-process
     
-    * `--despike` : despike the nifti/cifti before postprocessing
+    * `--despike` : despike the NIfTI/cifti before postprocessing
     
     * `-w /work` :  used to specify a working directory within the container’s filesystem, named _/work_.
 

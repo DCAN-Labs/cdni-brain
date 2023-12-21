@@ -130,9 +130,9 @@ Also available are various commands for job accounting, job management, and envi
 4. Change job account (each PI in the lab has their own Slurm group account with its own allocation of resources and queue priority. It is sometimes useful to change accounts to distribute resource requests for large processing jobs, or when an account has low queue priority due to heavy usage) : `scontrol update JobId=#### Account=new_group`
     - An example command has _Job 234293_ originally submitted under default account _miran045_, and to change it to *feczk001* one would use: `scontrol update JobId=234293 Account=feczk001`
 
-5. To change a slurm job partition use: `scontrol update JobId=#### Partition=new_partition` 
+5. To change a SLURM job partition use: `scontrol update JobId=#### Partition=new_partition` 
     - An example command has _Job 234293_ originally submitted with the partition _msismall_, and to change it to *msigpu* one would use: `scontrol update JobId=234293 Partition=msigpu`
 
-6. To change the amount of time a slurm job runs for, use: `scontrol update JobId=#### EndTime=HH:MM:SS` 
+6. To change the amount of time a SLURM job runs for, use: `scontrol update JobId=#### EndTime=HH:MM:SS` 
     - To find time information, first use `scontrol show JobId=####`
     - An example command has _Job 234293_ originally submitted at the following time for 96 hours: _StartTime=2022-08-29T13:04:45_, and to change it to 48 hours one would use: `scontrol update JobId=234293 EndTime=2022-08-31T13:04:45`
