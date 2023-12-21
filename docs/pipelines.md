@@ -7,13 +7,13 @@ This page has the recommended flags and example commands for the major pipelines
    <td>
 <strong>Infants</strong>
    </td>
-   <td>nibabies, DCAN Infant Pipeline, XCPD
+   <td>NiBabies, DCAN Infant Pipeline, XCP-D
    </td>
   </tr>
   <tr>
    <td><strong>Children (4 years and older) and Adults</strong>
    </td>
-   <td>fMRIPrep, ABCD-BIDS pipeline, XCPD
+   <td>fMRIPrep, ABCD-BIDS pipeline, XCP-D
    </td>
   </tr>
 </table>
