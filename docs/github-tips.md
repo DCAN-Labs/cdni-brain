@@ -41,7 +41,7 @@ Watching a repo will enable email notifications any time a certain event happens
 
 If your branch doesn't exist on the remote repository, you'll need to select "OK" when VSCode prompts you with "The branch "your_branch_name" has no remote branch. Would you like to publish this branch?" 
 
-Note: I'd recommend clicking "OK, Don't Ask Again" - but this is personal preference.
+Note: I'd recommend clicking "OK, Don't Ask Again," - but this is a personal preference.
 
 Within the source control page, under Branches, you can also select the cloud next to your branch to publish it.
 
@@ -52,17 +52,19 @@ This means that the branch you started your local branch with is out of date fro
 You can run the following commands once to fix it.
 
     - `git pull --rebase`
-    - `git pull` on your other branch then `git merge` on your branch
+    - `git pull` on your other branch, then `git merge` on your branch
 
 
 In order to set this, type either of the following:
     -  `git config pull.rebase false` to merge 
 
     ![merge](img/merge.png)
+    Source: https://www.simplilearn.com/what-is-git-rebase-command-article
 
     -  `git config pull.rebase true` to rebase (recommended)
 
     ![rebase](img/rebase.png)
+    Source: https://www.simplilearn.com/what-is-git-rebase-command-article
 
     -  `git config pull.ff only` to fast-forward only
 
