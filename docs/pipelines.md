@@ -7,7 +7,7 @@ This page has the recommended flags and example commands for the major pipelines
    <td>
 <strong>Infants</strong>
    </td>
-   <td>NiBabies, DCAN Infant Pipeline, XCPD
+   <td>NiBabies, DCAN Infant Pipeline, XCP-D
    </td>
   </tr>
   <tr>
