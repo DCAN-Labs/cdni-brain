@@ -1,0 +1,3 @@
+## NGDR 
+
+The NGDR, or Neuroimaging and Genetic Data Resources, is a specialized storage system employing tier 1 storage with restricted access. It is designed for storing ABCC data before uploading it to the NDA. Access to specific data subsets, like the ABCD subdirectory, is granted only to authorized individuals with designated user credentials (DUC). This ensures a high level of security and confidentiality in handling neuroimaging and genetic information.
