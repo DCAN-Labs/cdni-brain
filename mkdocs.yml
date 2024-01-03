@@ -86,6 +86,8 @@ nav:
       - A Quick Guide on Protected Health Information (PHI): phi-quick-guide.md
   - ZENODO: 
       - ZENODO: zenodo.md
+  - MR Image:
+      - MR-Image-Translation: mr-image-translation.md
   - Contributions:
       - Contributors and Papers: contributions.md
   - THANK YOU FOR USING THE DIG:
