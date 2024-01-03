@@ -10,7 +10,7 @@ There are several recommended extensions to download through the Extensions Mark
 
 - Remote-SSH (needed to connect to MSI)
 
-- Git Graph (a helpful tool for visualizing your git history of commits, merges, branches, etc)
+- Git Graph (a helpful tool for visualizing your git history of commits, merges, branches, etc). For more on using Git with VSCode, see [here.](github-tips.md)
 
 - Python
 
@@ -107,7 +107,7 @@ When you are done using MSI, it is good practice to close the connection
 
 If your session keeps timing out before it connects, open VS Code settings, search for "connectTimeout" and increase "Remote SSH: Connect Timeout" to 60.
 
-## Conda environments
+## Conda Environments
 
 ### Activating your base environment
 
