@@ -13,6 +13,7 @@ nav:
       - Data Storage/Tracking: storage.md
       - S3: s3.md
       - Common MSI Roadblocks: roadblocks.md
+      - NGDR: ngdr.md
   - SLURM Jobs:
       - Slurm Commands: slurm.md
       - Slurm Jobs: slurm-params.md
