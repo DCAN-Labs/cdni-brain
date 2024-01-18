@@ -72,6 +72,7 @@ Here is an example bucket policy for the bucket `swipes_test` that gives full ac
 | s3://hbcd-main-study     | HBCD        | HBCD main study, T1/T2 and Diffusion               |
 | s3://midb-hbcd-pilot-pr  | HBCD        | HBCD pilot data, T1/T2 and Diffusion               |
 | s3://swipes_test         | Test data   | Some tutorial images live here                     |
+| s3://swipes-hbn          | HBN         |                                                    |
 
 ## Development
 
