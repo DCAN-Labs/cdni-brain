@@ -4,7 +4,9 @@ plugins:
   - search
 docs_dir: docs
 nav:
-  - Overview: index.md
+  - Overview: 
+      - Table of Contents: index.md
+      - About the Lab: about.md
   - Using MSI: 
       - Interactive High Performance Computing (HPC) Resources: hpc.md
       - MSI Partitions: partitions.md
@@ -49,6 +51,7 @@ nav:
       - Pipelines: pipelines.md
       - S3 Pipeline Wrappers: wrappers.md
       - Infant Pipeline Documentation: infant-doc.md
+      - Running nnUNet Predict: nnunet.md
       - Best Practices: processing-sop.md
   - After processing:
       - file-mapper: filemapper.md    
@@ -72,6 +75,7 @@ nav:
       - Recorded Presentations: presentations.md
       - UMN Recommended Courses: courses.md
       - UMN Computer Installs: installs.md
+      - ZENODO: zenodo.md
   - Plotting Tools:
       - Figure Maker: figure-maker.md
       - Connectivity Matrices: matrices.md
@@ -84,8 +88,6 @@ nav:
       - BWAS: bwas.md
   - PHI:
       - A Quick Guide on Protected Health Information (PHI): phi-quick-guide.md
-  - ZENODO: 
-      - ZENODO: zenodo.md
   - MR Image:
       - MR-Image-Translation: mr-image-translation.md
   - Contributions:
