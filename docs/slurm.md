@@ -136,3 +136,7 @@ Also available are various commands for job accounting, job management, and envi
 6. To change the amount of time a SLURM job runs for, use: `scontrol update JobId=#### EndTime=HH:MM:SS` 
     - To find time information, first use `scontrol show JobId=####`
     - An example command has _Job 234293_ originally submitted at the following time for 96 hours: _StartTime=2022-08-29T13:04:45_, and to change it to 48 hours one would use: `scontrol update JobId=234293 EndTime=2022-08-31T13:04:45`
+
+**Additional Information:**
+
+- scontrol cannot be used to change from agate to mesabi or vice versa once a job has been submitted, but it can be used to change from agate or mesabi partitions to federated partitions. More information on federated partitions can be found [here](https://www.msi.umn.edu/partitions).
