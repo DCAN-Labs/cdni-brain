@@ -60,19 +60,13 @@ Here is an example bucket policy for the bucket `swipes_test` that gives full ac
 
 #### List of S3 buckets used by BrainSwipes
 
-| S3 Bucket                | study       | notes                                              |
-|--------------------------|-------------|----------------------------------------------------|
-| s3://brainswipes         | BCP v 1.0.0 | many tutorial images are pulled from here          |
-| s3://brainswipes-backups |      -      | Bucket that the script firebaseBackup.js pushes to |
-| s3://swipes-abcd         | ABCC Year 2 |                                                    |
-| s3://swipes-elabe        | ELABE       |                                                    |
-| s3://swipesABIDE1        | ABIDE 1     | many tutorial images are pulled from here          |
-| s3://swipesABIDE2        | ABIDE 2     |                                                    |
-| s3://swipesBCP           | BCP v 1.0.1 |                                                    |
-| s3://hbcd-main-study     | HBCD        | HBCD main study, T1/T2 and Diffusion               |
-| s3://midb-hbcd-pilot-pr  | HBCD        | HBCD pilot data, T1/T2 and Diffusion               |
-| s3://swipes_test         | Test data   | Some tutorial images live here                     |
-| s3://swipes-hbn          | HBN         |                                                    |
+| S3 Bucket                | study                | notes                                              |
+|--------------------------|----------------------|----------------------------------------------------|
+| s3://brainswipes         | DCAN Managed studies | Studies split into first level directories         |
+| s3://brainswipes-backups |           -          | Bucket that the script firebaseBackup.js pushes to |
+| s3://hbcd-main-study     | HBCD                 | HBCD main study, T1/T2 and Diffusion               |
+| s3://midb-hbcd-pilot-pr  | HBCD                 | HBCD pilot data, T1/T2 and Diffusion               |
+
 
 ## Development
 
@@ -95,7 +89,7 @@ To build the files for use with a http server, use the command `npm run build` i
 The server running the live version of this is an instance of Amazon Linux 2 on AWS Lightsail.
 Push the built files to the origin. On the lightsail instance, open the console.  `cd BrainSwipes` and `git pull`.
 To update the live version of the app run `pm2 restart express.js`.
-If you modify the `express.js` the pm2 restart command will not update this file. Instead run `pm2 kill` and `pm2 start express.js`
+If you modify `express.js` the `pm2 restart` command will not update this file. Instead run `pm2 kill` and `pm2 start express.js`
 
 
 ## Management
@@ -172,6 +166,10 @@ Dataset specific configuration is done here as well, this is where information i
 
         - The name showed on the website. Different from the key of the record in config as the key does not allow special characters.
 
+    - prefixes
+
+        - A list of prefixes to be passed into the `ListObjectsV2Command` to reduce the number of objects returned. Recommended for buckets with lots of data not related to this dataset being ingested.
+
     - s3filepath
 
         - Filepath for finding images, both for displaying in the app and updating sampleCounts from the s3. {{SUBJECT}}, {{SESSION}}, and {{FILENAME}} will be replaced on a per image basis.
@@ -220,6 +218,7 @@ Dataset specific configuration is done here as well, this is where information i
     - available
 
         - Whether the dataset is open to the public. New users will see studies with ‘true’ by default. Any study with ‘false’ will require Globus authorization.
+        - Changing this after creating a study will only modify the permissions of new users. To modify old users' permissions run `modifyUsers.js` in the tools folder.
 
     - datasets
 
@@ -235,6 +234,9 @@ Use the `tools/get_exec_sum.sh` script to format images for use with brainswipes
 
 A description of scripts in the tools folder.
 
+Scripts may require `brainswipes-firebase-adminsdk.json` or `brainswipes-rtdb-token.json` to run.
+To generate these JSONs visit the Firebase console. Put them in the top level directory where they will be git ignored.
+
 #### Database Interactions
 - reconcileVotes.js
 
@@ -242,11 +244,50 @@ A description of scripts in the tools folder.
     - Run without `confirm` to only view console output of differences. Run with `confirm` to update firebase.
     - Example run command `node reconcileVotes.js ABIDE1 confirm`
 
+- removeImageType.js
+
+    - Removes any image from Firebase in the specified study that matches the input pattern.
+
+    - **USE WITH CAUTION.**
+
 - restore-sampleCounts.js
 
     - Takes the sampleSummary document in firebase `db/datasets/{DATASET}/sampleSummary` and updates sampleCounts to restore data for any removed images.
     - Designed to restore the dataset in cases where some images have been temporarily removed from circulation.
     - Differs from reconcileVotes because reconcileVotes will not add new samples to sampleCounts to maintain the subset of images served to users.
+
+
+#### Making Images
+- make_diffusion_gifs.py
+
+    - Script used to make gifs for DWI images, one subject at a time.
+    - See the [version used in HBCD](https://github.com/DCAN-Labs/QSIPREP_HBCD_QC) for more advanced usage.
+
+- ingest_brainswipes_data.py
+
+    - Pulls executive summary images from the specifed input S3 location
+    - Transforms executive summary images that appear in a 1x9 grid to the 3x3 grid seen in BrainSwipes
+    - Uploads all `.png` files to the specifed output S3 location
+    - Once images are in the S3, configure the database uploads in the config document of firebase and run `s32firebase.js`
+
+- generate_manifest.sh
+
+    - generates a manifest JSON used by the legacy uploading option from the original SwipesForScience.
+    - may be useful for large datasets as the s3 interactions used in `s32firebase.js` can take a lot of memory.
+
+
+#### User management
+
+- modifyUsers.js
+
+    - Various functions to help manage user info that is only accessible through the Firebase Admin SDK.
+    
+    - Inputs are hard coded, will need manual intervention to use.
+
+    - Use `updateCustomClaims()` to modify users permissions when changing any part of a dataset's configuration that effects custom claims.
+
+
+#### General Upkeep
 
 - s32firebase.js
 
@@ -259,27 +300,3 @@ A description of scripts in the tools folder.
 
     - Pulls all data from firebase as a JSON file and puts it into `s3://brainswipes-backups`
     - Takes too much RAM to be run on Lightsail. Run regularly on your local machine to back up data.
-
-#### Making Images
-- make_gifs.py
-
-    - Script used to make gifs for DWI images, one subject at a time.
-    - See the [version used in HBCD](https://github.com/DCAN-Labs/QSIPREP_HBCD_QC) for more advanced usage.
-
-- es2sfs_img_converter.py
-
-    - Transforms executive summary images that appear in a 1x9 grid to the 3x3 grid seen in BrainSwipes
-    - Called by `bulk_es2sfs.sh` which is called by `get_exec_sum.sh`.
-
-- bulk_es2sfs.sh
-
-    - Runs `es2sfs_img_converter.py` on all .gif images in a directory.
-    - Called by `get_exec_sum.sh`. 
-
-- get_exec_sum.sh
-
-    - Connects to an s3 bucket, pulls one subject's executive summary, converts all .gif images with `bulk_es2sfs.sh`, pushes all present .png images to a new s3 bucket and then cleans up after itself. 
-
-- xcpd folder
-
-    - version of scripts that cooperates with the image sizes output by the xpcd pipeline. Place alongside `get_exec_sum.sh` to use as normal
