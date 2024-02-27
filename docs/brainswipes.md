@@ -30,7 +30,7 @@ The application uses the [JavaScript AWS SDK](https://docs.aws.amazon.com/sdk-fo
 The application uses a service account that needs **read only** access to buckets with images to be used in the app. It is recommended to use the method [outlined here](https://www.msi.umn.edu/support/faq/how-do-i-use-s3-buckets-share-data-tier-2-storage-other-users) to update access.
 The BrainSwipes service account's UID is **77766**
 
-Here is an example bucket policy for the bucket `swipes_test` that gives full access to someone managing the data (uid 77291) and read only access to the service account.
+Here is an example bucket policy for the bucket `brainswipes` that gives full access to someone managing the data (uid 77291) and read only access to the service account.
 ```
 {
     "Version": "2012-10-17",
@@ -39,19 +39,19 @@ Here is an example bucket policy for the bucket `swipes_test` that gives full ac
         "Effect": "Allow",
         "Principal": {"AWS": [ "arn:aws:iam:::user/uid=77291" ]},
         "Action": [ "s3:*" ],
-        "Resource": ["arn:aws:s3:::swipes_test/*", "arn:aws:s3:::swipes_test"]
+        "Resource": ["arn:aws:s3:::brainswipes/*", "arn:aws:s3:::brainswipes"]
       },
       {
         "Effect": "Allow",
         "Principal": {"AWS": [ "arn:aws:iam:::user/uid=77766" ]},
         "Action": [ "s3:GetObject", "s3:GetObjectVersion" ],
-        "Resource": ["arn:aws:s3:::swipes_test/*"]
+        "Resource": ["arn:aws:s3:::brainswipes/*"]
       },
       {
         "Effect": "Allow",
         "Principal": {"AWS": [ "arn:aws:iam:::user/uid=77766" ]},
         "Action": [ "s3:ListBucket" ],
-        "Resource": ["arn:aws:s3:::swipes_test"]
+        "Resource": ["arn:aws:s3:::brainswipes"]
       }
     ]
 }
