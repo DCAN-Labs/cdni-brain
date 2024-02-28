@@ -11,7 +11,7 @@ nav:
       - Interactive High Performance Computing (HPC) Resources: hpc.md
       - MSI Partitions: partitions.md
       - MSI Module System: modules.md
-      - First Login Steps: msi-login.md
+      - Getting Started: msi-login.md
       - Data Storage/Tracking: storage.md
       - S3: s3.md
       - Common MSI Roadblocks: roadblocks.md
