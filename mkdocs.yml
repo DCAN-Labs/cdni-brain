@@ -65,10 +65,10 @@ nav:
   - Data Uploads and Transfers:
       - Data Transfers: uploads.md
       - Transfer ABCC Data to the NGDR: ngdr-transfer.md
-      - NDA Uploads:
+  - NDA Uploads:
         - Collections on the NDA: nda.md
-        - Request to Archive Data on the NDA: nda-archive.md
-        - Downloading and Validating Previous Submissions on NDA: nda_validation.md
+        - Request to Archive Data on the NDA: nda.md
+        - Downloading and Validating Previous Submissions on NDA: nda.md
   - Lab Resources:
       - Basecamp: basecamp.md
       - Recorded Presentations: presentations.md
