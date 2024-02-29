@@ -4,12 +4,14 @@ plugins:
   - search
 docs_dir: docs
 nav:
-  - Overview: index.md
-  - MSI: 
+  - Overview: 
+      - Table of Contents: index.md
+      - About the Lab: about.md
+  - Using MSI: 
       - High Performance Computing (HPC) Resources: hpc.md
       - Partitions: partitions.md
       - Module System: modules.md
-      - First Login Steps: msi-login.md
+      - Getting Started: msi-login.md
       - Data Storage/Tracking: storage.md
       - S3: s3.md
       - Common MSI Roadblocks: roadblocks.md
@@ -49,6 +51,7 @@ nav:
       - Pipelines: pipelines.md
       - S3 Pipeline Wrappers: wrappers.md
       - Infant Pipeline Documentation: infant-doc.md
+      - Running nnUNet Predict: nnunet.md
       - Best Practices: processing-sop.md
   - After processing:
       - file-mapper: filemapper.md    
@@ -74,6 +77,7 @@ nav:
       - Recorded Presentations: presentations.md
       - UMN Recommended Courses: courses.md
       - UMN Computer Installs: installs.md
+      - ZENODO: zenodo.md
   - Plotting Tools:
       - Figure Maker: figure-maker.md
       - Connectivity Matrices: matrices.md
@@ -87,8 +91,6 @@ nav:
       - Calculating Rest Minutes Pre- and Post-Motion Correction: rest_minutes_motion_correction_calculation.md
   - PHI:
       - A Quick Guide on Protected Health Information (PHI): phi-quick-guide.md
-  - ZENODO: 
-      - ZENODO: zenodo.md
   - MR Image:
       - MR-Image-Translation: mr-image-translation.md
   - Contributions:
