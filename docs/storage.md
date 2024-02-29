@@ -19,6 +19,8 @@ Figure out the approximate average storage impact your jobs (inputs and outputs)
 * For data being uploaded to tier 1 storage space, document a description of the dataset and a path to where the data lives, an estimate on the amount of space needed to store the data, the share it’s been uploaded to, the primary owner of the data, and the estimated start and end date for use of the necessary storage space to [this spreadsheet](https://docs.google.com/spreadsheets/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit#gid=870411543). For further information on allowable data on each share, visit the “Shares” tab on [the above spreadsheet here](https://docs.google.com/spreadsheets/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit#gid=2135306680).
 * For the data being uploaded on the s3, document a description of the data and a path to where the data lives, the project it's associated with, the owner of the s3 bucket, and everyone else who has access to the bucket onto [this spreadsheet](https://docs.google.com/spreadsheets/u/0/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit). 
 
+* For information on backup and versioning procedures, please refer to the [Backup and Versioning PowerPoint Presentation](https://docs.google.com/presentation/d/1UiXIvrsQNqVTgAtFib7Lvk2wOdcRSPTcUfG1zme4fqs/edit#slide=id.g149c53b2342_0_205).
+
     **TO-DO**: in the near future, include what pipeline the dataset was processed with, what version, and the amount of successes/fails and why onto [this spreadsheet](https://docs.google.com/spreadsheets/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit#gid=0).
 
 ## Transfering Data from MSI to Local Storage

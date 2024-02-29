@@ -8,9 +8,9 @@ nav:
       - Table of Contents: index.md
       - About the Lab: about.md
   - Using MSI: 
-      - Interactive High Performance Computing (HPC) Resources: hpc.md
-      - MSI Partitions: partitions.md
-      - MSI Module System: modules.md
+      - High Performance Computing (HPC) Resources: hpc.md
+      - Partitions: partitions.md
+      - Module System: modules.md
       - Getting Started: msi-login.md
       - Data Storage/Tracking: storage.md
       - S3: s3.md
@@ -68,8 +68,10 @@ nav:
   - Data Uploads and Transfers:
       - Data Transfers: uploads.md
       - Transfer ABCC Data to the NGDR: ngdr-transfer.md
-      - Collections on the NDA: nda.md
-      - Request to Archive Data on the NDA: nda-archive.md
+  - NDA Uploads:
+        - Collections on the NDA: nda.md
+        - Request to Archive Data on the NDA: nda.md
+        - Downloading and Validating Previous Submissions on NDA: nda.md
   - Lab Resources:
       - Basecamp: basecamp.md
       - Recorded Presentations: presentations.md
@@ -86,6 +88,7 @@ nav:
       - Template Matching: template-matching.md
       - F Conn Regression: f-conn.md
       - BWAS: bwas.md
+      - Calculating Rest Minutes Pre- and Post-Motion Correction: rest_minutes_motion_correction_calculation.md
   - PHI:
       - A Quick Guide on Protected Health Information (PHI): phi-quick-guide.md
   - MR Image:
