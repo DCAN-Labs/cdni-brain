@@ -1,4 +1,4 @@
-# High Performance Computing (HPC) Resources 
+# High-Performance Computing (HPC) Resources 
 
 **Note: Please be aware of the retirement of Mesabi.**
 
@@ -12,12 +12,12 @@ Please be aware that on the first Wednesday of each month, MSI will undergo main
 ## Open OnDemand
 
  A web portal to access MSI's compute clusters in your browser, which can be used for accessing MSI files and running jobs.
-    * Select *Interactive Apps* at the top and select which Desktop you would like:
-    * The *Persistent Desktop* should run until next maintenance day 
-    * If selecting *Desktop* choose which cluster, how many resources, and the time you need 
-    * Agate is good for visualization and GPU utilization
-    * Mangi is good for running long jobs 
-    * Several other apps are available, including MATLAB and RStudio Server
+    - Select *Interactive Apps* at the top and select which Desktop you would like:
+    - The *Persistent Desktop* should run until the next maintenance day 
+    - If selecting *Desktop* choose which cluster, how many resources, and the time you need 
+    - Agate is good for visualization and GPU utilization
+    - Mangi and Agate are good for running long jobs 
+    - Several other apps are available, including MATLAB and RStudio Server
     
 ![Open OnDemand Window](img/ood_example.jpeg)
 
@@ -31,10 +31,10 @@ A web portal for notebook-based computing in the browser, which can be used for 
 ## Secure Shell (SSH)
 
 Your computer can communicate with MSI resources via SSH. It is a secure way for administrators to access and manage remote computers over the internet, offering protection for data and allowing tasks like logging in, transferring files, and executing commands.
-More information about SSH can be found [here](https://it.umn.edu/services-technologies/resources/use-secure-shell-ssh) on MSI page. 
+More information about SSH can be found [here](https://it.umn.edu/services-technologies/resources/use-secure-shell-ssh) on the MSI page. 
 
 
-## Srun 
+## srun 
 
 To facilitate the execution of programs or visualization of data lasting more than 15 minutes on any of the systems mentioned above, please consider submitting an interactive job via SLURM. This will allow you to access a command line or graphical interface on the current HPC system (OOD or Terminal) for interactive software execution. For more detailed information on SLURM, you can refer [to this section](slurm.md).
 
