@@ -2,6 +2,14 @@
 
 VS Code is a free code editor that is optimized for building and debugging code. Its debugging console can be a helpful tool for refining and changing old scripts or developing new ones. VS Code also has the ability to ssh into an MSI terminal, making it incredibly easy for you to work on scripts on MSI. This page will document how to connect to MSI, how to use the debug console, and other important information to allow you to work with scripts.
 
+<div class="admonition attention">
+    <p class="first admonition-title">Attention</p>
+    <p class="last">
+        VSCode version 1.87 introduced an issue with connecting to MSI. To solve this while the problem is being fixed, revert your VS Code version to 1.86. You might also need to revert the version of Remote-SSH to be able to connect. VSCode will display a warning about connecting to an outdated OS, click Allow.
+    </p>
+</div>
+
+
 ## Connecting to MSI with VS Code
 
 First, if you have not downloaded VS Code, [install it](https://code.visualstudio.com/download) on your local computer. 
@@ -10,15 +18,15 @@ There are several recommended extensions to download through the Extensions Mark
 
 - Remote-SSH (needed to connect to MSI)
 
-- Git Graph (a helpful tool for visualizing your git history of commits, merges, branches, etc). For more on using Git with VSCode, see [here.](github-tips.md)
-
 - Python
+
+- Git Graph (a helpful tool for visualizing your git history of commits, merges, branches, etc). For more on using Git with VSCode, see [here.](github-tips.md)
 
 - Pylance
 
 - Jupyter
 
-If you are not connected to the university network, [connect to a VPN](https://it.umn.edu/services-technologies/virtual-private-network-vpn)
+If you are not connected to the university network, [connect to a VPN](msi-login.md#connecting-to-the-umn-vpn)
 
 Next you will need to setup SSH keys that will allow you to connect to MSI.
 
@@ -32,7 +40,7 @@ Next you will need to setup SSH keys that will allow you to connect to MSI.
 
 - Run `chmod 600 ~/.ssh/authorized_keys` after you add the key. This will ensure that the ssh server will see this file
 
-- See [this link](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) for more help
+- See [this page](msi-login.md#gaining-access) for more information about SSH keys
 
 Now you need to edit the ssh config file on your local computer to be able to connect to MSI servers.
 
@@ -53,16 +61,16 @@ Now you need to edit the ssh config file on your local computer to be able to co
         LocalForward 12326 localhost:12326
         ForwardX11Trusted yes
 
-        Host mesabi.msi.umn.edu
-        HostName mesabi.msi.umn.edu
+        Host agate.msi.umn.edu
+        HostName agate.msi.umn.edu
         User USERNAME
-        LocalForward 12325 localhost:12325
+        LocalForward 12124 localhost:12124
         ForwardX11Trusted yes
 
         Host acn*
         User USERNAME
-        ProxyCommand ssh -L 12325:localhost:12325 -W %h:%p mesabi.msi.umn.edu
-        LocalForward 12325 localhost:12325
+        ProxyCommand ssh -L 12124:localhost:12124 -W %h:%p agate.msi.umn.edu
+        LocalForward 12124 localhost:12124
         ForwardX11Trusted yes
 
 Time to actually connect to MSI!
