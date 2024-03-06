@@ -22,10 +22,11 @@ Passcode or option (1-2):
 
 ## Connecting to the UMN VPN
 
-To access MSI from a network other than eduroam, you must first establish a secure connection using a Virtual Private Network (VPN). If you are using eduroam, you do not need to connect to the VPN.
+To access MSI from a network other than eduroam, you must first establish a secure connection using a Virtual Private Network (VPN). If you are using eduroam, you do not need to connect to the VPN. If you try to connect to MSI without the proper network/VPN connection, the OpenOnDemand page will not load. 
 
 - Find detailed VPN instructions on the [MSI VPN](https://it.umn.edu/services-technologies/virtual-private-network-vpn) page.
 - Scroll halfway down the page to discover installers for Cisco AnyConnect on different operating systems.
+- The page will also explain the difference between split-tunnel, full-tunnel, and departmental. Split-tunnel is the default and preferred method of connecting unless an app requires full-tunnel (MSI doesn't).
 
 **Cisco AnyConnect Installation:**
 
@@ -45,7 +46,11 @@ Once connected, you will be able to log in to MSI.
 
 See [this page](hpc.md) for how to log in to an [OnDemand](https://ondemand.msi.umn.edu/pun/sys/dashboard/batch_connect/sessions) Desktop and other ways to access MSI.
 
-MSI can also be accesed through any regular terminal but you must first log in to a login node: `ssh -Y <user>@login.msi.umn.edu`. A login node can be used to browse, view files, etc. When using a cluster to perform more advanced/computational heavy tasks, log in to one of MSI's clusters, like Agate or Mangi with `ssh -Y <USERNAME>@<cluster>.msi.umn.edu` or if you're already on a login node `ssh -Y agate or mangi`. More information about login vs compute nodes can be found on [this page](partitions.md)
+To connect via ssh in a terminal, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. [This page](https://www.msi.umn.edu/content/ssh-keys) has the current keys for the clusters and [this page](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) has instructions for setting up your SSH keys for the first time. There was an update to the ssh keys for the clusters in June of 2023 so if you still need to update your keys, [this page](https://www.msi.umn.edu/content/ssh-keys-renew-june-2023) has instructions on how to update the keys on your system. To learn more about SSH, see [this website.](https://www.cloudflare.com/learning/access-management/what-is-ssh/)
+
+MSI can be accesed through any regular terminal but you must first log in to a login node: `ssh -Y <user>@login.msi.umn.edu`. A login node can be used to browse, view files, etc. When using a cluster to perform more advanced/computational heavy tasks, log in to one of MSI's clusters, like Agate or Mangi with `ssh -Y <USERNAME>@<cluster>.msi.umn.edu` or if you're already on a login node `ssh -Y agate or mangi`. More information about login vs compute nodes can be found on [this page.](partitions.md) When you use an OnDemand Desktop, you are automatically placed on a compute node with the resources listed on the Desktop creation page. You will still need to ssh into a cluster if you want to grab a srun.
+
+You can also access MSI through VSCode, more information about how to do that can be found on [this page.](vscode.md)
 
 If you are looking for access to an s3 bucket, you will need to have logged into MSI at least once. 
 
