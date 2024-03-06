@@ -57,3 +57,17 @@
     * This will let you make new files in the proper group
 
     * Read more about this [here](https://opensource.com/article/19/9/linux-chgrp-and-newgrp-commands#:~:text=The%20newgrp%20command%20allows%20a%20user%20to%20override,all%20files%20must%20have%20the%20same%20group%20ownership.)
+
+38. If you are getting FileNotFound errors in paths using `panfs/roc/`:
+
+    * MSI has moved our software library to a new location to migrate away from hardware that is being decommissioned
+
+    * These are the old paths and their new counterparts 
+    ```
+    /soft	->  /common/software/install/migrated
+    /panfs/roc/msisoft	->  /common/software/install/migrated
+    /panfs/roc/soft/el6 ->  /common/software/install/migrated.softel6
+    /panfs/roc/intel	->  /common/software/install/migrated.intel
+    ```
+
+    * Find out more information [here](https://www.msi.umn.edu/support/faq/how-do-i-update-my-workflow-after-software-library-migration)
