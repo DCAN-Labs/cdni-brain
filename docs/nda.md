@@ -24,17 +24,17 @@ To validate what was uploaded on NDA and ensure the accuracy of data collection 
 - Click “Create Data Package/Add Data to Study”.
 - Create your data package, ensuring to include all relevant files for validation.
 - Download your submission using the [NDA Download Manager](https://nda.nih.gov/nda/nda-tools#download-manager) or the Python tool.
+- Follow the steps on [this page](https://ndabids.readthedocs.io/en/latest/scripts/#validate-uploadpy) to validate which files were uploaded in your selected submissions
 
 By following these steps, you can not only download previous submissions from NDA but also ensure that the data you upload to NDA are validated and accurately reflected in your collection.
 
-
 ## Request to Archive Data on the NDA
 
-### Detailed Reasoning for Archival:
+**Detailed Reasoning for Archival:**
 
 Provide a detailed explanation outlining the specific reasons for archiving the data.
 
-### Submission ID(s) for Archival:
+**Submission ID(s) for Archival:**
 
 Identify and list the Submission ID(s) you intend to archive. This information is crucial for accurately categorizing and preserving the relevant data. You can also find the IDs by following the steps below:
 
@@ -46,10 +46,10 @@ Identify and list the Submission ID(s) you intend to archive. This information i
 
 - Locate the ID column associated with each submission. 
 
-### NDA Collection Number:
+**NDA Collection Number:**
 
 Specify the NDA Collection number. This detail is necessary for organizing and associating the archived data with the correct collection.
 
-### CC to PI and Program Officer:
+**CC to PI and Program Officer:**
 
 In addition to the archival request, please ensure to copy your Principal Investigator (PI) and the Program Officer associated with the Collection. 
