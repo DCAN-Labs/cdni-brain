@@ -1,9 +1,13 @@
 # High Performance Computing (HPC) Resources 
 
-**Note: Please be aware of the retirement of Mesabi.**
+<div class="admonition attention">
+    <p class="first admonition-title">Attention</p>
+    <p class="last">
+        Please be aware of the deprecation of Mesabi starting 5 June 2024
+    </p>
+</div>
 
 Read: [HPC @ MSI](https://www.msi.umn.edu/content/interactive-hpc)
-
 
 MSI offers several options to remotely access HPC resources. These will allow you to access stored data, run processing jobs, and other computing heavy tasks. 
 
