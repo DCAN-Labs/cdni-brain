@@ -16,10 +16,10 @@ nav:
       - S3: s3.md
       - Common MSI Roadblocks: roadblocks.md
       - NGDR: ngdr.md
-  - SLURM Jobs:
+  - SLURM:
       - Slurm Commands: slurm.md
       - Slurm Jobs: slurm-params.md
-      - Optimizing sbatch Parameters: optimizing.md
+      - Resource Optimization: optimizing.md
       - Job Submissions: jobs.md
       - fairshare: fairshare.md
       - Queue Optimization: queue-optimization.md
@@ -69,9 +69,7 @@ nav:
       - Data Transfers: uploads.md
       - Transfer ABCC Data to the NGDR: ngdr-transfer.md
   - NDA Uploads:
-        - Collections on the NDA: nda.md
-        - Request to Archive Data on the NDA: nda.md
-        - Downloading and Validating Previous Submissions on NDA: nda.md
+        - Managing Data on the NDA: nda.md
   - Lab Resources:
       - Basecamp: basecamp.md
       - Recorded Presentations: presentations.md

@@ -61,4 +61,27 @@ git branch -u origin/new_name new_name
 git remote set-head origin -a
 ```
 
+If you only want to clone a specific subdirectory from a repository:
 
+```
+mkdir <repo>
+cd <repo>
+git init
+git remote add -f origin <repo-url>
+git config core.sparseCheckout true
+echo "some/dir/" >> .git/info/sparse-checkout
+echo "another/dir/" >> .git/info/sparse-checkout
+cat .git/info/sparse-checkout # Check which folders you've added
+git pull origin master
+```
+
+If you have a version of Git above 2.25.0, there is a `git sparse-checkout` command. These replace the git config and echo commands from above. 
+
+```
+git sparse-checkout init
+# Same as git config core.sparseCheckout true
+git sparse-checkout set "some/dir"
+# Same as echo "some/dir/" >> .git/info/sparse-checkout
+git sparse-checkout list
+# Same as cat .git/info/sparse-checkout
+```
