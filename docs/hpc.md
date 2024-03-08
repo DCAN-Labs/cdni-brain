@@ -48,7 +48,7 @@ SBATCH is a tool used at the Minnesota Supercomputing Institute (MSI) to send ta
 
 ## Storage
 
-Each PI has its own allocation on MSI, which includes storage and grid time. As one account becomes more active, it becomes deprioritized relative to all other accounts on MSI. See [this page](fairshare.md) for more information about how prioritization works. 
+Each PI has their own allocation on MSI, which includes storage and grid time. As one account becomes more active, it becomes deprioritized relative to all other accounts on MSI. See [this page](fairshare.md) for more information about how prioritization works. 
 
 * Damien Fair: `faird`
 * Eric Feczko `feczk001`
