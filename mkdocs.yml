@@ -7,7 +7,7 @@ nav:
   - Overview: 
       - Table of Contents: index.md
       - About the Lab: about.md
-  - Using MSI: 
+  - MSI: 
       - High Performance Computing (HPC) Resources: hpc.md
       - Partitions: partitions.md
       - Module System: modules.md
