@@ -6,9 +6,9 @@ docs_dir: docs
 nav:
   - Overview: 
       - Table of Contents: index.md
-      - About the Lab: about.md
-  - Using MSI: 
-      - High Performance Computing (HPC) Resources: hpc.md
+      - About: about.md
+  - MSI: 
+      - High-Performance Computing (HPC) Resources: hpc.md
       - Partitions: partitions.md
       - Module System: modules.md
       - Getting Started: msi-login.md
