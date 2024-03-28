@@ -11,84 +11,134 @@
     </p>
 </div>
 
-This handbook outlines key tools and resources used by DCAN Labs. Topics covered range from using MSI to basecamp tips. For a full list of topics, see the menu to the left. The broad categories as defined as follows:
+This handbook outlines key tools and resources used by the Center for Developmental NeuroImaging (CDNI). Topics covered range from using MSI to basecamp tips. For a full list of topics, see the menu to the left. The broad categories as defined as follows:
 
-**Overview:**
-
-- Defining the purpose of this documentation and the labs' goals
-
-**Using MSI:** 
-
-- General MSI usage tips, mostly focused on storage and access
-
-**SLURM**
-
-- Tips and notes on using SLURM on MSI
-
-**Software Environments:**
-
-- Coding environments and how to use them
-
-**Coding Standards:**
-
-- Best practices for codebase maintenance within the lab
-
-**GitHub:**
-
-- GitHub setup, tips, and tricks
-
-**BIDS:**
-
-- Anything to convert or validate BIDS data
-
-**Before Processing:**
-
-- Any steps the lab does before running processing (ABCD-BIDS, fMRIPrep, NiBabies, etc)
-
-**Processing:**
-
-- Running data processing pipelines on MSI (ABCD-BIDS, fMRIPrep, NiBabies, etc)
-
-**After Processing:**
-
-- Any steps the lab does after running processing (ABCD-BIDS, fMRIPrep, NiBabies, etc)
-
-**Troubleshooting:**
-
-- Notes on troubleshooting the labs codebases
-
-**Quality Control:**
-
-- Quality control methods within the lab
-
-**Data Uploads and Transfers:**
-
-- Moving data within and outside of MSI
-
-**NDA Uploads:** 
-
-- Managing data on the NDA 
-
-**Lab Resources:**
-
-- Lab recommendations and software used outside of MSI
-
-**Plotting Tools:**
-
-- Tools used by the lab to create various figures
-
-**Analysis Tools:**
-
-- Tools used by the lab to perform various analyses 
-
-**PHI:**
-
-- Quick guide on PHI for a reminder
-
-**MR Image:**
-
-- How to create synthetic images
-
-**Contributions:**
-
-- Authors of this documentation and lab papers
+<table>
+  <tr>
+   <td>
+<strong>Section</strong>
+   </td>
+   <td><strong>Content</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>Overview  
+   </td>
+   <td>Defining the purpose of this documentation and the labs' goals
+   </td>
+  </tr>
+  <tr>
+   <td>MSI
+   </td>
+   <td>General MSI usage tips, mostly focused on storage and access
+   </td>
+  </tr>
+  <tr>
+   <td>SLURM
+   </td>
+   <td>Tips and notes on using SLURM on MSI
+   </td>
+  </tr>
+  <tr>
+   <td>Software Environments
+   </td>
+   <td>Coding environments and how to use them
+   </td>
+  </tr>
+  <tr>
+   <td>Coding Standards
+   </td>
+   <td>Best practices for codebase maintenance within the lab
+   </td>
+  </tr>
+  <tr>
+   <td>GitHub
+   </td>
+   <td>GitHub setup, tips, and tricks
+   </td>
+  </tr>
+  <tr>
+   <td>BIDS
+   </td>
+   <td>Anything to convert or validate BIDS data 
+   </td>
+  </tr>
+  <tr>
+   <td>Before Processing
+   </td>
+   <td>Any steps the center performs before running processing pipelines (ABCD-BIDS, fMRIPrep, NiBabies, etc)
+   </td>
+  </tr>
+  <tr>
+   <td>Processing
+   </td>
+   <td>Running data processing pipelines on MSI (ABCD-BIDS, fMRIPrep, NiBabies, etc)
+   </td>
+  </tr>
+  <tr>
+   <td>After Processing
+   </td>
+   <td>Any steps the lab does after running processing (ABCD-BIDS, fMRIPrep, NiBabies, etc)
+   </td>
+  </tr>
+  <tr>
+   <td>Troubleshooting
+   </td>
+   <td>Notes on troubleshooting the center's codebases
+   </td>
+  </tr>
+  <tr>
+   <td>Quality Control
+   </td>
+   <td>Quality control methods within the lab
+   </td>
+  </tr>
+    <tr>
+   <td>Data Uploads and Transfers
+   </td>
+   <td>Moving data within and outside of MSI
+   </td>
+  </tr>
+    <tr>
+   <td>NDA Uploads
+   </td>
+   <td>Managing data on the NDA
+   </td>
+  </tr>
+    <tr>
+   <td>Lab Resources
+   </td>
+   <td>Lab recommendations and software used outside of MSI
+   </td>
+  </tr>
+    <tr>
+   <td>Plotting Tools
+   </td>
+   <td>Tools used by the lab to create various figures
+   </td>
+  </tr>
+    <tr>
+   <td>Analysis Tools
+   </td>
+   <td>Tools used by the lab to perform various analyses
+   </td>
+  </tr>
+    <tr>
+   <td>PHI
+   </td>
+   <td>Quick guide on PHI for a reminder
+   </td>
+  </tr>
+    <tr>
+   <td>MR Image
+   </td>
+   <td>How to create synthetic images
+   </td>
+  </tr>
+    <tr>
+   <td>Contributions
+   </td>
+   <td>Authors of this documentation and CDNI papers
+   </td>
+  </tr>
+</table>
