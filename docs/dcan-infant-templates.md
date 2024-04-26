@@ -18,7 +18,7 @@ Note that the default templates included in the pipeline container ([/global/tem
 ## The template folders contain the following:
 
 **INFANT_MNI template files** \
-These are NIH age-specific atlases in MNI space called INFANT_MNI downloaded from http://nist.mni.mcgill.ca/?p=1005. These were created using /home/groups/brainmri/infant/NIH_ATLASES/INFANTMNI_byage/make_INFANTMNI_[eachage.sh](http://eachage.sh/) 
+These are NIH age-specific atlases in MNI space called INFANT_MNI downloaded from http://nist.mni.mcgill.ca/?p=1005. Former documentation indicates that the folders were created after downloading using the script `/home/groups/brainmri/infant/NIH_ATLASES/INFANTMNI_byage/make_INFANTMNI_<age>.sh`, but it's unclear whether this script simply renamed the files or did somethign further 
 
 *Except for 00-02 months,* INFANT_MNI_BRAINMASK has been dilated (DILM, once) from the original NIH age-specific brainmask
 
