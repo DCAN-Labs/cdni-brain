@@ -52,9 +52,9 @@ nav:
       - Pipelines: pipelines.md
       - S3 Pipeline Wrappers: wrappers.md
       - Infant Pipeline Documentation: infant-doc.md
+      - DCAN-infant Templates/Atlases: dcan-infant-templates.md
       - Running nnUNet Predict: nnunet.md
       - Best Practices: processing-sop.md
-      - Temaplate for Brain Extraction: brain_extraction_template.md
   - After processing:
       - file-mapper: filemapper.md    
       - Precision Mapping Wrapper: precision.md

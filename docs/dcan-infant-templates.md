@@ -1,4 +1,6 @@
-# Templates for Brain Extraction
+# Templates used by DCAN-infant pipeline
+
+**Templates for Brain Extraction**
 
 For brain extraction we actually use the **temp_nih_T2w_atl.nii.gz** and **temp_nih_T2w_atl_brain.nii.gz** files, which are modified versions of the neonatal **INFANT_MNI_T2_1mm.nii.gz** and **INFANT_MNI_T2_1mm_brain.nii.gz** files that were manually edited to have tighter masking.
 
@@ -8,7 +10,7 @@ Importantly, we use these neonatal templates across age groups because this gave
 If one wishes to use the age-specific templates instead, use the following flag to specify the original head and brain templates: 
 `--t2-study-template INFANT_MNI_T2_1mm.nii.gz INFANT_MNI_T2_1mm_brain.nii.gz`
 
-Templates README file: 
+**Templates README file:** 
 
 
 FROM 02-60 MONTHS TEMPLATES INCLUDE:
