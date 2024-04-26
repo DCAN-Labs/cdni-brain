@@ -56,3 +56,16 @@ _2) Run bids_nordic_wrapper.sh (arg1= path to func dir, arg2= number of noise vo
 
 
 _3) [Optional] Run nordic_cleanup.sh to remove logs and other files not used in further processing_
+
+---
+
+## Known issues
+
+### Datatype issue
+
+The "NIFTI_NORDIC.m" MATLAB script, which is used by both the above methods, will fail when the input data is a 32-bit datatype (e.g. INT32, FLOAT32). No error message is given: "Completing NORDIC..." will be written to the terminal / log file, but the output .nii file will not be made). 
+
+Typically, for CMRR's NORDIC-compatible sequences, the Dcm2bids-converted NIfTI files should be 16-bit, **but** some functions (e.g. FSL's `fslroi`) can convert to 32-bit which results in the NORDIC error.
+
+One workaround is to use fslmaths with an identity operation and `-odt` to change the datatype without otherwise changing the data :`fslmaths ${input_file} -mul 1 ${output_file} -odt short` (the `short` datatype is 16-bit).  
+

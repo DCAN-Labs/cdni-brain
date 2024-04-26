@@ -1,23 +1,26 @@
-site_name: DCAN Labs Informational Guide
+site_name: CDNI's Brain
 theme: readthedocs
 plugins:
   - search
 docs_dir: docs
 nav:
-  - Overview: index.md
+  - Overview: 
+      - Table of Contents: index.md
+      - About: about.md
   - MSI: 
-      - High Performance Computing (HPC) Resources: hpc.md
+      - High-Performance Computing (HPC) Resources: hpc.md
       - Partitions: partitions.md
       - Module System: modules.md
-      - First Login Steps: msi-login.md
+      - Getting Started: msi-login.md
       - Data Storage/Tracking: storage.md
       - S3: s3.md
       - Common MSI Roadblocks: roadblocks.md
       - NGDR: ngdr.md
-  - SLURM Jobs:
+  - SLURM:
       - Slurm Commands: slurm.md
       - Slurm Jobs: slurm-params.md
-      - Optimizing sbatch Parameters: optimizing.md
+      - Slurm Cronjobs: scron.md
+      - Resource Optimization: optimizing.md
       - Job Submissions: jobs.md
       - fairshare: fairshare.md
       - Queue Optimization: queue-optimization.md
@@ -49,6 +52,7 @@ nav:
       - Pipelines: pipelines.md
       - S3 Pipeline Wrappers: wrappers.md
       - Infant Pipeline Documentation: infant-doc.md
+      - Running nnUNet Predict: nnunet.md
       - Best Practices: processing-sop.md
       - Temaplate for Brain Extraction: brain_extraction_template.md
   - After processing:
@@ -67,14 +71,13 @@ nav:
       - Data Transfers: uploads.md
       - Transfer ABCC Data to the NGDR: ngdr-transfer.md
   - NDA Uploads:
-        - Collections on the NDA: nda.md
-        - Request to Archive Data on the NDA: nda.md
-        - Downloading and Validating Previous Submissions on NDA: nda.md
+        - Managing Data on the NDA: nda.md
   - Lab Resources:
       - Basecamp: basecamp.md
       - Recorded Presentations: presentations.md
       - UMN Recommended Courses: courses.md
       - UMN Computer Installs: installs.md
+      - ZENODO: zenodo.md
   - Plotting Tools:
       - Figure Maker: figure-maker.md
       - Connectivity Matrices: matrices.md
@@ -88,11 +91,9 @@ nav:
       - Calculating Rest Minutes Pre- and Post-Motion Correction: rest_minutes_motion_correction_calculation.md
   - PHI:
       - A Quick Guide on Protected Health Information (PHI): phi-quick-guide.md
-  - ZENODO: 
-      - ZENODO: zenodo.md
   - MR Image:
       - MR-Image-Translation: mr-image-translation.md
   - Contributions:
       - Contributors and Papers: contributions.md
-  - THANK YOU FOR USING THE DIG:
+  - THANK YOU FOR USING THE BRAIN:
       - _____: blank.md
