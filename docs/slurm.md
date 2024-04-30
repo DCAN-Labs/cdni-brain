@@ -2,16 +2,22 @@
 
 Read:
 
-
 * [Slurm @ MSI documentation ](https://www.msi.umn.edu/slurm)
 * [Slurm official site](https://slurm.schedmd.com/documentation.html)
 * [Slurm commands cheat sheet](https://slurm.schedmd.com/pdfs/summary.pdf)
 
-**Slurm** is MSI’s job scheduling system. It is responsible for managing the allocation of computing resources among MSI users and user groups. In the DCAN labs, most data processing and analysis tasks are executed via Slurm job submissions, in the form of **batch scripts** submitted with the `sbatch` command. A batch script is a text file that specifies both the resources (e.g. CPUs, RAM, time) and the commands to be run for a processing job. Slurm jobs can be used for any process that requires more computing resources than is available within a normal terminal. 
+**Slurm** is MSI’s job scheduling system. It is responsible for managing the allocation of computing resources among MSI users and user groups. In the CDNI, most data processing and analysis tasks are executed via Slurm job submissions, in the form of **batch scripts** submitted with the `sbatch` command. A batch script is a text file that specifies both the resources (e.g. CPUs, RAM, time) and the commands to be run for a processing job. Slurm jobs can be used for any process that requires more computing resources than is available within a normal terminal. 
 
 Slurm also has “interactive” jobs (srun), which allow access to compute resources directly from the terminal, as opposed to batch job submissions which run in the background (sbatch).
 
-* **NOTE: Processes on login nodes are automatically terminated after 15 minutes.** Read more about login vs compute nodes on [this page](partitions.md#nodes)
+<div class="admonition note">
+   <p class="first admonition-title">Note</p>
+   <p class="last">
+      Processes on login nodes are automatically terminated after 15 minutes.
+   </p>
+</div>
+
+Read more about login vs compute nodes on [this page](partitions.md#nodes)
 
 Also available are various commands for job accounting, job management, and environment configuration. (See cheat sheet linked below)
 

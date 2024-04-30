@@ -20,6 +20,63 @@ This page has the recommended flags and example commands for the major pipelines
 
 Note: the cutoff age for using an adult pipeline depends on the scope of the project
 
+Recommended sbatch parameters per 1 subject process:
+
+<table>
+<tr>
+<td>
+<strong>Pipeline</strong>
+</td>
+<td><strong>SBATCH Parameters and Definition </strong>
+</td>
+</tr>
+<tr>
+<td>fmriprep
+</td>
+<td>Recommended parameters are 24 hours, 32 cpus on the msismall partition, with 240gb of total memory. 
+<p>
+</td>
+</tr>
+<tr>
+<td>nibabies
+</td>
+<td>Recommended parameters are 24 hours, 32 cpus on the msismall partition, with 240gb of total memory. 
+<p>
+<em>May need increased resources for data without precomputed derivatives for segmentation (if JLF segmentation is enabled with `--segmentation-atlases-dir` )</em>
+</td>
+</tr>
+<tr>
+<td>abcd-bids-pipeline
+</td>
+<td>Recommended parameters are 48 hours, 8 tasks on one node (1 cpu per task), 20gb of memory and 100gb of temporary storage on msismall.
+</td>
+</tr>
+<tr>
+<td>nhp-10.5T-abcd-bids-pipeline
+</td>
+<td>Recommended parameters are 24 hours for a subject but add another 4 hours per run. <br /> At least 8 cpus, max amount is twice the number of functional runs. <br /> 10 times the number of CPUs is the total memory needed.
+</td>
+</tr>
+<tr>
+<td>XCP-D
+</td>
+<td>Recommended parameters are 3 hours, 8 cpus, and 96gb of memory.
+<p>
+</td>
+</tr>
+<tr>
+<td>dcan-infant
+</td>
+<td>Recommended parameters are 72 hours and will utilize 24 tasks on one node with 60gb of memory and 100gb of temporary storage.
+</td>
+</tr>
+</table>
+
+See [MSI partitions](partitions.md) to choose the appropriate partition based on your data and parameters. 
+
+**Note**: all job specifications can increase or decrease based on the amount of data (size or file number) in your dataset. These are recommendations based on job specifications for typical datasets with some buffer added. If your data is multi-echo or your subjects have more minutes of data than normal (>1 hour), you may need more resources
+
+
 
 ## 1. fMRIPrep
 

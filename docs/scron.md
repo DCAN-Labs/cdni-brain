@@ -1,7 +1,7 @@
 # Using Slurm with Cronjobs
 
 You may have noticed that users of MSI are not allowed to schedule scripts to run with cronjobs. 
-Good news! MSI has the scrontab module that behaves just like a cronjob but employs Slurm.
+Good news! MSI has the scrontab [module](modules.md) that behaves just like a cronjob but employs Slurm.
 
 ## What is a cronjob?
 
@@ -15,9 +15,13 @@ The five numbers are seperated by spaces and go as follows: `minute hour day-of-
 Hours are based on the system time in a 24 hour clock.
 
 Besides numbers, 4 symbols are allowed. 
+
 - `*`	any value
+
 - `,`	value list separator
+
 - `-`	range of values
+
 - `/`	step values
 
 For instance `23 14 8-14 * *` will run at 14:23 on every day of the month from the 8th to the 14th. 
