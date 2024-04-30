@@ -1,27 +1,47 @@
 # Running nnUNet Predict on MSI
 
-If you need to create segmentations for a dataset outside of BIBSnet, these are the steps that you need to take. These instructions will allow you to run nnUNet predict with the outputs created by pre-BIBSnet. 
+Though we highly recommend using BIBSNet to generate segmentations using our deep learning models, there are cases where nnUNet predict needs to be run in isolation outside of BIBSNet to generate segmentations. These instructions outline the setup and execution steps required. Note that the resulting segmentations will likely have chirality issues where portions of the ROI labels are swapped between the left and right hemispheres. This is corrected within BIBSNet in the postBIBSNet stage, but will need to be run manually after nnUNet predict if not using BIBSNet. Documentation on running chirality correction is currently under construction. 
+
+## Set Up and Running 
 
 **Setting up the Directory**
 
-First you'll need to create the appropriate folder structure: `data/sub-XXX/ses-XXX/raw`
+Set up the appropriate folder structure: `data/sub-XXX/ses-XXX/raw`
 
 Then copy over the T1 and/or T2 image to the `raw` folder: `cp <filename> path/to/raw/`
 
 Rename the image ending to 0000.nii.gz and 0001.nii.gz for the T1 and T2 image respectively: `mv <sub-XXX_ses-XXX_T1w.nii.gz> <sub-XXX_ses-XXX_0000.nii.gz>`
 
-- If you only have a T2 image, rename the file to 0000.nii.gz instead of 0001.nii.gz 
+- **If you only have a T2 image, rename the file to 0000.nii.gz instead of 0001.nii.gz**
 
+**Prepare and Run sbatch Script**
+
+Go to code folder and edit `infer_script.sh` according to subject and session you are currently running
+
+Main command: `nnUNet_predict -i <input> -o <output directory> -t <model_number> -m 3d_fullres`
+
+Choose the model number based on what images you have:
+
+552 - T1 and T2 images
+
+514 - T1 only image
+
+515 - T2 only image
+
+Run script:  `sbatch infer_script.sh`
+To check your job status: `squeue -al -–me`
+
+**Note that nnUNet predict only works with images that are the same size as the data it was trained on, which are preprocessed intermediate pipeline outputs from PreFreeSurfer in the DCAN-infant-pipeline. If you are using raw data or data in some other space, you will need to perform the following preprocessing steps before running nnUNet predict.**
+
+## Preprocessing
 
 **Step 1: Check Image Orientation**
 
-Now you'll need to reorient to image to standard using fsl.
+If needed, reorient the images to standard using fsl. Load an image with `fslview_deprecated` or `fsleyes`. 
 
-Move into your working directory where the image lives and run `module load fsl`
+To reorient images, use [fslreorient2std.](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils)
 
-To view the image, you can use `fslview_deprecated` or `fsleyes`
-
-To reorient the image, run `fslreorient2std <input_file> <output_filename>`
+Use the command `fslreorient2std <input_file> <output_filename>`
 
 Example:
 
@@ -31,42 +51,38 @@ module load fsl
 fslreorient2std sub-XXX_ses-XXX_0000.nii.gz sub-XXX_ses-XXX_reoriented_0000.nii.gz 
 ```
 
+Rare cases may require [fslorient](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils) instead - make sure to read the documentation on this utility before using it (specfically: “We only recommend using fslorient to change orientation information in the case of incorrect labels - otherwise there is a real risk of accidentally changing the left-right order and we strongly discourage its use because of this. As stated in the page on Orientation Explained the only case where we recommend changing orientation information (except for the use of fslreorient2std which is always safe) is when the labels are incorrect.”)
+
+`fslorient -forceneurological <filename>`
+
+
 **Step 2: Crop Image**
 
 To crop the image run `robustfov -i <input_file> -m <output_matrix> -b <brain size - default 120> -r <output_filename>`
 
 Example: 
+
 ```
 robustfov -i sub-XXX_ses-XXX_reoriented_0000.nii.gz -m ../cropped/roi2full.mat -b 120 -r ../cropped/sub-XXX_ses-XXX_cropped_0000.nii.gz
 ```
 
 **Step 3: Resize Image**
 
-Move into the code folder and [load the labwide miniconda environment](miniconda.md) 
+[Load the labwide miniconda environment](miniconda.md) 
 
 To resize the image run: `python3 resize_images.py <input_folder> <output_folder_filename>`
 
 Example: 
+
 ```
 python3 resize_images.py ../data/sub-XXX/ses-XXX/cropped/ ../data/sub-XXX/ses-XXX/resized/sub-XXX_ses-XXX_resized_0000.nii.gz
 ``` 
 
-**Step 4: Prepare and Run sbatch Script**
+Now your image should be ready to run nnUNet_predict. 
 
-Go to code folder and edit infer_script.sh according to subject and session you are currently running
+## Postprocessing
 
-Main command: `nnUNet_predict -i <input> -o <output directory> -t <model_number> -m 3d_fullres`
-
-Choose the model number based on what images you have:
-
-552 - T1 and T2 images
-514 - T1 only image
-515 - T2 only image
-
-Run script:  `sbatch infer_script.sh`
-To check your job status: `squeue -al -–me`
-
-**Step 5: Perform Chirality Correction**
+**Perform Chirality Correction**
 
 Follow these steps to create a LR mask:
 
@@ -75,6 +91,7 @@ Follow these steps to create a LR mask:
 - The main command is `./LR_mask_registration.sh <resized_inpud> <template image> <template mask>`
 
     - An example command: 
+
     ```
     ./LR_mask_registration.sh ../data/sub-XXX/ses-XXX/resized/sub-XXX_ses-XXX_resized_0000.nii.gz 
     ./masks/1mo_T2w_acpc_dc_restore.nii.gz ./masks/1mo_template_LRmask.nii.gz
@@ -141,6 +158,7 @@ Create input folder with the final segmentation file in [right naming convention
 Make folder in derivatives/precomputed, copy final segmentation (`uncropped`) there and rename it to fit nibabies naming scheme. 
 
 Create brain mask:
+
 ```
 module load fsl
 source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
@@ -177,12 +195,13 @@ Synthetic T1s:
 - Invert it
     - Command: `convert_xfm -omat inv_acpc.mat -inverse sub-XXX_ses-XXX_T2w_acpc.mat` 
 - Apply inverse to synthetic image to put it in same space as raw T2
-    ```
-    flirt -applyxfm -in 
-    ./test/synth/sub-XXX_ses-XXX_desc-synthetic_T1w.nii.gz -ref 
-    ./raw/sub-XXX_ses-XXX_0000.nii.gz -out 
-    ./test/synth/sub-XXX_ses-XXX_resampled.nii.gz -init 
-    ./test/synth/inv_acpc.mat -interp spline
-    ```
+
+```
+flirt -applyxfm -in 
+./test/synth/sub-XXX_ses-XXX_desc-synthetic_T1w.nii.gz -ref 
+./raw/sub-XXX_ses-XXX_0000.nii.gz -out 
+./test/synth/sub-XXX_ses-XXX_resampled.nii.gz -init 
+./test/synth/inv_acpc.mat -interp spline
+```
 
 

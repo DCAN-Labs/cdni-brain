@@ -19,9 +19,8 @@ nav:
   - SLURM:
       - Slurm Commands: slurm.md
       - Slurm Jobs: slurm-params.md
-      - Slurm Cronjobs: scron.md
+      - Cronjobs: scron.md
       - Resource Optimization: optimizing.md
-      - Job Submissions: jobs.md
       - fairshare: fairshare.md
       - Queue Optimization: queue-optimization.md
   - Software Environments:
