@@ -1,6 +1,8 @@
-
+'''
 Create min/maxes (hard coded paths):
-srun --time=8:00:00 --mem-per-cpu=8GB --cpus-per-task=4  -A feczk001 --tmp=20gb  -p msismall --pty bash
+'''
+
+srun --time=8:00:00 --mem-per-cpu=8GB --cpus-per-task=4 -A feczk001 --tmp=20gb -p msismall --pty bash
 conda deactivate
 source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
 conda activate SynthSeg
@@ -8,8 +10,12 @@ cd ~/SynthSeg
 export PYTHONPATH=${PYTHONPATH}:/home/faird/lundq163/SynthSeg/
 export PYTHONPATH=${PYTHONPATH}:/home/faird/lundq163/SynthSeg/SynthSeg/
 python ./SynthSeg/dcan/ten_fold_uniformity_estimation_test.py
+
+'''
 SynthSeg:
-srun --time=48:00:00 --mem-per-cpu=8GB --cpus-per-task=4  -A feczk001 --tmp=20gb  -p msismall --pty bash
+'''
+
+srun --time=48:00:00 --mem-per-cpu=8GB --cpus-per-task=4 -A feczk001 --tmp=20gb -p msismall --pty bash
 conda deactivate
 source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
 conda activate SynthSeg
@@ -19,9 +25,13 @@ export PYTHONPATH=${PYTHONPATH}:/home/faird/lundq163/SynthSeg/SynthSeg/
 python ./SynthSeg/dcan/image_generation_for_all_ages.py /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task528/ /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task528/SynthSeg_generated/ /home/faird/lundq163/SynthSeg/data/labels_classes_priors/dcan/uniform/528/mins_maxes.npy 2000 --distribution="uniform"
 python ./SynthSeg/dcan/image_generation_for_all_ages.py /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task527_HBCD/ /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task527_HBCD/SynthSeg_generated/ /home/faird/lundq163/SynthSeg/data/labels_classes_priors/dcan/uniform/527/mins_maxes.npy 1000 --distribution="uniform"
 python ./SynthSeg/dcan/image_generation_for_all_ages.py /scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_raw_data/Task700_T1_T2_Fold0/ /scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_raw_data/Task700_T1_T2_Fold0/SynthSeg_generated/ /home/faird/lundq163/SynthSeg/data/labels_classes_priors/dcan/uniform/mins_maxes_fold_0.npy 1000 --distribution="uniform"
+
+'''
 running one fold of nnUNet:
 first - copy over synthseg images to training folders:
-srun --time=8:00:00 --mem-per-cpu=8GB --cpus-per-task=4  -A feczk001 --tmp=20gb  -p msismall --pty bash
+'''
+
+srun --time=8:00:00 --mem-per-cpu=8GB --cpus-per-task=4 -A feczk001 --tmp=20gb -p msismall --pty bash
 cd /home/faird/lundq163/dcan-nn-unet/dcan/util/
 conda deactivate
 source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
@@ -34,8 +44,11 @@ mv ./imagesTr/*_SynthSeg_generated_0001.nii.gz ./labelsTr/ -v
 ls ./imagesTr/ | wc -l
 ls ./labelsTr/ | wc -l
 rm SynthSeg_generated/ -r
-imagesTr should have 18162, and labelsTr should have 9081, and then SynthSeg_generated can be removed
+'imagesTr should have 18162, and labelsTr should have 9081, and then SynthSeg_generated can be removed'
+'''
 creating dataset json for nnunet plan and preprocess:
+'''
+
 cd /scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_raw_data/Task700/
 conda deactivate
 source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
@@ -47,7 +60,10 @@ export RESULTS_FOLDER="/home/feczk001/shared/data/nnUNet/nnUNet_raw_data_base/nn
 python /home/faird/lundq163/dcan-nn-unet/dcan/dataset_conversion/create_json_file.py TaskXXX
 export PYTHONPATH=${PYTHONPATH}:/home/faird/lundq163/dcan-nn-unet/dcan/
 python /home/faird/lundq163/dcan-nn-unet/dcan/dataset_conversion/fix_json_file.py ./dataset.json ./dataset2.json
-next remove comma after vermis in dataset2, then delete dataset and save dataset2 as dataset
+'next remove comma after vermis in dataset2, then delete dataset and save dataset2 as dataset'
+'''
 next - run plan and preprocess:
+'''
+
 cd /home/faird/shared/code/internal/nnUNet/slurm_scripts/70X
 sbatch NnUnet_plan_and_preprocess_agate.sh
