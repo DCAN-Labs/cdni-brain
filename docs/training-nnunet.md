@@ -1,5 +1,12 @@
 # Training nnUNet
 
+<div class="admonition attention">
+    <p class="first admonition-title">Attention</p>
+    <p class="last">
+        This page is still under construction. Please keep that in mind when reading.
+    </p>
+</div>
+
 This page provides the code on how to train nnunet. You will need to grab [a srun](slurm-params.md#srun) to run these commands. You will also need to [load the labwide miniconda environment](miniconda.md) and activate the SynthSeg conda environment. 
 
 Create min/maxes (hard coded paths):
