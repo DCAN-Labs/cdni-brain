@@ -21,8 +21,6 @@ nav:
       - Slurm Jobs: slurm-params.md
       - Cronjobs: scron.md
       - Resource Optimization: optimizing.md
-      - fairshare: fairshare.md
-      - Queue Optimization: queue-optimization.md
   - Software Environments:
       - VS Code: vscode.md 
       - Miniconda Environments: miniconda.md
