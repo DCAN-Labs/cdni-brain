@@ -55,6 +55,18 @@ Below is a table summarizing some commands that can be used inside Slurm job scr
    </td>
   </tr>
   <tr>
+   <td>--nodes=2
+   </td>
+   <td><em>Optional:</em> Specifies the number of nodes that the job will run on
+   </td>
+  </tr>
+  <tr>
+   <td>--ntasks-per-nodes=4
+   </td>
+   <td><em>Optional:</em> Specifies the number of core that each node will have reserved for the job
+   </td>
+  </tr>
+  <tr>
    <td>-A, --account=<em>share</em>
    </td>
    <td><em>Optional:</em> Charge resources used by this job to the specified account. <br /> The account may be changed after job submission using the scontrol command. <br /> To choose an optimal share, see the Fairshare explanation <a href="fairshare.md">here</a>.
@@ -122,6 +134,8 @@ Below is a table summarizing some commands that can be used inside Slurm job scr
 
 ## Job Status
 
+This section has commands that can be used to check on the status of your job submission, cancel a job, or change the resources of your job. 
+
 ### squeue
 
 `squeue -al --me`: determine specifc jobs for your own account
@@ -131,6 +145,8 @@ Below is a table summarizing some commands that can be used inside Slurm job scr
 `squeue -A group_name`: check the queue for all groups one is under to determine which to submit under
 
 `squeue -u <username> -h -t pending,running -r | wc -l`: count how many jobs you have in your queue, you can add more statuses if needed
+
+OOD also has a [Jobs Dashboard](https://ondemand.msi.umn.edu/pun/sys/dashboard/activejobs) on their website to see the status of jobs that are running. 
 
 ### scancel
 
@@ -143,6 +159,8 @@ Below is a table summarizing some commands that can be used inside Slurm job scr
 `sacct`: display accounting data for all jobs and job steps in the Slurm job accounting log or Slurm database
 
 `sacct -X -j JOBID_ARRAY# -o JobID,NNodes,State,ExitCode,DerivedExitCode,Comment`: check the status of a job even after it has exited, JOBID_ARRAY can also just be JOBID
+
+[This page](https://slurm.schedmd.com/sacct.html) has more options for using `sacct`.
 
 ### scontrol
 

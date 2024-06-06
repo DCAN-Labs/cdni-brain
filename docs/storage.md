@@ -14,6 +14,8 @@ Figure out the approximate average storage impact your jobs (inputs and outputs)
 
     - If on tier 1, fill out the [request form](https://docs.google.com/forms/d/e/1FAIpQLSd1QI_Hmi3khwITVctnaDJYY2M1NegsAWYPR6AXoodUCrrpZw/viewform?usp=sf_link) (if above 1 TB). Choose your share based on the `groupquota` of all shares (`groupquota -g share_name`). Do not put anything related to ABCD on the `faird` share.
 
+18. If you are producing outputs using ABCD/ABCC data, **IT CANNOT BE STORED ON FAIRD** due to this share not being under control of the UMN DUC, which is required to access ABCD data. 
+
 ## Data Tracking 
 
 * For data being uploaded to tier 1 storage space, document a description of the dataset and a path to where the data lives, an estimate on the amount of space needed to store the data, the share it’s been uploaded to, the primary owner of the data, and the estimated start and end date for use of the necessary storage space to [this spreadsheet](https://docs.google.com/spreadsheets/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit#gid=870411543). For further information on allowable data on each share, visit the “Shares” tab on [the above spreadsheet here](https://docs.google.com/spreadsheets/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit#gid=2135306680).

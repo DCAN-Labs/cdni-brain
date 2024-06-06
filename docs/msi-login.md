@@ -95,12 +95,14 @@ PS1="\u@\h [\w] % "
 # module load
 ```
 
-## Gaining Access
+## Gaining Access to Shares
 To gain access to MSI shares containing ABCD derivatives (`feczk001`, `miran045`, `rando149`, `smnelson`), you must be an approved collaborator on the UMN DUC.
 
 * Create a [Login.gov account](https://www.login.gov/create-an-account/) 
 * Use your login.gov credentials to [access the NDA](https://nda.nih.gov/user/login_required.html?originator=%2Fuser%2Fdashboard%2Fdashboard.html) - you’ll then be prompted to create an NDA account
-* Email Borgne Raasch `braasch@umn.edu` your NDA username to be added to the next submission batch
+* Email Borgne Raasch `braasch@umn.edu` your NDA username to be added to the next submission batch. Adding new usernames to the DUC only happens once a month so this process can take a while depending on how the timing lines up. 
 * Outside collaborators should follow this link: ​​ [NDA - Adding Affiliated Institutions](https://docs.google.com/document/d/1w5BW14EHFSi4Lr1YDPm9CLTiy8JNdClt5KpKCOYnBH4/edit#heading=h.qdjbnp8qckwr)
 * After Borgne confirms that you have been granted access to the DUC, email Luci Moore and Kim Weldon at `lmoore@umn.edu` and `kweldon@umn.edu` to granted access to `feczk001`, `miran045`, `rando149`, or `smnelson` and let Borgne know if you also need access to the `NGDR`. For more information on what the `NGDR` is, see [here](https://rc.umn.edu/project/neuroimaging-and-genetic-data-resources). It is where we store our ABCC BIDS inputs and derivatives.
+
+The PI of the share you need access to also needs to request that you be added to their share through MSI. PI's can find more information about how to add someone [here.](https://msi.umn.edu/manage-pi-group)
 

@@ -39,7 +39,7 @@ The job script needs to stay the same until the job starts to produce the correc
     5. The resources utilized by this sbatch job include:
         * a maximum time of 8 hours 
         * 8 cpus per task 
-        * queueing on the `msismall` partition (mangi/mesabi)
+        * queueing on the `msismall` partition 
         * 160 gigabytes of total RAM 
         * utilizing the account _rando149_’s queue
     6. There are full paths to a directory that will hold both `stdout` and `stderr` files, which are listed above as `output_logs/xcp_full_%A.out` and `output_logs/xcp_full_%A.err`. The `%A` signifies that the job ID number will be added to the filename.
@@ -49,39 +49,26 @@ The job script needs to stay the same until the job starts to produce the correc
         1. The input and output directory paths are bound to the container’s filesystem using the `-B` syntax. There is also a path to a `.sif` file that will utilize the jobs resources in order to produce the desired outputs using what's in the input directory. This .sif file is a [singularity image](containers.md) that is being run on the specified input files.   
             * Note: these input, output and singularity image paths need to exist prior to running the sbatch. 
             * The input file is binded with the `:ro` option, which indicates it is read only. This is done to ensure that running the command won't accidentally alter the input file. 
+    8. If an sbatch job is running for >3 minutes, there are most likely no errors in the run command, and job doesn't need to be closely monitored before completion.
 
-## Job Submissions
-
-1. If an sbatch job is running for >3 minutes, there are most likely no errors in the run command, and job doesn't not need to be closely monitored before completion. 
-
-2. If a submission is above 2000 jobs (slurm’s max in-queue number of jobs), use the continuous submitter.
+## Continuous Job Submission
+ 
+1. If a submission is above 2000 jobs (slurm’s max in-queue number of jobs), or you would like to space out job submission, use the continuous submitter.
 
     * Path to continuous submitter: `/home/faird/shared/code/internal/utilities/SLURM_wrappers/continuous_submitter`
 
     * The code can be found on GitHub [here.](https://github.com/DCAN-Labs/SLURM_wrappers/tree/main/continuous_submitter)
 
-    * Below is an example of what the submitter script will look like:
+    * This command needs to be run on a persistent desktop, or at least a desktop with as many hours as it will take to submit all the jobs based on how far apart the submission interval is. 
+
+    * Below is an example of what the submitter command will look like:
 
 ```
-#!/bin/bash -l
-#SBATCH -J continuous_slurm_submitter
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=3
-#SBATCH --cpus-per-task=1
-#SBATCH --mem=6gb
-#SBATCH -t 168:00:00
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=<YOURx500>@umn.edu
-#SBATCH -p max
-#SBATCH -o continuous_slurm_submitter_%A.out
-#SBATCH -e continuous_slurm_submitter_%A.err
-#SBATCH -A ACCOUNT
-
 python continuous_slurm_submitter.py --partition small,amdsmall --job-name abcd-hcp-pipeline_full 
---log-dir cont_slurm_submitter_logs --run_folder /path/to/project/folder/run_files.abcd-hcp-pipeline_full/ 
---n_cpus 8 --time_limit 48:00:00 --total_memory 20 --tmp_storage 100 --array-size 1000 
---submission-interval 300 --account-name feczk001
+--log-dir /path/to/cont_slurm_submitter_logs --run_folder /path/to/project/folder/run_files.abcd-hcp-pipeline_full/ --n_cpus 8 --time_limit 48:00:00 --total_memory 20 --tmp_storage 100 --array-size 1000 --submission-interval 300 --account-name feczk001 --mail_user x500@umn.edu
 ```
+
+The `array-size` is how many jobs you are submitting at once. The `submission-interval` is the amount of time in minutes to wait until submitting another array of jobs. 
 
 3. Check the [fairshare](fairshare.md) to know which account to use for processing.
 4. If you have a command or script that outputs to a different group than your primary MSI group (i.e. the group with your home directory), you can use `sg` to run as the group that matches the output directory instead. Recommended for abcd-hcp-pipeline, infant-abcd-bids-pipeline, and nhp-abcd-bids-pipeline to avoid permission errors in the FreeSurfer stage of the pipeline.

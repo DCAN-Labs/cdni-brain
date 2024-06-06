@@ -21,8 +21,6 @@ nav:
       - Slurm Jobs: slurm-params.md
       - Cronjobs: scron.md
       - Resource Optimization: optimizing.md
-      - fairshare: fairshare.md
-      - Queue Optimization: queue-optimization.md
   - Software Environments:
       - VS Code: vscode.md 
       - Miniconda Environments: miniconda.md
@@ -71,6 +69,8 @@ nav:
       - Transfer ABCC Data to the NGDR: ngdr-transfer.md
   - NDA Uploads:
         - Managing Data on the NDA: nda.md
+  - Segmentation Model:
+        -Model Training: training-nnunet.md
   - Lab Resources:
       - Basecamp: basecamp.md
       - Recorded Presentations: presentations.md
