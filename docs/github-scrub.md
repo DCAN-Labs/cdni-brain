@@ -49,3 +49,6 @@ git push origin --force --tags
 For more information on these commands, you can also refer to this source: [How to remove sensitive files and their commits from Git history.](https://www.educative.io/answers/how-to-remove-sensitive-files-and-their-commits-from-git-history)
 
 By following these steps, you can effectively scrub sensitive data from your Git repository's history, making it safe for public sharing without exposing confidential information.
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

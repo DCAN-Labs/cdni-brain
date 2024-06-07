@@ -7,3 +7,6 @@ The code can be found on MSI at `/home/faird/shared/code/internal/utilities/fcon
 Documentation can be found [here](https://fconn-anova.readthedocs.io/en/latest/)
 
 Version-controlled code can be found on [Gitlab](https://gitlab.com/Fair_lab/fconn_stats.git)
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

@@ -135,3 +135,6 @@ skinny_plot(T,[],...
 ```
 
 ![Example of skinny plot with multiple traces](img/multiple_skinny_plot.png)
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

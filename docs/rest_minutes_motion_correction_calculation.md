@@ -9,3 +9,6 @@ ls -1d <PATH TO DERIVATIVES>/sub-/ses-/func/sub-*task-rest_bold_desc-filtered_mo
 This command lists motion.mat files and directs the output to motion.conc. Adjust the command if your motion files adhere to a different naming convention.
 
 Next, prepare input files by generating a conc file listing motion.mat files. Execute the script in MATLAB, inputting the conc file when prompted. Upon completion, the script outputs total minutes of rest pre- and post-motion correction. Compare these results to assess data quality.
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

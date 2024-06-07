@@ -7,3 +7,5 @@ Defacing is done by creating a rough boxy mask that cuts off the eyes/nose/mouth
 Usage for a directory that contains a subject folder, and the subject folder contains a T1w image, T2w image, or both:
 
 `python3 /home/feczk001/shared/projects/BCP_deface/code/deface.py /path/to/directory/`
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

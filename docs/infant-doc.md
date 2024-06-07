@@ -372,3 +372,5 @@ Run-time instructions. These options are not passed to the stages. Rather, they 
   --version, -v         show program's version number and exit
 ```
 
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

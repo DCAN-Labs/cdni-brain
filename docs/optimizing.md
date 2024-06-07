@@ -81,3 +81,4 @@ These tips can be applied to ANY type of job. You don't have to use all of them 
 - Have different people submit jobs for you.
 
 
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

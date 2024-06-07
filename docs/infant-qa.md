@@ -186,3 +186,6 @@ The QA spreadsheet you will fill out is organized a bit differently than the fil
 - Column 2 indicates if firefox of chromium-browser should be used to open to executive summary .html file 
 
 - Some subjects have wonky file names so the REST# columns are used to list file names that shouhld be opened to QA functional to structural registrations for those subjects
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

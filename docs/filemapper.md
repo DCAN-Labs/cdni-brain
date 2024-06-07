@@ -16,3 +16,6 @@ File mapper maps processed outputs into the BIDS format for the abcd-hcp-pipelin
         * `PIPELINE` refers to the directory your outputs are in which are inside the derivatives folder.
 
 2. See the Example 2 [here](https://github.com/DCAN-Labs/file-mapper) for a more in-depth explanation.
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

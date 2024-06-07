@@ -63,3 +63,6 @@ Send it to help@msi.umn.edu.
 
 Be prepared for possible clarifications or questions from MSI.
 Respond promptly and provide any necessary additional information.
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

@@ -79,3 +79,5 @@ Usage for a directory that contains a subject folder, and the subject folder con
 
 `python3 /home/feczk001/shared/projects/BCP_deface/code/deface.py /path/to/directory/`
 
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

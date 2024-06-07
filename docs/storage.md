@@ -28,3 +28,6 @@ Figure out the approximate average storage impact your jobs (inputs and outputs)
 ## Transfering Data from MSI to Local Storage
 
 Your UMN computer has a local storage space that you may want to use for working on specific files. You can transfer files between local and MSI Tier 1 systems via [winSCP](https://www.msi.umn.edu/support/faq/how-do-i-use-winscp-transfer-data) or [FileZilla](https://www.msi.umn.edu/support/faq/how-do-i-use-filezilla-transfer-data).
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

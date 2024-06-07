@@ -69,3 +69,5 @@ Typically, for CMRR's NORDIC-compatible sequences, the Dcm2bids-converted NIfTI 
 
 One workaround is to use fslmaths with an identity operation and `-odt` to change the datatype without otherwise changing the data :`fslmaths ${input_file} -mul 1 ${output_file} -odt short` (the `short` datatype is 16-bit).  
 
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

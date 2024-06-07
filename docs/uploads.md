@@ -69,3 +69,5 @@ When submitting the upload.py sbatch, it is important to submit them in arrays. 
 
 - This line will submit 5 jobs at a time and will wait for those to finish before submitting 5 more.
 
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

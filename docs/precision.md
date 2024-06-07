@@ -44,3 +44,6 @@ _Notes:_
 * Currently only Gordon333 parcellated timeseries are supported  (*_space-fsLR_atlas-Gordon_den-91k_timeseries.ptseries.nii).
 
 **(TBA - FC reliability matrix, dense FC curve, dense FC matrix)**
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

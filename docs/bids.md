@@ -73,3 +73,5 @@ Used to make sure the data is BIDS valid (utilizing the [bids-validator package 
         - Subject session directories have a different naming scheme than the files
         
     - For more information on the BIDS specification, see this [link](https://github.com/PennLINC/CuBIDS)
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

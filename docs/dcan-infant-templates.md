@@ -48,3 +48,4 @@ Some templates are referenced from &lt;stage>/scripts, using HCPPIPEDIR_Template
 Note: INFANT_MNI_T1_2mm_brain_mask_dil.nii.gz does not exist for 00-02. Don’t worry, since the file is referenced by pipelines.py and sent to PreFreeSurfer, but is never actually used.
 
 
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

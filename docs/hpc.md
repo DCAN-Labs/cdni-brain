@@ -55,4 +55,8 @@ Each PI has their own allocation on MSI, which includes storage and grid time. A
 * Oscar Miranda-Dominguez: `miran045`
 * Steve Nelson: `smnelson`
 * Anita Randolph: `rando149`
+* Brenden Tervo-Clemmens: `btervocl`
+* Bart Larsen: `bart`
 
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

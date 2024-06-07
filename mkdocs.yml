@@ -70,7 +70,7 @@ nav:
   - NDA Uploads:
         - Managing Data on the NDA: nda.md
   - Segmentation Model:
-        -Model Training: training-nnunet.md
+        - Model Training: training-nnunet.md
   - Lab Resources:
       - Basecamp: basecamp.md
       - Recorded Presentations: presentations.md

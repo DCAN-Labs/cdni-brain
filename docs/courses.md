@@ -137,3 +137,5 @@ Linear/generalized linear models, modern regression methods including nonparamet
 Standard multivariate analysis. Multivariate linear model, classification, clustering, principal components, factor analysis, canonical correlation.
 
 **STAT 8054 - Statistical Methods 4: Advanced Statistical Computing**
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

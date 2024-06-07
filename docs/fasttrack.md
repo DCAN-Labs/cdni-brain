@@ -24,3 +24,6 @@ Steps for administering the fast track QC comparison process are as follows:
     * The output directory will automatically be created in that path specified in the run command, so there is no need to create the directory beforehand. The path should resemble something like this: `/home/rando149/shared/projects/ABCC_datalad/name_of_directory`
     
     * To take a look at the `compare_2_fastQC_spreadsheets.py` script, see [here](https://github.com/DCAN-Labs/compare-fastQC).
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

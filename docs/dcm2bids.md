@@ -76,13 +76,15 @@ Watch: [Dcm2bids DCAN tutorial recording](https://drive.google.com/drive/folders
     export PATH=$PATH:/home/feczk001/shared/code/external/utilities/jq-1.5
 
     python3 /home/rando149/shared/code/internal/utilities/abcd-dicom2bids/abcd2bids.py /common/software/install/migrated/fsl/6.0.4/ /home/feczk001/shared/code/external/utilities/MATLAB_MCR/v91/ -q /home/rando149/shared/code/internal/utilities/abcd-dicom2bids/spreadsheets/fastqc20230912/abcd_fastqc01.txt -l /path/to/subject_list/subjects.txt -o /path/to/output_dir/ -p 1219957 --download=/path/to/raw/data/downloaded --downloadcmd /home/faird/shared/code/external/envs/miniconda3/mini3/envs/abcd-dicom2bids/bin/downloadcmd --singularity /home/rando149/shared/code/internal/utilities/abcd-dicom2bids_nda/validator_latest.sif 
-
     ```
         
-        - In the run command, `-q` is the path to quality control (QC) spreadsheet file downloaded from the NDA,`-l` is the list of subjects being converted, `-o` is where the outputs are being stored, `-p` is the package ID number of relevant NDA data package, `--downloadcmd` is the path where the downloadcmd has been installed.
+    - In the run command, `-q` is the path to the most recent quality control (QC) spreadsheet file downloaded from the NDA,`-l` is the list of subjects being converted, `-o` is where the outputs are being stored, `-p` is the package ID number of relevant NDA data package, `--downloadcmd` is the path where the downloadcmd has been installed.
         
-        - For more information on arguments, see the ReadMe section on Optional Arguments [here](https://github.com/DCAN-Labs/abcd-dicom2bids).
+    - For more information on arguments, see the ReadMe section on Optional Arguments [here](https://github.com/DCAN-Labs/abcd-dicom2bids).
         
-        - For running multiple subjects, it is advised to use a [wrapper ](wrappers.md)to submit one subject/session at a time. There is a wrapper for tier 1 here: `/home/faird/shared/code/internal/utilities/SLURM_wrappers/slurm_abcd-hcp-pipeline_scripts` and a wrapper for tier 2 here: `/home/faird/shared/code/internal/utilities/SLURM_wrappers/slurm_abcd-hcp-pipeline_scripts_with_s3_routines_with_ses`
+    - For running multiple subjects, it is advised to use a [wrapper](wrappers.md) to submit one subject/session at a time. There is a wrapper for tier 1 here: `/home/faird/shared/code/internal/utilities/SLURM_wrappers/ABCD-related/ABCD-BIDS_disk` and a wrapper for tier 2 here: `/home/faird/shared/code/internal/utilities/SLURM_wrappers/ABCD-related/ABCD-BIDS_ses_s3`
             
-            * Note: if you do not have access to the faird share, please fill out [this contact form](https://innovation.umn.edu/developmental-cognition-and-neuroimaging-lab/contact-us/) to request access.
+        * Note: if you do not have access to the `faird` share, please fill out [this contact form](https://innovation.umn.edu/developmental-cognition-and-neuroimaging-lab/contact-us/) to request access.
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

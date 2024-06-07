@@ -439,7 +439,7 @@ events_dir=/home/users/shared/data/task_events/
 wrapper_dir=.
 
 python3 pipeline_wrapper.py --subject ${subject_ID} --ses ${session_ID} --study-dir ${study_dir} --task ${task_name} --events-dir ${events_dir} --fsl-dir ${fsl_dir} --wb-command ${wb_command} --wrapper-location ${wrapper_dir}
-s```
+```
 
 Find out more information [here.](https://github.com/DCAN-Labs/abcd-bids-tfmri-pipeline)
 
@@ -449,3 +449,6 @@ CABINET is a tool that can be used to run multiple containers together.
 If you need to repeatedly run multiple containers back to back, consider doing it with CABINET!
 You will need to construct a parameter JSON file to tell CABINET how to run your containers.
 For examples see the [CABINET repository on GitHub](https://github.com/DCAN-Labs/CABINET)
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

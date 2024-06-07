@@ -117,3 +117,6 @@ Discrimination against racial and ethnic minority groups exists in the academy, 
 *[Scott Marek](https://profiles.wustl.edu/en/persons/scott-marek)* - October 5, 2020
 
 Leveraging the Adolescent Brain Cognitive Development (ABCD) Study (N=11,878), we estimated the effect sizes and reproducibility of these brain-wide associations studies (BWAS) as a function of sample size. The very largest, replicable brain-wide associations for univariate and multivariate methods were r=0.14 and r=0.34, respectively. In smaller subsamples, typical for BWAS, effect sizes were ubiquitously inflated due to sampling variability, causing widespread replication failure. Sample sizes of N⪆2,000 are required to provide stable and reproducible brain-behavioral phenotype associations. While investigator-initiated brain-behavior research continues to generate hypotheses and propel innovation, large consortia are needed to usher in a new era of reproducible BWAS.
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

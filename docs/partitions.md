@@ -37,3 +37,6 @@ If you try to submit a job on a partition that doesn't have access to the amount
 **“Local scratch per node”** (`--tmp`) is the total amount of temporary storage that you can specify for that partition. 
 
 **“Maximum nodes per job”** (`--nodes=N`) is the highest number of nodes one may be allocated for each job.
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

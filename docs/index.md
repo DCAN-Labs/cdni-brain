@@ -142,3 +142,6 @@ This handbook outlines key tools and resources used by the Center for Developmen
    </td>
   </tr>
 </table>
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

@@ -65,3 +65,6 @@ Jobs created with scrontab are assigned a single job id.
 
 
 scrontab attempts to run things on schedule but is subject to resource limitations like other slurm jobs. Some jobs may not run exactly when specified.
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

@@ -20,3 +20,5 @@ For downloading new programs, you will need to self promote admin rights via the
 
 Note: updates made while promoting admin rights are reviewed by the U.
 
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
