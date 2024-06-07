@@ -123,3 +123,6 @@ git push origin your-branch-name
 
 On GitHub navigate to your repository. Go to the "Pull Requests" tab. Select the pull request you want to merge. Click "Merge pull request."
 More information on GitHub can be found on [Git Documentation website.](https://git-scm.com/doc)
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

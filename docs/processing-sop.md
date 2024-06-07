@@ -40,3 +40,6 @@ Below are steps that should be followed in order to ensure your processing effor
     - Sync your working directly up to an s3 bucket that you maintain with all of your working directories.
     - Someone will ask you questions later, and this will be where your answers are.
 15. Add your dataset to the [data tracking sheet](https://docs.google.com/spreadsheets/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit#gid=0).
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

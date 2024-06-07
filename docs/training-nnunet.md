@@ -78,3 +78,6 @@ Run plan and preprocess:
 cd /home/faird/shared/code/internal/nnUNet/slurm_scripts/70X
 sbatch NnUnet_plan_and_preprocess_agate.sh
 ```
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

@@ -176,3 +176,6 @@ Then, another developer who wants to have submodule_directory changed to that ta
 
                 git pull
                 git submodule update --init
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

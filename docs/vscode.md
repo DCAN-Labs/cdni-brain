@@ -249,3 +249,6 @@ When you start the script, the debug toolbar (circled in purple) should appear a
 At the left of your screen, you should see all of the variables and their values as the script goes on (circled in red). At any point, if you want to test a block of code or run any commands, open the `Debug Console` located at the bottom of your screen (where the Terminal is also located, circled in blue). This will allow you to run commands as if they were being run in the script, meaning you will have access to the variables and their values. 
 
 ![Image of Debug Session](img/debug_session_example.png)
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

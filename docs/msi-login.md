@@ -106,3 +106,5 @@ To gain access to MSI shares containing ABCD derivatives (`feczk001`, `miran045`
 
 The PI of the share you need access to also needs to request that you be added to their share through MSI. PI's can find more information about how to add someone [here.](https://msi.umn.edu/manage-pi-group)
 
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

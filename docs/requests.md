@@ -35,3 +35,6 @@ Are you having any issues with any of our pipelines?
     * [NDA Uploader](https://github.com/DCAN-Labs/nda-bids-upload/issues/new/choose)
 
     * [NHP ABCD BIDS Pipeline](https://github.com/DCAN-Labs/nhp-abcd-bids-pipeline/issues/new)
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

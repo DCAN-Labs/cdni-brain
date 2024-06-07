@@ -53,3 +53,6 @@ Specify the NDA Collection number. This detail is necessary for organizing and a
 **CC to PI and Program Officer:**
 
 In addition to the archival request, please ensure to copy your Principal Investigator (PI) and the Program Officer associated with the Collection. 
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

@@ -182,3 +182,5 @@ OOD also has a [Jobs Dashboard](https://ondemand.msi.umn.edu/pun/sys/dashboard/a
 
 `scontrol show JobId=####`: find time information for a job
 
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

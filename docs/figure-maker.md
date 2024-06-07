@@ -36,3 +36,6 @@ python3 ./figure_maker_wrapper.py --subject-scalar ./group1_dscalar_AVG.dlabel.n
 | `--wb-command` | (Depends on server) | Path to workbench command file (`wb_command`). Default depends on which server the script is run from. |
 
 For more advanced arguments, see the README in `/home/faird/shared/code/internal/utilities/figure_maker`
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

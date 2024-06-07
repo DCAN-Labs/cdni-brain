@@ -3,7 +3,7 @@
 DCAN Labs maintains lab-wide shared miniconda environments which are configured for ease of access to several of our commonly used Python tools such as [Dcm2bids](dcm2bids.md). Using the shared environment is in most cases preferred to individual users doing their own Python package installations and/or setting up environments in their MSI home directory.
 
 
-***IMPORTANT**:  Environments and installed packages within the lab-wide environment **must** have group read and write permissions open to ensure access for all group users! See [here](https://dcan-labs-informational-guide.readthedocs.io/en/latest/msi-login/#directory-and-file-permissions) for info on using a umask to set your default permissions to be group-accessible. If you need to fix the permissions of an existing environment and/or package in the lab-wide environment, those can be found at `/home/faird/shared/code/external/envs/miniconda3/mini3/envs/` and `/home/faird/shared/code/external/envs/miniconda3/mini3/pkgs/`* .
+**IMPORTANT**:  Environments and installed packages within the lab-wide environment **must** have group read and write permissions open to ensure access for all group users! See [here](msi-login.md#directory-and-file-permissions) for info on using a umask to set your default permissions to be group-accessible. If you need to fix the permissions of an existing environment and/or package in the lab-wide environment, those can be found at `/home/faird/shared/code/external/envs/miniconda3/mini3/envs/` and `/home/faird/shared/code/external/envs/miniconda3/mini3/pkgs/`* .
 
 
 * To load the DCAN labwide miniconda3 environment, first run the following command: 
@@ -11,6 +11,7 @@ DCAN Labs maintains lab-wide shared miniconda environments which are configured 
         source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh 
 
 * Note: It is advised to create your own environment within this miniconda3 for whatever you need miniconda3 for. That way we are not constantly changing the versioning of packages on the base environment. 
+* This conda environment activates on any share. You do not have be working on faird to activate this conda environment.
 * To list the available environments within the miniconda environment:
 
         conda info --envs
@@ -46,3 +47,6 @@ You can also create an environment with a YAML file of requirements.
 4. Run `conda activate the_env_name`
 
     Check out the [conda user documentation](https://docs.conda.io/projects/conda/en/stable/index.html) and [cheat sheet](https://docs.conda.io/projects/conda/en/stable/user-guide/cheatsheet.html) for further information.
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

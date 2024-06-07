@@ -47,3 +47,6 @@ cutoff_in_bpm_Y_direction=cutoff_in_bpm(:,2); % Extract the peak in the Y direct
 ```
 
 **REMEMBER TO USE VALUES IN BREATHS PER MINUTE!**
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

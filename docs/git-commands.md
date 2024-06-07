@@ -85,3 +85,6 @@ git sparse-checkout set "some/dir"
 git sparse-checkout list
 # Same as cat .git/info/sparse-checkout
 ```
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

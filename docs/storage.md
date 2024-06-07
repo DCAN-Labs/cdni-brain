@@ -16,6 +16,10 @@ Figure out the approximate average storage impact your jobs (inputs and outputs)
 
 18. If you are producing outputs using ABCD/ABCC data, **IT CANNOT BE STORED ON FAIRD** due to this share not being under control of the UMN DUC, which is required to access ABCD data. 
 
+## NGDR 
+
+The NGDR, or Neuroimaging and Genetic Data Resources, is a specialized storage system employing tier 1 storage with restricted access. It is designed for storing ABCC data before uploading it to the NDA. Access to specific data subsets, like the ABCD subdirectory, is granted only to authorized individuals with designated user credentials (DUC). This ensures a high level of security and confidentiality in handling neuroimaging and genetic information.
+
 ## Data Tracking 
 
 * For data being uploaded to tier 1 storage space, document a description of the dataset and a path to where the data lives, an estimate on the amount of space needed to store the data, the share it’s been uploaded to, the primary owner of the data, and the estimated start and end date for use of the necessary storage space to [this spreadsheet](https://docs.google.com/spreadsheets/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit#gid=870411543). For further information on allowable data on each share, visit the “Shares” tab on [the above spreadsheet here](https://docs.google.com/spreadsheets/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit#gid=2135306680).
@@ -28,3 +32,6 @@ Figure out the approximate average storage impact your jobs (inputs and outputs)
 ## Transfering Data from MSI to Local Storage
 
 Your UMN computer has a local storage space that you may want to use for working on specific files. You can transfer files between local and MSI Tier 1 systems via [winSCP](https://www.msi.umn.edu/support/faq/how-do-i-use-winscp-transfer-data) or [FileZilla](https://www.msi.umn.edu/support/faq/how-do-i-use-filezilla-transfer-data).
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

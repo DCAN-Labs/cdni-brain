@@ -25,3 +25,5 @@ Below is an example of the BIDS directory structure, showcasing the systematic o
          |--sub-SUBID_ses-SESID_task-MID_run-0#_bold.json
          |--sub-SUBID_ses-SESID_task-MID_run-0#_bold.nii.gz
 ```
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

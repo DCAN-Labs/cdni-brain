@@ -9,4 +9,4 @@ You can find out more information about the lab on our [website](https://innovat
 
 ## Questions/Suggestions
 
-Please post any question in the form of an issue to the [dcan-labs-informational-guide](https://github.com/DCAN-Labs/dcan-labs-informational-guide/issues) repository on GitHub. This includes clarifying questions on the guide content, reporting errors/typos, requesting additional sections/topics, etc. Note that this will require that you have a GitHub account. For further information, please refer to GitHub's documentation on how to post an issue [here](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue).
+Please post any question in the form of an issue to the [cdni-brain](https://github.com/DCAN-Labs/cdni-brain/issues) repository on GitHub. This includes clarifying questions on the guide content, reporting errors/typos, requesting additional sections/topics, etc. Note that this will require that you have a GitHub account. For further information, please refer to GitHub's documentation on how to post an issue [here](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue).

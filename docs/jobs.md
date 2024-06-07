@@ -39,3 +39,6 @@ This includes batch scripts. (e.g. `sg faird -c "sbatch sbatchscript.sh"`)
 More info on sg here: https://linux.die.net/man/1/sg
 
 28. Make sure a ton of jobs aren’t failing right away. Permissions errors, job set up issues, and data issues are common causes.
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

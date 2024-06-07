@@ -87,3 +87,5 @@ tier1_path = data['tier1_path']
 ```
 
 This way, instead of having the file path visible in the code, you are pulling it from a config file that isn't public for others to see.
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

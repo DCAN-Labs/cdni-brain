@@ -160,3 +160,6 @@ env -i ${singularity} run \
 --custom-clean HCP-D_BIDS_cleaning.json \
 --ncpus ${cpu_usage}
 ```
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

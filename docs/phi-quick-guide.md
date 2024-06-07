@@ -47,3 +47,6 @@ An annual review by the policy author is integral to maintaining the policy's ac
 This policy aims to create a robust framework for PHI management at CMRR, ensuring compliance with regulations and preserving sensitive health information's confidentiality.
 
 For further details regarding the terms and conditions of accessing and utilizing research data, including the NIMH Data Archive Data Use Certification, visit [this pdf document](https://nda.nih.gov/ndapublicweb/Documents/NDA+Data+Access+Request+DUC+FINAL.pdf).  While not directly addressing PHI, these stringent rules underscore the importance of responsible data use, confidentiality, and privacy, which align with the principles upheld in safeguarding Protected Health Information (PHI).
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

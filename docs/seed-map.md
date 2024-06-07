@@ -5,3 +5,6 @@ Seed-based Correlation Analysis (SCA) is one of the most common ways to explore 
 This code can be found on MSI at `/home/faird/shared/code/internal/utilities/seed_map_wrapper/`
 
 Version-controlled code and documentation can be found on [Gitlab.](https://gitlab.com/Fair_lab/Cifti_conn_matrix_to_corr_dt_pt)
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

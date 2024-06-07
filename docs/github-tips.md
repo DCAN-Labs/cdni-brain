@@ -71,3 +71,6 @@ In order to set this, type either of the following:
 -  `git config pull.ff only` to fast-forward only
 
 Note: A lot of people feel very passionate about always rebasing online, because intertwined commits are confusing.
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

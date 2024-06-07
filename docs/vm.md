@@ -78,3 +78,6 @@ If you are running into problems with your space/storage
 * Is your container too big? 
 * Have you cleared out old builds?
 * Does someone else have builds on the VM at this time?
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

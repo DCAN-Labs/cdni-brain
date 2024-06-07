@@ -202,3 +202,6 @@ Look at the chirality corrected outputs to ensure the chirality matches the prop
 Look at the precomputed file to make sure it’s aligned to the T1 (T1 and T2 model, T1-only model) or the T2 (T2-only model).
  
   * If misaligned, post a GitHub issue [here](https://github.com/DCAN-Labs/BIBSnet/issues).
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

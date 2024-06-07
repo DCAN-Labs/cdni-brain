@@ -69,3 +69,4 @@ If you do not have a personal board, you can create one for yourself following t
 - Notes for your 1:1 Check-ins
 - Personal tracking documents
 
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

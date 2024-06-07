@@ -11,3 +11,6 @@ Metadata can be updated without having to re-publish under a new DOI, but it has
 
 ## Editing the metadata of a published record
 On the record page and click the orange Edit button in the top-right corner. You will be taken to a form similar to the upload form, where you will be able to edit almost all of the record’s metadata. Once you are done modifying it, click “Save” and then “Publish”." For more information visit [Zenodo help webpage](https://help.zenodo.org/).
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

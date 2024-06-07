@@ -7,3 +7,5 @@ This code takes the BOLD time series data for a single voxel and correlates it w
 This code can be found on MSI at `/home/faird/shared/code/internal/utilities/cifti_connectivity`
 
 Version-controlled code and documentation can be found on [GitHub.](https://github.com/DCAN-Labs/cifti-connectivity)
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

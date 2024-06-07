@@ -41,3 +41,6 @@ Each wrapper should have a template file which has generalized commands with var
 4. Submit run files to queue w/ `submit_abcd-hcp-pipeline_full_run.sh` with the runs as input. For example if you want to submit subjects 0 through 20 and 25, execute the following from the command line: `./submit_abcd-hcp-pipeline_full_run.sh` 0-20,25. **Note that you most likely want to test your wrapper on one subject before running multiple.**
 
     * If an error is encountered, see the[ troubleshooting section for s3 wrappers](#23-5-s3-wrapper-troubleshooting-process).
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

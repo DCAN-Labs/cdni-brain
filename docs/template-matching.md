@@ -11,3 +11,6 @@ Template matching is a method of network mapping that leverages commonly observe
 The code can be found on MSI at `/home/faird/shared/code/internal/analytics/compare_matrices_to_assign_networks`
 
 Version-controlled code and documentation can be found on [GitHub.](https://github.com/DCAN-Labs/compare_matrices_to_assign_networks)
+
+
+For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
