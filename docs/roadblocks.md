@@ -6,7 +6,7 @@ If you are experiencing errors/issues with general usage or Slurm, contact the M
 
 ## Workflow
 
-Greg Conan developed a script that keeps track of all of the commands you use in a session and allows you to search for commands you've used previously. Add these functions to your .bashrc (located in your home directory):
+Greg Conan developed a function that keeps track of all of the commands you use in a session and allows you to search for commands you've used previously. Add these functions to your .bashrc (located in your home directory):
 
 ```
   grephist() 
@@ -186,7 +186,7 @@ If someone can't read/write/change your folders/files:
 
 If you need to change your active group:
 
-* Run `newgrp faird` (or whichever group you need to be in)
+* Run `newgrp <share>`
     
 * This will let you make new files in the proper group
 
@@ -215,7 +215,7 @@ If you get this error when trying to use Firefox:
 
 There are two possible causes:
 
-1. Another Firefox process is already running under your MSI profile (possibly in a separate MobaXTerm/NX/NICE session) in which case you must close that Firefox instance before launching a new one,
+1. Another Firefox process is already running under your MSI profile (possibly in a separate MobaXTerm/NX/NICE session) in which case you must close that Firefox instance before launching a new one.
 
 2. A previous Firefox process terminated abnormally (e.g. due to MSI session timing out while Firefox was running), leaving Firefox profile lock files in your ~/.mozilla directory which prevent Firefox from launching.   
 
