@@ -1,5 +1,7 @@
 # Other GitHub Tips
 
+This page contains some helpful information for using Github and common issues you might run into.
+
 ## Good Practices
 
 1. Make your commit messages short but descriptive.
@@ -26,6 +28,11 @@
     - Frequently [pull to and sync from your local branch](https://docs.github.com/en/desktop/working-with-your-remote-repository-on-github-or-github-enterprise/syncing-your-branch-in-github-desktop)
     - When intending to submit a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests), merge with the branch you're intending to submit the PR to locally before initiating the request. This ensures you won't have any merge conflicts.
 
+## Webhooks
+
+[GitHub webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks) are used to trigger an action in a connected website or application in response to an action on GitHub. Examples include [initiating a Docker image build on Dockerhub](https://docs.docker.com/docker-hub/webhooks/) or [updating a Zenodo entry](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content/) 
+ 
+Webhooks require the GitHub user publishing the release to have repo admin permissions. If you plan on publishing releases on the [DCAN Labs GitHub](https://www.github.com/DCAN-Labs), reach out to the project manager. Project managers will give you admin privileges on the repo so that webhooks will execute.
 
 ## Watch a Repo 
 
@@ -37,7 +44,7 @@ Watching a repo will enable email notifications any time a certain event happens
 
 ## Common Issues
 
-### VSCode: Pushing from a Local Branch 
+**VSCode: Pushing from a Local Branch**
 
 If your branch doesn't exist on the remote repository, you'll need to select "OK" when VSCode prompts you with "The branch "your_branch_name" has no remote branch. Would you like to publish this branch?" 
 
@@ -47,7 +54,7 @@ Within the source control page, under Branches, you can also select the cloud ne
 
 If your branch already exists, but has been deleted from the GitHub repo, trying to push your commits from the VSCode source control panel might throw you an error about not being able to find the remote head. Instead, use the command line to push your commits. This will republish your branch on GitHub and make you able to use the VSCode source control to push/pull commits again.
 
-### Unable to pull due to Divergent Branches
+**Unable to pull due to Divergent Branches**
 
 This means that the branch you started your local branch with is out of date from the remote branch on GitHub.
 
