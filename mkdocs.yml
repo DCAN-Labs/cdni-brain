@@ -29,10 +29,10 @@ nav:
   - Coding Standards:
       - Best Practices: coding-practices.md
   - GitHub:
-      - GitHub Beginner's Guide: github-quick-guide.md
+      - Beginner's Guide: github-quick-guide.md
       - Common Git Commands: git-commands.md
-      - GitHub Tips and Tricks: github-tips.md
-      - GitHub History Scrub: github-scrub.md
+      - Tips and Tricks: github-tips.md
+      - History Scrub: github-scrub.md
   - BIDS:
       - DICOM to BIDS conversion: dcm2bids.md
       - BIDS Validation: bids.md
