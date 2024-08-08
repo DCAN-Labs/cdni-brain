@@ -1,6 +1,6 @@
-# Best Practices
+# Development Recommendations
 
-We at DCAN Labs highly value creating code and workflows that are able to be reused and shared with other institutions. This means that we should be following best practices in order to make it easy for someone outside of our lab to use and understand our code. Below is some information about [NMIND](https://www.nature.com/articles/s41562-023-01647-0), which is a great place to start for exposure to best coding practices in the neuroimaging field. Below are some common best practices within DCAN labs.
+We at CDNI highly value creating code and workflows that are able to be reused and shared with other institutions. This means that we should be following best practices in order to make it easy for someone outside of our lab to use and understand our code. Below is some information about [NMIND](https://www.nature.com/articles/s41562-023-01647-0), which is a great place to start for exposure to best coding practices in the neuroimaging field and some common best practices within CDNI.
 
 ## NMIND Workflow
 
@@ -37,25 +37,54 @@ A Bronze certification broadly entails the following:
 You can find all three levels of NMIND certifications [here.](https://github.com/nmind/standards-checklist/tree/98344089a6a1c4bcf46b4e7b6b7e5fafba880d87)
 
 
-## Logging Codebase Changes
+## Record Keeping
 
 **Record Change Dates**
 - The following is an example of how to do this:
+
 ```
 author: Audrey Houghton
 created on: 11/25/2023
 last modified: 11/30/2023
 by whom: Audrey Houghton
 ```
+
 **Commit Often**
 - Make sure that you are regularly pushing your changes to a branch on GitHub with concise but descriptive commit messages.
+- Don't necessarily have to wait until you're done with a task to push changes, just mark where you are.
+- You can commit single files at a time so you don't have to write one message to describe many file changes.
 
-## Error / Out Logging
+**Error / Out Logging**
 - The more descriptive you can make your codebase's logs, the better.
+- Start and end time logs can be helpful, as well as some sort of "Finished Successfully" message.
+- Jacob Lunquist and Greg Conan have developed an error query script that will search through `.err` files for specified errors. See more info on [this page](error_query.md)
 
-## Commenting
+**Commenting**
 - At the top of each script within a given repository, describe what that script is doing.
 - At the beginning of each function, define the purpose of the function, what its inputs are, and what its outputs are.
+- Comment your code as you develop it, this is easier than going back to old code and trying to figure out what is going on.
+- Make a note of any hard coded variables and why they are hardcoded.
+
+Here is an example of a well commented (python) function:
+
+```
+def add_session_id(input_file, output_file, session_id):
+    """
+    Input: txt file of subjectIDs (with or without the "sub-" prefix), output file, and the session ID 
+    Adds the session ID to the end of each line of the input file
+    """
+    with open(input_file, 'r') as infile:
+        lines = infile.readlines()
+
+    # Add session ID to each line
+    modified_lines = [f"{line.strip()},{session_id}\n" for line in lines]
+
+    with open(output_file, 'w') as outfile:
+        outfile.writelines(modified_lines)
+
+    print(f'Data written to {output_file}')
+```
+
 
 ## Obscuring Filepaths
 
