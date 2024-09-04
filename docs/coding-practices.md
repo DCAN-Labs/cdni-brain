@@ -36,6 +36,37 @@ A Bronze certification broadly entails the following:
 
 You can find all three levels of NMIND certifications [here.](https://github.com/nmind/standards-checklist/tree/98344089a6a1c4bcf46b4e7b6b7e5fafba880d87)
 
+## License Recommendations for Software
+
+As stated above, NMIND recommends including a license for your repository on GitHub. [Adding a license](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository) is very simple and GitHub offers a large list of templates to choose from, but choosing which license is most appropriate can be a bit tricky.
+
+For help with choosing a license, please review [Software Licensing at MIDB](https://docs.google.com/presentation/d/1gNhuHtjHY4E0biKdl5aXLN008UfeIu-e/edit?usp=sharing&ouid=113306241090115436408&rtpof=true&sd=true) presented to our group by Sandipan Banergee, Ph.D. and Eric Olson from the UMN Tech Transfer Office (Aug 2024). This provides an extensive overview of licensing and open source. For our purposes, as we typically opt for open source, they generally recommend using the UMN source available license for non-commercial use. To summarize, this allows for wider adoption among researchers and prevents 3rd parties from commercializing without giving anything back to the creators, UMN, your department/school/institute, etc. They also note that, "some OS licenses have explicit patent rights, and experts argue that all OS licenses have implicit patent rights—So cannot co-exist happily with patents since the intent is opposite" (slide 29). 
+
+The powerpoint also includes information on services they provide in the event that you *do* wish to commercialize or see potential for commercialization down the road, mechanisms of which include license technology, spin out company, online express licensing, and sponsored research.
+
+**Highlight from their website [UMN Tech Transfer: Releasing Open Source](https://research.umn.edu/units/techcomm/university-inventors/releasing-open-source)**
+
+> **License Recommendations for Software**
+>
+> **Preferred**: [GNU General Public License version 3](https://www.gnu.org/licenses/gpl-3.0.en.html)
+> 
+>  - See [TR;DL Legal](https://tldrlegal.com/) for a summary of the GPL v3.0 license
+>
+> **Acceptable:** [MIT License](https://opensource.org/licenses/MIT), [BSD License](https://opensource.org/licenses/BSD-3-Clause), [Apache 2.0 License](https://opensource.org/licenses/Apache-2.0), [LGPL v3.0 License](https://opensource.org/licenses/LGPL-3.0)
+> 
+> - See TR;DL Legal for a summary of the:
+> [MIT License](https://tldrlegal.com/license/mit-license)
+> [BSD License](https://tldrlegal.com/license/bsd-3-clause-license-(revised))
+> [Apache 2.0 License](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0))
+> [LGPL v3.0 License](https://tldrlegal.com/license/gnu-lesser-general-public-license-v3-(lgpl-3))
+
+[TR;DL Legal](https://www.tldrlegal.com/) is a site that breaks down differences between license as simply as possible
+
+**Additional resources:**
+- [Express License Self-Service Licensing Platform](https://drive.google.com/file/d/1ycKBGFGf-H9BFDdM3k1tfh_XMCOdGtYV/view)
+- https://choosealicense.com/licenses/
+- [A Data Scientist's Guide to Open Source Licensing](https://medium.com/@mattmecoli/a-data-scientists-guide-to-open-source-licensing-c70d5fe42079)
+
 
 ## Record Keeping
 
