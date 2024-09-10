@@ -95,8 +95,8 @@ PS1="\u@\h [\w] % "
 # module load
 ```
 
-## Gaining Access to Shares
-To gain access to MSI shares containing ABCD derivatives (`feczk001`, `miran045`, `rando149`, `smnelson`), you must be an approved collaborator on the UMN DUC.
+## Gaining Access to Shares / Obtaining UMN Data Use Certification (DUC) Approval 
+To gain access to MSI shares containing ABCD derivatives (`feczk001`, `miran045`, `rando149`, `smnelson`), you must be an approved collaborator on the UMN Data Use Certification (DUC).
 
 * Create a [Login.gov account](https://www.login.gov/create-an-account/) 
 * Use your login.gov credentials to [access the NDA](https://nda.nih.gov/user/login_required.html?originator=%2Fuser%2Fdashboard%2Fdashboard.html) - you’ll then be prompted to create an NDA account
