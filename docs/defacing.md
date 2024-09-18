@@ -1,11 +1,19 @@
-## Defacing
+## Defacing and De-Identification - UNDER CONSTRUCTION !!!!
 
-Defacing is an important preprocessing step to ensure the anonymity of the subjects. Without defacing, a subjects facial structure could theoretically be reconstructed from a MRI image. Although skull-stripping could also be done to anonymize an image, this can limit what processing can be done to those images and this is especially hard to do in infants, which is why defacing is the standard method of anonymization. 
+*Please note that different studies as well as institutions have different policies around de-identification requirements, so always check the specific requirements for your data first in order to ensure that you thoroughly de-identify your data to those standards.*
 
-Defacing is done by creating a rough boxy mask that cuts off the eyes/nose/mouth so that only the brain is left in the image. This mask is created by using an existing atlas that has a mask and registering the subject head to that atlas. A linear transform is then applied to the template mask to create a mask that is in the subject space. 
+### Defacing
 
-Usage for a directory that contains a subject folder, and the subject folder contains a T1w image, T2w image, or both:
+Defacing is performed in order to mask out the eyes, nose, and mouth from MRI images. These features could hypothetically be used to reconstruct someone's facial structure, which is considered indirect identifiable information. Skull-stripping can also be used for defacing, however this limits what kind of preprocessing can be performed with the data in the event that head images are required.
 
-`python3 /home/feczk001/shared/projects/BCP_deface/code/deface.py /path/to/directory/`
+There are several tools available for defacing, but we recommend using [Pydeface](https://pypi.org/project/pydeface/). Pydeface registers a default atlas to the subject head and applies the resulting linear transform to an accompanying atlas face mask to create a subject-specific mask. Pydeface takes one input, the subject head file (see usage for additional options), so simply `pip install pydeface` and run:
 
-For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
+```
+pydeface subject_head.nii.gz
+```
+
+Defacing infant data is more difficult compared to adults due to contrast inversion (and variable or lower contrast depending on the age and modality) in T1w and T2w images over the first 6 months of age, so it's best to use age-specific atlases in order to get good results. 
+
+
+### De-Identification
+De-identification involves stripping MRI images data of all PHI. 
