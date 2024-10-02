@@ -77,9 +77,9 @@ To launch the GUI, cd into the Seg-Model-Creation-GUI directory and run:
 
 
 ```bash
-python pyqt_test.py
+python automation_gui.py
 ```
 Alternatively, you can run:
 ```bash
-python /path/to/pyqt_test.py
+python /path/to/automation_gui.py
 ```
