@@ -6,7 +6,7 @@
 
 **sbatch** jobs can be submitted on login or compute nodes. **sruns** can only be requested on a compute node. Read more about sbatch and srun jobs [here.](slurm-params.md) 
 
-If you try to submit a job on a partition that doesn't have access to the amount of resources you requested or that can't be accessed from your current node, the job submission will fail and throw an error. MSI has two HPC clusters (agate, mangi) to use for submitting jobs.  Check [this site](https://status.msi.umn.edu/) for the status of the clusters. Agate has several **partition** options. 
+When you submit jobs, you must designate a **partition** for that job. If you try to submit a job on a partition that doesn't have access to the amount of resources you requested or that can't be accessed from your current node, the job submission will fail and throw an error. MSI has two HPC clusters (agate, mangi) to use for submitting jobs.  Check [this site](https://status.msi.umn.edu/) for the status of the clusters. Agate has several partition options. 
 
 ## Partitions 
 
