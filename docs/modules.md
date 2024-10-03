@@ -18,24 +18,14 @@ Commonly used modules by our lab include:
 * **matlab**
 * **python3**
 
-    **	**
-
-
-
-**NOTE:** modules modify the user’s PATH variable while loaded, which can conflict with other modules and tools. Known conflicts include: 
-
-* **workbench** and **freesurfer**
-* **workbench** and **s3cmd**
-
-To fix this, `module unload workbench` to be able to use freesurfer or s3cmd.
 
 ## Removing Modules and Resolving Conflicts 
 
-Unloading a module can be done with `module rm <module name>`. Unloading a module reverts the user’s PATH variable, which can resolve any issues relating to conflicts. 
+Modules modify the user’s PATH variable while loaded, which can occasionally conflict with other modules and tools. Unloading a module can be done with `module rm <module name>`. Unloading reverts the PATH variable, which should resolve conflicts. 
 
 Conda environments and user profile installs can also cause conflicts with the module system on MSI. If running `module load <module name>` doesn't successfully load the specified module, this potentially means that module is already being called from another spot. Use `which <module name>` to see where it is coming from, however, this will not work for determining the version. 
 
-Possible ways to resolving conflicts include deactivating your current conda environment or clearing out your local user installs (if that is the specified path where from which your module is loaded). However, deactivating your current conda environment may not make sense if you need other installs within that environment for your use case.  
+Possible ways to resolving these conflicts include deactivating your current conda environment or clearing out your local user installs (if that is the specified path where from which your module is loaded). However, deactivating your current conda environment may not make sense if you need other installs within that environment for your use case.  
 
 ## Requesting a Module from MSI
 
