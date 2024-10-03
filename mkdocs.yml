@@ -8,12 +8,12 @@ nav:
       - Table of Contents: index.md
       - About: about.md
   - MSI: 
-      - High-Performance Computing (HPC) Resources: hpc.md
-      - Partitions: partitions.md
-      - Module System: modules.md
       - Getting Started: msi-login.md
+      - Tier 1 (High-Performance Computing) Resources: hpc.md
+      - Loading Software with Modules: modules.md
       - Data Storage/Tracking: storage.md
-      - S3: s3.md
+      - Submitting Jobs with SLURM: partitions.md
+      - Tier 2 (S3) Resources: s3.md
       - Tips & Tricks: roadblocks.md
   - SLURM:
       - Slurm Commands: slurm.md
