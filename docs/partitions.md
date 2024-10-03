@@ -2,7 +2,7 @@
 
 ## Nodes
 
-**Login nodes** (e.g. `ah0123` or `ln4567`) have access to fewer resources than **compute** (aka **interactive**) nodes. Login nodes are good for file browsing, text editing, small file transfers, and other minimal tasks. Any command taking longer than 15 minutes to run will be killed. To login to a compute node (e.g. `cn0123` or `acn4567`), run `ssh -Y <login node>` (e.g. 'ssh -Y agate'. You will be prompted to authenticate with Duo. 
+**Login nodes** (e.g. `ah0123` or `ln4567`) have access to fewer resources than **compute** (aka **interactive**) nodes. Login nodes are good for file browsing, text editing, small file transfers, and other minimal tasks. Any command taking longer than 15 minutes to run will be killed. To login to a compute node (e.g. `cn0123` or `acn4567`), run `ssh -Y <login node>` (e.g. `ssh -Y agate`. You will be prompted to authenticate with Duo. 
 
 **sbatch** jobs can be submitted on login or compute nodes. **sruns** can only be requested on a compute node. Read more about sbatch and srun jobs [here.](slurm-params.md) 
 
