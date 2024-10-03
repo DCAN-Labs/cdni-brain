@@ -1,22 +1,24 @@
-# Partitions
-
-Read:  [Partitions @ MSI](https://www.msi.umn.edu/partitions)
-
-MSI has two different clusters to use for submitting jobs, agate and mangi, each of which has several options for paritions. These partitions each manage different sets of hardware and have different limits for computing resources. Check [this site](https://status.msi.umn.edu/) for the status of the clusters. 
-
-When [submitting jobs](slurm.md), it is important to consider which paritions are best for your job. Read [this page](optimizing.md) to learn how to determine the optimal resources for a job. You also need to make sure that the partitions you are requesting are a part of the cluster you are submitting from or a federated partition. 
-
-Each partition you may choose is specific to the HPC resource that is being used. “Federated” partitions such as **msismall** can be used from any login node, and automatically delegate jobs to a partition accessible via the current login node.
-
-![Federated Partitions](img/federated_partitions.png)
+# Nodes and Partitions
 
 ## Nodes
 
-Login nodes (e.g. `ah0123` or `ln4567`) have access to less resources than a compute node. These are good for file browsing, text editing, small file transfers, and other minimal tasks. Any command taking longer than 15 minutes to run will be killed. To login to a compute node (e.g. `cn0123` or `acn4567`), run `ssh -Y agate/mangi`.
+**Login nodes** (e.g. `ah0123` or `ln4567`) have access to fewer resources than **compute** (aka **interactive**) nodes. Login nodes are good for file browsing, text editing, small file transfers, and other minimal tasks. Any command taking longer than 15 minutes to run will be killed. To login to a compute node (e.g. `cn0123` or `acn4567`), run `ssh -Y agate` or 'ssh -Y mangi'. You will be prompted to authenticate with Duo. 
 
-For submitting sbatch runs, you can submit these from a login or a compute node. For grabbing a srun, you need to be on a compute node. Read more about sbatch/srun jobs [on this page.](slurm-params.md) 
+**sbatch** jobs can be submitted on login or compute nodes. **sruns** can only be requested on a compute node. Read more about sbatch and srun jobs [here.](slurm-params.md) 
 
-If you try to submit a job on a partition that doesn't have access to the amount of resources you requested or that can't be accessed from your current node, the job submission will fail and throw an error. 
+If you try to submit a job on a partition that doesn't have access to the amount of resources you requested or that can't be accessed from your current node, the job submission will fail and throw an error. MSI has two HPC clusters (agate, mangi) to use for submitting jobs.  Check [this site](https://status.msi.umn.edu/) for the status of the clusters. Agate has several **partition** options. 
+
+## Partitions 
+
+Read:  [Partitions @ MSI](https://www.msi.umn.edu/partitions)
+
+Partitions manage different sets of hardware and have different limits for computing resources. 
+
+Each partition you may choose is specific to the HPC resource that is being used, so you will nee to make sure that the partitions you request is either a part of the cluster you are submitting from or a **federated partition**. Federated partitions (e.g. **msismall**) automatically delegate jobs to a partition that is accessible no matter the node you are on.
+
+![Federated Partitions](img/federated_partitions.png)
+
+When [submitting jobs to slurm](slurm.md), it is important to consider which paritions are best for your job. [This section](optimizing.md) will help you get started with determining the optimal resources for a job. 
 
 ## Partition Resources
 
@@ -37,6 +39,5 @@ If you try to submit a job on a partition that doesn't have access to the amount
 **“Local scratch per node”** (`--tmp`) is the total amount of temporary storage that you can specify for that partition. 
 
 **“Maximum nodes per job”** (`--nodes=N`) is the highest number of nodes one may be allocated for each job.
-
 
 For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
