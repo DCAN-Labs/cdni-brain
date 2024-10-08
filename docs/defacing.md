@@ -22,6 +22,36 @@ pydeface <T1w subject head> --template <INFANT_MNI_T1_1mm.nii.gz> --facemask <IN
 
 Note that results may vary in infants even when using age-specific atlases. If your T1w and T2w files are registered, one method you can try is to generate a defaced mask for whichever modality resulted in better masking (i.e. more thorough masking of the eyes, nose, and mouth without cutting off any regions of the brain) and apply that mask to the less successful image modality.  
 
+### Skull-stripping with SynthStrip
+
+Instead of defacing, you can also skull-strip anatomical images. We recommend using [SynthStrip](https://surfer.nmr.mgh.harvard.edu/docs/synthstrip/) for this (it even works well for infant data for which skull-stripping is often surprisingly complicated), although remember to assess whether you may need to retain skull-on images for your specific use case. 
+
+Here's an example bash script:
+
+```
+#!/bin/bash -l
+#SBATCH --job-name=SynthStrip
+#SBATCH --time=1:00:00
+#SBATCH --mem-per-cpu=40gb
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=USER@umn.edu
+#SBATCH -A faird
+
+subject_head=sub-01_T1w.nii.gz
+outputdir=/path/to/outdir
+subject_brain=sub-01_T1w_brain.nii.gz
+subject_brainmask=sub-01_T1w_brainmask.nii.gz
+
+module load singularity
+singularity=`which singularity`
+
+singularity run \
+-B ${subject_head} -B ${outputdir} \
+/home/faird/shared/code/external/utilities/synthstrip_1.4.sif \
+-i ${subject_head} -o ${subject_brain} -m ${subject_brainmask} 
+```
+You can also use the `--no-csf` flag for tighter skull-stripping. See the usage for more details.
+
 ### Removing identifying information from filenames and metadata
 In addition to defacing, you may also need to strip PHI from MRI filenames and metadata. For DICOM anonymization, we’ve found [DICAT](https://github.com/aces/DICAT) to be effective and well-documented.
 If you have other recommendations or helpful information you would like to add to this section, please post an issue to the [CDNI Brain GitHub](https://github.com/DCAN-Labs/cdni-brain/issues)!   
