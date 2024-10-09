@@ -1,4 +1,4 @@
-## Defacing and De-Identification
+## De-Identification of MRI Image Data 
 
 *Please note that de-identification policies can vary between studies and institutions. Be sure to check the specific IRB requirements for your study to ensure your data is thoroughly de-identified according to those standards.*
 
