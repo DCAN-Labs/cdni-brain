@@ -40,7 +40,7 @@ nav:
       - BIDS Directory Structure: bids-directory-structure.md
   - Before processing:
       - Infant Preprocessing: infant-preproc.md
-      - Defacing: defacing.md
+      - MRI Image De-Identification: deidentification.md
       - 10.5T NHP ABCD BIDS Pipeline Synth: preprocessing.md
       - Fast Track QC Comparison (ABCD): fasttrack.md
       - Respiration Rate Settings: resp-rate.md
