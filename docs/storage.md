@@ -1,29 +1,27 @@
-# Storage Allocation Estimates
+# Data Storage and Tracking
 
-Figure out the approximate average storage impact your jobs (inputs and outputs) will have and estimate the total storage impact. For processing and analyzing a sample of individual subjects, run 3-5 different subjects’ jobs on Tier 1 and take the largest output and multiply it by the total number of subjects: `du -sh --total /subject/output/path`
+## Best Practices 
+MSI is a shared use space, so it is important to know the approximate size impact your data (inputs and outputs) will have on the shared environment. When you plan to process a dataset, we recommend running jobs for a typical subject on Tier 1 and finding out how large the outputs are ( `du -sh --total /subject/output/path`). Multiply that size by the total number of subjects in your dataset and add the size of your inputs (`du -sh --total /dataset/input/path`) for the full impact. 
 
-16. Make the decision of where the processing will take place
+CDNI data are often used by multiple researchers and analysts. Please [document data locations](https://docs.google.com/spreadsheets/u/0/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit) to prevent 'double dipping' on storage space, especially when your work requires more than 1TB of space. For Tier 1 use, submit a storage [request form](https://docs.google.com/forms/d/e/1FAIpQLSd1QI_Hmi3khwITVctnaDJYY2M1NegsAWYPR6AXoodUCrrpZw/viewform?usp=sf_link)** about what kinds of data you will be putting onto Tier 1 storage and why Tier 1 is needed, specifically.
 
-    - **S3 storage should be used whenever you can.** Data is organized by your personal bucket, and you must manage who has permissions and access to your S3 bucket. Every user is allocated 120TB, so space is less of a concern for Tier 2 storage. Size estimates are important for the S3 because you might not have enough space left over in your allocation on the S3. **When you make an S3 bucket, please document the data locations on the [DCAN Lab Data Locations & Processing Planning doc](https://docs.google.com/spreadsheets/u/0/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit) on the Tier 2 tab.**
+## Data storage options:
 
-    - Tier 1 is for testing. **When you will be doing a large Tier 1 processing job (> 1TB), please put your processing plans on the [DCAN Lab Data Locations & Processing Planning doc](https://docs.google.com/spreadsheets/u/0/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit) on the Tier 1 tab AND submit a [request form](https://docs.google.com/forms/d/e/1FAIpQLSd1QI_Hmi3khwITVctnaDJYY2M1NegsAWYPR6AXoodUCrrpZw/viewform?usp=sf_link)** about what kinds of data you will be putting onto Tier 1 storage and why Tier 1 is needed, specifically.
+* Tier 1 space is limited to 150GB - 20TB per group (depending on the group's allocation). To see what your group allocation is, copy the link `https://www-archive.msi.umn.edu/group/<group>/storage`. into your browser bar with the group name in the path.
+    
+* [**S3 (aka Tier 2)](s3.md) storage should be used whenever possible.** New MSI users are limited to 5GB of Tier 2 storage. PIs are allocated 120TB of Tier 2 storage. To see how much space is used in a particular bucket, enter `s3cmd du -H s3://<bucketname>`. Access to a S3 storage bucket can usually be granted by any user who already has access to that storage bucket. [Read here](s3.md) for more on S3 and buckets. 
 
-17. Put the input data where it needs to be. This will more than likely always be on the S3.
+## ABCC Data / NGDR 
 
-    - If on the S3, make a bucket and give permissions to the appropriate individuals (see section [here](s3.md)), and sync the data there.
+Outputs using ABCD/ABCC data **CANNOT BE STORED ON FAIRD**. `faird` is not under control of the UMN ABCD designated user credentials (DUC), which is required to access ABCD data. 
 
-    - If on tier 1, fill out the [request form](https://docs.google.com/forms/d/e/1FAIpQLSd1QI_Hmi3khwITVctnaDJYY2M1NegsAWYPR6AXoodUCrrpZw/viewform?usp=sf_link) (if above 1 TB). Choose your share based on the `groupquota` of all shares (`groupquota -g share_name`). Do not put anything related to ABCD on the `faird` share.
-
-18. If you are producing outputs using ABCD/ABCC data, **IT CANNOT BE STORED ON FAIRD** due to this share not being under control of the UMN DUC, which is required to access ABCD data. 
-
-## NGDR 
-
-The NGDR, or Neuroimaging and Genetic Data Resources, is a specialized storage system employing tier 1 storage with restricted access. It is designed for storing ABCC data before uploading it to the NDA. Access to specific data subsets, like the ABCD subdirectory, is granted only to authorized individuals with designated user credentials (DUC). This ensures a high level of security and confidentiality in handling neuroimaging and genetic information.
+The NGDR, or Neuroimaging and Genetic Data Resources, is a specialized storage system employing tier 1 storage with restricted access. It is designed for storing ABCC data before uploading it to the NDA. Access to specific data subsets, like the ABCD subdirectory, is granted only to users on the ABCC DUC. This ensures a high level of security and confidentiality in handling neuroimaging and genetic information.
 
 ## Data Tracking 
 
-* For data being uploaded to tier 1 storage space, document a description of the dataset and a path to where the data lives, an estimate on the amount of space needed to store the data, the share it’s been uploaded to, the primary owner of the data, and the estimated start and end date for use of the necessary storage space to [this spreadsheet](https://docs.google.com/spreadsheets/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit#gid=870411543). For further information on allowable data on each share, visit the “Shares” tab on [the above spreadsheet here](https://docs.google.com/spreadsheets/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit#gid=2135306680).
-* For the data being uploaded on the s3, document a description of the data and a path to where the data lives, the project it's associated with, the owner of the s3 bucket, and everyone else who has access to the bucket onto [this spreadsheet](https://docs.google.com/spreadsheets/u/0/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit). 
+* For CDNI data being stored on Tier 1, documentation of the dataset description, dataset location, dataset size, the primary owner of the data, and the estimated start and end date for use of the necessary storage space should be entered [here](https://docs.google.com/spreadsheets/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit#gid=870411543). For further information on allowable data on each share, visit the “Shares” tab on teh same spreadsheet.
+  
+* For CDNI data being stored on s3, documentation of the bucket name, dataset description, dataset location, bucket owner, and users who has access to the bucket should be entered [here](https://docs.google.com/spreadsheets/u/0/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit). 
 
 * For information on backup and versioning procedures, please refer to the [Backup and Versioning PowerPoint Presentation](https://docs.google.com/presentation/d/1UiXIvrsQNqVTgAtFib7Lvk2wOdcRSPTcUfG1zme4fqs/edit#slide=id.g149c53b2342_0_205).
 
