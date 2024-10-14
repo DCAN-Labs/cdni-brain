@@ -8,34 +8,37 @@ Read:
 
 ## Loading Modules
 
-MSI uses a “module” system for providing access to various software packages. Often there are multiple versions of a given module available with one designated as the default to load.  `module avail <module name>` will display a list of all available versions. Modules are loaded from the command line with `module load <module name>`.
+MSI uses a “module” system for providing access to various software packages. Often there are multiple versions of a given module available with one designated as the default to load.  `module avail <module name>` will display a list of all available versions. Modules are loaded from the command line with `module load <module name>/<version>`.
 
 Commonly used modules by our lab include:
 
 * **fsl** 
 * **workbench** 
+    - Note that the default version used to be 1.5.0 but is now 2.0.0, which has different default settings. It is recommended to load workbench/1.5.0
 * **freesurfer**
 * **matlab**
-* **python3**
 
-    **	**
+Some other helpful modules include
 
+* tree
+    - Allows you to print a directory structure tree
 
+* libreoffice
+    - Helpful for viewing csv files (similar to excel). Note that you must provide the full path to the file you wish to view, a relative path won't work.
 
-**NOTE:** modules modify the user’s PATH variable while loaded, which can conflict with other modules and tools. Known conflicts include: 
+* cubids
+    - Alternative option instead of loading the cubids miniconda environment
 
-* **workbench** and **freesurfer**
-* **workbench** and **s3cmd**
-
-To fix this, `module unload workbench` to be able to use freesurfer or s3cmd.
+* singularity
+    - For building/accessing singularity images 
 
 ## Removing Modules and Resolving Conflicts 
 
-Unloading a module can be done with `module rm <module name>`. Unloading a module reverts the user’s PATH variable, which can resolve any issues relating to conflicts. 
+Modules modify the user’s PATH variable while loaded, which can occasionally conflict with other modules and tools. Unloading a module can be done with `module rm <module name>`. Unloading reverts the PATH variable, which should resolve conflicts. 
 
 Conda environments and user profile installs can also cause conflicts with the module system on MSI. If running `module load <module name>` doesn't successfully load the specified module, this potentially means that module is already being called from another spot. Use `which <module name>` to see where it is coming from, however, this will not work for determining the version. 
 
-Possible ways to resolving conflicts include deactivating your current conda environment or clearing out your local user installs (if that is the specified path where from which your module is loaded). However, deactivating your current conda environment may not make sense if you need other installs within that environment for your use case.  
+Possible ways to resolving these conflicts include deactivating your current conda environment or clearing out your local user installs (if that is the specified path where from which your module is loaded). However, deactivating your current conda environment may not make sense if you need other installs within that environment for your use case.  
 
 ## Requesting a Module from MSI
 

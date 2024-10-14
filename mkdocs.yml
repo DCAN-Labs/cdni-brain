@@ -8,12 +8,12 @@ nav:
       - Table of Contents: index.md
       - About: about.md
   - MSI: 
-      - High-Performance Computing (HPC) Resources: hpc.md
+      - Getting Started: msi-login.md
+      - Tier 1 (High-Performance Computing) Resources: hpc.md
       - Partitions: partitions.md
       - Module System: modules.md
-      - Getting Started: msi-login.md
       - Data Storage/Tracking: storage.md
-      - S3: s3.md
+      - Tier 2 (S3): s3.md
       - Tips & Tricks: roadblocks.md
   - SLURM:
       - Slurm Commands: slurm.md
@@ -36,11 +36,11 @@ nav:
   - BIDS:
       - DICOM to BIDS conversion: dcm2bids.md
       - BIDS Validation: bids.md
-      - NORDIC Denoising and BIDS NORDIC Wrapper: nordic.md
       - BIDS Directory Structure: bids-directory-structure.md
   - Before processing:
-      - Infant Preprocessing: infant-preproc.md
-      - Defacing: defacing.md
+      - NORDIC Denoising: nordic.md
+      - Infant Preprocessing QA: infant-preproc.md
+      - MRI Image De-Identification: deidentification.md
       - 10.5T NHP ABCD BIDS Pipeline Synth: preprocessing.md
       - Fast Track QC Comparison (ABCD): fasttrack.md
       - Respiration Rate Settings: resp-rate.md
@@ -77,6 +77,7 @@ nav:
       - UMN Recommended Courses: courses.md
       - UMN Computer Installs: installs.md
       - ZENODO: zenodo.md
+      - A Quick Guide on Protected Health Information (PHI): phi-quick-guide.md
   - Plotting Tools:
       - Figure Maker: figure-maker.md
       - Connectivity Matrices: matrices.md
@@ -88,8 +89,6 @@ nav:
       - F Conn Regression: f-conn.md
       - BWAS: bwas.md
       - Calculating Rest Minutes Pre- and Post-Motion Correction: rest_minutes_motion_correction_calculation.md
-  - PHI:
-      - A Quick Guide on Protected Health Information (PHI): phi-quick-guide.md
   - MR Image:
       - MR-Image-Translation: mr-image-translation.md
   - Contributions:
