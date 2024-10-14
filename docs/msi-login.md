@@ -75,7 +75,7 @@ Here is a template for what your `.bashrc` should look like
 # umask 077       # -- private, only you have access to your files
 # umask 022     # -- anyone can read and execute your files
 # umask 027     # -- only members of your group can read/execute your files
-umask 007    # -- created files may take upto read/write/execute
+umask 002    # -- created files may take upto read/write/execute (rwxrwxr-x)
 
 # Set the prompt.
 PS1="\u@\h [\w] % "

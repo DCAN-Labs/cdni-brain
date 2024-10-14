@@ -1,4 +1,4 @@
-# Infant Preprocessing
+# Infant Preprocessing QA
 
 **Structural Pre-Processing Quality Assessment of BIDS Input Data**
 

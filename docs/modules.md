@@ -8,16 +8,29 @@ Read:
 
 ## Loading Modules
 
-MSI uses a “module” system for providing access to various software packages. Often there are multiple versions of a given module available with one designated as the default to load.  `module avail <module name>` will display a list of all available versions. Modules are loaded from the command line with `module load <module name>`.
+MSI uses a “module” system for providing access to various software packages. Often there are multiple versions of a given module available with one designated as the default to load.  `module avail <module name>` will display a list of all available versions. Modules are loaded from the command line with `module load <module name>/<version>`.
 
 Commonly used modules by our lab include:
 
 * **fsl** 
 * **workbench** 
+    - Note that the default version used to be 1.5.0 but is now 2.0.0, which has different default settings. It is recommended to load workbench/1.5.0
 * **freesurfer**
 * **matlab**
-* **python3**
 
+Some other helpful modules include
+
+* tree
+    - Allows you to print a directory structure tree
+
+* libreoffice
+    - Helpful for viewing csv files (similar to excel). Note that you must provide the full path to the file you wish to view, a relative path won't work.
+
+* cubids
+    - Alternative option instead of loading the cubids miniconda environment
+
+* singularity
+    - For building/accessing singularity images 
 
 ## Removing Modules and Resolving Conflicts 
 

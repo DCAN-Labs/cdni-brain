@@ -12,7 +12,7 @@ Read: [Interactive queue use with srun @ MSI](https://www.msi.umn.edu/content/in
 2. This will allow you to work directly in a terminal, allowing you to run resource intensive software on it. You get the outputs in your terminal and you cannot write other commands until it is finished. (If you append the “&” symbol to the command it will execute in the background, allowing continued use of the current terminal.)
 3. If you disconnect, you will lose control over srun jobs, or they might be killed (depending on whether they use stdout or not). They will also be killed if the machine to which you connect to submit jobs is rebooted.  
 4. Before grabbing an srun, you need to make sure you are ssh'd into one of the clusters: `ssh -Y agate/mangi`.
-5. Ex: `srun --time=8:00:00 --mem-per-cpu=8GB --cpus-per-task=4  -A feczk001 --tmp=20gb  -p interactive --x11 --pty bash`
+5. Ex: `srun --time=8:00:00 --mem=32GB --tmp=20gb -p interactive -A feczk001 --x11 --pty bash`
     * This interactive job is grabbing 8 hours on 4 cpus on the interactive partition with 8 gigabytes of memory per cpu, 20gb of temporary storage total, x11 enabled, and the ability to use your terminal, utilizing the feczk001 account’s allocated resources.
     * Use `groupquota` to check which account you are currently using. If the account you specified in the interactive job does not match the account listed when you run `groupquota`, then use `sg {share}` to switch to the specified account. Then use `groupquota` again to make sure you are now on the correct share.
     * x11 forwarding (`--x11`) enables X11 graphical apps to render correctly via remote connection.
