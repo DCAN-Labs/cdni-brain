@@ -59,7 +59,7 @@ nav:
       - Infant Quality Assessment: infant-qa.md
       - Analyzing Motion Regressors: motion-regressor.md
   - Troubleshooting:
-      - Troubleshooting and Image Viewing: troubleshooting.md
+      - Troubleshooting Pipelines: troubleshooting.md
       - Testing BIBSnet: bibsnet-testing.md
       - Requests and Questions: requests.md
   - Quality Control:
