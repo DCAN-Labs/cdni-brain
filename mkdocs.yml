@@ -20,7 +20,7 @@ nav:
       - Slurm Jobs: slurm-params.md
       - Cronjobs: scron.md
       - Resource Optimization: optimizing.md
-  - Software Environments:
+  - Software:
       - VS Code: vscode.md 
       - Miniconda Environments: miniconda.md
       - Software Versioning: versioning.md
@@ -41,7 +41,7 @@ nav:
       - NORDIC Denoising: nordic.md
       - Infant Preprocessing QA: infant-preproc.md
       - MRI Image De-Identification: deidentification.md
-      - 10.5T NHP ABCD BIDS Pipeline Synth: preprocessing.md
+      - Preparing for NHP Processing: preprocessing.md
       - Fast Track QC Comparison (ABCD): fasttrack.md
       - Respiration Rate Settings: resp-rate.md
   - Processing:
