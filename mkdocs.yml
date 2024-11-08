@@ -20,7 +20,7 @@ nav:
       - Slurm Jobs: slurm-params.md
       - Cronjobs: scron.md
       - Resource Optimization: optimizing.md
-  - Software Environments:
+  - Software:
       - VS Code: vscode.md 
       - Miniconda Environments: miniconda.md
       - Software Versioning: versioning.md
@@ -41,7 +41,7 @@ nav:
       - NORDIC Denoising: nordic.md
       - Infant Preprocessing QA: infant-preproc.md
       - MRI Image De-Identification: deidentification.md
-      - 10.5T NHP ABCD BIDS Pipeline Synth: preprocessing.md
+      - Preparing for NHP Processing: preprocessing.md
       - Fast Track QC Comparison (ABCD): fasttrack.md
       - Respiration Rate Settings: resp-rate.md
   - Processing:
@@ -59,16 +59,13 @@ nav:
       - Infant Quality Assessment: infant-qa.md
       - Analyzing Motion Regressors: motion-regressor.md
   - Troubleshooting:
-      - Troubleshooting and Image Viewing: troubleshooting.md
+      - Troubleshooting Pipelines: troubleshooting.md
       - Testing BIBSnet: bibsnet-testing.md
       - Requests and Questions: requests.md
   - Quality Control:
       - BrainSwipes: brainswipes.md
   - Data Uploads and Transfers:
       - Data Transfers: uploads.md
-      - Transfer ABCC Data to the NGDR: ngdr-transfer.md
-  - NDA Uploads:
-        - Managing Data on the NDA: nda.md
   - Segmentation Model:
         - Model Training: training-nnunet.md
   - Lab Resources:

@@ -1,6 +1,11 @@
 # DICOM to BIDS Conversion (Dcm2bids)
 
-**NOTE: this document describes usage of Dcm2bids 2.1.x as used in the `dcm2bids` and `dcm2bids_xa30_test` labwide conda environments -- if using the `dcm2bids3` environment (intended for use with the [Dcm2bids3 NORDIC wrapper](nordic.md), refer to the Dcm2bids 3 documentation page linked below for information on breaking changes introduced in Dcm2bids 3**
+<div class="admonition attention">
+    <p class="first admonition-title">Attention</p>
+    <p class="last">
+        This document describes usage of Dcm2bids 2.1.x as used in the `dcm2bids` and `dcm2bids_xa30_test` labwide conda environments -- if using the `dcm2bids3` environment (intended for use with the dcm2bids3 NORDIC wrapper), refer to the Dcm2bids 3 documentation page linked below for information on breaking changes introduced in dcm2bids3.
+    </p>
+</div>
 
 Read: [Dcm2bids 2.1.9 documentation page](https://unfmontreal.github.io/Dcm2Bids/2.1.9/)
 
@@ -8,11 +13,7 @@ Read: [Dcm2bids 3 documentation page](https://unfmontreal.github.io/Dcm2Bids/cur
 
 Watch: [Dcm2bids DCAN tutorial recording](https://drive.google.com/drive/folders/1OgyqFfpqp3qWg4OJzY9ADTwV26j8fJYf) 
 
-
-`Dcm2bids` is a tool to convert data from DICOM format into proper [brain imaging data structure (BIDS)](https://bids-specification.readthedocs.io/en/stable/)
-
-
-`Dcm2bids` can be loaded via the labwide Miniconda’s **dcm2bids** environment. (See **(b)** further down in this section.) 
+`Dcm2bids` is a tool to convert data from DICOM format into proper [brain imaging data structure (BIDS)](https://bids-specification.readthedocs.io/en/stable/) and can be loaded via the labwide Miniconda’s **dcm2bids** environment. (See **(2)** further down in this section.) 
 
 
 11. `dcm2bids` requires a configuration file specifically tailored to the contents of the JSON “sidecar” files that contain metadata for the image files. The config file is a way to uniquely identify each file that needs to be converted.
@@ -31,23 +32,30 @@ Watch: [Dcm2bids DCAN tutorial recording](https://drive.google.com/drive/folders
     * The `sidecarChanges` field is optional and it will change or add any information in the sidecar file. In this example, the field `ProtocolName` with the value of T2 is being adjusted in the sidecar.
     * To view these fields in the DICOM metadata, you can use `dcmdump` on any .dcm file (on MSI, first `module load dcmtk`)
     
-12. Commands used to convert files from DICOMs to NIfTIs:
+12. These series of commands will create the configuration file and convert files from DICOMs to NIfTIs:
+
+    * The needed scripts are all found in `/home/faird/shared/code/internal/utilities/bidsify/dataframe/` 
         
-     *  `source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh`
+    *  `source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh`
         
     * `conda activate dcm2bids`
             
-        - For multi-echo data, or data acquired on a Siemens scanner with an XA software package (e.g. XA30), use `conda activate dcm2bids3` if using the Dcm2bids3 NORDIC wrapper (note you must update your config files to be dcm2bids3 compatible --  see https://unfmontreal.github.io/Dcm2Bids/3.0.2/upgrade/#upgrading-from-2x-to-3x for a summary of breaking changes between 2.x and 3.x), else use `conda activate dcm2bids_xa30_test`
+        - For multi-echo data, or data acquired on a Siemens scanner with an XA software package (e.g. XA30), use `conda activate dcm2bids3` if using the [Dcm2bids3 NORDIC wrapper](nordic.md) (note you must update your config files to be dcm2bids3 compatible --  see [here](https://unfmontreal.github.io/Dcm2Bids/3.0.2/upgrade/#upgrading-from-2x-to-3x) for a summary of breaking changes between 2.x and 3.x). 
+        - If you don't use the dcm2bids3 NORDIC wrapper for multi-echo data, use `conda activate dcm2bids_xa30_test`
         
-    * `dcm2bids_helper -d /path/to/input/dir/ -o /path/to/output/dir/`
-            
-        - The input directory ( `-d` ) contains the original dicom files.
-            
-        - The `-o` flag is optional. It will create a directory for the output either in your input directory or in the output directory you specify.
-            
-        - The `dcm2bids_helper` will give you an example of the sidecars. You can use the helper with the dicoms of one participant. It will utilize `dcm2niix` and save the result inside the `tmp_dcm2bids/helper` of the output directory. 
-        
-        * After completing your config file, to run dcm2bids, first cd into your BIDS directory. Then use this command: `dcm2bids -d /path/to/input/dir/ -p participant_id -c /path/to/config_file.json`
+    * `python newInit_df_dev.py -d /path/to/dicom/sub-* -p subID -s sesID --heuristic`
+
+        - **Note:** Don't include a trailing `/` for the dicom directory path and only provide the subject/session labels, without the sub- and ses- prefixes.
+        - This will create two files: a summary csv file and a json config file for dcm2bids, both named `subID-sesID.extension`. 
+        - The csv should label all of the task, rest, fmap, and structural runs. Double check that all runs were correctly labeled and make any necessary updates. If any updates are made, run the same command again with the `--jsononly` flag to update the json.
+
+    * `python dcm2bids_df.py -f subID-sesID.csv`
+
+        - Provide the path to the csv created by the previous command.
+        - If the script can't find your dicom directory, you can provide it with `-d /path/to/dicoms/sub-ID`
+        - You can provide an output directory with `--outdir /path/to/output/bids/`
+        - This script will produce a `bids` directory with the subjects BIDS folder inside.
+        - If you're running this multiple times on the same data, you can use the `--noforce` if you don't want to overwrite previous files.
     
 13. For ABCC data, `abcd-dicom2bids`: used for selectively downloading ABCD Study imaging DICOM data QC'ed as good by the ABCD DAIC site (fast track qc), converting it to BIDS standard input data (see [here](https://collection3165.readthedocs.io/en/stable/recommendations/#3-the-bids-quality-control-file)), selecting the best pair of spin echo field maps, and correcting the sidecar JSON files to meet the BIDS Validator specification. `abcd-dicom2bids` still uses `dicom2bids`, but uses a config file that is specific to ABCC. See more information on the [repository](https://github.com/DCAN-Labs/abcd-dicom2bids). For information on how to use the fast track qc, navigate to [this section](fasttrack.md). It is important to note that when running `abcd-dicom2bids` , cache can fill up in your home directory under `/home/{share}/x500/x500/` , so check up on and delete files within this directory when necessary. 
         
