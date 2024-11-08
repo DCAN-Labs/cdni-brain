@@ -66,9 +66,6 @@ nav:
       - BrainSwipes: brainswipes.md
   - Data Uploads and Transfers:
       - Data Transfers: uploads.md
-      - Transfer ABCC Data to the NGDR: ngdr-transfer.md
-  - NDA Uploads:
-        - Managing Data on the NDA: nda.md
   - Segmentation Model:
         - Model Training: training-nnunet.md
   - Lab Resources:
