@@ -26,6 +26,7 @@ nav:
       - Software Versioning: versioning.md
       - Containers: containers.md
       - Virtual Machine: vm.md
+      - Workbench: workbench.md
   - Coding Standards:
       - Best Practices: coding-practices.md
   - GitHub:
