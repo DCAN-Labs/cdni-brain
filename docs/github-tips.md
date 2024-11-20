@@ -27,6 +27,9 @@ This page contains some helpful information for using Github and common issues y
 8. Keep your branches updated
     - Frequently [pull to and sync from your local branch](https://docs.github.com/en/desktop/working-with-your-remote-repository-on-github-or-github-enterprise/syncing-your-branch-in-github-desktop)
     - When intending to submit a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests), merge with the branch you're intending to submit the PR to locally before initiating the request. This ensures you won't have any merge conflicts.
+9. Protect your main branch by requiring that any pull requests require a review before merging.
+    - This way someone else has to double check that this merge is correct/valid and won't break anything. 
+    - In the repo you want to protect (on Github), go to Settings -> Branches -> Add rule and select `Require a pull request before merging` and `Require approvals` and `Do not allow bypassing the above settings`.
 
 ## Webhooks
 
