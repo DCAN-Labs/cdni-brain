@@ -4,9 +4,13 @@ This page will detail some tips for working on MSI, common roadblocks encountere
 
 If you are experiencing errors/issues with general usage or Slurm, contact the MSI help desk (help@msi.umn.edu). If you're having issues that aren't detailed here, post a question in the `help-computing` channel on Slack.
 
-## Workflow
+## .bashrc Additions
 
-Greg Conan developed a function that keeps track of all of the commands you use in a session and allows you to search for commands you've used previously. Add these functions to your .bashrc (located in your home directory):
+Here are some potentially helpful additions to your .bashrc (located in your home directory).
+
+Greg Conan developed a function that keeps track of all of the commands you use in a session and allows you to search for commands you've used previously. This function creates a `.history.txt` file in your home directory with all of the commands you run (and the date and time you ran them!). 
+Usage: `grephist <search_term>`
+By default, this command will only return the 10 most recent search matches. To return more, use the option `-n <# lines to return`. 
 
 ```
   grephist() 
@@ -117,22 +121,25 @@ fullpath_convert() {
 PROMPT_COMMAND='echo "$(date +"%Y-%m-%d %H:%M") $(history | tail -n 1)" >> ~/.history.txt'
 ```
 
-Each share on MSI follows a similar directory structure:
+This function will automatically give execute permissions to group and users.
+Usage: `ttouch <filename>`
 
 ```
-|--home
-   |--<share>
-      |--shared
-         |--code
-         |--projects
-         |--data
-      |--<user_dir>
+# When creating a file with touch, automatically make it executable
+ttouch() {
+	touch "$1" && chmod gu+x "$1" 
+    }
 ```
 
-* You will have your own user_dir on each share which will be your x500. These are write protected directories, meaning only you have access to write to them. You have the ability to open them up, but it is not recommended. If you are working on something that other people might need access to, it is best to create a directory under `projects`. 
+These are some helpful variables/alias' to add to your .bashrc. Read more [here](https://stackoverflow.com/questions/7342735/bash-command-whats-the-difference-between-a-variable-and-an-alias) about the difference between assigning something as an alias vs. as a variable. 
 
-If you get a "not enough memory" error when trying to grab a srun, you must be ssh'd into mangi/mesabi/agate (`ssh -Y mangi/agate`)
+- `lab_conda="/home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh"`
+    * Or you could just add `source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh` to automatically enter the labwide environment.
+- `get_access="/home/faird/shared/code/internal/utilities/MSI-utilities/s3_get_x500/get_x500.sh"`
+- `wb='wb_command'`
+- `scue='squeue -al --me'`
 
+You can also have modules automatically loaded, although MSI recommends not to have too many (more than ~5) loaded by default as it might cause conflicts with other scripts/environments/etc. Some modules that are recommended to load automatically are `tree`, `libreoffice`, and `gview`. You can read more about these modules on [the module page](modules.md).
 
 ## Disk Quota
 
