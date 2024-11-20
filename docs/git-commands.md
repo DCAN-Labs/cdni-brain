@@ -37,6 +37,12 @@ This page contains common commands used to work with GitHub repositories via git
 
 - If you made a new branch locally, to add it to the origin, run `git push --set-upstream origin branch-name`
 
+`git stash`
+
+- This will stash your changes on your branch so you can checkout a different branch without losing your progress
+
+- Use `git stash pop` to unstash your changes
+
 `git pull`
 
 - Pull the contents of the GitHub repo to your local computer 
@@ -51,6 +57,8 @@ git pull main
 git checkout branch_to_update
 git rebase main
 ```
+
+- If you have already made changes on your branch but want to update your branch with main, use `git stash` before you checkout main and `git stash pop` after you rebase to main. 
 
 If a branch name changed on GitHub but it still has the old name locally and you can no longer push to/pull from the old branch name:
 
