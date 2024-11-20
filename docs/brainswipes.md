@@ -3,6 +3,4 @@
 
 For information regarding BrainSwipes please visit the [BrainSwipes readthedocs](https://brainswipes.readthedocs.io/).
 
-This is a change! 
-
 For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
