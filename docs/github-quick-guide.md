@@ -33,23 +33,18 @@ Setting up GitHub SSH on your local computer and on MSI (Minnesota Supercomputin
 
 **Open Terminal or Command Prompt:**
 
-On Windows, you can use Git Bash or PowerShell.
-On macOS and Linux, use the terminal.
+On Windows, you can use Git Bash or PowerShell.<br>
+On macOS and Linux, use the terminal.<br>
 If setting up on MSI, first connect to a MSI cluster then open a terminal. 
 
-**Generate SSH Key:**
+**Generate and copy SSH Key:**
 
 ```
 ssh-keygen
-```
-
-Press Enter to accept the default file location and optionally set a passphrase.
-
-**Copy SSH Public Key:**
-
-```
+# Press Enter to accept the default file location and optionally set a passphrase.
 cat ~/.ssh/id_rsa.pub | pbcopy   # macOS
 cat ~/.ssh/id_rsa.pub | clip     # Windows
+# Or just open the file and copy the contents. 
 ```
 
 **Add SSH Key to GitHub:**
