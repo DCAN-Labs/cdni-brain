@@ -1,4 +1,5 @@
 site_name: CDNI's Brain
+
 theme: 
   name: readthedocs
   features:
@@ -8,12 +9,19 @@ theme:
     - navigation.sections
     - header.autohide
     - content.code.annotate
+
 markdown_extensions:
   - toc:
       permalink: '🔗'
+
+extra_css:
+  - css/custom.css
+
 plugins:
   - search
+
 docs_dir: docs
+
 nav:
   - Overview: 
       - Table of Contents: index.md
