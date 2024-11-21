@@ -17,7 +17,9 @@ pydeface subject_head.nii.gz
 Defacing infant data is more difficult compared to adults due to contrast inversion (and variable or lower contrast depending on the age and modality) in T1w and T2w images over the first 6 months of age, so it's best to use age-specific atlases in order to get good results. We have generated defaced masks for the 0-2 month old infant NIH MNI T1w and T2w atlases here: `/home/faird/shared/code/internal/utilities/deface/infant_templates` (details for how the defaced masks were generated are included in the README in this directory).    
 
 ```
-pydeface <T1w subject head> --template <INFANT_MNI_T1_1mm.nii.gz> --facemask <INFANT_MNI_T1_1mm_defaced_mask.nii.gz>
+pydeface <T1w subject head> \
+--template <INFANT_MNI_T1_1mm.nii.gz> \
+--facemask <INFANT_MNI_T1_1mm_defaced_mask.nii.gz>
 ```
 
 Note that results may vary in infants even when using age-specific atlases. If your T1w and T2w files are registered, one method you can try is to generate a defaced mask for whichever modality resulted in better masking (i.e. more thorough masking of the eyes, nose, and mouth without cutting off any regions of the brain) and apply that mask to the less successful image modality.  
@@ -53,43 +55,39 @@ singularity run \
 You can also use the `--no-csf` flag for tighter skull-stripping. See the usage for more details.
 
 ## Removing identifying information from filenames and metadata
-In addition to defacing, you may also need to strip PHI from MRI filenames and metadata. If you have recommendations or helpful information you would like to add to this section, please post an issue to the [CDNI Brain GitHub](https://github.com/DCAN-Labs/cdni-brain/issues)!  
+In addition to defacing, you may also need to strip PHI from MRI filenames and metadata. If you have recommendations for additional tools or other helpful information you would like to add to this section, please post an issue to the [CDNI Brain GitHub](https://github.com/DCAN-Labs/cdni-brain/issues)!  
 
 ### DICAT (DICOM Anonymization Tool)
-For DICOM anonymization, we’ve found [DICAT](https://github.com/aces/DICAT) to be effective and well-documented. Please read the documentation, but for a quick overview:
-- Repo code and additional notes on MSI available here: `/home/faird/shared/code/external/utilities/DICAT`
-- Install: `pip install pydicom`
-- Use either their GUI (see their README for instruction) or the `mass_deidentify.py` script:
-  ```
-  usage  : mass_deidentify -c <csv_file>
-  
-  options:
-  	-c, --csvfile: path to the CSV file with the following format
-  	-x, --xmlfile: path to the XML file with the list of DICOM fields to zap
-  	-v, --verbose: if set, be verbose. Note: regardless of whether the
-  	               verbose option is set, a summary of success/failure
-  	               will be provided at the end of execution.
-  
-  expected format for the CSV file:
-  	- one row per DICOM study directory
-  	- four columns separated by "," in the following order:
-  		<DCM_DIR>,<Pname>,<DoB>,<Sex>
-  		-> DCM_DIR: full path to the DICOM study to deidentify
-  		-> Pname  : new patient name to use for deidentification
-  		-> DOB    : date to use as a date of birth (can be empty string)
-  		-> Sex    : sex of the participant (can be left empty)
-  	- example of a CSV file with three DICOM studies:
-  		 '/data/John_Doe/','subject_ID_1','1981-01-01','M'
-  		 '/data/Lana_Bip/','subject_ID_2','','F'
-  		 '/data/Suzy_Bud/','subject_ID_3','1979-10-10',''
-  
-  examples of XML files can be found in dicat/data directory:
-  	- fields_to_zap.xml: default DICAT list of fields to zap
-  	- fields_to_zap.xml: more stringent list of fields to zap that could be
-  	                     used on imaging data for open science releases
-  ```
-- Your run command may look something like this for example:
-  ```
-  python3 mass_deidentify.py -c subject_list_dicoms.csv -x data/fields_to_zap.xml -v
-  ```
-- After DICAT runs on a subject folder containing DICOMS, per the README, the output folder will contain zip files for both the original and de-identified subject data (e.g. `subject01.zip` and `subject01_deidentified.zip`)
+For DICOM anonymization, we’ve found [DICAT](https://github.com/aces/DICAT) to be effective and well-documented. Please read the GitHub documentation, but for a quick start:
+
+- Install pydicom: `pip install pydicom` 
+- Clone repo locally or use existing clone on MSI available here under `/home/faird/shared/code/external/utilities/DICAT` (may contain additional useful content/notes)
+- Prepare csv file with one row per subject/session and 4 columns with the following information:
+	- `DCM_DIR`: full path to the DICOM study to deidentify
+	- `Pname`  : new patient name to use for deidentification
+	- `DOB`    : date to use as a date of birth (can be empty string)
+	- `Sex`    : sex of the participant (can be left empty)
+
+> Example CSV file:
+```
+'/data/John_Doe/','subject_ID_1','1981-01-01','M'
+'/data/Lana_Bip/','subject_ID_2','','F'
+'/data/Suzy_Bud/','subject_ID_3','1979-10-10',''
+```	
+- Execute `mass_deidentify.py`, e.g.:
+```
+python3 mass_deidentify.py -c subject_list_dicoms.csv -v
+```
+- Once completed, the output folder will contain zip files for both the original and de-identified subject data (e.g. `subject01.zip` and `subject01_deidentified.zip`)
+
+<br>
+
+**ADDITIONAL USAGE TO SPECIFY FIELDS TO ZAP**
+
+By default, DICAT uses the XML file `dicat/data/fields_to_zap.xml` to specify which fields to remove from the DICOMS (including `PatientBirthDate`, `PatientSex`, `PatientID`, etc). However, there is also a more stringent file available if needed, `dicat/data/fields_to_zap_for_open_science.xml`, particularly for open science releases. Whether you would like to customize the XML file or specify the more stringent version, execute as follows:
+
+```
+python3 mass_deidentify.py -c subject_list_dicoms.csv -x data/fields_to_zap.xml -v
+```
+
+

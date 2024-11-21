@@ -1,0 +1,4 @@
+/* Render text in code blocks as black */ 
+span {
+    color: #000 !important;
+}
