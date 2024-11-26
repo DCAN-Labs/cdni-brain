@@ -1,4 +1,32 @@
-/* Render text in code blocks as black */ 
-span {
-    color: #000 !important;
+/* Render text in code blocks as black while keeping comments gray */ 
+span.hljs-string {
+    color: #000;
 }
+span.hljs-keyword {
+    color: #000;
+}
+span.hljs-variable.constant_ {
+    color: #000;
+}
+span.hljs-variable {
+    color: #000;
+}
+span.hljs-title.class_ {
+    color: #000;
+}
+span.hljs-symbol {
+    color: #000;
+}
+span.hljs-name {
+    color: #000;
+}
+span.hljs-attr {
+    color: #000;
+}
+span.hljs-meta {
+    color: #808085;
+}
+span.hljs-built_in {
+    color: #000;
+}
+
