@@ -262,6 +262,8 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
 
     * `--input-type fmriprep` : automatically assumes inputs are from fMRIprep
 
+    * `-p`/`--nuisance-regressors` : default is "auto" which means 36P is selected 
+
     * `--motion-filter-type` : filter to apply to the motion parameters. If this is set to a value other than “none”, then the following parameters are also required.
 
         * `--band-stop-min` : Required for "notch" or "lp" choice 
