@@ -270,7 +270,7 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
 
         * `--motion-filter-order`: Required for "notch" or "lp" choice
 
-        * General guidelines are to use "notch" filtering and to calculate the respiratory artifact using these guidelines. XCP-D also provides estimated bandstop values based on the age range of your dataset. 
+        * General guidelines are to use "notch" filtering and to calculate the respiratory artifact for your dataset [using these tools](resp-rate.md). XCP-D also provides [estimated bandstop values](https://xcp-d.readthedocs.io/en/0.9.1/workflows.html#motion-parameter-filtering-optional) based on the age range of your dataset. 
 
 2. Preferred additional flags 
     
