@@ -1,46 +1,60 @@
 # Pipelines
 
-This page has the recommended flags and example commands for the major pipelines we use for data processing. To determine the resources needed to run each pipeline, see [here](optimizing.md). 
+This page has the recommended flags and resources for the major pipelines we use for data processing as well as example commands. To determine the exact resources needed to run each pipeline, see [the optimizing resources page](optimizing.md). Below is a table outlining the recommended pipeline combinations. 
 
 <table>
   <tr>
    <td>
 <strong>Infants</strong>
    </td>
-   <td>NiBabies, DCAN Infant Pipeline, XCP-D
+   <td>infant-fMRIprep -> XCP-D
    </td>
   </tr>
   <tr>
-   <td><strong>Children (4 years and older) and Adults</strong>
+   <td><strong>Children (≥4 years) and Adults</strong>
    </td>
-   <td>fMRIPrep, ABCD-BIDS pipeline, XCP-D
+   <td>fMRIPrep -> XCP-D
+   </td>
+  </tr>
+  <tr>
+   <td><strong>Legacy Data</strong>
+   </td>
+   <td>ABCD-BIDS -> XCP-D
    </td>
   </tr>
 </table>
 
-Note: the cutoff age for using an adult pipeline depends on the scope of the project
+Note: the cutoff age for using an adult pipeline depends on the scope of the project. 
 
-Recommended sbatch parameters per 1 subject process:
+<div class="admonition attention">
+    <p class="first admonition-title">Attention</p>
+    <p class="last">
+        ABCD-BIDS should only be used as a preprocessing pipeline when wanting to compare your dataset with other legacy data that was processed that way (i.e. ABCD and HCP). Any newly collected datasets should be processed with fMRIprep and XCP-D.
+    </p>
+</div>
+  
+
+Recommended sbatch parameters per 1 subject 1 session process:
 
 <table>
 <tr>
 <td>
 <strong>Pipeline</strong>
 </td>
-<td><strong>SBATCH Parameters and Definition </strong>
+<td><strong>Recommended SBATCH Parameters </strong>
 </td>
 </tr>
 <tr>
-<td>fmriprep
+<td>fMRIprep
 </td>
-<td>Recommended parameters are 24 hours, 32 cpus on the msismall partition, with 240gb of total memory. 
+<td>24 hours, 32 cpus, with 240gb of total memory. 
 <p>
 </td>
 </tr>
 <tr>
-<td>nibabies
+<td>infant-fMRIprep
 </td>
-<td>Recommended parameters are 24 hours, 32 cpus on the msismall partition, with 240gb of total memory. 
+<td>24 hours, 32 cpus, with 240gb of total memory. 
 <p>
 <em>May need increased resources for data without precomputed derivatives for segmentation (if JLF segmentation is enabled with `--segmentation-atlases-dir` )</em>
 </td>
@@ -48,26 +62,26 @@ Recommended sbatch parameters per 1 subject process:
 <tr>
 <td>abcd-bids-pipeline
 </td>
-<td>Recommended parameters are 48 hours, 8 tasks on one node (1 cpu per task), 20gb of memory and 100gb of temporary storage on msismall.
-</td>
-</tr>
-<tr>
-<td>nhp-10.5T-abcd-bids-pipeline
-</td>
-<td>Recommended parameters are 24 hours for a subject but add another 4 hours per run. <br /> At least 8 cpus, max amount is twice the number of functional runs. <br /> 10 times the number of CPUs is the total memory needed.
+<td> 48 hours, 8 tasks on one node (1 cpu per task), 20gb of memory and 100gb of temporary storage.
 </td>
 </tr>
 <tr>
 <td>XCP-D
 </td>
-<td>Recommended parameters are 3 hours, 8 cpus, and 96gb of memory.
+<td>3 hours, 8 cpus, and 96gb of memory.
+</td>
+</tr>
+<tr>
+<td>nhp-10.5T-abcd-bids-pipeline
+</td>
+<td>24 hours for one run of a subject, add another 4 hours per run. <br /> At least 8 cpus, max amount is twice the number of functional runs. <br /> 10 times the number of CPUs is the total memory needed.
 <p>
 </td>
 </tr>
 <tr>
 <td>dcan-infant
 </td>
-<td>Recommended parameters are 72 hours and will utilize 24 tasks on one node with 60gb of memory and 100gb of temporary storage.
+<td>72 hours, 24 tasks on one node, 60gb of memory and 100gb of temporary storage.
 </td>
 </tr>
 </table>
@@ -80,33 +94,29 @@ See [MSI partitions](partitions.md) to choose the appropriate partition based on
 
 ## 1. fMRIPrep
 
-
 Read: [fMRIPrep ReadTheDocs site](https://fmriprep.org/en/stable/)
 
+A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing of task-based and resting-state functional MRI (fMRI). For usage information, see [here](https://fmriprep.org/en/stable/usage.html).
 
-A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing of task-based and resting-state functional MRI (fMRI). For usage information, see [here](https://github.com/DCAN-Labs/fmriprep).
+1. Preferred flags:
 
-
-
-59. Preferred flags:
-
-    * `--participant-label` \ : a space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)
+    * `--participant-label` : a space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)
     
-    * `--cifti-output 91k \` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinate can be specified (default is 91k, which equates to 2mm resolution). Default: False
+    * `--cifti-output 91k` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinate can be specified (default is 91k, which equates to 2mm resolution). Default: False
     
-    * `--nprocs 32 \` : maximum number of threads across all processes **(if used, this should match the number of cpus allotted for your sbatch job)**
+    * `--nprocs 32` : maximum number of threads across all processes **(if used, this should match the number of cpus allotted for your sbatch job)**
     
-    * `--omp-nthreads 3 \` : maximum number of threads per-process
+    * `--omp-nthreads 3` : maximum number of threads per-process
     
-    * `--resource-monitor \` : enable Nipype’s resource monitoring to keep track of memory and CPU usage
+    * `--resource-monitor` : enable Nipype’s resource monitoring to keep track of memory and CPU usage
     
-    * `-vv \` : level 2 verbose log output, useful for troubleshooting
+    * `-vv` : level 2 verbose log output, useful for troubleshooting
     
     * `-w /work` : used to specify a working directory within the same path as the sbatch, named_ /work_.
 
-60. If an error is encountered, document it [here](https://docs.google.com/document/d/16qSEPV1_FHOHBq2eJOuZLqISv-0zCbpOJQ7HesEQCv4/edit#heading=h.13assk4h50o4). Also, see [Troubleshooting](troubleshooting.md#nibabies-and-fmriprep).
+2. If an error is encountered, check for a solution on the [troubleshooting page](troubleshooting.md#nibabies-and-fmriprep) and consider creating a [Github issue](https://github.com/DCAN-Labs/cdni-brain/issues) or adding it yourself if your error is not there.
 
-61. Example command:
+3. Example command:
 
 ```
 module load singularity
@@ -114,8 +124,8 @@ module load singularity
 singularity='which singularity'
 
 ${singularity} run --cleanenv \
--B /home/faird/shared/projects/new_rae_testing/input:/data:ro \
--B /home/faird/shared/projects/new_rae_testing/bcp_fmriprep_outputs:/out \
+-B ${fmriprep_in}/input:/data:ro \
+-B ${fmriprep_out}/bcp_fmriprep_outputs:/out \
 -B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
 -B /tmp:/work \
 /home/faird/shared/code/external/pipelines/fmriprep/fmriprep_23.0.1.sif /data/out participant \
@@ -128,38 +138,36 @@ ${singularity} run --cleanenv \
 -w /work
 ```
 
-
-## 2. NiBabies
+## 2. Infant-fMRIprep (aka NiBabies)
 
 Read: [NiBabies ReadTheDocs site](https://nibabies.readthedocs.io/en/latest/)
 
+NiBabies is a robust pre-processing MRI and fMRI workflow that is also a part of the NiPreps family. NiBabies is designed and optimized for human infants between 0-2 years old. For more information on NiBabies code, see [here](https://github.com/nipreps/nibabies). For in-depth usage information, see the [Read the Docs here](https://nibabies.readthedocs.io/en/latest/usage.html).
 
-NiBabies is a robust pre-processing MRI and fMRI workflow that is also a part of the NiPreps family. NiBabies is designed and optimized for human infants between 0-2 years old. For more information on NiBabies code, see [here](https://github.com/nipreps/nibabies). For in-depth usage information, one can utilize [this google doc](https://docs.google.com/document/d/1PW8m1tWWqqgKCAJ9XLpJ5tycPB5gqFodrnvNOIavTAA/edit) or see the [Read the Docs here](https://nibabies.readthedocs.io/en/latest/installation.html).
 
+1. Preferred flags:
 
-62. Preferred flags:
+    * `--participant-label \` : a space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)
+    
+    * `--age-months \`: used to specify the age in months of the participant that is being processed 
 
-    - `--participant-label \` : a space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)
+    * `--session-id \`: when running a subject with multiple sessions, need to specify which session is being processed as well as the age 
     
-    - `--age-months \`: used to specify the age in months of the participant that is being processed 
+    * `--derivatives /derivatives \` : NiBabies will use a segmentation from the segmentation pipeline (pre-postBIBSnet). This flag is used to clarify that the precomputed segmentation directory is being utilized. 
+    
+    * `--cifti-output 91k \` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinate can be specified (default is 91k, which equates to 2mm resolution). Default: False
+    
+    * `-vv \` : level 2 verbose log output, useful for troubleshooting
+    
+    * `--nprocs 32 \` : maximum number of threads across all processes
+    
+    * `--omp-nthreads 3 \` : maximum number of threads per-process
+    
+    * `-w /work` : used to specify a working directory within the container’s filesystem, named _/work_.
 
-    - `--session-id \`: when running a subject with multiple sessions, need to specify which session is being processed as well as the age 
-    
-    - `--derivatives /derivatives \` : NiBabies will use a segmentation from the segmentation pipeline (pre-postBIBSnet). This flag is used to clarify that the precomputed segmentation directory is being utilized. 
-    
-    - `--cifti-output 91k \` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinate can be specified (default is 91k, which equates to 2mm resolution). Default: False
-    
-    - `-vv \` : level 2 verbose log output, useful for troubleshooting
-    
-    - `--nprocs 32 \` : maximum number of threads across all processes
-    
-    - `--omp-nthreads 3 \` : maximum number of threads per-process
-    
-    - `-w /work` : used to specify a working directory within the container’s filesystem, named _/work_.
+2. If an error is encountered, check for a solution on the [troubleshooting page](troubleshooting.md#nibabies-and-fmriprep) and consider creating a [Github issue](https://github.com/DCAN-Labs/cdni-brain/issues) or adding it yourself if your error is not there.
 
-63. If an error is encountered, document it [here](https://docs.google.com/document/d/16qSEPV1_FHOHBq2eJOuZLqISv-0zCbpOJQ7HesEQCv4/edit#heading=h.13assk4h50o4). Also, see [Troubleshooting](troubleshooting.md#nibabies-and-fmriprep).
-
-64. Example command:
+3. Example command:
 
 ```
 module load singularity
@@ -167,57 +175,55 @@ module load singularity
 singularity='which singularity'
 
 ${singularity} run --cleanenv \
--B /home/faird/shared/projects/new_rae_testing/input/:/data:ro \
--B /home/faird/shared/projects/new_rae_testing/bcp_nibabies_outputs/:/out \
+-B ${nibabies_in}/input/:/data:ro \
+-B ${nibabies_out}/nibabies_outputs/:/out \
 -B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
--B /home/faird/shared/projects/new_rae_testing/work_dir/:/work \
--B /home/faird/shared/projects/new_rae_testing/bibsnet_outputs/:/derivatives \
-/home/faird/shared/code/external/pipelines/nibabies/nibabies_unstable_04182023.sif /data /out participant \
---participant-label {subject_ID} --age-months {age} -s {age_mo} \
+-B ${tmp_dir}/work_dir/:/work \
+-B ${ext_derivs}/bibsnet_outputs/:/derivatives \
+/home/faird/shared/code/external/pipelines/nibabies/nibabies_24.0.0.sif /data /out participant \
+--participant-label {subject_ID} \ 
+--age-months {age} \
+-s {age_mo} \
 --derivatives /derivatives \
 --cifti-output 91k \
 --omp-nthreads 3 \
 -w /work
 ```
 
-
 ## 3. ABCD-HCP-BIDS
 
 Read: [abcd-hcp-pipeline @ GitHub](https://github.com/DCAN-Labs/abcd-hcp-pipeline)
 
-
 Read: [abcd-hcp-pipeline @ ABCC ReadTheDocs](https://collection3165.readthedocs.io/en/stable/pipeline/)
 
+This pipeline provides an interface for processing BIDS-formatted MRI datasets using the DCAN-HCP pipeline and supporting modules including DCANBOLDProcessing and DCAN Executive Summary. For additional usage, see [here](https://abcd-hcp-pipeline.readthedocs.io/en/latest/usage/).
 
-This pipeline provides an interface for processing BIDS-formatted MRI datasets using the DCAN-HCP pipeline and supporting modules including DCANBOLDProcessing and DCAN Executive Summary. For additional usage, see [here](https://github.com/DCAN-Labs/abcd-hcp-pipeline).
+1. Preferred flags:
+    
+    * `--freesurfer-license` : If using docker or singularity, you will need to acquire and provide your own FreeSurfer license. The license can be acquired by filling out[ this form](https://surfer.nmr.mgh.harvard.edu/registration.html).
+    
+    * `--participant-label` : Optional list of participant IDs to run. Default is all IDs found under the BIDS input directory. The participant label does not include the "sub-" prefix
+    
+    * `--stages` : Specify a subset of stages to run. Can be used to rerun some or all of the pipeline after completing it once, or resume an incomplete runthrough. If a single stage name is given, the pipeline will be started at that stage. If a string with a ":" is given, a stage name before the ":" will tell the pipeline where to start and a stage name after the ":" will tell it where to stop. If no ":" is found, the pipeline will start with the stage specified and run through ExecutiveSummary (or CustomClean/ABCDTask, if specified). Valid stage names: PreFreeSurfer, FreeSurfer, PostFreeSurfer, FMRIVolume, FMRISurface, DCANBOLDProcessing, ExecutiveSummary, CustomClean'
+    
+    * `--ncpus` : Number of cores to use for concurrent processing and algorithmic speedups. Warning: causes ANTs and FreeSurfer to produce non-deterministic results.
+    
+    * `--custom-clean` : Runs DCAN cleaning script after the pipeline completes successfully to delete pipeline outputs based on the file structure specified in the custom-clean JSON. Required for the custom clean stage.
+    
+    * `--bandstop` : Parameters for motion regressor band-stop filter. It is recommended for the boundaries to match the inter-quartile range for participant group respiratory rate (breaths per minute), or to match [BIDS physio data directly](https://www.biorxiv.org/content/10.1101/337360v1). These parameters are highly recommended for data acquired with a frequency of greater than 1 Hz (TR less than 1 second). Default is no filter. Suggested filter ranges can also be found in [this table](https://xcp-d.readthedocs.io/en/latest/generalworkflow.html#id3).
 
-65. Preferred flags:
-    
-    - `--freesurfer-license \` : If using docker or singularity, you will need to acquire and provide your own FreeSurfer license. The license can be acquired by filling out[ this form](https://surfer.nmr.mgh.harvard.edu/registration.html).
-    
-    - `--participant-label \` : Optional list of participant IDs to run. Default is all IDs found under the BIDS input directory. The participant label does not include the "sub-" prefix
-    
-    - `--stages \` : Specify a subset of stages to run. Can be used to rerun some or all of the pipeline after completing it once, or resume an incomplete runthrough. If a single stage name is given, the pipeline will be started at that stage. If a string with a ":" is given, a stage name before the ":" will tell the pipeline where to start and a stage name after the ":" will tell it where to stop. If no ":" is found, the pipeline will start with the stage specified and run through ExecutiveSummary (or CustomClean/ABCDTask, if specified). Valid stage names: PreFreeSurfer, FreeSurfer, PostFreeSurfer, FMRIVolume, FMRISurface, DCANBOLDProcessing, ExecutiveSummary, CustomClean'
-    
-    - `--ncpus \` : Number of cores to use for concurrent processing and algorithmic speedups. Warning: causes ANTs and FreeSurfer to produce non-deterministic results.
-    
-    - `--custom-clean \` : Runs DCAN cleaning script after the pipeline completes successfully to delete pipeline outputs based on the file structure specified in the custom-clean JSON. Required for the custom clean stage.
-    
-    - `--bandstop \` : Parameters for motion regressor band-stop filter. It is recommended for the boundaries to match the inter-quartile range for participant group respiratory rate (breaths per minute), or to match [BIDS physio data directly](https://www.biorxiv.org/content/10.1101/337360v1). These parameters are highly recommended for data acquired with a frequency of greater than 1 Hz (TR less than 1 second). Default is no filter. Suggested filter ranges can also be found in [this table](https://xcp-d.readthedocs.io/en/latest/generalworkflow.html#id3).
+2. If an error is encountered, check for a solution on the [troubleshooting page](troubleshooting.md#abcd-bids) and consider creating a [Github issue](https://github.com/DCAN-Labs/cdni-brain/issues) or adding it yourself if your error is not there.
 
-66. If an error is encountered, document it [here](https://docs.google.com/document/d/1pu6QU32aoKBH1LKNFivYFRvFvZa6lfCETEKYfspy4As/edit). Also, see [Troubleshooting](troubleshooting.md#abcd-bids).
-
-67. Example command:
+3. Example command:
 
 ```
 module load singularity
-
 singularity='which singularity'
 
 ${singularity} run --cleanenv --no-home \
 -B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
--B /path/to/BIDS/input_data:/data:ro \
--B /path/to/outputs:/out \
+-B ${BIDS_path}/input_data:/data:ro \
+-B ${out_path}/outputs:/out \
 /home/faird/shared/code/internal/pipelines/ABCD-BIDS/abcd-hcp-pipeline_latest.sif /data/out \
 --freesurfer-license=/opt/freesurfer/license.txt \
 --participant-label subject_ID \
@@ -225,7 +231,83 @@ ${singularity} run --cleanenv --no-home \
 --ncpus 8
 ```
 
-## 4. NHP 10.5T ABCD BIDS synth
+## 4. XCP-D
+
+The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of BIDS derivatives. The inputs are required to include at least anatomical and functional preprocessed outputs with at least one preprocessed BOLD image. For further information, see [here](https://xcp-d.readthedocs.io/en/latest/usage.html). 
+
+<div class="admonition attention">
+    <p class="first admonition-title">Attention</p>
+    <p class="last">
+        Please note that XCP-D performs smoothing with a 6mm kernal as the default value but will output both the unsmoothed and smoothed data. IT IS HIGHLY RECOMMENDED TO <strong>NOT</strong> USE THE SMOOTHED DATA TO PERFORM SUBSEQUENT ANAYLSES.
+    </p>
+</div>
+
+XCP-D versions 0.8.0 and above have a new required `mode` flag that will set several defaults. The preferred mode to use for processing within the center is the `abcd` mode, which sets the default flags explained below. Any of these inputs can be overridden if necessary, but give careful thought as to why they would need to be different for your dataset.
+
+1. Default flags:
+    
+    * `--fd-thresh/-f 0.3` : framewise displacement threshold for censoring.
+    
+    * `--file-format cifti` : postprocess cifti instead of NIfTI; this is set default for dcan and hcp input
+    
+    * `--warp-surfaces-native2std` : resample surfaces to fsLR space, 32k density, and apply the transform from native T1w to MNI152NLin6Asym space output by fMRIPrep / NiBabies
+    
+    * `--abcc-qc` to output an Executive Summary and HDF5 file containing motion levels at different thresholds
+
+    * `--linc-qc` to output QC metrics from the LINC pipeline
+
+    * `-m`/`--combine-runs` : add concatenated outputs for functional derivatives
+
+    * `--despike` : despike the NIfTI/cifti before postprocessing
+
+    * `--input-type fmriprep` : automatically assumes inputs are from fMRIprep
+
+    * `--motion-filter-type` : filter to apply to the motion parameters. If this is set to a value other than “none”, then the following parameters are also required.
+
+        * `--band-stop-min` : Required for "notch" or "lp" choice 
+
+        * `--band-stop-max`: Required for "notch" choice
+
+        * `--motion-filter-order`: Required for "notch" or "lp" choice
+
+        * General guidelines are to use "notch" filtering and to calculate the respiratory artifact using these guidelines. XCP-D also provides estimated bandstop values based on the age range of your dataset. 
+
+2. Preferred additional flags 
+    
+    * `--participant-label` : used to specify the specific participant being processed 
+    
+    * `--resource-monitor` : enable Nipype’s resource monitoring to keep track of memory and CPU usage
+    
+    * `--omp-threads 3` : maximum number of threads per-process
+    
+    * `-w /work` :  used to specify a working directory within the container’s filesystem, named _/work_.
+    
+    * `-r <radius>` : head radius for computing FD in mm, default 50 is suitable for adult, typically 35-45 for infant. This is only recommended when running XCP-D on infants using nibabies outputs.  
+
+3. If an error is encountered, check for a solution on the [troubleshooting page](troubleshooting.md#xcp-d) and consider creating a [Github issue](https://github.com/DCAN-Labs/cdni-brain/issues) or adding it yourself if your error is not there.
+
+4. Example command: 
+
+```
+module load singularity
+singularity= 'which singularity'
+
+${singularity} run –cleanenv \
+-B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \ 
+-B ${fmriprep_dir}/processed/fmriprep/sub-${subj_id}_ses-${ses_id}:/fmriprep_out \
+-B ${xcpd_dir}/processed/sub-${subj_id}_ses-${ses_id}:/xcpd_out \
+-B ${xcpd_dir}/work_dir/sub-${subj_id}_ses-${ses_id}:/wkdir \
+/home/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.9.1.sif \
+--participant-label ${subj_id} \
+--resource-monitor \
+--omp-nthreads 3 \ 
+--motion-filter-type notch ${bandstopmin} ${bandstopmax} \
+-vv \
+-w /wkdir \
+/fmriprep_out /xcpd_out participant
+```
+
+## 5. NHP 10.5T ABCD BIDS synth
 
 This pipeline is for processing macaque data collected from a 10.5T scanner from the zlab. Before running the pipeline, check the [preprocessing page](preprocessing.md) for preprocessing steps to prepare the data to be run. This pipeline uses a fork of the original NHP ABCD BIDS pipeline that incorporates synth distortion correction for use with the 10.5T data, see [this repo](https://github.com/DCAN-Labs/nhp-abcd-bids-pipeline-synth) for more information. Read more about synth distorion [here.](https://pubmed.ncbi.nlm.nih.gov/37023632/)
 
@@ -277,66 +359,6 @@ module load singularity; singularity exec --cleanenv \
 --bandstop 12 18
 ```
 
-
-## 5. XCP-D
-
-The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of BIDS derivatives. The outputs are required to include at least anatomical and functional outputs with at least one preprocessed BOLD image. For further information, see [here](https://xcp-d.readthedocs.io/en/latest/usage.html). 
-
-1. Preferred flags:
-    
-    * `-r <radius>` : head radius for computing FD in mm, default 50 is suitable for adult, typically 35-45 for infant
-    
-    * `-f 0.3` : framewise displacement threshold for censoring.** Here,** **0.3 is preferred versus a stricter threshold to avoid excluding too much data from the regression model. Stricter thresholding can still be applied when running your analyses on the XCP-D output. **
-    
-    * `--cifti` : postprocess cifti instead of NIfTI; this is set default for dcan and hcp input
-    
-    * **[for version 0.2.0 and newer, and “develop” / “unstable” builds dated 10-21-2022 or newer]** `--warp-surfaces-native2std` : resample surfaces to fsLR space, 32k density, and apply the transform from native T1w to MNI152NLin6Asym space output by fMRIPrep / NiBabies
-    
-    * **[0.3.0 and newer]** `--dcan-qc` to output QC and executive summary files in similar format to DCAN HCP-based pipelines
-    
-    * `-m` : add concatenated outputs for functional derivatives
-    
-    * `--participant-label` : used to specify the specific participant being processed 
-    
-    * `--resource-monitor` : enable Nipype’s resource monitoring to keep track of memory and CPU usage
-    
-    * `--omp-threads 3` : maximum number of threads per-process
-    
-    * `--despike` : despike the NIfTI/cifti before postprocessing
-    
-    * `-w /work` :  used to specify a working directory within the container’s filesystem, named _/work_.
-
-2. If an error is encountered, see [Troubleshooting](troubleshooting.md#xcp-d).
-
-3. Example command: 
-
-```
-module load singularity
-
-singularity= 'which singularity'
-
-${singularity} run –cleanenv \
--B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \ 
--B ${fmriprep_dir}/processed/fmriprep/sub-${subj_id}_ses-${ses_id}:/fmriprep_out \
--B ${xcpd_dir}/processed/sub-${subj_id}_ses-${ses_id}:/xcpd_out \
--B ${xcpd_dir}/work_dir/sub-${subj_id}_ses-${ses_id}:/wkdir \
-/home/faird/shared/code/external/pipelines/xcp_d/xcp_d_unstable_05052023a.sif \
--f 0.3 \
---cifti \ 
--m \
---participant-label ${subj_id} \
---resource-monitor \
---dcan-qc \
---omp-nthreads 3 \ 
---despike \
---motion-filter-type notch ${bandstopmin} ${bandstopmax} \ 
---warp-surfaces-native2std \
-- vv \
---input-type fmriprep \ #can replace with nibabies \ #if working with nibabies, add -r {head radius in mm} 
--w /wkdir \
-/fmriprep_out /xcpd_out participant
-```
-
 ## 6. DCAN Infant
 
 
@@ -361,17 +383,17 @@ Overview: fMRI -> anatomical registration - no boundary based registration, use 
 
 1. Preferred flags:
     
-    - `--freesurfer-license \` :If using docker or singularity, you will need to acquire and provide your own FreeSurfer license. The license can be acquired by filling out[ this form](https://surfer.nmr.mgh.harvard.edu/registration.html).
+    * `--freesurfer-license` :If using docker or singularity, you will need to acquire and provide your own FreeSurfer license. The license can be acquired by filling out[ this form](https://surfer.nmr.mgh.harvard.edu/registration.html).
     
-    - `--participant-label \` : Optional list of participant IDs to run. Default is all IDs found under the BIDS input directory. The participant label does not include the "sub-" prefix
+    * `--participant-label` : Optional list of participant IDs to run. Default is all IDs found under the BIDS input directory. The participant label does not include the "sub-" prefix
     
-    - `--session-id \` : filter input dataset by session id. Default is all ids found under the subject input directory(s). A session id does not include "ses-"
+    * `--session-id` : filter input dataset by session id. Default is all ids found under the subject input directory(s). A session id does not include "ses-"
     
-    - `--hyper-normalization-method \` :specify the intensity profiles to use for the hyper-normalization step in FreeSurfer: ADULT_GM_IP adjusts the entire base image such that the IP of GM in the target roughly matches the IP of GM of the reference (i.e., the adult freesurfer atlas). Then the WM is shifted in the target image to match the histogram of WM in the reference. ROI_IPS adjusts the intensity profiles of each ROI (GM, WM, CSF) separately and reassembles the parts. NONE skips the hyper-normalization step. This allows the user to run PreFreeSurfer, apply new, experimental hyper-normalization methods and then restart at FreeSurfer. Default: ADULT_GM_IP.
+    * `--hyper-normalization-method` :specify the intensity profiles to use for the hyper-normalization step in FreeSurfer: ADULT_GM_IP adjusts the entire base image such that the IP of GM in the target roughly matches the IP of GM of the reference (i.e., the adult freesurfer atlas). Then the WM is shifted in the target image to match the histogram of WM in the reference. ROI_IPS adjusts the intensity profiles of each ROI (GM, WM, CSF) separately and reassembles the parts. NONE skips the hyper-normalization step. This allows the user to run PreFreeSurfer, apply new, experimental hyper-normalization methods and then restart at FreeSurfer. Default: ADULT_GM_IP.
    
-    - `--ncpus \` :  Number of cores to use for concurrent processing and algorithmic speedups. Warning: causes ANTs and FreeSurfer to produce non-deterministic results.
+    * `--ncpus` :  Number of cores to use for concurrent processing and algorithmic speedups. Warning: causes ANTs and FreeSurfer to produce non-deterministic results.
     
-    - `--stage \` : Specify a subset of stages to run. Can be used to rerun some or all of the pipeline after completing it once, or resume an incomplete runthrough. If a single stage name is given, the pipeline will be started at that stage. If a string with a ":" is given, a stage name before the ":" will tell the pipeline where to start and a stage name after the ":" will tell it where to stop. If no ":" is found, the pipeline will start with the stage specified and run through ExecutiveSummary (or CustomClean/ABCDTask, if specified). Valid stage names: PreFreeSurfer, FreeSurfer, PostFreeSurfer, FMRIVolume, FMRISurface, DCANBOLDProcessing, ExecutiveSummary, CustomClean'
+    * `--stage` : Specify a subset of stages to run. Can be used to rerun some or all of the pipeline after completing it once, or resume an incomplete runthrough. If a single stage name is given, the pipeline will be started at that stage. If a string with a ":" is given, a stage name before the ":" will tell the pipeline where to start and a stage name after the ":" will tell it where to stop. If no ":" is found, the pipeline will start with the stage specified and run through ExecutiveSummary (or CustomClean/ABCDTask, if specified). Valid stage names: PreFreeSurfer, FreeSurfer, PostFreeSurfer, FMRIVolume, FMRISurface, DCANBOLDProcessing, ExecutiveSummary, CustomClean'
 
 1. For further information on DCAN Infant Pipeline flags, see the [readthedocs section here](infant-doc.md#pipeline-optional-flags-and-example).
 
