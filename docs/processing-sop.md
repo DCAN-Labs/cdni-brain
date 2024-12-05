@@ -21,7 +21,7 @@ Below are steps that should be followed in order to ensure your processing effor
     - As you make your edits, you will need to test that it works. Instructions on modifying the script and testing are [here](wrappers.md).
     - Note: it is possible that a wrapper does not exist for your codebase already, and you will have to adapt a current one to fit your needs.
 
-7. Estimate the space and resources needed for your outputs by running the codebase you intend to run on all subjects on 3-5 first. 
+7. Estimate the space and resources needed for your outputs by running the codebase you intend to run on all subjects on a small sample (3-5 subjects) first. 
     - For more information, see [Data Storage/Tracking](storage.md) and [Resource Optimization](optimizing.md#seff). Adjust the resources for your jobs accordingly.
 
 8. Submit the rest of your jobs.
