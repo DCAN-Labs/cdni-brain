@@ -7,7 +7,7 @@ This page has the recommended flags and resources for the major pipelines we use
    <td>
 <strong>Infants</strong>
    </td>
-   <td>infant-fMRIprep -> XCP-D
+   <td>infant-fMRIprep (NiBabies) -> XCP-D
    </td>
   </tr>
   <tr>
