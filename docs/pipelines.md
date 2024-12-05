@@ -180,7 +180,7 @@ ${singularity} run --cleanenv \
 -B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
 -B ${tmp_dir}/work_dir/:/work \
 -B ${ext_derivs}/bibsnet_outputs/:/derivatives \
-/home/faird/shared/code/external/pipelines/nibabies/nibabies_24.0.0.sif /data /out participant \
+/home/faird/shared/code/external/pipelines/nibabies/nibabies_24.1.0.sif /data /out participant \
 --participant-label {subject_ID} \ 
 --age-months {age} \
 -s {age_mo} \
