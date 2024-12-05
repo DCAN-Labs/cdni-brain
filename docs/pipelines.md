@@ -81,7 +81,7 @@ Recommended sbatch parameters per 1 subject 1 session process:
 <tr>
 <td>dcan-infant
 </td>
-<td>72 hours, 24 tasks on one node, 60gb of memory and 100gb of temporary storage.
+<td>72 hours, 8 cpus, 80gb of memory and 100gb of temporary storage. Consider increasing memory to 20gb per cpu or more if functional run lengths are long (more than 10 minutes).
 </td>
 </tr>
 </table>
