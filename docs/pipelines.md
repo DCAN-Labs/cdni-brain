@@ -260,7 +260,7 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
 
     * `--despike` : despike the NIfTI/cifti before postprocessing
 
-    * `--input-type fmriprep` : automatically assumes inputs are from fMRIprep
+    * `--input-type fmriprep` : automatically assumes inputs are from fMRIprep (other options are `dcan` for ABCD-BIDS, `hcp` for WashU HCPPipelines, `nibabies` for infant-fMRIPrep / NiBabies, and `ukb` for UK Biobank)
 
     * `-p`/`--nuisance-regressors` : default is "auto" which means 36P is selected 
 
