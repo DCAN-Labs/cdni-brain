@@ -190,7 +190,7 @@ ${singularity} run --cleanenv \
 -w /work
 ```
 
-## 3. ABCD-HCP-BIDS
+## 3. ABCD-BIDS (abcd-hcp-pipeline)
 
 Read: [abcd-hcp-pipeline @ GitHub](https://github.com/DCAN-Labs/abcd-hcp-pipeline)
 
