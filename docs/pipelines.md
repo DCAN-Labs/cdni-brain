@@ -149,7 +149,7 @@ NiBabies is a robust pre-processing MRI and fMRI workflow that is also a part of
 
     * `--participant-label \` : a space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)
     
-    * `--age-months \`: used to specify the age in months of the participant that is being processed. (NOTE: this option is planned to be made deprecated; the recommended method to specify age is with a BIDS sessions or participants file: https://nibabies.readthedocs.io/en/latest/usage.html#participant-ages)
+    * `--age-months \`: used to specify the age in months of the participant that is being processed. (NOTE: this option is planned to be made deprecated; the recommended method to specify age is with a[ BIDS sessions or participants file](https://nibabies.readthedocs.io/en/latest/usage.html#participant-ages))
 
     * `--session-id \`: when running a subject with multiple sessions, need to specify which session is being processed as well as the age 
     
