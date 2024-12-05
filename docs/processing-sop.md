@@ -54,7 +54,7 @@ Below are steps that should be followed in order to ensure your processing effor
 ## Anaylsis Workflow 
 **Smoothing**
 - Assuming you are using XCP-D outputs for anaylsis, it is highly recommended to **not** use the smoothed outputs and instead use the unsmoothed outputs. 
-- It is generally best practice to wait as long as you can in the processing/analysis workflow to smooth your data. 
+- It is generally best practice to wait as long as you can in the processing/analysis workflow to smooth your data. The [cifti-connectivity](https://cdnis-brain.readthedocs.io/cifti-matrix/) tool (and other tools which incorporate it) facilitate this, by providing options to apply smoothing as a "step 0" when making functional connectivity matrices.
 - When data smoothing occurs, it is recommended to smooth with a kernal roughly the size of the TR of the data. 
 
 ## Tracking 
