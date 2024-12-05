@@ -183,7 +183,7 @@ ${singularity} run --cleanenv \
 /home/faird/shared/code/external/pipelines/nibabies/nibabies_24.1.0.sif /data /out participant \
 --participant-label {subject_ID} \ 
 --age-months {age} \
--s {age_mo} \
+--session-id {session_ID} \
 --derivatives /derivatives \
 --cifti-output 91k \
 --omp-nthreads 3 \
