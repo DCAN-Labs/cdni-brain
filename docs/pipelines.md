@@ -128,7 +128,7 @@ ${singularity} run --cleanenv \
 -B ${fmriprep_out}/bcp_fmriprep_outputs:/out \
 -B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
 -B /tmp:/work \
-/home/faird/shared/code/external/pipelines/fmriprep/fmriprep_23.0.1.sif /data/out participant \
+/home/faird/shared/code/external/pipelines/fmriprep/fmriprep_24.1.1.sif /data/out participant \
 --participant-label {subject_ID} \
 --cifti-output 91k \
 --omp-nthreads 3 \
