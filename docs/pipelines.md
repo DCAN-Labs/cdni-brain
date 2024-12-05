@@ -19,7 +19,7 @@ This page has the recommended flags and resources for the major pipelines we use
   <tr>
    <td><strong>Legacy Data</strong>
    </td>
-   <td>ABCD-BIDS -> XCP-D
+   <td>ABCD-BIDS (abcd-hcp-pipeline) -> XCP-D
    </td>
   </tr>
 </table>
