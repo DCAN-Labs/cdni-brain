@@ -74,7 +74,7 @@ Recommended sbatch parameters per 1 subject 1 session process:
 <tr>
 <td>nhp-10.5T-abcd-bids-pipeline
 </td>
-<td>24 hours for one run of a subject, add another 4 hours per run. <br /> At least 8 cpus, max amount is twice the number of functional runs. <br /> 10 times the number of CPUs is the total memory needed.
+<td>48 hours minimum, up to 96 hours if session length is long (more than an hour of functional data). <br /> At least 8 cpus, max amount is twice the number of functional runs. <br /> 10gb memory per CPU recommended.
 <p>
 </td>
 </tr>
