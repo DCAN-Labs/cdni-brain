@@ -62,7 +62,7 @@ Recommended sbatch parameters per 1 subject 1 session process:
 <tr>
 <td>abcd-bids-pipeline
 </td>
-<td> 48 hours, 8 tasks on one node (1 cpu per task), 20gb of memory and 100gb of temporary storage.
+<td> 48 hours, 8 cpus, 80gb of memory, 100gb of temporary storage.
 </td>
 </tr>
 <tr>
