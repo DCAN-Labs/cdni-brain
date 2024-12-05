@@ -40,9 +40,9 @@ This handbook outlines key tools and resources used by the Center for Developmen
    </td>
   </tr>
   <tr>
-   <td>Software Environments
+   <td>Software
    </td>
-   <td>Coding environments and how to use them
+   <td>Software/coding tools and how to use them
    </td>
   </tr>
   <tr>
@@ -66,7 +66,7 @@ This handbook outlines key tools and resources used by the Center for Developmen
   <tr>
    <td>Before Processing
    </td>
-   <td>Any steps the center performs before running processing pipelines (ABCD-BIDS, fMRIPrep, NiBabies, etc)
+   <td>Any steps the center performs before running processing pipelines (Defacing, NORDIC, motion filtering, etc)
    </td>
   </tr>
   <tr>
@@ -78,7 +78,7 @@ This handbook outlines key tools and resources used by the Center for Developmen
   <tr>
    <td>After Processing
    </td>
-   <td>Any steps the lab does after running processing (ABCD-BIDS, fMRIPrep, NiBabies, etc)
+   <td>Any steps the lab does after running processing (filemapper, error query, QA, etc)
    </td>
   </tr>
   <tr>
@@ -100,12 +100,6 @@ This handbook outlines key tools and resources used by the Center for Developmen
    </td>
   </tr>
     <tr>
-   <td>NDA Uploads
-   </td>
-   <td>Managing data on the NDA
-   </td>
-  </tr>
-    <tr>
    <td>Lab Resources
    </td>
    <td>Lab recommendations and software used outside of MSI
@@ -121,12 +115,6 @@ This handbook outlines key tools and resources used by the Center for Developmen
    <td>Analysis Tools
    </td>
    <td>Tools used by the lab to perform various analyses
-   </td>
-  </tr>
-    <tr>
-   <td>PHI
-   </td>
-   <td>Quick guide on PHI for a reminder
    </td>
   </tr>
     <tr>
