@@ -46,7 +46,7 @@ Once connected, you will be able to log in to MSI.
 
 See [this page](hpc.md) for how to log in to an [OnDemand](https://ondemand.msi.umn.edu/pun/sys/dashboard/batch_connect/sessions) Desktop and other ways to access MSI.
 
-To connect via ssh in a terminal, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. [This page](https://www.msi.umn.edu/content/ssh-keys) has the current keys for the clusters and [this page](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) has instructions for setting up your SSH keys for the first time but can be confusing so we have simplified the steps below. There was an update to the ssh keys for the clusters in June of 2023 so if you still need to update your keys, [this page](https://www.msi.umn.edu/content/ssh-keys-renew-june-2023) has instructions on how to update the keys on your system. To learn more about SSH, see [this website.](https://www.cloudflare.com/learning/access-management/what-is-ssh/)
+To connect via ssh in a terminal, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. [This page](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) has instructions for setting up your SSH keys for the first time but can be confusing so we have simplified the steps below. To learn more about what SSH is, see [this website.](https://www.cloudflare.com/learning/access-management/what-is-ssh/)
 
 **Setting up SSH Keys**
 

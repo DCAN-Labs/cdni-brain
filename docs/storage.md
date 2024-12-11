@@ -4,13 +4,13 @@
 ## Best Practices 
 MSI is a shared use space, so it is important to know the approximate size impact your data (inputs and outputs) will have on the shared environment. When you plan to process a dataset, we recommend running jobs for a typical subject on Tier 1 and finding out how large the outputs are ( `du -sh --total /subject/output/path`). Multiply that size by the total number of subjects in your dataset and add the size of your inputs (`du -sh --total /dataset/input/path`) for the full impact. 
 
-CDNI data are often used by multiple researchers and analysts. Please [document data locations](https://docs.google.com/spreadsheets/u/0/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit) to prevent 'double dipping' on storage space, especially when your work requires more than 1TB of space. For Tier 1 use, submit a storage [request form](https://docs.google.com/forms/d/e/1FAIpQLSd1QI_Hmi3khwITVctnaDJYY2M1NegsAWYPR6AXoodUCrrpZw/viewform?usp=sf_link)** about what kinds of data you will be putting onto Tier 1 storage and why Tier 1 is needed, specifically.
+CDNI data are often used by multiple researchers and analysts. Please [document data locations](https://docs.google.com/spreadsheets/u/0/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit) to prevent 'double dipping' on storage space, especially when your work requires more than 1TB of space. For Tier 1 use, submit a storage [request form](https://docs.google.com/forms/d/e/1FAIpQLSd1QI_Hmi3khwITVctnaDJYY2M1NegsAWYPR6AXoodUCrrpZw/viewform?usp=sf_link) about what kinds of data you will be putting onto Tier 1 storage and why Tier 1 is needed, specifically.
 
 ## Data storage options:
 
 * Tier 1 space is limited to 150GB - 20TB per group (depending on the group's allocation). To see what your group allocation is, copy the link `https://www-archive.msi.umn.edu/group/<group>/storage`. into your browser bar with the group name in the path.
     
-* [**S3 (aka Tier 2)](s3.md) storage should be used whenever possible.** New MSI users are limited to 5GB of Tier 2 storage. PIs are allocated 120TB of Tier 2 storage. To see how much space is used in a particular bucket, enter `s3cmd du -H s3://<bucketname>`. Access to a S3 storage bucket can usually be granted by any user who already has access to that storage bucket. [Read here](s3.md) for more on S3 and buckets. 
+* [S3 (aka Tier 2)](s3.md) **storage should be used whenever possible.** New MSI users are limited to 5GB of Tier 2 storage. PIs are allocated 120TB of Tier 2 storage. To see how much space is used in a particular bucket, enter `s3cmd du -H s3://<bucketname>`. Access to a S3 storage bucket can usually be granted by any user who already has access to that storage bucket. [Read here](s3.md) for more on S3 and buckets. 
 
 ## ABCC Data / NGDR 
 

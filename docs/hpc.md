@@ -37,7 +37,7 @@ A web portal for notebook-based computing in the browser, it can be used for rep
 ## Secure Shell (SSH)
 
 Your computer can communicate with MSI resources via SSH. It is a secure way for administrators to access and manage remote computers over the internet, offering protection for data and allowing tasks like logging in, transferring files, and executing commands.
-More information about SSH can be found [here](https://it.umn.edu/services-technologies/resources/use-secure-shell-ssh) on the MSI page. 
+More information about SSH can be found [here on the MSI page](https://it.umn.edu/services-technologies/resources/use-secure-shell-ssh) and on the [Getting Started page](msi-login.md#logging-in-to-msi). 
 
 ## srun 
 
@@ -45,7 +45,7 @@ To facilitate the execution of programs or visualization of data lasting more th
 
 ## SBATCH
 
-SBATCH is a tool used at the Minnesota Supercomputing Institute (MSI) to send tasks to the Slurm system for processing. Users create scripts detailing resource needs like time, processors, memory, and email notifications. These scripts are then submitted using sbatch, ensuring efficient job management and execution within MSI's computing environment. Users can also check job status with `squeue -u username` and cancel jobs with `scancel jobIDnumber`. For more information, refer to the [Job Submission and Scheduling (Slurm)](https://www.msi.umn.edu/content/job-submission-and-scheduling-slurm)
+SBATCH is a tool used at the Minnesota Supercomputing Institute (MSI) to send tasks to the Slurm system for processing. Users create scripts detailing resource needs like time, processors, memory, and email notifications. These scripts are then submitted using sbatch, ensuring efficient job management and execution within MSI's computing environment. Users can also check job status with `squeue -u username` and cancel jobs with `scancel jobIDnumber`. For more information, refer to the [MSI Job Submission and Scheduling page](https://www.msi.umn.edu/content/job-submission-and-scheduling-slurm) and [our internal SBATCH page](slurm-params.md#sbatch)
 
 ## Tier 1 Storage
 
