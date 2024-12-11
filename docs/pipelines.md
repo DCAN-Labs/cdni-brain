@@ -260,7 +260,11 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
 
     * `--despike` : despike the NIfTI/cifti before postprocessing
 
-    * `--input-type fmriprep` : automatically assumes inputs are from fMRIprep (other options are `dcan` for ABCD-BIDS, `hcp` for WashU HCPPipelines, `nibabies` for infant-fMRIPrep / NiBabies, and `ukb` for UK Biobank)
+    * `--input-type fmriprep` : automatically assumes inputs are from fMRIprep 
+        
+        * Other options are `dcan` for ABCD-BIDS, `hcp` for WashU HCPPipelines, `nibabies` for infant-fMRIPrep / NiBabies, and `ukb` for UK Biobank
+
+        * For ABCD-BIDS outputs, XCP-D continues from DCANBOLDProc and maps the necessary files into the fMRIprep naming style. It ingests the non-denoised dtseries, the movement regressor text files, the csf and white matter masks in MNI space, the T1w image, the brain and cortical ribbon masks, and the fsLR 23k surfaces and morphometrics.  
 
     * `-p`/`--nuisance-regressors` : default is "auto" which means 36P is selected 
 
@@ -283,6 +287,8 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
     * `--omp-threads 3` : maximum number of threads per-process
     
     * `-w /work` :  used to specify a working directory within the container’s filesystem, named _/work_.
+
+    * `--smoothing 0` : disable any smoothing, recommended to minimze confusion about which outputs to use
     
     * `-r <radius>` : head radius for computing FD in mm, default 50 is suitable for adult, typically 35-45 for infant. This is only recommended when running XCP-D on infants using nibabies outputs.  
 
@@ -303,6 +309,7 @@ ${singularity} run –cleanenv \
 --participant-label ${subj_id} \
 --resource-monitor \
 --omp-nthreads 3 \ 
+--smoothing \
 --motion-filter-type notch ${bandstopmin} ${bandstopmax} \
 -vv \
 -w /wkdir \
