@@ -291,6 +291,8 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
     * `--smoothing 0` : disable any smoothing, recommended to minimze confusion about which outputs to use
 
     * `--min-time 0` : set the minimum seconds of good frames to 0 (instead of the default of 240 seconds/4 min)
+
+    * `--lower-bpf 0.009` : set the lower cut-off frequency for the Butterworth bandpass filter to match the DCANBOLDProc default
     
     * `-r <radius>` : head radius for computing FD in mm, default 50 is suitable for adult, typically 35-45 for infant. This is only recommended when running XCP-D on infants using nibabies outputs.  
 
@@ -314,6 +316,7 @@ ${singularity} run –cleanenv \
 --omp-nthreads 3 \ 
 --smoothing 0 \
 --min-time 0 \
+--lower-bpf 0.009 \
 --motion-filter-type notch ${bandstopmin} ${bandstopmax} \
 -vv \
 -w /wkdir \
