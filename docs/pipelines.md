@@ -289,6 +289,8 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
     * `-w /work` :  used to specify a working directory within the container’s filesystem, named _/work_.
 
     * `--smoothing 0` : disable any smoothing, recommended to minimze confusion about which outputs to use
+
+    * `--min-time 0` : set the minimum seconds of good frames to 0 (instead of the default of 240 seconds/4 min)
     
     * `-r <radius>` : head radius for computing FD in mm, default 50 is suitable for adult, typically 35-45 for infant. This is only recommended when running XCP-D on infants using nibabies outputs.  
 
@@ -306,10 +308,12 @@ ${singularity} run –cleanenv \
 -B ${xcpd_dir}/processed/sub-${subj_id}_ses-${ses_id}:/xcpd_out \
 -B ${xcpd_dir}/work_dir/sub-${subj_id}_ses-${ses_id}:/wkdir \
 /home/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.9.1.sif \
+--mode abcd
 --participant-label ${subj_id} \
 --resource-monitor \
 --omp-nthreads 3 \ 
---smoothing \
+--smoothing 0 \
+--min-time 0 \
 --motion-filter-type notch ${bandstopmin} ${bandstopmax} \
 -vv \
 -w /wkdir \
