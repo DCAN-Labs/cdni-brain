@@ -310,7 +310,7 @@ ${singularity} run –cleanenv \
 -B ${xcpd_dir}/processed/sub-${subj_id}_ses-${ses_id}:/xcpd_out \
 -B ${xcpd_dir}/work_dir/sub-${subj_id}_ses-${ses_id}:/wkdir \
 /home/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.9.1.sif \
---mode abcd
+--mode abcd \
 --participant-label ${subj_id} \
 --resource-monitor \
 --omp-nthreads 3 \ 
