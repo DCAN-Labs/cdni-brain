@@ -242,7 +242,7 @@ The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of
     </p>
 </div>
 
-XCP-D versions 0.8.0 and above have a new required `mode` flag that will set several defaults. The preferred mode to use for processing within the center is the `abcd` mode, which sets the default flags explained below. Any of these inputs can be overridden if necessary, but give careful thought as to why they would need to be different for your dataset.
+XCP-D versions 0.8.0 and above have a new required `mode` flag that will set several defaults. The preferred mode to use for processing adult data within the center is the `abcd` mode, which sets the default flags explained below. Any of these inputs can be overridden if necessary, but give careful thought as to why they would need to be different for your dataset.
 
 1. Default flags:
     
