@@ -300,6 +300,8 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
 
 4. Example command: 
 
+* Check this path for the most up to date version of XCP-D `/home/faird/shared/code/external/pipelines/xcp_d`
+
 ```
 module load singularity
 singularity= 'which singularity'
@@ -309,7 +311,7 @@ ${singularity} run –cleanenv \
 -B ${fmriprep_dir}/processed/fmriprep/sub-${subj_id}_ses-${ses_id}:/fmriprep_out \
 -B ${xcpd_dir}/processed/sub-${subj_id}_ses-${ses_id}:/xcpd_out \
 -B ${xcpd_dir}/work_dir/sub-${subj_id}_ses-${ses_id}:/wkdir \
-/home/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.9.1.sif \
+/home/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.10.1.sif \
 --mode abcd \
 --participant-label ${subj_id} \
 --resource-monitor \
@@ -317,7 +319,9 @@ ${singularity} run –cleanenv \
 --smoothing 0 \
 --min-time 0 \
 --lower-bpf 0.009 \
---motion-filter-type notch ${bandstopmin} ${bandstopmax} \
+--motion-filter-type notch \
+--band-stop-min ${bandstopmin} \
+--band-stop-max ${bandstopmax} \
 -vv \
 -w /wkdir \
 /fmriprep_out /xcpd_out participant
