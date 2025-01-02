@@ -2,9 +2,9 @@
 
 ## Nodes
 
-**Login nodes** (e.g. `ah0123` or `ln4567`) have access to fewer resources than **compute** (aka **interactive**) nodes. Login nodes are good for file browsing, text editing, small file transfers, and other minimal tasks. Any command taking longer than 15 minutes to run will be killed. To login to a compute node (e.g. `cn0123` or `acn4567`), run `ssh -Y <login node>` (e.g. `ssh -Y agate`. You will be prompted to authenticate with Duo. 
+**Login nodes** (e.g. `ahl0123`) have access to fewer resources than **compute** (aka **interactive**) nodes. Login nodes are good for file browsing, text editing, small file transfers, and other minimal tasks. Any command taking longer than 15 minutes to run will be killed. If you grab a desktop from OOD, you'll automatically be placed on a compute node (e.g. `cn0123` or `acn4567`). To login to a login node, run `ssh -Y <login node>` (e.g. `ssh -Y agate`). You will be prompted to authenticate with Duo. 
 
-**sbatch** jobs can be submitted on login or compute nodes. **sruns** can only be requested on a compute node. Read more about sbatch and srun jobs [here.](slurm-params.md) 
+**sbatch** jobs can be submitted on login or compute nodes. **sruns** can only be requested on a login node. Read more about sbatch and srun jobs [here.](slurm-params.md) 
 
 When you submit jobs, you must designate a **partition** for that job. If you try to submit a job on a partition that doesn't have access to the amount of resources you requested or that can't be accessed from your current node, the job submission will fail and throw an error. MSI has two HPC clusters (agate, mangi) to use for submitting jobs.  Check [this site](https://status.msi.umn.edu/) for the status of the clusters. Agate has several partition options. 
 

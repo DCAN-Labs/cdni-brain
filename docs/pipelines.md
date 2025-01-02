@@ -242,7 +242,7 @@ The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of
     </p>
 </div>
 
-XCP-D versions 0.8.0 and above have a new required `mode` flag that will set several defaults. The preferred mode to use for processing within the center is the `abcd` mode, which sets the default flags explained below. Any of these inputs can be overridden if necessary, but give careful thought as to why they would need to be different for your dataset.
+XCP-D versions 0.8.0 and above have a new required `mode` flag that will set several defaults. The preferred mode to use for processing adult data within the center is the `abcd` mode, which sets the default flags explained below. Any of these inputs can be overridden if necessary, but give careful thought as to why they would need to be different for your dataset. For processing infant data preprocessed with infant-fMRIPrep/NiBabies, the preferred mode is `hbcd` which has the same defaults except for the input-type. 
 
 1. Default flags:
     
@@ -260,7 +260,7 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
 
     * `--despike` : despike the NIfTI/cifti before postprocessing
 
-    * `--input-type fmriprep` : automatically assumes inputs are from fMRIprep 
+    * `--input-type fmriprep` : automatically assumes inputs are from fMRIprep (or nibabies for `hbcd` mode)
         
         * Other options are `dcan` for ABCD-BIDS, `hcp` for WashU HCPPipelines, `nibabies` for infant-fMRIPrep / NiBabies, and `ukb` for UK Biobank
 
@@ -289,12 +289,18 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
     * `-w /work` :  used to specify a working directory within the container’s filesystem, named _/work_.
 
     * `--smoothing 0` : disable any smoothing, recommended to minimze confusion about which outputs to use
+
+    * `--min-time 0` : set the minimum seconds of good frames to 0 (instead of the default of 240 seconds/4 min)
+
+    * `--lower-bpf 0.009` : set the lower cut-off frequency for the Butterworth bandpass filter to match the DCANBOLDProc default
     
     * `-r <radius>` : head radius for computing FD in mm, default 50 is suitable for adult, typically 35-45 for infant. This is only recommended when running XCP-D on infants using nibabies outputs.  
 
 3. If an error is encountered, check for a solution on the [troubleshooting page](troubleshooting.md#xcp-d) and consider creating a [Github issue](https://github.com/DCAN-Labs/cdni-brain/issues) or adding it yourself if your error is not there.
 
 4. Example command: 
+
+* Check this path for the most up to date version of XCP-D `/home/faird/shared/code/external/pipelines/xcp_d`
 
 ```
 module load singularity
@@ -305,12 +311,17 @@ ${singularity} run –cleanenv \
 -B ${fmriprep_dir}/processed/fmriprep/sub-${subj_id}_ses-${ses_id}:/fmriprep_out \
 -B ${xcpd_dir}/processed/sub-${subj_id}_ses-${ses_id}:/xcpd_out \
 -B ${xcpd_dir}/work_dir/sub-${subj_id}_ses-${ses_id}:/wkdir \
-/home/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.9.1.sif \
+/home/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.10.1.sif \
+--mode abcd \
 --participant-label ${subj_id} \
 --resource-monitor \
 --omp-nthreads 3 \ 
---smoothing \
---motion-filter-type notch ${bandstopmin} ${bandstopmax} \
+--smoothing 0 \
+--min-time 0 \
+--lower-bpf 0.009 \
+--motion-filter-type notch \
+--band-stop-min ${bandstopmin} \
+--band-stop-max ${bandstopmax} \
 -vv \
 -w /wkdir \
 /fmriprep_out /xcpd_out participant
