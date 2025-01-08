@@ -74,7 +74,7 @@ nav:
   - After processing:
       - file-mapper: filemapper.md    
       - Precision Mapping Wrapper: precision.md
-      - Processing Status: status.md
+      - ABCD-BIDS Processing Status: status.md
       - Error Query: error_query.md
       - Infant Quality Assessment: infant-qa.md
       - Analyzing Motion Regressors: motion-regressor.md
