@@ -28,13 +28,18 @@ The general form of the run command is
     TASK = BIDS task name (without the “task-”)
 
 
-    FD = Framewise displacement (FD) threshold, in mm. Is **not** required to be the same FD threshold used with XCP-D. Recommended: between 0.1 and 0.2.
+    FD = Framewise displacement (FD) threshold, in mm. Is **not** required to be the same FD threshold 
+    used with XCP-D. Recommended: between 0.1 and 0.2.
 
 
-    NUM = Number of permutations to run. (In each permutation, a block of consecutive minutes is sampled   The final reliability values in the curve will be an average over all iterations. Amount of time needed to run increases with the number of iterations.  Recommended: 10 or more.
+    NUM = Number of permutations to run. (In each permutation, a block of consecutive minutes is sampled. 
+    The final reliability values in the curve will be an average over all iterations.
+    Amount of time needed to run increases with the number of iterations. 
+    Recommended: 10 or more.
 
 
-    MIN = Split-half length limit in minutes, i.e. how far the x-axis of the curve plot extends. Must be an integer. Must be no more than half the total time of TASK specified above.
+    MIN = Split-half length limit in minutes, i.e. how far the x-axis of the curve plot extends. Must be an integer. 
+    Must be no more than half the total time of TASK specified above.
 
 
 _Notes:_
