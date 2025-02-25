@@ -108,7 +108,7 @@ A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing o
     
     * `--omp-nthreads 3` : maximum number of threads per-process
     
-    * `--resource-monitor` : enable Nipype’s resource monitoring to keep track of memory and CPU usage
+    * `--project-goodvoxels` : prevent high variance voxels from being projected to the surface 
     
     * `-vv` : level 2 verbose log output, useful for troubleshooting
     
@@ -133,7 +133,7 @@ ${singularity} run --cleanenv \
 --cifti-output 91k \
 --omp-nthreads 3 \
 --clean-workdir \
---resource-monitor \
+--project-goodvoxels \
 -vv \
 -w /work
 ```
@@ -282,8 +282,6 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
     
     * `--participant-label` : used to specify the specific participant being processed 
     
-    * `--resource-monitor` : enable Nipype’s resource monitoring to keep track of memory and CPU usage
-    
     * `--omp-threads 3` : maximum number of threads per-process
     
     * `-w /work` :  used to specify a working directory within the container’s filesystem, named _/work_.
@@ -314,7 +312,6 @@ ${singularity} run –cleanenv \
 /home/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.10.1.sif \
 --mode abcd \
 --participant-label ${subj_id} \
---resource-monitor \
 --omp-nthreads 3 \ 
 --smoothing 0 \
 --min-time 0 \
