@@ -21,12 +21,12 @@ There are 4 files needed to run template matching which are output from XCP-D:
 - anat/sub-{SUB}_ses-{SES}_space-fsLR_den-32k_hemi-L_desc-hcp_midthickness.surf.gii
 - anat/sub-{SUB}_ses-{SES}_space-fsLR_den-32k_hemi-R_desc-hcp_midthickness.surf.gii
 
-In older versions of XCP-D look for these func filenames instead:
+In older versions of XCP-D (< 0.8.0) look for these func filenames instead:
 
 - sub-{SUB}_ses-{SES}_task-{TASK}_space-fsLR_den-91k_desc-**interpolated**_bold.dtseries.nii
 - sub-{SUB}_ses-{SES}_task-{TASK}_desc-**dcan**_qc_power_2014_FD_only.mat
 
-The dtseries will need to be interpolated in order to fill in 0 values along the midline produced by fMRIprep. Use this script for versions of XCP-D above 9.0: `/home/faird/shared/code/internal/utilities/interpolate_timeseries_from_xcpd9/`
+The dtseries will need to be interpolated in order to fill in 0 values along the midline produced by fMRIprep. Use this script for versions of XCP-D >= 0.8.0: `/home/faird/shared/code/internal/utilities/interpolate_timeseries_from_xcpd9/`
 
 - You'll need to provide the subject ID, session ID, task, and path to where the dtseries is as arguments to the script. 
 
