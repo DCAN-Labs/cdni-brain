@@ -172,6 +172,20 @@ In the Infant section above, points 3-4 can be generalized for ABCD troubleshoot
 
 ## NiBabies and fMRIPrep
 
+`RuntimeError: Multi-echo images found with mismatching shapes`
+
+* This can happen when a scan was interrupted or there was an issue exporting the DICOMs
+
+* To fix this, you can use fsl to trim the frames to the shortest length: `fslroi <input> <output> <tmin> <tsize>`
+
+`OSError: [Errno 30] Read-only file system: '/path/to/run/folder/.proc-210522_time-1736377472.9998343_freq-1.00'`
+
+* This is due to the resource monitor trying to output logs to your run folder instead of your home folder (which was the old default)
+
+* To fix this, remove the `--resource-monitor` flag
+
+* This is an fMRIPrep and XCP-D issue
+
 For a comprehensive document on troubleshooting nibabies and fmriprep errors, [see here](https://docs.google.com/document/u/0/d/16qSEPV1_FHOHBq2eJOuZLqISv-0zCbpOJQ7HesEQCv4/edit).
 
 ## XCP-D
@@ -180,18 +194,32 @@ For common troubleshooting processes and a deeper dive into the utilization of X
 
 ## S3 Wrappers
 
-
 **If there are run files:**
 
-
 Errors are common when running preliminary tests on s3 wrappers. In order to troubleshoot these errors, the first step is to grab an [interactive session](slurm-params.md#srun-immediately-run-a-command-using-the-specified-compute-resources). Next, run the content of one run file by copying and pasting the contents into the terminal step-by-step in order to see the outputs of each command in real time, which will uncover the step in which the error is occurring. Once the error is reproduced, incorporate the fix, then rerun `make_run_files.sh` and a test subject for the submitter script.
+
 Note: it is helpful to check the `tmp/` directory and the s3 bucket to validate file and directory paths in the template/run files themselves.
 
 
 **If there are not run files:**
 
-
 The issue should be regarding the paths to the files in `make_run_files.sh.` With `make_run_files.sh` opened, copy and paste the contents of the file into the terminal in order to see if the conditional statements match the necessary paths of the files that need to be included. 
 
+## Template Matching
+
+```
+Error using read_gifti_file_standalone (line 20)
+[GIFTI] Loading of XML file /path/to/temp/file/tp84ce762a_7f00_4020_9723_18daf76a12c2.gii failed.
+```
+
+* This is due to either a permissions error on one of your input files or an incorrect path.
+
+
+```
+Error using fprintf
+Invalid file identifier. Use fopen to generate a valid file identifier.
+```
+
+* This is due to the output directory not existing. Make sure you create the output directory before running template matching. 
 
 For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
