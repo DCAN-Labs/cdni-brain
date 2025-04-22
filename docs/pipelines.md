@@ -94,7 +94,9 @@ See [MSI partitions](partitions.md) to choose the appropriate partition based on
 
 ## 1. fMRIPrep
 
-Read: [fMRIPrep ReadTheDocs site](https://fmriprep.org/en/stable/)
+[fMRIPrep ReadTheDocs](https://fmriprep.org/en/stable/)
+
+[fMRIPrep Github](https://github.com/nipreps/fmriprep)
 
 A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing of task-based and resting-state functional MRI (fMRI). For usage information, see [here](https://fmriprep.org/en/stable/usage.html).
 
@@ -140,9 +142,11 @@ ${singularity} run --cleanenv \
 
 ## 2. Infant-fMRIprep (aka NiBabies)
 
-Read: [NiBabies ReadTheDocs site](https://nibabies.readthedocs.io/en/latest/)
+[NiBabies ReadTheDocs](https://nibabies.readthedocs.io/en/latest/)
 
-NiBabies is a robust pre-processing MRI and fMRI workflow that is also a part of the NiPreps family. NiBabies is designed and optimized for human infants between 0-2 years old. For more information on NiBabies code, see [here](https://github.com/nipreps/nibabies). For in-depth usage information, see the [Read the Docs here](https://nibabies.readthedocs.io/en/latest/usage.html).
+[NiBabies Github](https://github.com/nipreps/nibabies)
+
+NiBabies is a robust pre-processing MRI and fMRI workflow that is also a part of the NiPreps family. NiBabies is designed and optimized for human infants between 0-2 years old. For in-depth usage information, see the [Read the Docs here](https://nibabies.readthedocs.io/en/latest/usage.html).
 
 
 1. Preferred flags:
@@ -192,9 +196,9 @@ ${singularity} run --cleanenv \
 
 ## 3. ABCD-BIDS (abcd-hcp-pipeline)
 
-Read: [abcd-hcp-pipeline @ GitHub](https://github.com/DCAN-Labs/abcd-hcp-pipeline)
+[abcd-hcp-pipeline ReadTheDocs](https://abcd-hcp-pipeline.readthedocs.io/en/latest/)
 
-Read: [abcd-hcp-pipeline @ ABCC ReadTheDocs](https://collection3165.readthedocs.io/en/stable/pipeline/)
+[abcd-hcp-pipeline GitHub](https://github.com/DCAN-Labs/abcd-hcp-pipeline)
 
 This pipeline provides an interface for processing BIDS-formatted MRI datasets using the DCAN-HCP pipeline and supporting modules including DCANBOLDProcessing and DCAN Executive Summary. For additional usage, see [here](https://abcd-hcp-pipeline.readthedocs.io/en/latest/usage/).
 
@@ -232,6 +236,10 @@ ${singularity} run --cleanenv --no-home \
 ```
 
 ## 4. XCP-D
+
+[XCP-D ReadTheDocs](https://xcp-d.readthedocs.io/en/stable/)
+
+[XCP-D Github](https://github.com/PennLINC/xcp_d)
 
 The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of BIDS derivatives. The inputs are required to include at least anatomical and functional preprocessed outputs with at least one preprocessed BOLD image. For further information, see [here](https://xcp-d.readthedocs.io/en/latest/usage.html). 
 
@@ -326,6 +334,8 @@ ${singularity} run –cleanenv \
 
 ## 5. NHP 10.5T ABCD BIDS synth
 
+[NHP ABCD BIDS Synth Github](https://github.com/DCAN-Labs/nhp-abcd-bids-pipeline-synth)
+
 This pipeline is for processing macaque data collected from a 10.5T scanner from the zlab. Before running the pipeline, check the [preprocessing page](preprocessing.md) for preprocessing steps to prepare the data to be run. This pipeline uses a fork of the original NHP ABCD BIDS pipeline that incorporates synth distortion correction for use with the 10.5T data, see [this repo](https://github.com/DCAN-Labs/nhp-abcd-bids-pipeline-synth) for more information. Read more about synth distorion [here.](https://pubmed.ncbi.nlm.nih.gov/37023632/)
 
 1. Preferred flags:
@@ -378,9 +388,7 @@ module load singularity; singularity exec --cleanenv \
 
 ## 6. DCAN Infant
 
-
-Read: [infant-abcd-bids-pipeline @ GitHub](https://github.com/DCAN-Labs/infant-abcd-bids-pipeline)
-
+[infant-abcd-bids-pipeline GitHub](https://github.com/DCAN-Labs/infant-abcd-bids-pipeline)
 
 This fMRI minimal preprocessing pipeline is based on Washington University's HCP Pipeline. Many changes were made to accomodate the differences in the developing brain of infants. Notably:
 
@@ -396,11 +404,11 @@ This fMRI minimal preprocessing pipeline is based on Washington University's HCP
     
     * Adjust class means of tissue to fit T1w contrasts.
 
-Overview: fMRI -> anatomical registration - no boundary based registration, use T2w to align. Running the PreFreeSurfer, FreeSurfer, and PostFreeSurfer stages will pre-process anatomical images. Following those with fMRIVolume and fMRISurface will pre-process functional images. For more information on the code, see[ the github link here](https://github.com/DCAN-Labs/dcan-infant-pipeline). For a more in-depth description of the pipeline, see [this page](infant-doc.md). 
+Overview: fMRI -> anatomical registration - no boundary based registration, use T2w to align. Running the PreFreeSurfer, FreeSurfer, and PostFreeSurfer stages will pre-process anatomical images. Following those with fMRIVolume and fMRISurface will pre-process functional images. For more information on the code, see [the github link here](https://github.com/DCAN-Labs/dcan-infant-pipeline). For a more in-depth description of the pipeline, see [the infant documentation page](infant-doc.md). 
 
 1. Preferred flags:
     
-    * `--freesurfer-license` :If using docker or singularity, you will need to acquire and provide your own FreeSurfer license. The license can be acquired by filling out[ this form](https://surfer.nmr.mgh.harvard.edu/registration.html).
+    * `--freesurfer-license` :If using docker or singularity, you will need to acquire and provide your own FreeSurfer license. The license can be acquired by filling out [this form](https://surfer.nmr.mgh.harvard.edu/registration.html).
     
     * `--participant-label` : Optional list of participant IDs to run. Default is all IDs found under the BIDS input directory. The participant label does not include the "sub-" prefix
     
@@ -414,7 +422,7 @@ Overview: fMRI -> anatomical registration - no boundary based registration, use 
 
 1. For further information on DCAN Infant Pipeline flags, see the [readthedocs section here](infant-doc.md#pipeline-optional-flags-and-example).
 
-2. If an error is encountered, document it [here](https://docs.google.com/document/d/1FEcHVf34hWy9o0V0GKka5b2VKw5ndRt8/edit). Also, see [Troubleshooting](troubleshooting.md#infant-abcd-bids-pipeline-dcan-infant-pipeline).
+2. If an error is encountered, document it [on this Google Doc](https://docs.google.com/document/d/1FEcHVf34hWy9o0V0GKka5b2VKw5ndRt8/edit). Also, see [the troubleshooting page](troubleshooting.md#infant-abcd-bids-pipeline-dcan-infant-pipeline).
 
 3. Example command:
 
@@ -437,6 +445,10 @@ ${infant_abcd_bids_pipeline} \
 
 ## 7. BIBSnet
 
+[BIBSnet ReadtheDocs](https://bibsnet.readthedocs.io)
+
+[BIBSnet Github](https://github.com/DCAN-Labs/BIBSnet)
+
 BIBSnet is a segmentation pipeline including stages `prebibsnet`, `bibsnet`, and `postbibsnet`.
 
 Example command: 
@@ -458,10 +470,9 @@ Example command:
 
 For troubleshooting information, see [the Testing BIBSnet page.](bibsnet-testing.md)
 
-Find more information about BIBSnet [here.](https://bibsnet.readthedocs.io)
-
-
 ## 8. Task Pipeline
+
+[Task Pipeline Github](https://github.com/DCAN-Labs/abcd-bids-tfmri-pipeline)
 
 This pipeline performs level 1 and 2 analyses of fMRI dtseries data. 
 
@@ -479,8 +490,6 @@ wrapper_dir=.
 
 python3 pipeline_wrapper.py --subject ${subject_ID} --ses ${session_ID} --study-dir ${study_dir} --task ${task_name} --events-dir ${events_dir} --fsl-dir ${fsl_dir} --wb-command ${wb_command} --wrapper-location ${wrapper_dir}
 ```
-
-Find out more information [here.](https://github.com/DCAN-Labs/abcd-bids-tfmri-pipeline)
 
 ## 9. CABINET
 
