@@ -1,5 +1,7 @@
 # Template Matching
 
+Find the [version-controlled code and documentation](https://github.com/DCAN-Labs/compare_matrices_to_assign_networks) on GitHub.
+
 Template matching is a method of network mapping that leverages commonly observed networks that have been previously observed in a group average to accelerate the community detection process. Individual networks are identified in a 3-step process:
 
 * **Run a community detection of your choosing on an average connectivity matrix**: In Hermosillo et al. 2022, we used networks defined from an average connectivity matrix created from 120 healthy adults. Infomap community detection was conducted on the average matrix (See Gordon et al. 2017 for details).
@@ -72,8 +74,5 @@ ${OUTDIR} \
 ${MASK_PATH} \
 ${INFOMAP}
 ```
-
-Version-controlled code and documentation can be found on [GitHub.](https://github.com/DCAN-Labs/compare_matrices_to_assign_networks)
-
 
 For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
