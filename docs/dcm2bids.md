@@ -3,7 +3,7 @@
 <div class="admonition attention">
     <p class="first admonition-title">Attention</p>
     <p class="last">
-        This document describes usage of Dcm2bids 2.1.x as used in the `dcm2bids` and `dcm2bids_xa30_test` labwide conda environments -- if using the `dcm2bids3` environment (intended for use with the dcm2bids3 NORDIC wrapper), refer to the Dcm2bids 3 documentation page linked below for information on breaking changes introduced in dcm2bids3.
+        This document describes usage of Dcm2bids 2.1.x as used in the `dcm2bids` and `dcm2bids_xa30_test` labwide conda environments -- if using the `dcm2bids3` environment (intended for use with the dcm2bids3 NORDIC wrapper), refer to the Dcm2bids 3 documentation page linked below for information on breaking changes introduced in dcm2bids3. We are in the process of updating this page to focus on dcm2bids3 usage, which should be the primary dcm2bids conversion version.
     </p>
 </div>
 
