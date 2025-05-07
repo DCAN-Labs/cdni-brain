@@ -2,29 +2,29 @@
 
 ## Nodes
 
-**Login nodes** (e.g. `ahl0123`) have access to fewer resources than **compute** (aka **interactive**) nodes. Login nodes are good for file browsing, text editing, small file transfers, and other minimal tasks. Any command taking longer than 15 minutes to run will be killed. If you grab a desktop from OOD, you'll automatically be placed on a compute node (e.g. `cn0123` or `acn4567`). To login to a login node, run `ssh -Y <login node>` (e.g. `ssh -Y agate`). You will be prompted to authenticate with Duo. 
+Login nodes (e.g. `ahl0123`) have access to fewer resources than compute** (aka interactive) nodes. Login nodes are good for file browsing, text editing, small file transfers, and other minimal tasks. Any command taking longer than 15 minutes to run will be killed. If you grab a desktop from OOD, you'll automatically be placed on a compute node (e.g. `cn0123` or `acn4567`). To login to a login node from your local terminal, run `ssh -Y <cluster>` (e.g. `ssh -Y agate`). You will be prompted to authenticate with Duo. 
 
-**sbatch** jobs can be submitted on login or compute nodes. **sruns** can only be requested on a login node. Read more about sbatch and srun jobs [here.](slurm-params.md) 
-
-When you submit jobs, you must designate a **partition** for that job. If you try to submit a job on a partition that doesn't have access to the amount of resources you requested or that can't be accessed from your current node, the job submission will fail and throw an error. MSI has two HPC clusters (agate, mangi) to use for submitting jobs.  Check [this site](https://status.msi.umn.edu/) for the status of the clusters. Agate has several partition options. 
+**sbatch** jobs can be submitted on login or compute nodes. **sruns** can only be requested on a login node. We describe sbatch and srun jobs in more detail on our [Slurm Jobs page.](slurm-params.md) 
 
 ## Partitions 
 
-Read:  [Partitions @ MSI](https://www.msi.umn.edu/partitions)
+[Read: Partitions @ MSI](https://www.msi.umn.edu/partitions)
 
-Partitions manage different sets of hardware and have different limits for computing resources. 
+Partitions manage different sets of hardware and have different limits for computing resources. When you submit jobs, you must designate a partition for that job. If you try to submit a job on a partition that doesn't have access to the amount of resources you requested or that can't be accessed from your current node, the job submission will fail and throw an error. MSI has one HPC clusters (Agate) to use for submitting jobs. [Check the status of the cluster here](https://status.msi.umn.edu/).
 
-Each partition you may choose is specific to the HPC resource that is being used, so you will nee to make sure that the partitions you request is either a part of the cluster you are submitting from or a **federated partition**. Federated partitions (e.g. **msismall**) automatically delegate jobs to a partition that is accessible no matter the node you are on.
+Now that MSI has retired the old Mesabi cluster and collapsed the Mangi nodes onto the Agate cluster, all partitions should be available to you when requesting resources.
 
-![Federated Partitions](img/federated_partitions.png)
+![Table of Available Partitions](img/federated_partitions.png)
 
-When [submitting jobs to slurm](slurm.md), it is important to consider which paritions are best for your job. [This section](optimizing.md) will help you get started with determining the optimal resources for a job. 
+When submitting jobs to SLURM, it is important to consider which paritions are best for your job. [Our resource optimization section](optimizing.md) will help you get started with determining the optimal resources for a job.
 
 ## Partition Resources
 
-![Partions of MSI](img/partitions-example.jpeg)
+![Table of Example Partions of MSI](img/partitions-example.jpeg)
 
-**"Partition name"** (`-p=name`) specifies the string for the partition. Note that some partitions are only accessible if connected to a corresponding node, e.g. **ahXXXX** for Agate. You can also list multiple partitions. 
+* Please note that the partition names in this image no longer exist but this logic still applies.
+
+**"Partition name"** (`-p=name`) specifies the string for the partition. You can list multiple partitions. 
 
 **“Node sharing?”** specifies whether a partition allows for multiple jobs to be allocated on the same node across resources. The `--exclusive` flag will prevent the node from being shared with other jobs/users. 
 
@@ -40,4 +40,4 @@ When [submitting jobs to slurm](slurm.md), it is important to consider which par
 
 **“Maximum nodes per job”** (`--nodes=N`) is the highest number of nodes one may be allocated for each job.
 
-For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
+For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
