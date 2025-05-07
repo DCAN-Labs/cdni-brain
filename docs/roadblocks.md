@@ -9,7 +9,7 @@ If you are experiencing errors/issues with general usage or Slurm, contact the M
 Here are some potentially helpful additions to your .bashrc (located in your home directory).
 
 Greg Conan developed a function that keeps track of all of the commands you use in a session and allows you to search for commands you've used previously. This function creates a `.history.txt` file in your home directory with all of the commands you run (and the date and time you ran them!). 
-Usage: `grephist <search_term>`
+Usage: `grephist <search_term>`<br>
 By default, this command will only return the 10 most recent search matches. To return more, use the option `-n <# lines to return`. 
 
 ```
@@ -121,7 +121,7 @@ fullpath_convert() {
 PROMPT_COMMAND='echo "$(date +"%Y-%m-%d %H:%M") $(history | tail -n 1)" >> ~/.history.txt'
 ```
 
-This function will automatically give execute permissions to group and users.
+This function will automatically give execute permissions to group and users.<br>
 Usage: `ttouch <filename>`
 
 ```
@@ -131,7 +131,7 @@ ttouch() {
     }
 ```
 
-These are some helpful variables/alias' to add to your .bashrc. Read more [here](https://stackoverflow.com/questions/7342735/bash-command-whats-the-difference-between-a-variable-and-an-alias) about the difference between assigning something as an alias vs. as a variable. 
+These are some helpful variables/alias' to add to your .bashrc. Read more about the [difference between alias' and variables.](https://stackoverflow.com/questions/7342735/bash-command-whats-the-difference-between-a-variable-and-an-alias) 
 
 - `lab_conda="/home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh"`
     * Or you could just add `source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh` to automatically enter the labwide environment.
@@ -139,7 +139,7 @@ These are some helpful variables/alias' to add to your .bashrc. Read more [here]
 - `wb='wb_command'`
 - `scue='squeue -al --me'`
 
-You can also have modules automatically loaded, although MSI recommends not to have too many (more than ~5) loaded by default as it might cause conflicts with other scripts/environments/etc. Some modules that are recommended to load automatically are `tree`, `libreoffice`, and `gview`. You can read more about these modules on [the module page](modules.md).
+You can also have modules automatically loaded, although MSI recommends not to have too many (more than ~5) loaded by default as it might cause conflicts with other scripts/environments/etc. The modules you load by default will depend on the type of work you do. You can read more about some commonly helpful modules on [the module page](modules.md).
 
 ## Disk Quota
 
@@ -181,9 +181,9 @@ If you cannot access MSI or it's running slow:
 
     * MSI can also run slow during the week of maintenance day
 
-* Check the status of MSI [here](https://status.msi.umn.edu/)
+* [Check the status of MSI](https://status.msi.umn.edu/)
 
-* Check the status of MSI nodes [here](https://download.genomics.umn.edu/website/slurmnodes/index.html)
+* [Check the status of MSI nodes](https://download.genomics.umn.edu/website/slurmnodes/index.html)
 
 If someone can't read/write/change your folders/files:
 
@@ -197,7 +197,7 @@ If you need to change your active group:
     
 * This will let you make new files in the proper group
 
-* Read more about this [here](https://opensource.com/article/19/9/linux-chgrp-and-newgrp-commands#:~:text=The%20newgrp%20command%20allows%20a%20user%20to%20override,all%20files%20must%20have%20the%20same%20group%20ownership.)
+* Read [more about the newgrp command](https://opensource.com/article/19/9/linux-chgrp-and-newgrp-commands#:~:text=The%20newgrp%20command%20allows%20a%20user%20to%20override,all%20files%20must%20have%20the%20same%20group%20ownership.)
 
 If you are getting FileNotFound errors in paths using `panfs/roc/`:
 
@@ -212,7 +212,7 @@ If you are getting FileNotFound errors in paths using `panfs/roc/`:
 /panfs/roc/intel	->  /common/software/install/migrated.intel
 ```
 
-* Find out more information [here](https://www.msi.umn.edu/support/faq/how-do-i-update-my-workflow-after-software-library-migration)
+* Find out more information [about how to update paths after a library migration](https://www.msi.umn.edu/support/faq/how-do-i-update-my-workflow-after-software-library-migration)
 
 ## Applications
 
@@ -240,4 +240,4 @@ If chromium fails to launch with a profile lock error (or fails to launch with n
 * Run this command to remove the lock files: `rm -rf ~/.config/chromium/Singleton*` 
 
 
-For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
+For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
