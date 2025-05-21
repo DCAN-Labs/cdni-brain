@@ -231,12 +231,10 @@ Hypothetically if your command was `module load fsl` that would load FSL before 
 
         module load fsl
 
-        FSLDIR=/panfs/roc/msisoft/fsl
-        . ${FSLDIR}/6.0.4/etc/fslconf/fsl.sh
-        PATH=${FSLDIR}/6.0.4/bin:${PATH}
+        FSLDIR=/common/software/install/migrated/fsl/6.0.4
+        . ${FSLDIR}/etc/fslconf/fsl.sh
+        PATH=${FSLDIR}/bin:${PATH}
         export FSLDIR PATH
-
- **NOTE** : This process still does not seem to work all the time. If just adding this task does not work, before running your script, also run `module load fsl` and `bash prerun.sh` in the terminal. If you figure out how to make this work every time, please [post a GitHub issue](https://github.com/DCAN-Labs/dcan-labs-informational-guide/issues) informing us how to do it.
 
 ### Running the debugger
 
