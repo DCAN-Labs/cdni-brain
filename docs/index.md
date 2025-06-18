@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8161443.svg)](https://doi.org/10.5281/zenodo.8161443)
 
-## Read the Docs
+## Table of Contents
 
 <div class="admonition attention">
     <p class="first admonition-title">Attention</p>
@@ -132,4 +132,4 @@ This handbook outlines key tools and resources used by the Center for Developmen
 </table>
 
 
-For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
+For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
