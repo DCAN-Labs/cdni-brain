@@ -1,6 +1,6 @@
 # Optimizing Job Submissions
 
-In order to create a sbatch for a script, you need to know how many resources the job will need to run. To get an estimate, you can run a few subjects to get an idea of how much resources a single subject uses. We also have [guidelines for how many resources each pipeline needs](pipelines.md). The account you select for running a job also matters, as some accounts will queue faster than others depending on their usage. It is important to optimize the resources for your job so they queue as fast as possible and don't spend days/weeks sitting stagnant in the queue. 
+In order to create a sbatch for a script, you need to know how many resources the job will need to run. To get an estimate, you can run a few subjects to get an idea of how much resources a single subject uses. We also have [pipeline-specific resource guidelines](pipelines.md). The account you select for running a job also matters, as some accounts will queue faster than others depending on their usage. It is important to optimize the resources for your job so they queue as fast as possible and don't spend days/weeks sitting stagnant in the queue. 
 
 ## seff
 
@@ -10,7 +10,7 @@ In order to create a sbatch for a script, you need to know how many resources th
 
     - `seff` is used to check the memory utilization and CPU efficiency for completed jobs. Note that for running and failed jobs, the efficiency numbers reported by `seff` are not reliable so please use this tool only for successfully completed jobs.
 
-        - Use `sacct -S YYYY-MM-DD -u x500` to find job IDs for past jobs that occurred after the specified start date. See more information [on this page](slurm.md#job-status)
+        - Use `sacct -S YYYY-MM-DD -u x500` to find job IDs for past jobs that occurred after the specified start date. See more information on the [SLURM Commands page.](slurm.md#job-status)
 
     - CPU Efficiency is calculated as the ratio of the actual core time from all cores divided by the number of cores requested divided by the run time.
 
@@ -28,11 +28,11 @@ In order to create a sbatch for a script, you need to know how many resources th
         
         - _CPU Efficiency_ is the proportion of the CPU that was utilized for the job compared to the total core-walltime of the CPU.
 
-        - To change these specifications, see the sbatch parameters on [this page](slurm.md#job-parameters)
+        - To change these specifications, see the sbatch parameters on the [SLURM Commands page.](slurm.md#job-parameters)
 
 ## Storage
 
-When you're submitting a job that produces output files, you need to consider where those outputs will be stored (i.e. tier1 vs s3 and on which share). See [this page](storage.md) for more information about where and how to store your outputs. Remember, **DO NOT** store ABCC/ABCD data on the `faird` share. 
+When you're submitting a job that produces output files, you need to consider where those outputs will be stored (i.e. tier1 vs s3 and on which share). See [the Data Storage page](storage.md) for more information about where and how to store your outputs. Remember, **DO NOT** store ABCC/ABCD data on the `faird` share. 
 
 ## Fairshare
 
@@ -50,7 +50,7 @@ The goal of fairshare is to increase the priority when scheduling jobs. When a g
 For checking the fairshare of a specific account, use `sshare --account=$account_name -a`: $account_name is the group account that you want to check the fairshare of. The group account names are: **miran045**, **faird**, **feczk001**, **rando149**, plus any additional shares you have access to, like **smnelson**, **btervocl**, or **bart**. 
 
 * The number within the `FairShare` column is a fraction of the total fairshare remaining, with larger numbers meaning a higher priority and smaller numbers meaning a lower priority 
-* For more detail, [watch this video](https://www.youtube.com/watch?v=uKeMHDo1BkM).
+* For more detail, [watch this fairshare tutorial.](https://www.youtube.com/watch?v=uKeMHDo1BkM).
 
 ## Optimizing Your SLURM Queue
 
@@ -81,4 +81,4 @@ These tips can be applied to ANY type of job. You don't have to use all of them 
 - Have different people submit jobs for you.
 
 
-For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
+For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).

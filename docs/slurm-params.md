@@ -10,8 +10,8 @@ Read: [Interactive queue use with srun @ MSI](https://www.msi.umn.edu/content/in
 
 1. **srun** is primarily useful for jobs that will take longer than 15 minutes to run on a [login node](partitions.md#nodes) or need more computing resources (i.e. RAM). They are also very useful for loading a Matlab session (or something similar) with sufficient resources. 
 2. This will allow you to work directly in a terminal, allowing you to run resource intensive software on it. You get the outputs in your terminal and you cannot write other commands until it is finished. (If you append the “&” symbol to the command it will execute in the background, allowing continued use of the current terminal.)
-3. If you disconnect, you will lose control over srun jobs, or they might be killed (depending on whether they use stdout or not). They will also be killed if the machine to which you connect to submit jobs is rebooted.  
-4. Before grabbing an srun, you need to make sure you are ssh'd into one of the clusters: `ssh -Y agate/mangi`.
+3. If you disconnect from the node, you will lose control over srun jobs, or they might be killed (depending on whether they use stdout or not). They will also be killed if the machine to which you connect to submit jobs is rebooted.  
+4. Before grabbing an srun, you need to make sure you are ssh'd into a login node on one of the clusters: `ssh -Y agate/mangi`.
     * If you get a "not enough memory" error when trying to grab a srun, its because you're not on a login node
 5. Ex: `srun --time=8:00:00 --mem=32GB --tmp=20gb -p interactive -A feczk001 --x11 --pty bash`
     * This interactive job is grabbing 8 hours on 4 cpus on the interactive partition with 8 gigabytes of memory per cpu, 20gb of temporary storage total, x11 enabled, and the ability to use your terminal, utilizing the feczk001 account’s allocated resources.
@@ -24,7 +24,7 @@ This version of job submission copies the script in an internal storage and then
 
 Read: [Job Submission & Scheduling @ MSI](https://www.msi.umn.edu/content/job-submission-and-scheduling-slurm)
 
-The job script needs to stay the same until the job starts to produce the correct results. If you make changes to a script before the job starts, those edits will be reflected in the job. Some of the possible parameters used in sbatch scripts can be found on [this page.](slurm.md#job-parameters)
+The job script needs to stay the same until the job starts to produce the correct results. If you make changes to a script before the job starts, those edits will be reflected in the job. Some of the possible parameters used in sbatch scripts can be found on [the SLURM Commands page.](slurm.md#job-parameters)
 
 1. Results are written out as your script specifies. `stdout` and `stderr` will be outputted if the `-o` and `-e` flags are specified, and you can submit other commands right away.
 2. An sbatch job is handled by Slurm; you can disconnect (not run interactively), kill your terminal, etc. with no consequence
@@ -46,7 +46,7 @@ The job script needs to stay the same until the job starts to produce the correc
     6. There are full paths to a directory that will hold both `stdout` and `stderr` files, which are listed above as `output_logs/xcp_full_%A.out` and `output_logs/xcp_full_%A.err`. The `%A` signifies that the job ID number will be added to the filename.
         * Note: make sure that the _output_logs_ directory exists prior to job submission, if you choose to use one. You can also change that path or not have a sub folder altogether if you want. It is recommended to specify the full path.
         * If you are submitting a sbatch for a [pipeline wrapper](wrappers.md), you can use `output_logs/xcp_full_%A_%a.err` for the output logs path. The `%a` indicates the array number that is being submitted.
-    7. All of the text after the #SBATCH parameters are the commands needed to run an XCP-D [singularity container](containers.md). This is one example of what can be in an sbatch, and it can be substituted for any command that may need to be run via an sbatch. Read more about the XCP-D specific flags [here.](https://xcp-d.readthedocs.io/en/latest/usage.html)
+    7. All of the text after the #SBATCH parameters are the commands needed to run an XCP-D [singularity container](containers.md). This is one example of what can be in an sbatch, and it can be substituted for any command that may need to be run via an sbatch. Read more about the [XCP-D specific flags](https://xcp-d.readthedocs.io/en/latest/usage.html)
         1. The input and output directory paths are bound to the container’s filesystem using the `-B` syntax. There is also a path to a `.sif` file that will utilize the jobs resources in order to produce the desired outputs using what's in the input directory. This .sif file is a [singularity image](containers.md) that is being run on the specified input files.   
             * Note: these input, output and singularity image paths need to exist prior to running the sbatch. 
             * The input file is binded with the `:ro` option, which indicates it is read only. This is done to ensure that running the command won't accidentally alter the input file. 
@@ -54,19 +54,21 @@ The job script needs to stay the same until the job starts to produce the correc
 
 ## Continuous Job Submission
  
-1. If a submission is above 2000 jobs (slurm’s max in-queue number of jobs), or you would like to space out job submission, use the continuous submitter.
+If a submission is above 2000 jobs (slurm’s max in-queue number of jobs), or you would like to space out job submission, use the continuous submitter.
 
-    * Path to continuous submitter: `/home/faird/shared/code/internal/utilities/SLURM_wrappers/continuous_submitter`
+* Path to continuous submitter: `/home/faird/shared/code/internal/utilities/SLURM_wrappers/continuous_submitter`
 
-    * The code can be found on GitHub [here.](https://github.com/DCAN-Labs/SLURM_wrappers/tree/main/continuous_submitter)
+* The code can be found [on GitHub.](https://github.com/DCAN-Labs/SLURM_wrappers/tree/main/continuous_submitter)
 
-    * This command needs to be run on a persistent desktop, or at least a desktop with as many hours as it will take to submit all the jobs based on how far apart the submission interval is. 
+* This command needs to be run on a persistent desktop, or at least a desktop with as many hours as it will take to submit all the jobs based on how far apart the submission interval is. 
 
-    * Below is an example of what the submitter command will look like:
+* Below is an example of what the submitter command will look like:
 
 ```
 python continuous_slurm_submitter.py --partition small,amdsmall --job-name abcd-hcp-pipeline_full 
---log-dir /path/to/cont_slurm_submitter_logs --run_folder /path/to/project/folder/run_files.abcd-hcp-pipeline_full/ --n_cpus 8 --time_limit 48:00:00 --total_memory 20 --tmp_storage 100 --array-size 1000 --submission-interval 300 --account-name feczk001 --mail_user x500@umn.edu
+--log-dir /path/to/cont_slurm_submitter_logs --run_folder /path/to/project/folder/run_files.abcd-hcp-pipeline_full/ 
+--n_cpus 8 --time_limit 48:00:00 --total_memory 20 --tmp_storage 100 --array-size 1000 
+--submission-interval 300 --account-name feczk001 --mail_user x500@umn.edu
 ```
 
 The `array-size` is how many jobs you are submitting at once. The `submission-interval` is the amount of time in minutes to wait until submitting another array of jobs. 
@@ -78,9 +80,9 @@ The `array-size` is how many jobs you are submitting at once. The `submission-in
 
     * This includes batch scripts. (e.g. `sg faird -c "sbatch sbatchscript.sh"`)
 
-    * More info on sg [here](https://linux.die.net/man/1/sg)
+    * [More info on sg](https://linux.die.net/man/1/sg)
 
 5. Make sure a ton of jobs aren’t failing right away. Permissions errors, job set up issues, and data issues are common causes.
 
 
-For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
+For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).

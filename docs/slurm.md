@@ -17,13 +17,13 @@ Slurm also has “interactive” jobs (srun), which allow access to compute reso
    </p>
 </div>
 
-Read more about login vs compute nodes on [this page](partitions.md#nodes)
+Read more about login vs compute nodes on [the partition page](partitions.md#nodes)
 
 Also available are various commands for job accounting, job management, and environment configuration. (See cheat sheet linked below)
 
 ## Job Parameters
 
-Below is a table summarizing some commands that can be used inside Slurm job scripts (see [sruns and sbatch](slurm-params.md)). The first four commands are required, while the other commands are optional. See [here](https://slurm.schedmd.com/sbatch.html) for a larger list of options. For parameter optimization, [refer to using seff in this section](optimizing.md).
+Below is a table summarizing some commands that can be used inside Slurm job scripts (see [sruns and sbatch](slurm-params.md)). The first four commands are required, while the other commands are optional. See [te SLURM documentation](https://slurm.schedmd.com/sbatch.html) for a larger list of options. For parameter optimization, [refer to using seff on the resource optimization page](optimizing.md).
 
 
 <table>
@@ -160,7 +160,7 @@ OOD also has a [Jobs Dashboard](https://ondemand.msi.umn.edu/pun/sys/dashboard/a
 
 `sacct -X -j JOBID_ARRAY# -o JobID,NNodes,State,ExitCode,DerivedExitCode,Comment`: check the status of a job even after it has exited, JOBID_ARRAY can also just be JOBID
 
-[This page](https://slurm.schedmd.com/sacct.html) has more options for using `sacct`.
+[The SLURM documentation](https://slurm.schedmd.com/sacct.html) has more options for using `sacct`.
 
 ### scontrol
 
@@ -174,8 +174,6 @@ OOD also has a [Jobs Dashboard](https://ondemand.msi.umn.edu/pun/sys/dashboard/a
 
 - Example command for moving _Job 234293_ that was originally submitted with the _msismall_ parition and change it to _msiqgu_: `scontrol update JobId=234293 Partition=msigpu`
 
-**NOTE**: `scontrol` cannot be used to change between agate and mesabi paritions once a job has been submitted. It can be used to change from agate/mesabi to [federated paritions](partitions.md)
-
 `scontrol update JobId=#### EndTime=HH:MM:SS`: change the amount of time a SLURM job runs
 
 - Example command for moving  _Job 234293_ that was originally submitted at the following time for 96 hours: _StartTime=2022-08-29T13:04:45_ and change it to 48 hours:  `scontrol update JobId=234293 EndTime=2022-08-31T13:04:45`
@@ -187,4 +185,4 @@ OOD also has a [Jobs Dashboard](https://ondemand.msi.umn.edu/pun/sys/dashboard/a
 - To loop over multiple jobs with this status, you can use this for loop: `for job in $(squeue -u <x500> -A <group> --state=PD --Format=JobID --noheader);do scontrol release $job; done`
 
 
-For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
+For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
