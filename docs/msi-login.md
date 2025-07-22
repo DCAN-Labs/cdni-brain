@@ -141,5 +141,3 @@ Collaborators can follow the instructions outlined on the NBDC Data Hub [here](h
 * Email Borgne Raasch `braasch@umn.edu` your NDA username to be added to the next submission batch. Adding new usernames to the DUC only happens once a month so this process can take a while depending on how the timing lines up. 
 * Outside collaborators should follow this link: ​​ [NDA - Adding Affiliated Institutions](https://docs.google.com/document/d/1w5BW14EHFSi4Lr1YDPm9CLTiy8JNdClt5KpKCOYnBH4/edit#heading=h.qdjbnp8qckwr)
 * After Borgne confirms that you have been granted access to the DUC, please reach out directly to the PI whose share you would like to be added to and include proof that you've been added to the DUC (e.g. forward or share a screenshot of confirmation email from Borgne). PI's can find information about how to add someone to their share [here.](https://msi.umn.edu/manage-pi-group)
-
-For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
