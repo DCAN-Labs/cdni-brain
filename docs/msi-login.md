@@ -121,9 +121,20 @@ export PATH=/home/dhp/public/storage/s3policy_bin/:$PATH
 ```
 
 ## Gaining Access to Shares / Obtaining UMN Data Use Certification (DUC) Approval 
-To gain access to `faird`, ask Kim or Luci to add you to that share. This is the default share that new people or outside collaborators are added to. This is where most of the commonly used scripts/pipeline/software is stored. 
+Your supervisor/mentor (or CDNI liaison for outside collaborators) will assist with adding you to the MSI shares you will need access to. The default share that new people are added to is 'faird' (this is where most of the commonly used scripts/pipeline/software is stored). 
 
-To gain access to MSI shares containing ABCD derivatives (`feczk001`, `miran045`, `rando149`, `smnelson`), you must be an approved collaborator on the UMN Data Use Certification (DUC).
+Note that some shares contain ABCD data and therefore require that you be added to the Data Use Certification (DUC) for ABCD. This includes:
+
+- `feczk001`
+- `miran045`
+- `rando149`
+- `smnelson`
+
+Everyone whose primary affiliation is CDNI (i.e. their direct supervisor or mentor is someone in leadership) should be included on the UMN DUC - please reach out to Kristina Hufnagle and/or Borgne Raasch to confirm that you are on the ABCD DUC.
+
+Collaborators can follow the instructions outlined on the NBDC Data Hub [here](https://www.nbdc-datahub.org/data-access-process) to submit and obtain their own DUC - **but do they need to specifically be on the UMN DUC  to gain access to those shares?**
+
+**OLD INFO TO REMOVE:**
 
 * Create a [Login.gov account](https://www.login.gov/create-an-account/) 
 * Use your login.gov credentials to [access the NDA](https://nda.nih.gov/user/login_required.html?originator=%2Fuser%2Fdashboard%2Fdashboard.html) - you’ll then be prompted to create an NDA account
