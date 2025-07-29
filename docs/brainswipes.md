@@ -15,7 +15,7 @@ Getting set up on BrainSwipes only takes a few steps:
 
 ## Additional Resources 
 
-If you are a member of the CDNI Slack, we have a channel called swipes-visuall-qc, which is a channel for posting questions about swiping. If you see an image and aren't sure how to rate it or are unsure if something is a concern, you can screenshot the image and post it there to get more feedback. 
+If you are a member of the CDNI Slack, we have a channel called swipes-visual-qc, which is a channel for posting questions about swiping. If you see an image and aren't sure how to rate it or are unsure if something is a concern, you can screenshot the image and post it there to get more feedback. 
 
 We also have weekly office hours, hosted on Zoom and in person at MIDB, where people can come to swipe together and get feedback. If you would like to be added to that invite, contact rae McCollum (mccol199@umn.edu).
 
