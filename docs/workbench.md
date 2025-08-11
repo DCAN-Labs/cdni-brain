@@ -4,7 +4,14 @@ CDNI commonly uses a few different softwares for visualizing and manipulating MR
 
 ## Workbench
 
-[Connectome Workbench](https://humanconnectome.org/software/connectome-workbench) is an open source visualization and discovery tool used to view and manipulate neuroimaging data. To use on MSI, run `module load workbench`. Workbench is primarily used to work with CIFTIs and surface data (GIFTIs) and can also be used with volume data (NIFTIs).
+[Connectome Workbench](https://humanconnectome.org/software/workbench-command) is an open source visualization and discovery tool used to view and manipulate neuroimaging data. To use on MSI, run `module load workbench`. Workbench is primarily used to work with CIFTIs and surface data (GIFTIs) and can also be used with volume data (NIFTIs). 
+
+<div class="admonition note">
+    <p class="first admonition-title">Note</p>
+    <p class="last">
+        Some CDNI tools might require older versions of Workbench. The MSI default is 0.2.0 (as of Summer 2025). If you are running into unexpected Workbench errors, try loading an older version of Workbench (like 1.4.2 or 1.5.0) to see if that fixes the issue.
+    </p>
+</div>
 
 There are two primary commands for workbench `wb_view` and `wb_command`.
 
@@ -20,8 +27,9 @@ This GUI can be used to visually inspect many data types, including:
 
 - CIFTI data (.dlabel, .dscalar, .dtseries, .pconn, etc)
 - Surface data (.surf.gii files)
-- Volume data (.nii/.nii.gz files)
+- Volume data (.nii/.nii.gz files) 
 
+Connectome Workbench has created some very useful tutorials on data visualization. They have a [Volume Viewing Tutorial](https://www.youtube.com/watch?v=TwMGQmltVrU) and a [Surface Viewing Tutorial](https://www.youtube.com/watch?v=bl_jCRHOoUI).
 
 ### Manipulating data
 
@@ -114,9 +122,17 @@ FSLeyes is the FSL tool to visualize data. FSL can only load volume data (NIFTIs
 `mcflirt` 
 - Motion correction of BOLD data
 
+## AFNI
+
+[AFNI](https://afni.nimh.nih.gov/) is an toolbox of multiple programming languages that can perform many of the same data manipulations as FSL. To use on MSI, run `module load afni` and open the GUI with `afni`.
+
 ## ITK-SNAP 
 
-[ITK-SNAP](https://www.itksnap.org/pmwiki/pmwiki.php) is a visualization software primarily used for segmentations. It can be used to manually edit segmentations (common for infants and atypical brains) and is also often used for QC image viewing. It is also the only software program that can be used to visualize raw DICOMs. To use on MSI, run `module load itk-snap` and open the GUI with `itksnap`. 
+[ITK-SNAP](https://www.itksnap.org/pmwiki/pmwiki.php) is a visualization software primarily used for segmentations but is also used to visualize raw DICOMs. It can be used to manually edit segmentations (common for infants and atypical brains) and is also often used for QC image viewing. To use on MSI, run `module load itk-snap` and open the GUI with `itksnap`. 
+
+## MRIcroGL
+
+[MRIcroGL](https://www.nitrc.org/projects/mricrogl/) is another visualization tool for raw DICOM images. To use on MSI, run `module load mricrogl` and open the GUI with `MRIcroGL`
 
 ## ANTS
 
@@ -142,3 +158,5 @@ Here are some common commands:
 ## NiBabel
 
 [NiBabel](https://nipy.org/nibabel/) is a Python package used for working with neuroimaging data in Python. This is a special package that needs to be installed in your environment to use. It is one of the packages installed in the lab-wide miniconda environment and within several conda environments. See our [miniconda page](miniconda.md) for more information. 
+
+For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
