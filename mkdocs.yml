@@ -99,7 +99,7 @@ nav:
       - Connectivity Matrices: matrices.md
       - Skinny Plot: skinny-plot.md
   - Segmentation Model:
-        - Model Training: training-nnunet.md
+      - Model Training: training-nnunet.md
   - MR Image:
       - MR-Image-Translation: mr-image-translation.md
   - Lab Resources:
