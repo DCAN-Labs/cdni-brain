@@ -20,19 +20,21 @@ GIfTI is another standard file format for surface MRI data. They are Geometry NI
 
 * `.shape.gii` - can store information such a cortical thickness and curvature
 * `.surf.gii`- stores the different surface information, like midthickness, pial, and white surfaces
-* `.label.gii`- 
-* `.func.gii` - 
+* `.label.gii`- stores label data that can be mapped to a .surf.gii file and a label table specifiying the names and colors for label data
+* `.func.gii` - functional surface data 
+
+For more in-depth reading on GIfTI files, see the [GIFTI format specification pdf](https://www.nitrc.org/frs/download.php/2871/GIFTI_Surface_Format.pdf). 
 
 ## CIfTI
 
 CIfTI is a sort of expanded NIfTI that can hold more data. These files store volumetric and surface data. These file types are outputs from processing pipelines and analysis methods. Since these are basically just expanded NIfTI files, they also have `.nii` endings. There are two general types of CIfTI files, dense files and parcellated files. Dense files have data for the entire brain and are used for whole brain connectivity analyses. Parcellated files have the data split out by a parcellation file and are used for analyses looking at average ROI/parcel connectivity. Some example filetypes include 
 
 * `.dtseries.nii`/`.ptseries.nii` - raw timeseries data, every column is a TR and every row is the signal at that grayordinate/parcel 
-* `.dscalar.nii`/`.pscalar.nii` - 
+* `.dscalar.nii`/`.pscalar.nii` - scalar map across vertices/voxels, usually 1-D matrix
 * `.dconn.nii`/`.pconn.nii` - correlation matrix of the dtseries data, how every grayordinate is associated with every other grayordinate 
-* `.dlabel.nii`/`.plabel.nii` - 
+* `.dlabel.nii`/`.plabel.nii` - stores named label maps across vertices/voxels (basically the same as dscalar but with named maps)
 
-You can read more about CIfTI files (and how to work with them in R) in this [ciftiTools paper](https://www.sciencedirect.com/science/article/pii/S1053811922000076).
+You can read more about CIfTI files (and how to work with them in R) in this [ciftiTools paper](https://www.sciencedirect.com/science/article/pii/S1053811922000076) and in the [CIFTI-2 format specification](https://www.nitrc.org/forum/attachment.php?attachid=341&group_id=454&forum_id=1955).
 
 ## BIDS
 
