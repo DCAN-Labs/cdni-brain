@@ -28,8 +28,8 @@ nav:
       - About: about.md
   - MSI: 
       - Getting Started: msi-login.md
-      - Tier 1 (High-Performance Computing) Resources: hpc.md
-      - Partitions: partitions.md
+      - Tier 1 (High-Performance Computing): hpc.md
+      - Nodes and Partitions: partitions.md
       - Module System: modules.md
       - Data Storage/Tracking: storage.md
       - Tier 2 (S3): s3.md
@@ -45,7 +45,7 @@ nav:
       - Software Versioning: versioning.md
       - Containers: containers.md
       - Virtual Machine: vm.md
-      - Workbench: workbench.md
+      - Neuroimaging Softwares: workbench.md
   - Coding Standards:
       - Best Practices: coding-practices.md
   - GitHub:
@@ -53,10 +53,10 @@ nav:
       - Common Git Commands: git-commands.md
       - Tips and Tricks: github-tips.md
       - History Scrub: github-scrub.md
-  - BIDS:
+  - Neuroimaging Data:
+      - Datatypes: datatypes.md
       - DICOM to BIDS conversion: dcm2bids.md
       - BIDS Validation: bids.md
-      - BIDS Directory Structure: bids-directory-structure.md
   - Before processing:
       - NORDIC Denoising: nordic.md
       - Infant Preprocessing QA: infant-preproc.md
@@ -84,10 +84,24 @@ nav:
       - Requests and Questions: requests.md
   - Quality Control:
       - BrainSwipes: brainswipes.md
+  - Analysis Tools:
+      - Dconn Shrinker: dconn-shrinker.md
+      - Cifti Conn Matrix: cifti-matrix.md
+      - Seed Map Parcellation Wrapper: seed-map.md
+      - Template Matching: template-matching.md
+      - F Conn Regression: f-conn.md
+      - BWAS: bwas.md
+      - Calculating Rest Minutes Pre- and Post-Motion Correction: rest_minutes_motion_correction_calculation.md
   - Data Uploads and Transfers:
       - Data Transfers: uploads.md
+  - Plotting Tools:
+      - Figure Maker: figure-maker.md
+      - Connectivity Matrices: matrices.md
+      - Skinny Plot: skinny-plot.md
   - Segmentation Model:
         - Model Training: training-nnunet.md
+  - MR Image:
+      - MR-Image-Translation: mr-image-translation.md
   - Lab Resources:
       - Basecamp: basecamp.md
       - Recorded Presentations: presentations.md
@@ -95,19 +109,6 @@ nav:
       - UMN Computer Installs: installs.md
       - ZENODO: zenodo.md
       - A Quick Guide on Protected Health Information (PHI): phi-quick-guide.md
-  - Plotting Tools:
-      - Figure Maker: figure-maker.md
-      - Connectivity Matrices: matrices.md
-      - Skinny Plot: skinny-plot.md
-  - Analysis Tools:
-      - Cifti Conn Matrix: cifti-matrix.md
-      - Seed Map Parcellation Wrapper: seed-map.md
-      - Template Matching: template-matching.md
-      - F Conn Regression: f-conn.md
-      - BWAS: bwas.md
-      - Calculating Rest Minutes Pre- and Post-Motion Correction: rest_minutes_motion_correction_calculation.md
-  - MR Image:
-      - MR-Image-Translation: mr-image-translation.md
   - Contributions:
       - Contributors and Papers: contributions.md
   - THANK YOU FOR USING THE BRAIN:
