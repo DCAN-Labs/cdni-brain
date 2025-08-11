@@ -12,19 +12,22 @@ MSI uses a “module” system for providing access to various software packages
 
 Commonly used modules by our lab include:
 
-* **fsl** 
-* **workbench** 
+* fsl 
+* workbench 
     - Note that the default version used to be 1.5.0 but is now 2.0.0, which has different default settings. It is recommended to load workbench/1.5.0
-* **freesurfer**
-* **matlab**
+* freesurfer
+* matlab
 
-Some other helpful modules include
+Some other helpful modules include:
 
 * tree
     - Allows you to print a directory structure tree
 
 * libreoffice
-    - Helpful for viewing csv files (similar to excel). Note that you must provide the full path to the file you wish to view, a relative path won't work.
+    - Helpful for viewing csv files (similar to excel). Note that you must provide the full path to the file you wish to view, a relative path won't work
+
+* vscode
+    - Allows you to use VS Code on MSI
 
 * cubids
     - Alternative option instead of loading the cubids miniconda environment
@@ -34,9 +37,9 @@ Some other helpful modules include
 
 ## Removing Modules and Resolving Conflicts 
 
-Modules modify the user’s PATH variable while loaded, which can occasionally conflict with other modules and tools. Unloading a module can be done with `module rm <module name>`. Unloading reverts the PATH variable, which should resolve conflicts. 
+Modules modify the user’s PATH variable while loaded, which can occasionally conflict with other modules and tools. This is why it is recommened to not load too many modules by default in your `.bashrc`. Unloading a module can be done with `module rm <module name>`. Unloading reverts the PATH variable, which should resolve conflicts. 
 
-Conda environments and user profile installs can also cause conflicts with the module system on MSI. If running `module load <module name>` doesn't successfully load the specified module, this potentially means that module is already being called from another spot. Use `which <module name>` to see where it is coming from, however, this will not work for determining the version. 
+Conda environments and user profile installs can also cause conflicts with the module system on MSI. If running `module load <module name>` doesn't successfully load the specified module, this potentially means that module is already being called from another spot. Use `which <module name>` to see where it is coming from. However, this won't always work for determining the version. 
 
 Possible ways to resolving these conflicts include deactivating your current conda environment or clearing out your local user installs (if that is the specified path where from which your module is loaded). However, deactivating your current conda environment may not make sense if you need other installs within that environment for your use case.  
 
@@ -64,7 +67,7 @@ Thanks,
 [Your Name]
 ```
 
-Emphasize the active involvement of all the PI groups (Fair, Feczko, Miranda Dominguez, Nelson, Tervo-Clemmens, Larson, and Randolph) and the relevant work that utilizes this module. It is important to list all the PI groups everytime even if some of them wont be using the module right away or at all.
+Emphasize the active involvement of all the [PI groups](hcp.md#tier-1-storage) and the relevant work that utilizes this module. It is important to list all the PI groups everytime even if some of them wont be using the module right away or at all.
 
 If available, provide a direct link to the module for easy reference by the support team.
 Send it to help@msi.umn.edu.
@@ -73,4 +76,4 @@ Be prepared for possible clarifications or questions from MSI.
 Respond promptly and provide any necessary additional information.
 
 
-For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
+For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).

@@ -1,6 +1,6 @@
 # MSI Tips and Tricks
 
-This page will detail some tips for working on MSI, common roadblocks encountered on MSI and how to fix them.
+This page will detail some tips for working on MSI, common roadblocks encountered on MSI, and how to fix them.
 
 If you are experiencing errors/issues with general usage or Slurm, contact the MSI help desk (help@msi.umn.edu). If you're having issues that aren't detailed here, post a question in the `help-computing` channel on Slack.
 
@@ -8,8 +8,9 @@ If you are experiencing errors/issues with general usage or Slurm, contact the M
 
 Here are some potentially helpful additions to your .bashrc (located in your home directory).
 
+### grephist
 Greg Conan developed a function that keeps track of all of the commands you use in a session and allows you to search for commands you've used previously. This function creates a `.history.txt` file in your home directory with all of the commands you run (and the date and time you ran them!). 
-Usage: `grephist <search_term>`
+Usage: `grephist <search_term>`<br>
 By default, this command will only return the 10 most recent search matches. To return more, use the option `-n <# lines to return`. 
 
 ```
@@ -121,7 +122,8 @@ fullpath_convert() {
 PROMPT_COMMAND='echo "$(date +"%Y-%m-%d %H:%M") $(history | tail -n 1)" >> ~/.history.txt'
 ```
 
-This function will automatically give execute permissions to group and users.
+### ttouch
+This function will automatically give execute permissions to group and users.<br>
 Usage: `ttouch <filename>`
 
 ```
@@ -131,7 +133,8 @@ ttouch() {
     }
 ```
 
-These are some helpful variables/alias' to add to your .bashrc. Read more [here](https://stackoverflow.com/questions/7342735/bash-command-whats-the-difference-between-a-variable-and-an-alias) about the difference between assigning something as an alias vs. as a variable. 
+### Shortcuts
+These are some helpful variables/alias' to add to your .bashrc. Read more about the [difference between alias' and variables.](https://stackoverflow.com/questions/7342735/bash-command-whats-the-difference-between-a-variable-and-an-alias) 
 
 - `lab_conda="/home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh"`
     * Or you could just add `source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh` to automatically enter the labwide environment.
@@ -139,7 +142,7 @@ These are some helpful variables/alias' to add to your .bashrc. Read more [here]
 - `wb='wb_command'`
 - `scue='squeue -al --me'`
 
-You can also have modules automatically loaded, although MSI recommends not to have too many (more than ~5) loaded by default as it might cause conflicts with other scripts/environments/etc. Some modules that are recommended to load automatically are `tree`, `libreoffice`, and `gview`. You can read more about these modules on [the module page](modules.md).
+You can also have modules automatically loaded, although MSI recommends not to have too many (more than ~5) loaded by default as it might cause conflicts with other scripts/environments/etc. The modules you load by default will depend on the type of work you do. You can read more about some commonly helpful modules on [the module page](modules.md).
 
 ## Disk Quota
 
@@ -165,13 +168,13 @@ If the group is full:
 
 * If you know you have a large folder, consider moving data to the [s3](s3.md)
 
-* If you are running into space issues but can't tell where they are coming from:
+If you are running into space issues but can't tell where they are coming from:
 
-    * Open a new terminal and type `ls -al` to see all hidden files in your home directory 
+   * Open a new terminal and type `ls -al` to see all hidden files in your home directory 
 
-    * Do you see a lot of ".proc-" files? Run `rm -r .proc-*` to delete all files that start with that prefix
+   * Do you see a lot of ".proc-" files? Run `rm -r .proc-*` to delete all files that start with that prefix
 
-    * Run `cd .apptainer/cache/blob/blobs` and clear out the `sha256` and `oci-tmp` folders (run `rm -rf *` inside the folders to delete all of their contents without deleting the folder itself)
+   * Run `cd .apptainer/cache/blob/blobs` and clear out the `sha256` and `oci-tmp` folders (run `rm -rf *` inside the folders to delete all of their contents without deleting the folder itself)
 
 ## Access
 
@@ -181,9 +184,11 @@ If you cannot access MSI or it's running slow:
 
     * MSI can also run slow during the week of maintenance day
 
-* Check the status of MSI [here](https://status.msi.umn.edu/)
+* Check the [status of MSI](https://status.msi.umn.edu/)
 
-* Check the status of MSI nodes [here](https://download.genomics.umn.edu/website/slurmnodes/index.html)
+* Check the [status of MSI nodes](https://download.genomics.umn.edu/website/slurmnodes/index.html)
+
+* Check if your home directory is full. MSI will remove the option to open an OpenOnDemand session if you've exceeded your 200GB quota
 
 If someone can't read/write/change your folders/files:
 
@@ -197,9 +202,9 @@ If you need to change your active group:
     
 * This will let you make new files in the proper group
 
-* Read more about this [here](https://opensource.com/article/19/9/linux-chgrp-and-newgrp-commands#:~:text=The%20newgrp%20command%20allows%20a%20user%20to%20override,all%20files%20must%20have%20the%20same%20group%20ownership.)
+* Read [more about the newgrp command](https://opensource.com/article/19/9/linux-chgrp-and-newgrp-commands#:~:text=The%20newgrp%20command%20allows%20a%20user%20to%20override,all%20files%20must%20have%20the%20same%20group%20ownership.)
 
-If you are getting FileNotFound errors in paths using `panfs/roc/`:
+If you are getting FileNotFound errors in paths using `/panfs/roc/`:
 
 * MSI has moved the software library to a new location to migrate away from hardware that is being decommissioned
 
@@ -212,9 +217,9 @@ If you are getting FileNotFound errors in paths using `panfs/roc/`:
 /panfs/roc/intel	->  /common/software/install/migrated.intel
 ```
 
-* Find out more information [here](https://www.msi.umn.edu/support/faq/how-do-i-update-my-workflow-after-software-library-migration)
+* Find out more information about how to [update paths after a library migration](https://www.msi.umn.edu/support/faq/how-do-i-update-my-workflow-after-software-library-migration)
 
-## Applications
+## Application Errors
 
 If you get this error when trying to use Firefox:
             
@@ -222,7 +227,7 @@ If you get this error when trying to use Firefox:
 
 There are two possible causes:
 
-1. Another Firefox process is already running under your MSI profile (possibly in a separate MobaXTerm/NX/NICE session) in which case you must close that Firefox instance before launching a new one.
+1. Another Firefox process is already running under your MSI profile (possibly in a separate session) in which case you must close that Firefox instance before launching a new one.
 
 2. A previous Firefox process terminated abnormally (e.g. due to MSI session timing out while Firefox was running), leaving Firefox profile lock files in your ~/.mozilla directory which prevent Firefox from launching.   
 
@@ -240,4 +245,4 @@ If chromium fails to launch with a profile lock error (or fails to launch with n
 * Run this command to remove the lock files: `rm -rf ~/.config/chromium/Singleton*` 
 
 
-For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
+For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).

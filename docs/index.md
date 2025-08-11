@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8161443.svg)](https://doi.org/10.5281/zenodo.8161443)
 
-## Read the Docs
+## Table of Contents
 
 <div class="admonition attention">
     <p class="first admonition-title">Attention</p>
@@ -58,9 +58,9 @@ This handbook outlines key tools and resources used by the Center for Developmen
    </td>
   </tr>
   <tr>
-   <td>BIDS
+   <td>Neuroimaging Data
    </td>
-   <td>Anything to convert or validate BIDS data 
+   <td>Types of MRI data and BIDS conversion/validation 
    </td>
   </tr>
   <tr>
@@ -93,34 +93,40 @@ This handbook outlines key tools and resources used by the Center for Developmen
    <td>Quality control methods within the lab
    </td>
   </tr>
-    <tr>
-   <td>Data Uploads and Transfers
-   </td>
-   <td>Moving data within and outside of MSI
-   </td>
-  </tr>
-    <tr>
-   <td>Lab Resources
-   </td>
-   <td>Lab recommendations and software used outside of MSI
-   </td>
-  </tr>
-    <tr>
-   <td>Plotting Tools
-   </td>
-   <td>Tools used by the lab to create various figures
-   </td>
-  </tr>
-    <tr>
+  <tr>
    <td>Analysis Tools
    </td>
    <td>Tools used by the lab to perform various analyses
    </td>
   </tr>
     <tr>
+   <td>Data Uploads and Transfers
+   </td>
+   <td>Moving data within and outside of MSI
+   </td>
+  </tr>
+      <tr>
+   <td>Plotting Tools
+   </td>
+   <td>Tools used by the lab to create various figures
+   </td>
+  </tr>
+      <tr>
+   <td>Segmentation Model
+   </td>
+   <td>How to train nnUNet
+   </td>
+  </tr>
+      <tr>
    <td>MR Image
    </td>
    <td>How to create synthetic images
+   </td>
+  </tr>
+    <tr>
+   <td>Lab Resources
+   </td>
+   <td>Lab recommendations and software used outside of MSI
    </td>
   </tr>
     <tr>
@@ -132,4 +138,4 @@ This handbook outlines key tools and resources used by the Center for Developmen
 </table>
 
 
-For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
+For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).

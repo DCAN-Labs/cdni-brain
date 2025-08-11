@@ -4,9 +4,9 @@ Our work focuses on advancing the understanding of brain development in health a
 
 Our lab members have diverse training backgrounds and areas of expertise spanning the fields of neuroscience, developmental and clinical psychology, psychiatry, biomedical engineering, and computer science.
 
-You can find out more information about the lab on our [website](https://innovation.umn.edu/developmental-cognition-and-neuroimaging-lab/).
+You can find out more information about the center on our older [DCAN website](https://innovation.umn.edu/developmental-cognition-and-neuroimaging-lab/) or our new (but still being built out) [CDNI website](https://cdni.umn.edu/).
 
 
 ## Questions/Suggestions
 
-Please post any question in the form of an issue to the [cdni-brain](https://github.com/DCAN-Labs/cdni-brain/issues) repository on GitHub. This includes clarifying questions on the guide content, reporting errors/typos, requesting additional sections/topics, etc. Note that this will require that you have a GitHub account. For further information, please refer to GitHub's documentation on how to post an issue [here](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue).
+Please post any question in the form of an issue to the [cdni-brain repository on Github](https://github.com/DCAN-Labs/cdni-brain/issues). This includes clarifying questions on the guide content, reporting errors/typos, requesting additional sections/topics, etc. Note that this will require that you have a GitHub account. For further information, please refer to GitHub's documentation on [how to post an issue.](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue).

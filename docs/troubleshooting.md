@@ -2,42 +2,48 @@
 
 For any processing failures, we triage what happened. Most troubleshooting processes will be needed for infant data, as their processing jobs are more prone to errors. When encountering a processing failure, first check to see if it is already documented in the following pipeline dependent links. It is also necessary and efficient to post your error and run command in #questions or the relevant channel on Slack. If you are unsure what your “relevant channel” is on Slack, ask your supervisor or just default to posting in #questions. 
 
-
 Image viewing is a necessary process to conclude if a pipeline job finished successfully, but it also may be necessary when a processing error has been encountered. There are a few different options for viewing anatomical images. It may be most efficient to first download the images locally and then use ITKsnap to view them. However, when working on MSI, applications such as `fslview_deprecated` or `fsleyes` can be used. For viewing functional images, `wb_view` is ideal (make sure to `module load fsl` or `module load workbench` before using these applications). For more information on NIfTI and CIFTI files (image file types), refer to the video sessions in the subfolders of [this google drive folder](https://drive.google.com/drive/u/0/folders/1yc3w2zNYVZQvTcCgxKk_j6ecZLoyWiCM).
 
+
+## Inspecting SLURM output logs
+Slurm logs are the stdout and stderr files from a Slurm job. The first thing to do when a job no longer is running is check the Slurm logs. Each job will have an output (`.out`) and error (`.err`) Slurm log. You define where these output logs go with the `#SBATCH -o /path/to/output.out` and `#SBATCH -e /path/to/errors.err` flags in your [SBATCH script](slurm-params.md#sbatch). It is recommended to provide the absolute path to the output_logs folder so it doesn't accidentally end up somewhere unexpected.
+
+Type `scontrol show jobid -dd &lt;job id num> | grep Std` to see the paths for StdErr, StdIn (usually /dev/null), and StdOut for any SLURM job currently in the queue.
+
+Common errors include:
+
+### Job Failed Before Pipeline Started
+If the job failed immediately but didn't create any output logs, double check that the log folder has group write permissions. Jobs will not start if you don’t have write access to where the logs should go. Another possible reason for there being no output logs is a group discrepency.  
+
+Most scripts involve copying the BIDS input, templates, etc. to the node before they run the pipeline. If any of that failed, the Slurm logs should tell you what happened.
+
+### Job Ran Out of Resources
+If the job ran out of time, the error log should have a DUE TO TIME LIMIT message. 
+
+If the job ran out of memory, the error log should have a oom-kill message.
+
+If the job uses temporary storage and keeps failing for no discernable reason, try increasing the amount of temp storage for the job. This is the most annoying error to troubleshoot, as SLURM will not give any error message indicating that the temp storage is full.  
+
+### BIDS Validator Failed
+One of the first steps to almost every processing pipeline is to check if the dataset is BIDS valid (which is why it can be helpful to run [CuBIDS](bids.md#bids-validation) on your dataset beforehand). You can ignore the WARNING messages. One of the most common BIDS errors is not having a `dataset_description.json` at the root of your BIDS folder. These don't need to be accurately filled out for the dataset in order to pass BIDS validation, a file with the [required headings](https://bids-specification.readthedocs.io/en/stable/modality-agnostic-files.html#dataset_descriptionjson) just needs to exist. 
+
+Some pipelines will also require a `participants.tsv` to pull out demographic information about the subject for processing (i.e. age). 
 
 ## DCAN Infant Pipeline (infant-abcd-bids-pipeline)
 
 ### Inspecting Slurm and pipeline logs for errors
-
-Slurm logs are the stdout and stderr files from a Slurm job. The first thing to do when a job no longer is running is check the Slurm logs. Each job will have an output (`.out`) and error (`.err`) Slurm log.
-
-MSI outputs these into a single .out file by default, in the directory you called the submission script from.
-
-Type `scontrol show jobid -dd &lt;job id num> | grep Std` to see the paths for StdErr, StdIn (usually /dev/null), and StdOut for any SLURM job currently in the queue.
-
-Common errors include the following:
-
-#### Job Failed Before Pipeline Started
-
-The lab's scripts copy the BIDS input, templates, etc. to the node before they run the pipeline. If any of that failed, the Slurm logs should tell you what happened.
-
-Jobs (e.g. Slurm on MSI) will not start if you don’t have write access to where the logs should go
-
+You can first check the general SLURM troubleshooting tips above. If none of those are the issue, here are some more DCAN-Infant specific error troubleshooting. 
 
 #### Job Failed After Pipeline Started
-
 The lab's scripts print the string `RUNNING DOCKER IMAGE` just before calling the pipeline. Before starting each stage, the pipeline prints a line that says `running `followed by the name of the stage.
 
 If the job succeeded (i.e., the pipeline successfully ran all the way through all of the stages), the Slurm logs will have a message that contains `BEGINNING SUCCESS CLEANUP`. If the job failed, the SLURM logs will have a message that contains `BEGINNING FAIL CLEANUP`. The most common failures are described here.
 
-
-#### Job Timed Out
+#### Job Ran Out of Time
 
 If the SLURM logs say the job caught an exit code of 140 or 240, the job timed out. Slurm jobs in the exacloud partition time out after 36 hours. (When using the lab's scripts, jobs are allowed to run for just 34 hours so that they have a good chance of copying all the job's data back to lustre1.)
 
 Look higher in the output log to find the last stage that was started. Copy the name of the last stage exactly (case matters). Resubmit the job, starting with that stage.
-
 
 #### Job Exception During Stage
 
@@ -89,35 +95,25 @@ During FMRISurface we attempt to map the subcortical areas. If you ran using ROI
 
 Which subcortical was missing may not matter to you. The message means the run cannot be used as is, so you can decide to eliminate that run. But if you want to debug further, look at the line above that message. It will say something like:
 
-
 ```
     wb_command -cifti-create-dense-timeseries /output/.../files/MNINonLinear/ROIs/task-rest_run-01_working_directory/task-rest_run-01_temp_subject_ROI0008.dtseries.nii -volume sub2atl_vol_masked_ROI0008.nii.gz /output/.../files/MNINonLinear/ROIs/task-rest_run-01_working_directory/sub2atl_vol_label_ROI0008.nii.gz
 ```
 
-
 From the message you can find:
-
-
 
 * The working directory. Since the job was probably run using Docker, the path to the working directory cannot be used “as is”. Your data will have been mounted to `/output`, so you would substitute the appropriate path for `/output`. Hint: the working directory will always be `files/MNINonLinear/ROIs/&lt;frminame>`. 
 * The first ROI for which no data was found. In our example, ROI0008. Since the ROI files are made using `wb_command -volume-all-labels-to-rois`, the ROI numbering starts at 0. That is, ROI0000 is the name used for the 1st ROI. So ROI0008 represents the 9th ROI. 
 
 Go to the working directory (it will not have been removed since there were errors), andl find a file named `labelfile.txt`. The file has 2 lines per ROI, so, for the 9th ROI, you want to look at lines 17 and 18:
 
-
 ```
     17: ACCUMBENS_LEFT
     18: 26 255 165 0 255
 ```
 
-
-
 The first missing ROI was the left accumbens. Its FreeSurfer label was 26 (that is, if you viewed the file with fslview, its “intensity” would be 26). If you have a way to correct the aseg, that is the ROI you need to add.
 
 There might be more missing ROIs; the command died at the first one.
-
-
-
 
 ### Inspecting the data for quality or processing issues
 
@@ -127,9 +123,16 @@ There might be more missing ROIs; the command died at the first one.
 
 3. For issues with dense time series files, see [Checking for NaNs and zeros in dtseries](https://docs.google.com/document/d/1dvpISFRuyKDW0Fc9OCu3GO2GOOlMZ-K8w0PPLtD3oH8/edit) to double check for NaNs
 
-## ABCD-BIDS
+## ABCD-BIDS (abcd-hcp-pipeline)
 
-In the Infant section above, points 3-4 can be generalized for ABCD troubleshooting as well, but are typically errors more commonly found with infant vs adult processing. For a generalized spot check of abcd-hcp-pipeline outputs for functional data, use workbench view: 
+The SLURM error log should indicate which stage the pipeline failed at. Within the output directory there is a `logs` directory that will have a subfolder for each stage of the pipelines. These logs should have more detailed information about why the pipeline failed. The path to the logs should be within this path: `/path/to/output_dir/sub-ID/ses-ID/logs/`. 
+
+If there was an error during the DCANBOLDProcessing stage, you can check the config files at these paths to see the inputs of the command and check if there are any incorrect/non-existant paths or other inconsistencies: `files/MNINonLinear/Results/<task>/DCANBOLDProc_v4.0.0/DCANBOLDProc_v4.0.0_mat_config.json` and `files/DCANBOLDProc_v4.0.0/analyses_v2/matlab_code/`
+
+If there was a FreeSurfer error, you can find the FreeSurfer logs in `files/subID/scripts`.
+
+### Spot Check Func Data
+In the Infant section above, some points can be generalized for ABCD-BIDS troubleshooting as well, but are typically errors more commonly found with infant processing. For a generalized spot check of abcd-hcp-pipeline outputs for functional data, use workbench view: 
 
 1. For the abcd-hcp-pipeline functional spot check example, our goal is to get a scaffolding of brain activity. In order to see if brain activity is well represented as functional connectivity, we have to look at the BOLD data (a functional output image). This process can give insights as to whether the processing pipeline has an underlying issue that's been overlooked or if the data has been collected poorly.
 
@@ -172,6 +175,17 @@ In the Infant section above, points 3-4 can be generalized for ABCD troubleshoot
 
 ## NiBabies and fMRIPrep
 
+Below are some fairly common NiBabies and fMRIPrep errors.
+
+**FreeSurfer or MCRIBS Errors**
+
+* For FreeSurfer errors, you can find the log file at `/sourcedata/freesurfer/sub-ID_ses-ID/scripts/recon-all.log`
+
+* For MCRIBS errors, the logs are at `/sourcedata/mcribs/sub-ID_ses-ID/logs/`
+
+* Errors in these parts of the pipeline are often caused by bad input anatomical data
+
+
 `RuntimeError: Multi-echo images found with mismatching shapes`
 
 * This can happen when a scan was interrupted or there was an issue exporting the DICOMs
@@ -186,17 +200,21 @@ In the Infant section above, points 3-4 can be generalized for ABCD troubleshoot
 
 * This is an fMRIPrep and XCP-D issue
 
-For a comprehensive document on troubleshooting nibabies and fmriprep errors, [see here](https://docs.google.com/document/u/0/d/16qSEPV1_FHOHBq2eJOuZLqISv-0zCbpOJQ7HesEQCv4/edit).
+If you find a bug, you can post a [NiBabies bug report](https://github.com/nipreps/nibabies/issues) or a [fMRIprep bug report](https://github.com/nipreps/fmriprep/issues). 
 
 ## XCP-D
 
-For common troubleshooting processes and a deeper dive into the utilization of XCP-D, [see here](https://umn.app.box.com/folder/149404140292?s=3gmexhky3rtxafdo118rh1c0c2x35jl6).
+To dig into an XCP-D failure, it might be helpful to save out the working directory. This will allow you to look at the intermediate outputs. 
+
+You can find the logs for an XCP-D run in the top level subject directory: `sub-ID/logs/`
+
+If you find a bug, you can post a [XCP-D bug report on Github](https://github.com/PennLINC/xcp_d/issues).
 
 ## S3 Wrappers
 
 **If there are run files:**
 
-Errors are common when running preliminary tests on s3 wrappers. In order to troubleshoot these errors, the first step is to grab an [interactive session](slurm-params.md#srun-immediately-run-a-command-using-the-specified-compute-resources). Next, run the content of one run file by copying and pasting the contents into the terminal step-by-step in order to see the outputs of each command in real time, which will uncover the step in which the error is occurring. Once the error is reproduced, incorporate the fix, then rerun `make_run_files.sh` and a test subject for the submitter script.
+Errors are common when running preliminary tests on s3 wrappers. In order to troubleshoot these errors, the first step is to grab an [interactive session](slurm-params.md#srun-immediately-run-a-command-using-the-specified-compute-resources). Next, run the content of one run file by copying and pasting the contents into the terminal step-by-step in order to see the outputs of each command in real time, which will uncover the step in which the error is occurring. Once the error is reproduced, incorporate the fix, then rerun `make_run_files.sh` and submit a test subject.
 
 Note: it is helpful to check the `tmp/` directory and the s3 bucket to validate file and directory paths in the template/run files themselves.
 
@@ -206,6 +224,8 @@ Note: it is helpful to check the `tmp/` directory and the s3 bucket to validate 
 The issue should be regarding the paths to the files in `make_run_files.sh.` With `make_run_files.sh` opened, copy and paste the contents of the file into the terminal in order to see if the conditional statements match the necessary paths of the files that need to be included. 
 
 ## Template Matching
+
+These are common errors with the [MATLAB template matching](template-matching.md#matlab-version) version.
 
 ```
 Error using read_gifti_file_standalone (line 20)
@@ -221,5 +241,7 @@ Invalid file identifier. Use fopen to generate a valid file identifier.
 ```
 
 * This is due to the output directory not existing. Make sure you create the output directory before running template matching. 
+
+
 
 For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
