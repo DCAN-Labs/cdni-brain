@@ -37,7 +37,7 @@ Some other helpful modules include:
 
 ## Removing Modules and Resolving Conflicts 
 
-Modules modify the user’s PATH variable while loaded, which can occasionally conflict with other modules and tools. This is why it is recommened to not load too many modules by default in your `.bashrc`. Unloading a module can be done with `module rm <module name>`. Unloading reverts the PATH variable, which should resolve conflicts. 
+Modules modify the user’s PATH variable while loaded, which can occasionally conflict with other modules and tools. This is why it is recommened to not load too many modules by default in your `.bashrc`. Unloading a module can be done with `module rm <module name>`. Unloading reverts the PATH variable, which should resolve conflicts. Note that loading certain modules triggers the loading of additional modules as dependencies; e.g. `module load freesurfer` also loads `matlab` and `netcdf`. In these cases, unloading the first module `module rm freesurfer` does **not** unload those additional modules. 
 
 Conda environments and user profile installs can also cause conflicts with the module system on MSI. If running `module load <module name>` doesn't successfully load the specified module, this potentially means that module is already being called from another spot. Use `which <module name>` to see where it is coming from. However, this won't always work for determining the version. 
 
