@@ -1,6 +1,6 @@
 # dconn Shrinker
 
-This page explains a tool developed by Martin Gell to convert a .dconn file into an hdf5 file, which shrinks the size of the dconn by almost 80% (from ~33 GB to ~7GB). This can be very helpul when your analysis requires loading many dconns at once, something that is very resource intensive. 
+This page explains a tool developed by Martin Gell to convert a .dconn file into an hdf5 file, which shrinks the size of the dconn by almost 80% (from ~33 GB to ~7GB). This can be very helpful when your analysis requires loading many dconns at once, something that is very resource intensive. 
 
 Turning a .dconn into a hdf5 file involves vectorizing the upper-triangle of the connectivity matrix and saving that data to an hdf5 file. It also saves the number of grayordinates and the diagonal values so that it can be turned back into a .dconn. This file format also allows you to only pull certain chunks of the data at a time. 
 
