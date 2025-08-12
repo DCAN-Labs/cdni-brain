@@ -23,7 +23,7 @@ Also available are various commands for job accounting, job management, and envi
 
 ## Job Parameters
 
-Below is a table summarizing some commands that can be used inside Slurm job scripts (see [sruns and sbatch](slurm-params.md)). The first four commands are required, while the other commands are optional. See [te SLURM documentation](https://slurm.schedmd.com/sbatch.html) for a larger list of options. For parameter optimization, [refer to using seff on the resource optimization page](optimizing.md).
+Below is a table summarizing some commands that can be used inside Slurm job scripts (see [sruns and sbatch](slurm-params.md)). The first four commands are required, while the other commands are optional. See [the SLURM documentation](https://slurm.schedmd.com/sbatch.html) for a larger list of options. For parameter optimization, [refer to using seff on the resource optimization page](optimizing.md).
 
 
 <table>
@@ -183,6 +183,7 @@ OOD also has a [Jobs Dashboard](https://ondemand.msi.umn.edu/pun/sys/dashboard/a
 `scontrol release JOBID`: If you see a job in your queue with the status `(launch failed requeued held)` under `NODELIST (REASON)`, you will need to release them to re-enter your queue. Jobs will enter the held state when its launch fails and the scheduler determines that re-queueing will result in the same failed start.
 
 - To loop over multiple jobs with this status, you can use this for loop: `for job in $(squeue -u <x500> -A <group> --state=PD --Format=JobID --noheader);do scontrol release $job; done`
+
 
 
 For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
