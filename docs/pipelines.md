@@ -104,17 +104,21 @@ A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing o
 
     * `--participant-label` : a space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)
     
-    * `--cifti-output 91k` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinate can be specified (default is 91k, which equates to 2mm resolution). Default: False
+    * `--cifti-output 91k` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinates can be specified (default is 91k, which equates to 2mm resolution in volumes, ~2mm vertex spacing in surfaces). Default: False
+  
+    * `--output-spaces MNI152NLin6Asym:res-2` : Output volume derivatives in MNI152NLin6Asym 2mm template space
     
     * `--nprocs 32` : maximum number of threads across all processes **(if used, this should match the number of cpus allotted for your sbatch job)**
     
-    * `--omp-nthreads 3` : maximum number of threads per-process
+    * `--omp-nthreads 3` : maximum number of threads per-process (use `1` instead of `3` for deterministic outputs; see (1a) below)
     
     * `--project-goodvoxels` : prevent high variance voxels from being projected to the surface 
     
     * `-vv` : level 2 verbose log output, useful for troubleshooting
     
     * `-w /work` : used to specify a working directory within the same path as the sbatch, named_ /work_.
+  
+    1a. If outputs need to be deterministic (i.e., identical when the same input data is rerun with the same configuration), use `--omp-nthreads 1`, `--skull-strip-fixed-seed`, and `--random-seed <seed value>`
 
 2. If an error is encountered, check for a solution on the [troubleshooting page](troubleshooting.md#nibabies-and-fmriprep) and consider creating a [Github issue](https://github.com/DCAN-Labs/cdni-brain/issues) or adding it yourself if your error is not there.
 
@@ -130,7 +134,7 @@ ${singularity} run --cleanenv \
 -B ${fmriprep_out}/bcp_fmriprep_outputs:/out \
 -B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
 -B /tmp:/work \
-/home/faird/shared/code/external/pipelines/fmriprep/fmriprep_24.1.1.sif /data/out participant \
+/home/faird/shared/code/external/pipelines/fmriprep/fmriprep_25.1.3.sif /data/out participant \
 --participant-label {subject_ID} \
 --cifti-output 91k \
 --omp-nthreads 3 \
@@ -159,15 +163,19 @@ NiBabies is a robust pre-processing MRI and fMRI workflow that is also a part of
     
     * `--derivatives /derivatives \` : NiBabies will use a segmentation from the segmentation pipeline (pre-postBIBSnet). This flag is used to clarify that the precomputed segmentation directory is being utilized. 
     
-    * `--cifti-output 91k \` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinate can be specified (default is 91k, which equates to 2mm resolution). Default: False
+    * `--cifti-output 91k \` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinates can be specified (default is 91k, which equates to 2mm resolution in volumes, ~2mm vertex spacing in surfaces). Default: False
+    
+    * `--output-spaces MNI152NLin6Asym:res-2 \` : Produce volume derivatives in MNI152NLin6Asym 2mm template space
     
     * `-vv \` : level 2 verbose log output, useful for troubleshooting
     
     * `--nprocs 32 \` : maximum number of threads across all processes
     
-    * `--omp-nthreads 3 \` : maximum number of threads per-process
+    * `--omp-nthreads 3 \` : maximum number of threads per-process (use `1` instead of `3` for deterministic outputs; see (1a) below)
     
     * `-w /work` : used to specify a working directory within the container’s filesystem, named _/work_.
+  
+    1a. If outputs need to be deterministic (i.e., identical when the same input data is rerun with the same configuration), use `--omp-nthreads 1`, `--skull-strip-fixed-seed`, and `--random-seed <seed value>`
 
 2. If an error is encountered, check for a solution on the [troubleshooting page](troubleshooting.md#nibabies-and-fmriprep) and consider creating a [Github issue](https://github.com/DCAN-Labs/cdni-brain/issues) or adding it yourself if your error is not there.
 
@@ -184,13 +192,16 @@ ${singularity} run --cleanenv \
 -B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
 -B ${tmp_dir}/work_dir/:/work \
 -B ${ext_derivs}/bibsnet_outputs/:/derivatives \
-/home/faird/shared/code/external/pipelines/nibabies/nibabies_24.1.0.sif /data /out participant \
+/home/faird/shared/code/external/pipelines/nibabies/nibabies_25.1.1.sif /data /out participant \
 --participant-label {subject_ID} \ 
 --age-months {age} \
 --session-id {session_ID} \
 --derivatives /derivatives \
 --cifti-output 91k \
 --omp-nthreads 3 \
+--norm-csf \
+--multi-step-reg \
+
 -w /work
 ```
 
@@ -317,7 +328,7 @@ ${singularity} run –cleanenv \
 -B ${fmriprep_dir}/processed/fmriprep/sub-${subj_id}_ses-${ses_id}:/fmriprep_out \
 -B ${xcpd_dir}/processed/sub-${subj_id}_ses-${ses_id}:/xcpd_out \
 -B ${xcpd_dir}/work_dir/sub-${subj_id}_ses-${ses_id}:/wkdir \
-/home/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.10.1.sif \
+/home/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.11.1.sif \
 --mode abcd \
 --participant-label ${subj_id} \
 --omp-nthreads 3 \ 

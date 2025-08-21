@@ -43,7 +43,7 @@ For running programs that require extra computing resources or take longer than 
 
 ## SBATCH
 
-SBATCH is a tool used at the Minnesota Supercomputing Institute (MSI) to send tasks to the SLURM system for processing. Users create scripts detailing resource needs like time, processors, memory, and email notifications. These scripts are then submitted using sbatch, which adds the job to a queue and allows the job to run in the background. Users can check job status with `squeue -u username` and cancel jobs with `scancel jobIDnumber`. For more information, refer to the [MSI Job Submission and Scheduling page](https://www.msi.umn.edu/content/job-submission-and-scheduling-slurm) and [our internal SBATCH page](slurm-params.md#sbatch)
+SBATCH is a tool used at the Minnesota Supercomputing Institute (MSI) to send tasks to the SLURM system for processing. Users create scripts detailing resource needs like time, processors, memory, and email notifications. These scripts are then submitted using sbatch, which adds the job to a queue and allows the job to run in the background. Users can check job status with `squeue -u username` and cancel jobs with `scancel jobIDnumber`. For more information, refer to the [MSI Job Submission and Scheduling page](https://www.msi.umn.edu/content/job-submission-and-scheduling-slurm), [official SLURM documentation](https://slurm.schedmd.com/documentation.html), and [our internal SBATCH page](slurm-params.md#sbatch)
 
 ## Jupyter Notebooks
 
@@ -63,7 +63,7 @@ The only data stored on tier 1 should be data that is being actively used.
 
 - If you want to store more than 1TB of data (or more than 500GB of data on `faird`), please fill out [this storage request form](https://docs.google.com/forms/d/e/1FAIpQLSd1QI_Hmi3khwITVctnaDJYY2M1NegsAWYPR6AXoodUCrrpZw/viewform).
 
-MSI takes "snapshots" every night of the tier 1 space. This means if you want to see an older version of a file or need to recover something that was accidentally deleted, you can enter the hidden `.snapshot` folder that lives in every directory to see the backups. Every week, it will consolidate the snapshot into a weekly snapshot and store those for a month. Please keep in mind that means these backup folders **are only stored for a month**.
+MSI takes "snapshots" every night of the tier 1 space. This means if you want to see an older version of a file or need to recover something that was accidentally deleted, you can enter the hidden `.snapshot` folder that lives in every directory to see the backups. Every week, it will consolidate the snapshot into a weekly snapshot and store those for up to a month. Please keep in mind that means these backup folders **are only stored for a month at most**.
 
 Each PI has their own allocation on MSI, which includes storage and compute time. As one account becomes more active, it becomes deprioritized relative to all other accounts on MSI. See [our Fairshare page](fairshare.md) for more information about how prioritization works. These are the current PI groups within CDNI:
 
@@ -94,6 +94,7 @@ Each share on MSI follows a similar directory structure:
       |--<old_home_dirs>
 ```
 
+* **As of August 2025, MSI is in the process of migrating all shares to a new filesystem**, with `miran045` and `bart` already moved. The root directory of the migrated shares is now `/projects/standard/<group>` instead of the old `/home/<group>`. Migrations are done during maintenance day (first Wednesday of each month) and are planned to continue through late 2025 to early 2026. See the [MSI project migration documentation](https://msi.umn.edu/our-resources/knowledge-base/project-migration) for more info. 
 * If you are working on something that other people might need access to, it is best to create a directory under `projects`. 
 * Each user has their own home directory that is separate from the PI's share. If you were added to MSI before the summer of 2024, you also still have your old home directory under the PI share. These are read and write protected directories, meaning **only you** have access to read and write to them. You have the ability to open them up, but it is not recommended.
 
