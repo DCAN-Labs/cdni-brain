@@ -1,6 +1,6 @@
 # Templates used by DCAN-infant pipeline
 
-We have a range of age-specific atlas folders located on MSI under `/home/faird/shared/code/internal/pipelines/age_specific_atlases` which include the following age bins (in months of age):
+We have a range of age-specific atlas folders located on MSI under `/projects/standard/faird/shared/code/internal/pipelines/age_specific_atlases` which include the following age bins (in months of age):
 
 00-02 \
 02-05 \

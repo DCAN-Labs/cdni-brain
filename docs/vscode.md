@@ -160,7 +160,7 @@ Each repository should include its own conda environment so that different users
 
 * Include a name for the environment with the `--name` flag to make it easier to activate. **Note:** If you don't name your environment when you originally create it, you cannot add a name later.
 
-* Environments that are used for ABCC related repositories are stored in `/home/rando149/shared/code/external/envs` otherwise store your environments in `/home/faird/shared/code/external/envs`. Make sure you are in the directory where the conda environment needs to be stored when creating the environment.
+* Environments that are used for ABCC related repositories are stored in `/home/rando149/shared/code/external/envs` otherwise store your environments in `/projects/standard/faird/shared/code/external/envs`. Make sure you are in the directory where the conda environment needs to be stored when creating the environment.
 
 ### Activating a new conda environment 
 

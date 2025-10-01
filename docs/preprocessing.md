@@ -13,7 +13,7 @@ For this pipeline, the data first needs to be converted and properly orientated 
 1. Correct the orientation of the images. **NOTE**: These steps should be correct for data aquired **mid-2021 onward**, older data may be orientated differently. Please check with Thomas (tmadison@umn.edu) if you encounter data that does not match the descriptions below after performing the orientation correction. 
 
     To correct the fmap and func files:
-    - Naviagate into the proper directory: `cd /home/faird/shared/code/internal/utilities/zlab_10p5T_nhp_processing/orientation_fix`
+    - Naviagate into the proper directory: `cd /projects/standard/faird/shared/code/internal/utilities/zlab_10p5T_nhp_processing/orientation_fix`
 
     - Load MATLAB: `module load matlab`
 

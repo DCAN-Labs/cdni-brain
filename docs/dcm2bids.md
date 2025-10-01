@@ -31,9 +31,9 @@ Watch: [Dcm2bids CDNI tutorial recording](https://drive.google.com/drive/folders
 * To view these fields in the DICOM metadata, you can use `dcmdump` on any .dcm file (on MSI, first `module load dcmtk`)
     
 Kimberly Weldon has developed a set of scripts to streamline the conversion process. These scripts will automatically create the config file and run the conversion.
-* The needed scripts are all found in `/home/faird/shared/code/internal/utilities/cdniproc/` 
+* The needed scripts are all found in `/projects/standard/faird/shared/code/internal/utilities/cdniproc/` 
     
-* Load the labwide conda environment: `source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh`
+* Load the labwide conda environment: `source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh`
     
 * Activate the needed conda environment: `conda activate dcm2bids3`
         
@@ -58,9 +58,9 @@ Kimberly Weldon has developed a set of scripts to streamline the conversion proc
 To run your newly converted BIDS data through a processing pipeline, you'll need to fill out the IntendedFor field of any fmap files. This tells the pipeline which fmaps correspond to which BOLD runs in order to use the correct map for distortion correction. If you are planning to run NORDIC on your multi-echo data, you need to do that **before** filling out the IntendedFor fields. There are a few ways to do this. 
 
 1. Use the IntendedFor GUI to manually add the IntendedFor fields to your fmaps. 
-    * `source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh`
+    * `source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh`
     * `conda activate intended_for_gui`
-    * `python /home/faird/shared/code/internal/utilities/intendedforgui/intended_for_gui.py`
+    * `python /projects/standard/faird/shared/code/internal/utilities/intendedforgui/intended_for_gui.py`
     * Select the BIDS input folder in the browser. This is easier if you were already there in the terminal before running the GUI. 
     * Press `Ctrl` to select the fmaps and all of the corresponding functional runs. 
 

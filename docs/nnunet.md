@@ -112,7 +112,7 @@ Follow these steps to perform the correction:
     - An example command: 
 
     ```
-    source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
+    source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
 
     python3 ./correct_chirality.py ../data/sub-XXX/ses-XXX/segmented/sub-XXX_ses-XXX_resized.nii.gz ./FreeSurferColorLUT.txt ../data/sub-XXX/ses-XXX/LRmask/LRmask.nii.gz ../data/sub-XXX/ses-XXX/segmented/sub-XXX_ses-XXX_corrected.nii.gz
     ```
@@ -161,7 +161,7 @@ Create brain mask:
 
 ```
 module load fsl
-source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
+source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
 conda activate cabinet
 python3 make_aseg-derived_mask_edited.py ../data/npad/derivatives/precomputed/sub-XXX/ses-XXX/anat/
 ```

@@ -28,7 +28,7 @@ When running error query, the user will specify specific strings to search for i
 
 Note that if an error log has multiple errors, the subject will be added to the list of the first error encountered in the log. 
 
-You can find the error query code on MSI at `/home/faird/shared/code/internal/utilities/MSI-utilities/error_query/`
+You can find the error query code on MSI at `/projects/standard/faird/shared/code/internal/utilities/MSI-utilities/error_query/`
 
 `new_error_query.py` is the most up to date script and requires a single argument: `-l /path/to/output/logs`
 

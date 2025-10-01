@@ -16,6 +16,6 @@ Below is an example code block that uses python to load the hdf5 file and pull r
 
 Right now, there is not an easy way to pull specific row/column of the original dconn. This is something Martin or Eric Feczko can help figure out if you need it.
 
-The code can be found on MSI at `/home/faird/shared/code/internal/utilities/dconn_shrinker` and on GitHub at the [dconn_shrinker repo](https://github.com/DCAN-Labs/dconn_shrinker). 
+The code can be found on MSI at `/projects/standard/faird/shared/code/internal/utilities/dconn_shrinker` and on GitHub at the [dconn_shrinker repo](https://github.com/DCAN-Labs/dconn_shrinker). 
 
 For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).

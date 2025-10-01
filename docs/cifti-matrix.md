@@ -4,7 +4,7 @@ One crucial way that we explore brain function is to explore the functional conn
 
 This code takes the BOLD time series data for a single voxel and correlates it with every over voxels time series. It does this for every voxel in the brain. The final result is a matrix of correlations. Workbench can also provide a correlation matrix but this code allows for more customization. This allows the user to play around with how the correlation is calculated and how that affects the resulting matrix. For example, a correlation matrix that does not use any motion censoring will almost certainly look different that one that does use motion censoring. A correlation matrix with many time points will be much more reliable than one with few time points.
 
-This code can be found on MSI at `/home/faird/shared/code/internal/utilities/cifti_connectivity`
+This code can be found on MSI at `/projects/standard/faird/shared/code/internal/utilities/cifti_connectivity`
 
 Version-controlled code and documentation can be found on [GitHub.](https://github.com/DCAN-Labs/cifti-connectivity)
 

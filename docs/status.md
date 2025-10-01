@@ -6,13 +6,13 @@ Produce status html on the output data to see how many processing jobs succeeded
 
 2. Load lab-wide miniconda3 environment and activate the abcd-hcp-pipeline_audit:
 
-`source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh`
+`source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh`
 
 `conda activate abcd-hcp-pipeline_audit`
 
 - **NOTE:** You do NOT need to module load python before running the command, this will cause the audit to not work
 
-3. Navigate to the correct directory: `cd /home/faird/shared/code/internal/utilities/abcd-hcp-pipeline_audit`
+3. Navigate to the correct directory: `cd /projects/standard/faird/shared/code/internal/utilities/abcd-hcp-pipeline_audit`
 
 - If the BIDS inputs are not stored in the top level of the s3 bucket, you'll need to checkout the `search_subfolders` branch of the audit. 
 

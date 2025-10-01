@@ -24,7 +24,7 @@ A wrapper works by creating individual run files for each subject-session based 
 
 * `run_files.<process>` (dir): This is where the individual run files are stored. If you need to rerun make_run_files, you do not have to delete these contents first, the script will delete everything in this folder before making new run files. 
 
-Before you create your own wrapper, check our SLURM wrappers repository to see if a wrapper already exists for your process. You can look on GitHub at [DCAN-Labs/SLURM_wrappers](https://github.com/DCAN-Labs/SLURM_wrappers) or on MSI at `/home/faird/shared/code/internal/utilities/SLURM_wrappers/`.
+Before you create your own wrapper, check our SLURM wrappers repository to see if a wrapper already exists for your process. You can look on GitHub at [DCAN-Labs/SLURM_wrappers](https://github.com/DCAN-Labs/SLURM_wrappers) or on MSI at `/projects/standard/faird/shared/code/internal/utilities/SLURM_wrappers/`.
 
 If there is not a pre-existing wrapper for your process, you can use the `wrapper_template` as a starting point. It is recommended to replace the `<process>` placeholder with the name of whatever you are running. **Be sure to check all of the files for this placeholder.** 
 

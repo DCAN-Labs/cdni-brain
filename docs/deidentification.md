@@ -14,7 +14,7 @@ pydeface subject_head.nii.gz
 
 **Specific instructions for infant data**
 
-Defacing infant data is more difficult compared to adults due to contrast inversion (and variable or lower contrast depending on the age and modality) in T1w and T2w images over the first 6 months of age, so it's best to use age-specific atlases in order to get good results. We have generated defaced masks for the 0-2 month old infant NIH MNI T1w and T2w atlases here: `/home/faird/shared/code/internal/utilities/deface/infant_templates` (details for how the defaced masks were generated are included in the README in this directory).    
+Defacing infant data is more difficult compared to adults due to contrast inversion (and variable or lower contrast depending on the age and modality) in T1w and T2w images over the first 6 months of age, so it's best to use age-specific atlases in order to get good results. We have generated defaced masks for the 0-2 month old infant NIH MNI T1w and T2w atlases here: `/projects/standard/faird/shared/code/internal/utilities/deface/infant_templates` (details for how the defaced masks were generated are included in the README in this directory).    
 
 ```
 pydeface <T1w subject head> \
@@ -49,7 +49,7 @@ singularity=`which singularity`
 
 singularity run \
 -B ${subject_head} -B ${outputdir} \
-/home/faird/shared/code/external/utilities/synthstrip_1.4.sif \
+/projects/standard/faird/shared/code/external/utilities/synthstrip_1.4.sif \
 -i ${subject_head} -o ${subject_brain} -m ${subject_brainmask} 
 ```
 You can also use the `--no-csf` flag for tighter skull-stripping. See the usage for more details.
@@ -61,7 +61,7 @@ In addition to defacing, you may also need to strip PHI from MRI filenames and m
 For DICOM anonymization, we’ve found [DICAT](https://github.com/aces/DICAT) to be effective and well-documented. Please read the GitHub documentation, but for a quick start:
 
 - Install pydicom: `pip install pydicom` 
-- Clone repo locally or use existing clone on MSI available here under `/home/faird/shared/code/external/utilities/DICAT` (may contain additional useful content/notes)
+- Clone repo locally or use existing clone on MSI available here under `/projects/standard/faird/shared/code/external/utilities/DICAT` (may contain additional useful content/notes)
 - Prepare csv file with one row per subject/session and 4 columns with the following information:
 	- `DCM_DIR`: full path to the DICOM study to deidentify
 	- `Pname`  : new patient name to use for deidentification
