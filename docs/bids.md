@@ -8,7 +8,7 @@ Used to make sure the data is BIDS valid (utilizing the [bids-validator package 
 
     - Load lab-wide miniconda3 environment: 
 
-        `source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh`
+        `source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh`
 
         - This ensures that you have all of the proper packages installed to run CuBIDS.
 

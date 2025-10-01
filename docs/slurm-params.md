@@ -56,7 +56,7 @@ The job script needs to stay the same until the job starts to produce the correc
  
 If a submission is above 2000 jobs (slurm’s max in-queue number of jobs), or you would like to space out job submission, use the continuous submitter.
 
-* Path to continuous submitter: `/home/faird/shared/code/internal/utilities/SLURM_wrappers/continuous_submitter`
+* Path to continuous submitter: `/projects/standard/faird/shared/code/internal/utilities/SLURM_wrappers/continuous_submitter`
 
 * The code can be found [on GitHub.](https://github.com/DCAN-Labs/SLURM_wrappers/tree/main/continuous_submitter)
 

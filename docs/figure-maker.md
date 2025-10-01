@@ -2,7 +2,7 @@
 
 It can often be difficult to standardize the way figures are made in the connectome workbench view.  Furthermore, workbench does not have an easy way to generate brain images automatically from the command line.  Nobody wants to manually create thousands of images.  The figure maker is a python wrapper for a bash script (make_dscalar_pics_vX.X.sh).  The script uses a template scene file and uses a(n exhausting) list of sed commands to replace the file names and parameters within the scene file to generate an image file.
 
-On MSI, the code can be found at `/home/faird/shared/code/internal/utilities/figure_maker`. There is a README in this directory that includes more information about installation and dependencies. 
+On MSI, the code can be found at `/projects/standard/faird/shared/code/internal/utilities/figure_maker`. There is a README in this directory that includes more information about installation and dependencies. 
 
 You can find the version-controlled code on [gitlab](https://gitlab.com/Fair_lab/figure-maker). 
 
@@ -35,7 +35,7 @@ python3 ./figure_maker_wrapper.py --subject-scalar ./group1_dscalar_AVG.dlabel.n
 | `--save-scene-file` | N/A (`FALSE`) | Include this flag to save the scene file. Helpful for debugging. |
 | `--wb-command` | (Depends on server) | Path to workbench command file (`wb_command`). Default depends on which server the script is run from. |
 
-For more advanced arguments, see the README in `/home/faird/shared/code/internal/utilities/figure_maker`
+For more advanced arguments, see the README in `/projects/standard/faird/shared/code/internal/utilities/figure_maker`
 
 
 For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).

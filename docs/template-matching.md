@@ -14,7 +14,7 @@ There are two 'versions' of template matching used in CDNI. One, written by Robe
 
 Find the [version-controlled code and documentation](https://github.com/DCAN-Labs/compare_matrices_to_assign_networks) on GitHub.
 
-The code can be found on MSI at `/home/faird/shared/code/internal/analytics/compare_matrices_to_assign_networks`
+The code can be found on MSI at `/projects/standard/faird/shared/code/internal/analytics/compare_matrices_to_assign_networks`
 
 ### Required Inputs
 
@@ -30,7 +30,7 @@ In older versions of XCP-D (< 0.8.0) look for these func filenames instead:
 - sub-{SUB}_ses-{SES}_task-{TASK}_space-fsLR_den-91k_desc-**interpolated**_bold.dtseries.nii
 - sub-{SUB}_ses-{SES}_task-{TASK}_desc-**dcan**_qc_power_2014_FD_only.mat
 
-The dtseries will need to be interpolated in order to fill in 0 values along the midline produced by fMRIprep. Use this script for versions of XCP-D >= 0.8.0: `/home/faird/shared/code/internal/utilities/interpolate_timeseries_from_xcpd9/`
+The dtseries will need to be interpolated in order to fill in 0 values along the midline produced by fMRIprep. Use this script for versions of XCP-D >= 0.8.0: `/projects/standard/faird/shared/code/internal/utilities/interpolate_timeseries_from_xcpd9/`
 
 - Script usage: `/path/to/interpolate_timeseries_from_xcpd9 <subjID> <sesID> /path/to/dtseries_folder/` 
 
@@ -54,7 +54,7 @@ TR=1.761
 FD_threshold=0.2
 INFOMAP=0 #run infomap if 1
 
-/home/faird/shared/code/internal/analytics/compare_matrices_to_assign_networks/twins_mapping_wrapper_washu_nordic.sh \
+/projects/standard/faird/shared/code/internal/analytics/compare_matrices_to_assign_networks/twins_mapping_wrapper_washu_nordic.sh \
 ${TR} \
 ${FD_threshold} \
 /path/to/input_files/sub-${SUB}_ses-${SES}_task-restMENORDICrmnoisevols_space-fsLR_den-91k_desc-denoised_bold_spatially_interpolated.dtseries.nii \
@@ -77,20 +77,20 @@ Depending on what data you're running, you might need to change the template use
 ```
 TEMPLATE="ABCD"
 if [ ${TEMPLATE} == "elabe" ] ; then
-  TEMPLATE_PATH='/home/faird/shared/projects/infant_probabilistic_atlas_eLABE/TM_analysis/template/outputs/seedmaps_list_dtseries_SurfOnly_all_networksZscored.mat'
+  TEMPLATE_PATH='/projects/standard/faird/shared/projects/infant_probabilistic_atlas_eLABE/TM_analysis/template/outputs/seedmaps_list_dtseries_SurfOnly_all_networksZscored.mat'
 elif [ ${TEMPLATE} == "ABCD" ] ; then
   TEMPLATE_PATH='/home/rando149/shared/projects/ABCD_template_maker/seedmaps_from_template2.0/ABCD_scan_seedmap/seedmaps_subs_withsmoothed_dtseries_n141_all_networksZscored.mat'
 elif [ ${TEMPLATE} == "infant" ] ; then
-  TEMPLATE_PATH='/home/faird/shared/code/internal/analytics/compare_matrices_copy_to_merge_from/support_files/infant_surface_template/seedmaps_UCI_smoothed_dtseries_all_networksZscored.mat'
+  TEMPLATE_PATH='/projects/standard/faird/shared/code/internal/analytics/compare_matrices_copy_to_merge_from/support_files/infant_surface_template/seedmaps_UCI_smoothed_dtseries_all_networksZscored.mat'
 fi
 ```
 
-There is also a modified run script that will keep the dconn that is created as an intermediate output. This is sometimes helpful for further analysis. `/home/faird/shared/code/internal/analytics/compare_matrices_to_assign_networks/twins_mapping_wrapper_washu_nordic_keepall.sh` 
+There is also a modified run script that will keep the dconn that is created as an intermediate output. This is sometimes helpful for further analysis. `/projects/standard/faird/shared/code/internal/analytics/compare_matrices_to_assign_networks/twins_mapping_wrapper_washu_nordic_keepall.sh` 
 
 
 ## Python Version
 
-The code can be found on MSI at `/home/faird/shared/code/internal/analytics/compare_matrices_python`
+The code can be found on MSI at `/projects/standard/faird/shared/code/internal/analytics/compare_matrices_python`
 
 One of the biggest differences in how the python version is run is that it assumes you've already made the dconn from the subjects' dtseries. This version also doesn't do any motion censoring, so if that is needed for your data, you need to scrub the dconn yourself. 
 

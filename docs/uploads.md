@@ -45,7 +45,7 @@ To transfer the data to MSI, you can run this command:
 
 - You can check the file count of the both directories to validate all of the expected data was transferred with the command `find /path/to/dicoms -type f | wc -l`
 
-Note: Transfers are often more successful when transferring to your MSI home directory than a shared directory (e.g., `/home/faird/shared`). Once the data are in your home directory, you can move the data to a shared directory with a mv command. 
+Note: Transfers are often more successful when transferring to your MSI home directory than a shared directory (e.g., `/projects/standard/faird/shared`). Once the data are in your home directory, you can move the data to a shared directory with a mv command. 
 
 ## Globus
 

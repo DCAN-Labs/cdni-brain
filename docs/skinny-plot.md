@@ -8,7 +8,7 @@ This code visualizes distributions as thin lines highlighting the following valu
 
 * percentiles 5 and 95 using thin lines
 
-The code has multiple options that allow the user to resort the order of each distribution, link the mean values using lines, project lines from the mean to the y-axis and more. The code can be found on MSI at `/home/miran045/shared/code/internal/utilities/plotting-tools/skinny_plot/`. All code and documentation originally developed by Oscar Miranda-Dominguez.
+The code has multiple options that allow the user to resort the order of each distribution, link the mean values using lines, project lines from the mean to the y-axis and more. The code can be found on MSI at `/projects/standard/miran045/shared/code/internal/utilities/plotting-tools/skinny_plot/`. All code and documentation originally developed by Oscar Miranda-Dominguez.
 
 This function requires an input of a table with 2 columns: the first column should have the labels and the second column should have the numbers to be displayed. There are other arguments that can be used. Below are some examples of what can be created with this tool
 
