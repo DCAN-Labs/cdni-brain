@@ -1,5 +1,7 @@
 # Optimizing Job Submissions
 
+Read: [Slurm Job Right-Sizing @ MSI](https://msi.umn.edu/our-resources/knowledge-base/job-sizing)
+
 In order to create a sbatch for a script, you need to know how many resources the job will need to run. To get an estimate, you can run a few subjects to get an idea of how much resources a single subject uses. We also have [pipeline-specific resource guidelines](pipelines.md). The account you select for running a job also matters, as some accounts will queue faster than others depending on their usage. It is important to optimize the resources for your job so they queue as fast as possible and don't spend days/weeks sitting stagnant in the queue. 
 
 ## seff
