@@ -88,7 +88,7 @@ Recommended sbatch parameters per 1 subject 1 session process:
 
 See [MSI partitions](partitions.md) to choose the appropriate partition based on your data and parameters. 
 
-**Note**: all job specifications can increase or decrease based on the amount of data (size or file number) in your dataset. These are recommendations based on job specifications for typical datasets with some buffer added. If your data is multi-echo or your subjects have more minutes of data than normal (>1 hour), you may need more resources
+**Note**: all job specifications can increase or decrease based on the amount of data (size or file number) in your dataset. These are recommendations based on job specifications for typical datasets with some buffer added. If your data is multi-echo or your subjects have more minutes of data than normal (>1 hour), you may need more resources. On average, fMRIprep takes about 8 hours to run and XCP-D takes about 2 hours to run.
 
 
 
@@ -98,7 +98,7 @@ See [MSI partitions](partitions.md) to choose the appropriate partition based on
 
 [fMRIPrep Github](https://github.com/nipreps/fmriprep)
 
-A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing of task-based and resting-state functional MRI (fMRI). For usage information, see [here](https://fmriprep.org/en/stable/usage.html).
+A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing of task-based and resting-state functional MRI (fMRI). For usage information, see the [fMRIprep usage page](https://fmriprep.org/en/stable/usage.html).
 
 1. Preferred flags:
 
@@ -153,7 +153,7 @@ ${singularity} run --cleanenv \
 
 [NiBabies Github](https://github.com/nipreps/nibabies)
 
-NiBabies is a robust pre-processing MRI and fMRI workflow that is also a part of the NiPreps family. NiBabies is designed and optimized for human infants between 0-2 years old. For in-depth usage information, see the [Read the Docs here](https://nibabies.readthedocs.io/en/latest/usage.html).
+NiBabies is a robust pre-processing MRI and fMRI workflow that is also a part of the NiPreps family. NiBabies is designed and optimized for human infants between 0-2 years old. For in-depth usage information, see the [Nibabies usage page](https://nibabies.readthedocs.io/en/latest/usage.html).
 
 
 1. Preferred flags:
@@ -248,7 +248,7 @@ ${singularity} run --cleanenv --no-home \
 
 [XCP-D Github](https://github.com/PennLINC/xcp_d)
 
-The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of BIDS derivatives. The inputs are required to include at least anatomical and functional preprocessed outputs with at least one preprocessed BOLD image. For further information, see [here](https://xcp-d.readthedocs.io/en/latest/usage.html). 
+The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of BIDS derivatives. The inputs are required to include at least anatomical and functional preprocessed outputs with at least one preprocessed BOLD image. For further information, see the [XCP-D usage page](https://xcp-d.readthedocs.io/en/latest/usage.html). 
 
 <div class="admonition attention">
     <p class="first admonition-title">Attention</p>
