@@ -138,7 +138,7 @@ In the Infant section above, some points can be generalized for ABCD-BIDS troubl
 
     * Run `module load workbench`
 
-    * Navigate to your output directory. This is an example output directory: `cd /home/feczk001/shared/data/ABCC_year2_sites/sub-####/ses-$$$$/files/MNINonLinear/fsaverage_LR32k`
+    * Navigate to your output directory. This is an example output directory: `cd /projects/standard/feczk001/shared/data/ABCC_year2_sites/sub-####/ses-$$$$/files/MNINonLinear/fsaverage_LR32k`
 
     * Run `wb_view` then select *Open* and *Load* for all the files
 

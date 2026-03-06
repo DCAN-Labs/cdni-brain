@@ -3,13 +3,13 @@
 This is still a developing pipeline that is being frequently tested and changed. Here we provide guidelines for testing the code and how to interpret the results. 
 
 ## Make changes to the code
-- Write code however you want then put the changes (use github!) on `/home/feczk001/shared/code/internal/pipelines/BIBSnet`
+- Write code however you want then put the changes (use github!) on `/projects/standard/feczk001/shared/code/internal/pipelines/BIBSnet`
     - check that nobody else is using this directory for other testing. If they are you can use the miran045 share
 
-- Dont use `/home/faird/shared/code/internal/pipelines/BIBSnet` because its the stable version
+- Dont use `/projects/standard/faird/shared/code/internal/pipelines/BIBSnet` because its the stable version
 
 ## Change the test container
-`cd /home/faird/shared/code/internal/pipelines/bibsnet_container/`
+`cd /projects/standard/faird/shared/code/internal/pipelines/bibsnet_container/`
 
 Duplicate `bibsnet_testing.sh`
 
@@ -61,7 +61,7 @@ Duplicate `bibsnet_testing.sh`
 
 These are the directories you specified in the `bibsnet_testing.sh` file
 
-    `cd /home/feczk001/shared/projects/segpipeline_testing/`
+    `cd /projects/standard/feczk001/shared/projects/segpipeline_testing/`
 
     `mkdir my_test_dir`
 

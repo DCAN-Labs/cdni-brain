@@ -4,7 +4,7 @@ File mapper maps processed outputs into the BIDS format for the abcd-hcp-pipelin
 
 1. File-mapper usage:
 
-    * File-mapper is located in: `/home/faird/shared/code/internal/utilities/file-mapper`
+    * File-mapper is located in: `/projects/standard/faird/shared/code/internal/utilities/file-mapper`
 
     * Select an example mapping json file from the “examples” folder in this location or create your own
     

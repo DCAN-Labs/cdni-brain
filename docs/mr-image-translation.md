@@ -30,7 +30,7 @@ If you run into problems or have questions, please contact [Paul Reiners](reine0
 
 
 ## Image preprocessing
-Anders has models available for use to generate both synthetic T1ws from real T2ws and synthetic T2ws from real T1ws. The data he used for training (the ECHO infant dataset) underwent some minimal image preprocessing that must be performed on your input data as well, including (1) fslreorient2std, (2) ACPC alignment (from DCAN-infant-pipeline), (3) ANTS DenoiseImage, and (4) bias field correction with N4BiasFieldCorrection. Image preprocessing is performed by [setup_input_image.sh](https://github.com/perronea/MR-Image-Translation/blob/main/UNet/code/setup_input_image.sh).
+Anders Perrone (former DCAN member) has models available for use to generate both synthetic T1ws from real T2ws and synthetic T2ws from real T1ws. The data he used for training (the ECHO infant dataset) underwent some minimal image preprocessing that must be performed on your input data as well, including (1) fslreorient2std, (2) ACPC alignment (from DCAN-infant-pipeline), (3) ANTS DenoiseImage, and (4) bias field correction with N4BiasFieldCorrection. Image preprocessing is performed by [setup_input_image.sh](https://github.com/perronea/MR-Image-Translation/blob/main/UNet/code/setup_input_image.sh).
 
 We’ve added some additional helper scripts to perform image preprocessing under [MSI_preprocessing_scripts](https://github.com/DCAN-Labs/MR-Image-Translation/tree/MSI_preproc_additions/MSI_preprocessing_scripts) on the [MSI_preproc_additions](https://github.com/DCAN-Labs/MR-Image-Translation/tree/MSI_preproc_additions) branch of DCAN’s forked repo. 
 

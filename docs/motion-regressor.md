@@ -151,7 +151,7 @@ env -i ${singularity} run \
 -B ${data_dir}/:/bids_dir \
 -B ${data_dir}/processed/abcd-hcp-pipeline/:/output_dir \
 -B ${run_dir}/license.txt:/opt/freesurfer/license.txt \
-/home/faird/shared/code/internal/pipelines/ABCD-BIDS/abcd-hcp-pipeline_v0.1.3.sif \
+/projects/standard/faird/shared/code/internal/pipelines/ABCD-BIDS/abcd-hcp-pipeline_v0.1.3.sif \
 /bids_dir /output_dir \
 --bandstop 12 27 \   %here we add our flag for motion filter
 --freesurfer-license=/opt/freesurfer/license.txt \

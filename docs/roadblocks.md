@@ -136,9 +136,9 @@ ttouch() {
 ### Shortcuts
 These are some helpful variables/alias' to add to your .bashrc. Read more about the [difference between alias' and variables.](https://stackoverflow.com/questions/7342735/bash-command-whats-the-difference-between-a-variable-and-an-alias) 
 
-- `lab_conda="/home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh"`
-    * Or you could just add `source /home/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh` to automatically enter the labwide environment.
-- `get_access="/home/faird/shared/code/internal/utilities/MSI-utilities/s3_get_x500/get_x500.sh"`
+- `lab_conda="/projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh"`
+    * Or you could just add `source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh` to automatically enter the labwide environment.
+- `get_access="/projects/standard/faird/shared/code/internal/utilities/MSI-utilities/s3_get_x500/get_x500.sh"`
 - `wb='wb_command'`
 - `scue='squeue -al --me'`
 
@@ -156,7 +156,7 @@ If the group isn't full, try changing the group of the file/directory:
 
 * All files in the current directory: `chgrp faird *`
 
-* All files in a specific directory: `chgrp faird /home/faird/shared/*`
+* All files in a specific directory: `chgrp faird /projects/standard/faird/shared/*`
 
 If the group is full:
 

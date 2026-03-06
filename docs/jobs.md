@@ -4,7 +4,7 @@
 
 25. If a submission is above 2000 jobs (slurm’s max in-queue number of jobs), use the continuous submitter.
 
-    * Path to continuous submitter: `/home/faird/shared/code/internal/utilities/slurm_pipeline_wrappers/continuous_slurm_array_submitter`
+    * Path to continuous submitter: `/projects/standard/faird/shared/code/internal/utilities/slurm_pipeline_wrappers/continuous_slurm_array_submitter`
 
     * Below is an example of what the submitter script will look like:
 

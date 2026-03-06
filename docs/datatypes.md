@@ -6,35 +6,35 @@ The typical sequences taken at an MRI visit are structural scans (a T1w and/or a
 
 ## DICOM
 
-DICOMs are the standard file format that is collected from the scanner. Fun fact, DICOM stands for Digital Imaging and Communications in Medicine. DICOM files have a `.dcm` ending. These files store the imaging data as well as header information that indicates information about the scanning participant and scan sequence. You can access the header information with `dcmdump`, WHICH YOU CAN ACCESS ON MSI SOMEHOW or you can use the `pydicom` package in Python. 
+DICOMs are the standard file format that is collected from the scanner. Fun fact, DICOM stands for Digital Imaging and Communications in Medicine. DICOM files have a `.dcm` ending. These files store the imaging data as well as header information that indicates information about the scanning participant and scan sequence. You can access the header information with `dcmdump` (included in the `dcmtk` module on MSI) or you can use the `pydicom` package in Python. 
 
-These raw files take up tons of space and are complicated to work with, as a single DICOM is one frame of the MRI scan. This is part of the reason they need to be converted to the NIfTI format. We don't often work directly with DICOMs, except maybe looking at them with [ITK-SNAP](workbench.md#itk-snap) to check the data quality.
+These raw files take up tons of space and are complicated to work with, as a single DICOM is often only one frame of the MRI scan. This is part of the reason they need to be converted to the NIfTI format. We don't often work directly with DICOMs, except maybe looking at them with [ITK-SNAP](workbench.md#itk-snap) to check the data quality.
 
 ## NIfTI
 
 NIfTI is the standard file format for working with MRI data. Another fun fact, NIfTI stands for Neuroimaging Informatics Technology Initiative. This format compiles all of the DICOMs from a run into one file and significantly decreases the size of the data by storing it more efficiently. NIfTIs store volumetric data. These files have a `.nii` or `.nii.gz` ending. 
 
-## GIfTI
+## GIFTI
 
-GIfTI is another standard file format for surface MRI data. They are Geometry NIfTI files and store the surface mesh data. These files have a `.gii` ending. These filetypes are outputs from processing pipelines. Some example filetypes include 
+GIFTI (Geometry format under the Neuroimaging Informatics Technology Initiative) is another standard file format for surface MRI data. They are Geometry NIfTI files and store the surface mesh data. These files have a `.gii` ending. These filetypes are outputs from processing pipelines. Some example filetypes include 
 
 * `.shape.gii` - can store information such a cortical thickness and curvature
 * `.surf.gii`- stores the different surface information, like midthickness, pial, and white surfaces
 * `.label.gii`- stores label data that can be mapped to a .surf.gii file and a label table specifiying the names and colors for label data
 * `.func.gii` - functional surface data 
 
-For more in-depth reading on GIfTI files, see the [GIFTI format specification pdf](https://www.nitrc.org/frs/download.php/2871/GIFTI_Surface_Format.pdf). 
+For more in-depth reading on GIFTI files, see the [GIFTI format specification pdf](https://www.nitrc.org/frs/download.php/2871/GIFTI_Surface_Format.pdf). 
 
-## CIfTI
+## CIFTI
 
-CIfTI is a sort of expanded NIfTI that can hold more data. These files store volumetric and surface data. These file types are outputs from processing pipelines and analysis methods. Since these are basically just expanded NIfTI files, they also have `.nii` endings. There are two general types of CIfTI files, dense files and parcellated files. Dense files have data for the entire brain and are used for whole brain connectivity analyses. Parcellated files have the data split out by a parcellation file and are used for analyses looking at average ROI/parcel connectivity. Some example filetypes include 
+CIFTI (Connectivity Informatics Technology Initiative) is a sort of expanded NIfTI that can hold more data. These files store volumetric and surface data. These file types are outputs from processing pipelines and analysis methods. Since these are basically just expanded NIfTI files, they also have `.nii` endings. There are two general types of CIFTI files, dense files and parcellated files. Dense files have data for the entire brain and are used for whole brain connectivity analyses. Parcellated files have the data split out by a parcellation file and are used for analyses looking at average ROI/parcel connectivity. Some example filetypes include 
 
 * `.dtseries.nii`/`.ptseries.nii` - raw timeseries data, every column is a TR and every row is the signal at that grayordinate/parcel 
 * `.dscalar.nii`/`.pscalar.nii` - scalar map across vertices/voxels, usually 1-D matrix
 * `.dconn.nii`/`.pconn.nii` - correlation matrix of the dtseries data, how every grayordinate is associated with every other grayordinate 
 * `.dlabel.nii`/`.plabel.nii` - stores named label maps across vertices/voxels (basically the same as dscalar but with named maps)
 
-You can read more about CIfTI files (and how to work with them in R) in this [ciftiTools paper](https://www.sciencedirect.com/science/article/pii/S1053811922000076) and in the [CIFTI-2 format specification](https://www.nitrc.org/forum/attachment.php?attachid=341&group_id=454&forum_id=1955).
+You can read more about CIFTI files (and how to work with them in R) in this [ciftiTools paper](https://www.sciencedirect.com/science/article/pii/S1053811922000076) and in the [CIFTI-2 format specification](https://www.nitrc.org/forum/attachment.php?attachid=341&group_id=454&forum_id=1955).
 
 ## BIDS
 

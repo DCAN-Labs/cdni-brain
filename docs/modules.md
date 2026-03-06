@@ -6,17 +6,19 @@ Read:
 
 * [List of MSI software modules](https://www.msi.umn.edu/software)
 
+* [Environment Modules official documentation](https://modules.readthedocs.io/en/latest/)
+
 ## Loading Modules
 
-MSI uses a “module” system for providing access to various software packages. Often there are multiple versions of a given module available with one designated as the default to load.  `module avail <module name>` will display a list of all available versions. Modules are loaded from the command line with `module load <module name>/<version>`.
+MSI uses the Environment Modules "module" system for providing access to various software packages. Often there are multiple versions of a given module available with one designated as the default to load.  `module avail <module name>` will display a list of all available versions. Modules are loaded from the command line with `module load <module name>/<version>`.
 
 Commonly used modules by our lab include:
 
 * fsl 
 * workbench 
-    - Note that the default version used to be 1.5.0 but is now 2.0.0, which has different default settings. It is recommended to load workbench/1.5.0
+    - Note that the default version used to be 1.5.0 but is now 2.0.1, which has different default settings. Depending on use case you may need to load workbench/1.5.0, 1.4.2, or another older version for compatability
 * freesurfer
-* matlab
+* matlab (most versions from R2010b through R2023b available)
 
 Some other helpful modules include:
 
@@ -33,11 +35,11 @@ Some other helpful modules include:
     - Alternative option instead of loading the cubids miniconda environment
 
 * singularity
-    - For building/accessing singularity images 
+    - For building/accessing singularity (/ Apptainer) images 
 
 ## Removing Modules and Resolving Conflicts 
 
-Modules modify the user’s PATH variable while loaded, which can occasionally conflict with other modules and tools. This is why it is recommened to not load too many modules by default in your `.bashrc`. Unloading a module can be done with `module rm <module name>`. Unloading reverts the PATH variable, which should resolve conflicts. 
+Modules modify the user’s PATH variable while loaded, which can occasionally conflict with other modules and tools. This is why it is recommened to not load too many modules by default in your `.bashrc`. Unloading a module can be done with `module rm <module name>`. Unloading reverts the PATH variable, which should resolve conflicts. Note that loading certain modules triggers the loading of additional modules as dependencies; e.g. `module load freesurfer` also loads `matlab` and `netcdf`. In these cases, unloading the first module `module rm freesurfer` does **not** unload those additional modules. 
 
 Conda environments and user profile installs can also cause conflicts with the module system on MSI. If running `module load <module name>` doesn't successfully load the specified module, this potentially means that module is already being called from another spot. Use `which <module name>` to see where it is coming from. However, this won't always work for determining the version. 
 

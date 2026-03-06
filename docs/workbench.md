@@ -1,15 +1,15 @@
 # Neuroimaging Softwares
 
-CDNI commonly uses a few different softwares for visualizing and manipulating MRI data. The most commonly used softwares and Workbench and FSL. This page will walk through some of the common commands and uses of each software.
+CDNI commonly uses a few different softwares for visualizing and manipulating MRI data. The most commonly used softwares are Workbench and FSL. This page will walk through some of the common commands and uses of each software.
 
 ## Workbench
 
-[Connectome Workbench](https://humanconnectome.org/software/workbench-command) is an open source visualization and discovery tool used to view and manipulate neuroimaging data. To use on MSI, run `module load workbench`. Workbench is primarily used to work with CIFTIs and surface data (GIFTIs) and can also be used with volume data (NIFTIs). 
+[Connectome Workbench](https://humanconnectome.org/software/workbench-command) is an open source visualization and discovery tool used to view and manipulate neuroimaging data. To use on MSI, run `module load workbench`. Workbench is primarily used to work with CIFTIs and surface data (GIFTIs) and can also be used with volume data (NIfTIs). 
 
 <div class="admonition note">
     <p class="first admonition-title">Note</p>
     <p class="last">
-        Some CDNI tools might require older versions of Workbench. The MSI default is 0.2.0 (as of Summer 2025). If you are running into unexpected Workbench errors, try loading an older version of Workbench (like 1.4.2 or 1.5.0) to see if that fixes the issue.
+        Some CDNI tools might require older versions of Workbench. The MSI default is 2.0.1 (as of Summer 2025). If you are running into unexpected Workbench errors, try loading an older version of Workbench (like 1.4.2 or 1.5.0) to see if that fixes the issue.
     </p>
 </div>
 
@@ -91,12 +91,12 @@ Here is a list of commonly used commands:
 
 ### Visualization
 
-FSLeyes is the FSL tool to visualize data. FSL can only load volume data (NIFTIs) and is commonly used to view brain segmentations, since they have a better color pallete to choose from compared to Workbench. FSLeyes is also generally quicker to use than wb_view. You can open FSLeyes after you load the fsl module and run `fsleyes <image>`. 
+FSLeyes is the FSL tool to visualize data. FSL is primarily for use with volume data (.nii / .nii.gz) and is commonly used to view brain segmentations, since they have a better color palette to choose from compared to Workbench. FSLeyes is also generally quicker to use than wb_view. You can open FSLeyes after you load the fsl module and run `fsleyes <image>`. 
 
 ### Manipulation
 
 `cluster`
-- Detects continue chunks of voxels, used for cleaning brainmasks
+- Detects contiguous chunks of voxels, used for cleaning brainmasks
 
 `flirt` and `fnirt`
 - Linear and non-linear image registration
@@ -153,7 +153,7 @@ Here are some common commands:
 - Apply ANTs transform
 
 `antsRegistration`
-- Apply high-quality brain registration algorithm
+- High-quality brain registration algorithm
 
 ## NiBabel
 
