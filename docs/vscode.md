@@ -46,36 +46,18 @@ Now you need to edit the ssh config file on your local computer to be able to co
 
 - Copy the following text into your `~/.ssh/config` file on your local computer, changing USERNAME to your x500. The port numbers (xxxxx:localhost:xxxxx) are arbitrary and can be changed freely. 
 
-        XAuthLocation /opt/X11/bin/xauth
-        ServerAliveInterval 60
-        ServerAliveCountMax 120
+        Host msi-compute
+          User USERNAME
+          HostName agate.msi.umn.edu
+          ServerAliveInterval 60
 
-        Host mangi.msi.umn.edu
-        HostName mangi.msi.umn.edu
-        User USERNAME
-        LocalForward 12326 localhost:12326
-
-        Host cn*
-        User USERNAME
-        ProxyCommand ssh -L 12326:localhost:12326 -W %h:%p mangi.msi.umn.edu
-        LocalForward 12326 localhost:12326
-        ForwardX11Trusted yes
-
-        Host agate.msi.umn.edu
-        HostName agate.msi.umn.edu
-        User USERNAME
-        LocalForward 12124 localhost:12124
-        ForwardX11Trusted yes
-
-        Host acn*
-        User USERNAME
-        ProxyCommand ssh -L 12124:localhost:12124 -W %h:%p agate.msi.umn.edu
-        LocalForward 12124 localhost:12124
-        ForwardX11Trusted yes
+        Host aga* agb* agc* agd* acn* acl* cn*
+         User USERNAME
+         ProxyJump msi-compute
 
 Time to actually connect to MSI!
 
- - Under the View tab, open the Command Palette and search for Remote SSH: Connect to Host. Mangi and Mesabi should both be listed as options.
+ - Under the View tab, open the Command Palette and search for Remote SSH: Connect to Host. msi-compute should be listed as options. Please note these screenshots are a bit out of date but show the concept of what you're looking for. 
 
     ![Command Palette](img/command_palette.png)
 
