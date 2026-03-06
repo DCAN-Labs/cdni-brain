@@ -135,9 +135,9 @@ singularity='which singularity'
 ${singularity} run --cleanenv \
 -B ${fmriprep_in}/input:/data:ro \
 -B ${fmriprep_out}/bcp_fmriprep_outputs:/out \
--B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
+-B /projects/standard/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
 -B /tmp:/work \
-/home/faird/shared/code/external/pipelines/fmriprep/fmriprep_25.1.3.sif /data/out participant \
+/projects/standard/faird/shared/code/external/pipelines/fmriprep/fmriprep_25.2.4.sif /data/out participant \
 --participant-label {subject_ID} \
 --cifti-output 91k \
 --omp-nthreads 3 \
@@ -188,10 +188,10 @@ singularity='which singularity'
 ${singularity} run --cleanenv \
 -B ${nibabies_in}/input/:/data:ro \
 -B ${nibabies_out}/nibabies_outputs/:/out \
--B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
+-B /projects/standard/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
 -B ${tmp_dir}/work_dir/:/work \
 -B ${ext_derivs}/bibsnet_outputs/:/derivatives \
-/home/faird/shared/code/external/pipelines/nibabies/nibabies_25.1.0.sif /data /out participant \
+/projects/standard/faird/shared/code/external/pipelines/nibabies/nibabies_25.1.0.sif /data /out participant \
 --participant-label {subject_ID} \ 
 --age-months {age} \
 --session-id {session_ID} \
@@ -232,10 +232,10 @@ module load singularity
 singularity='which singularity'
 
 ${singularity} run --cleanenv --no-home \
--B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
+-B /projects/standard/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
 -B ${BIDS_path}/input_data:/data:ro \
 -B ${out_path}/outputs:/out \
-/home/faird/shared/code/internal/pipelines/ABCD-BIDS/abcd-hcp-pipeline_latest.sif /data/out \
+/projects/standard/faird/shared/code/internal/pipelines/ABCD-BIDS/abcd-hcp-pipeline_latest.sif /data/out \
 --freesurfer-license=/opt/freesurfer/license.txt \
 --participant-label subject_ID \
 --stages "PreFreeSurfer:ExecutiveSummary" \
@@ -320,18 +320,18 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
     </p>
 </div>
 
-* Check this path for the most up to date version of XCP-D `/home/faird/shared/code/external/pipelines/xcp_d`
+* Check this path for the most up to date version of XCP-D `/projects/standard/faird/shared/code/external/pipelines/xcp_d`
 
 ```
 module load singularity
 singularity= 'which singularity'
 
 ${singularity} run –cleanenv \
--B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \ 
+-B /projects/standard/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \ 
 -B ${fmriprep_dir}/processed/fmriprep/sub-${subj_id}_ses-${ses_id}:/fmriprep_out \
 -B ${xcpd_dir}/processed/sub-${subj_id}_ses-${ses_id}:/xcpd_out \
 -B ${xcpd_dir}/work_dir/sub-${subj_id}_ses-${ses_id}:/wkdir \
-/home/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.11.0.sif \
+/projects/standard/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.12.0.sif \
 --mode abcd \
 --participant-label ${subj_id} \
 --omp-nthreads 3 \ 
@@ -379,12 +379,12 @@ This pipeline is for processing macaque data collected from a 10.5T scanner from
 ```    
 module load singularity; singularity exec --cleanenv \
 -B /scratch.global/tmadison/macaque_masks:/masks \
--B /home/faird/shared/code/internal/utilities/zlab_10p5T_nhp_processing/parcellations:/opt/dcan-tools/dcan_bold_proc/templates/parcellations \ 
--B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
--B /home/faird/shared/code/internal/utilities/zlab_10p5T_nhp_processing/MultiTemplates/MMU46011:/MultiTemplates \
+-B /projects/standard/faird/shared/code/internal/utilities/zlab_10p5T_nhp_processing/parcellations:/opt/dcan-tools/dcan_bold_proc/templates/parcellations \ 
+-B /projects/standard/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
+-B /projects/standard/faird/shared/code/internal/utilities/zlab_10p5T_nhp_processing/MultiTemplates/MMU46011:/MultiTemplates \
 -B /path/to/inputs/nhp_in:/bids_input:ro \
 -B /path/to/outputs/nhp_out:/output \
-/home/faird/shared/code/internal/pipelines/nhp-ABCD-BIDS/nhp-abcd-bids-pipeline-synth_0.2.11.sif /entrypoint.sh /bids_input /output \
+/projects/standard/faird/shared/code/internal/pipelines/nhp-ABCD-BIDS/nhp-abcd-bids-pipeline-synth_0.2.11.sif /entrypoint.sh /bids_input /output \
 --freesurfer-license=/opt/freesurfer/license.txt \
 --ncpus 2 \
 --multi-template-dir=/MultiTemplates \
@@ -472,7 +472,7 @@ Example command:
 -B /path/to/input/:/input \
 -B /path/to/output/:/output \
 -B /path/to/working/directory/:/work \
-/home/faird/shared/code/internal/pipelines/bibsnet_container/bibsnet_v3.0.0.sif \
+/projects/standard/faird/shared/code/internal/pipelines/bibsnet_container/bibsnet_v3.0.0.sif \
 /input /output participant -start prebibsnet -end postbibsnet -v \
 --participant-label ${subject_id} \
 -w /work
