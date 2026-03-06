@@ -88,7 +88,7 @@ Recommended sbatch parameters per 1 subject 1 session process:
 
 See [MSI partitions](partitions.md) to choose the appropriate partition based on your data and parameters. 
 
-**Note**: all job specifications can increase or decrease based on the amount of data (size or file number) in your dataset. These are recommendations based on job specifications for typical datasets with some buffer added. If your data is multi-echo or your subjects have more minutes of data than normal (>1 hour), you may need more resources
+**Note**: all job specifications can increase or decrease based on the amount of data (size or file number) in your dataset. These are recommendations based on job specifications for typical datasets with some buffer added. If your data is multi-echo or your subjects have more minutes of data than normal (>1 hour), you may need more resources. On average, fMRIprep takes about 8 hours to run and XCP-D takes about 2 hours to run.
 
 
 
@@ -98,7 +98,7 @@ See [MSI partitions](partitions.md) to choose the appropriate partition based on
 
 [fMRIPrep Github](https://github.com/nipreps/fmriprep)
 
-A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing of task-based and resting-state functional MRI (fMRI). For usage information, see [here](https://fmriprep.org/en/stable/usage.html).
+A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing of task-based and resting-state functional MRI (fMRI). For usage information, see the [fMRIprep usage page](https://fmriprep.org/en/stable/usage.html).
 
 1. Preferred flags:
 
@@ -122,6 +122,13 @@ A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing o
 
 2. If an error is encountered, check for a solution on the [troubleshooting page](troubleshooting.md#nibabies-and-fmriprep) and consider creating a [Github issue](https://github.com/DCAN-Labs/cdni-brain/issues) or adding it yourself if your error is not there.
 
+<div class="admonition attention">
+    <p class="first admonition-title">Attention</p>
+    <p class="last">
+        Please note that versions of fMRIprep < 25.2.4 that are run with the `--subject-anatonical-reference sessionwise` option have a bug where distortion correction will not be applied to each session. 
+    </p>
+</div>
+
 3. Example command:
 
 ```
@@ -134,7 +141,7 @@ ${singularity} run --cleanenv \
 -B ${fmriprep_out}/bcp_fmriprep_outputs:/out \
 -B /projects/standard/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
 -B /tmp:/work \
-/projects/standard/faird/shared/code/external/pipelines/fmriprep/fmriprep_25.1.3.sif /data/out participant \
+/projects/standard/faird/shared/code/external/pipelines/fmriprep/fmriprep_25.2.4.sif /data/out participant \
 --participant-label {subject_ID} \
 --cifti-output 91k \
 --omp-nthreads 3 \
@@ -150,7 +157,7 @@ ${singularity} run --cleanenv \
 
 [NiBabies Github](https://github.com/nipreps/nibabies)
 
-NiBabies is a robust pre-processing MRI and fMRI workflow that is also a part of the NiPreps family. NiBabies is designed and optimized for human infants between 0-2 years old. For in-depth usage information, see the [Read the Docs here](https://nibabies.readthedocs.io/en/latest/usage.html).
+NiBabies is a robust pre-processing MRI and fMRI workflow that is also a part of the NiPreps family. NiBabies is designed and optimized for human infants between 0-2 years old. For in-depth usage information, see the [Nibabies usage page](https://nibabies.readthedocs.io/en/latest/usage.html).
 
 
 1. Preferred flags:
@@ -252,7 +259,7 @@ ${singularity} run --cleanenv --no-home \
 
 [XCP-D Github](https://github.com/PennLINC/xcp_d)
 
-The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of BIDS derivatives. The inputs are required to include at least anatomical and functional preprocessed outputs with at least one preprocessed BOLD image. For further information, see [here](https://xcp-d.readthedocs.io/en/latest/usage.html). 
+The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of BIDS derivatives. The inputs are required to include at least anatomical and functional preprocessed outputs with at least one preprocessed BOLD image. For further information, see the [XCP-D usage page](https://xcp-d.readthedocs.io/en/latest/usage.html). 
 
 <div class="admonition attention">
     <p class="first admonition-title">Attention</p>
@@ -317,6 +324,13 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
 
 4. Example command: 
 
+<div class="admonition attention">
+    <p class="first admonition-title">Attention</p>
+    <p class="last">
+        Please note that versions of XCP-D < 0.11.0 have a bug where the fsLR32k surface resampling doesn't use the MSMsulc sphere when available, which causes mismatches with the surface data provided by fMRIprep versions >= 23.2.0 and < 25.1.3. It is highly recommended to update any processing with fMRIprep > 25 and XCP-D > 0.11.0.
+    </p>
+</div>
+
 * Check this path for the most up to date version of XCP-D `/projects/standard/faird/shared/code/external/pipelines/xcp_d`
 
 ```
@@ -328,7 +342,7 @@ ${singularity} run –cleanenv \
 -B ${fmriprep_dir}/processed/fmriprep/sub-${subj_id}_ses-${ses_id}:/fmriprep_out \
 -B ${xcpd_dir}/processed/sub-${subj_id}_ses-${ses_id}:/xcpd_out \
 -B ${xcpd_dir}/work_dir/sub-${subj_id}_ses-${ses_id}:/wkdir \
-/projects/standard/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.11.1.sif \
+/projects/standard/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.12.0.sif \
 --mode abcd \
 --participant-label ${subj_id} \
 --omp-nthreads 3 \ 
