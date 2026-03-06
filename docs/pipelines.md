@@ -130,7 +130,7 @@ ${singularity} run --cleanenv \
 -B ${fmriprep_out}/bcp_fmriprep_outputs:/out \
 -B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
 -B /tmp:/work \
-/home/faird/shared/code/external/pipelines/fmriprep/fmriprep_24.1.1.sif /data/out participant \
+/home/faird/shared/code/external/pipelines/fmriprep/fmriprep_25.1.3.sif /data/out participant \
 --participant-label {subject_ID} \
 --cifti-output 91k \
 --omp-nthreads 3 \
@@ -184,7 +184,7 @@ ${singularity} run --cleanenv \
 -B /home/faird/shared/code/external/utilities/freesurfer_license/license.txt:/opt/freesurfer/license.txt \
 -B ${tmp_dir}/work_dir/:/work \
 -B ${ext_derivs}/bibsnet_outputs/:/derivatives \
-/home/faird/shared/code/external/pipelines/nibabies/nibabies_24.1.0.sif /data /out participant \
+/home/faird/shared/code/external/pipelines/nibabies/nibabies_25.1.0.sif /data /out participant \
 --participant-label {subject_ID} \ 
 --age-months {age} \
 --session-id {session_ID} \
@@ -306,6 +306,13 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
 
 4. Example command: 
 
+<div class="admonition attention">
+    <p class="first admonition-title">Attention</p>
+    <p class="last">
+        Please note that versions of XCP-D < 0.11.0 have a bug where the fsLR32k surface resampling doesn't use the MSMsulc sphere when available, which causes mismatches with the surface data provided by fMRIprep versions >= 23.2.0 and < 25.1.3. It is highly recommended to update any processing with fMRIprep > 25 and XCP-D > 0.11.0.
+    </p>
+</div>
+
 * Check this path for the most up to date version of XCP-D `/home/faird/shared/code/external/pipelines/xcp_d`
 
 ```
@@ -317,7 +324,7 @@ ${singularity} run –cleanenv \
 -B ${fmriprep_dir}/processed/fmriprep/sub-${subj_id}_ses-${ses_id}:/fmriprep_out \
 -B ${xcpd_dir}/processed/sub-${subj_id}_ses-${ses_id}:/xcpd_out \
 -B ${xcpd_dir}/work_dir/sub-${subj_id}_ses-${ses_id}:/wkdir \
-/home/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.10.1.sif \
+/home/faird/shared/code/external/pipelines/xcp_d/xcp_d_0.11.0.sif \
 --mode abcd \
 --participant-label ${subj_id} \
 --omp-nthreads 3 \ 
