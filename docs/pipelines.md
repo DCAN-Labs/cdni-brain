@@ -118,6 +118,13 @@ A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing o
 
 2. If an error is encountered, check for a solution on the [troubleshooting page](troubleshooting.md#nibabies-and-fmriprep) and consider creating a [Github issue](https://github.com/DCAN-Labs/cdni-brain/issues) or adding it yourself if your error is not there.
 
+<div class="admonition attention">
+    <p class="first admonition-title">Attention</p>
+    <p class="last">
+        Please note that versions of fMRIprep < 25.2.4 that are run with the `--subject-anatonical-reference sessionwise` option have a bug where distortion correction will not be applied to each session. 
+    </p>
+</div>
+
 3. Example command:
 
 ```
