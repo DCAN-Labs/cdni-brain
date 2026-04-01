@@ -357,6 +357,16 @@ ${singularity} run –cleanenv \
 /fmriprep_out /xcpd_out participant
 ```
 
+Some common post-processing analysis scripts expect certain file formats that are different from the default XCP-D outputs. Because of this, it is recommended that you include these commands after your XCP-D command. 
+
+`/projects/standard/faird/shared/code/internal/utilities/xcpd2dcanmotion/run_xcpd2dcanmotion_on_func_dir.sh /path/to/sub/ses/func/`
+- This script will convert the motion.hdf5 file to a .mat file, which is an expected input to template matching. 
+- There is another script in this directory to convert the motion.hdf5 file to a .tsv file - `convert_motion_hdf5_to_tsv.py` - which can be useful for other analyses. 
+
+`/projects/standard/faird/shared/code/internal/utilities/interpolate_timeseries_from_xcpd9 subID sesID task /path/to/sub/ses/func`
+- This script will interpolate empty voxels from the midline (an artifact of the version of Freesurfer used in fMRIprep), which is an expected input to template matching.
+- Do not include the sub- and ses- prefixes. The task input should be the condition of the data you're processing (ex: rest, restNORDIC, MID, NBACK, etc).
+
 ## 5. NHP 10.5T ABCD BIDS synth
 
 [NHP ABCD BIDS Synth Github](https://github.com/DCAN-Labs/nhp-abcd-bids-pipeline-synth)
