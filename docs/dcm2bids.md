@@ -50,30 +50,36 @@ Kimberly Weldon has developed a set of scripts to streamline the conversion proc
 <div class="admonition attention">
     <p class="first admonition-title">Attention</p>
     <p class="last">
-        Please note that a new conversion workflow is currently being developed and tested to improve generalizability. The below scripts will still work but please ask Kim for the updated workflow if you are starting a new project. 
+        Please note that this new conversion workflow is still being tested to ensure generalizability. If you run into any unexpected outcomes, please talk with Kim.
     </p>
 </div>
 
-* The needed scripts are all found in `/projects/standard/faird/shared/code/internal/utilities/cdniproc/` 
+* The needed scripts are all found in `/projects/standard/faird/shared/code/internal/utilities/cdniproc_v2.0/` 
     
 * Load the labwide conda environment: `source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh`
     
 * Activate the needed conda environment: `conda activate py11`
     
-* `python init.py -d /path/to/dicom/sub-* -p subID -s sesID`
+* `python tools/convert_helper.py -d /path/to/dicoms/sub-ID -p subID -s sesID -b /path/to/bids`
 
     - **Note:** Don't include a trailing `/` for the dicom directory path and only provide the subject/session labels, without the sub- and ses- prefixes.
-    - This will create two files: a summary tsv file and a json config file for dcm2bids, both named `subID-sesID.extension`. 
-    - You can optionally include the `--heuristic` flag if you have a heuristic.csv file for your dataset that lists specific SeriesDescriptions that you are trying to convert. 
-    - The tsv should label all of the task, rest, fmap, and structural runs. Double check that all runs were correctly labeled and make any necessary updates. If any updates are made, run the same command again with the `--jsononly` flag to update the json.
+    - This will run dcm2bids_helper to convert all of the DICOMS to NIFTI files and place the outputs in the bids/tmp_dcm2bids/sub-ID folder so that the next script can create the tsv file. 
 
-* `python dcm2bids3.py -f subID-sesID.tsv`
+* `python nii_init_gpt5.py /path/to/bids/tmp_dcm2bids/sub-ID -p subID -s sesID -o /path/to/output.tsv`
 
-    - Provide the path to the tsv created by the previous command.
-    - If the script can't find your dicom directory, you can provide it with `-d /path/to/dicoms/sub-ID`
-    - You can provide an output directory with `--outdir /path/to/output/bids/`
-    - This script will produce a `bids` directory with the subjects BIDS folder inside.
-    - If you're running this multiple times on the same data, you can use the `--noforce` if you don't want to overwrite previous files.
+    - Run `module load fsl` first!
+    - Provide the path to the output of the convert_helper script.
+    - You can either provide the subject and session IDs (with or without the sub- and ses- labels), which will allow the script to create a tsv with the format subID_sesID.tsv in the directory from which you ran the script, or you can provide the path to where and what you want the tsv file to be named.
+    - This script will iterate through the converted NIFTI files to create a summary tsv that will label the runs of interest. 
+
+* `python tsv_to_json.py /path/to/summary.tsv`
+
+    - Provide the path to the tsv file created from the nii_init script.
+    - This code will convert the summary tsv file into a dcm2bids config file.
+
+* `dcm2bids -d /path/to/dicoms/sub-ID -p subID -s sesID -c subID_sesID.json -o /path/to/bids`
+
+    - This command will quickly rename the converted files into BIDS format and place them in the bids folder. 
 
 To run your newly converted BIDS data through a processing pipeline, you'll need to fill out the IntendedFor field of any fmap files. This tells the pipeline which fmaps correspond to which BOLD runs in order to use the correct map for distortion correction. If you are planning to run NORDIC on your multi-echo data, you need to do that **before** filling out the IntendedFor fields. There are a few ways to do this. 
 
