@@ -1,4 +1,4 @@
-# Training nnUNet
+# Manual Training nnUNet
 
 <div class="admonition attention">
     <p class="first admonition-title">Attention</p>
@@ -7,7 +7,7 @@
     </p>
 </div>
 
-This page provides the code on how to train nnunet. You will need to grab [a srun](slurm-params.md#srun) to run these commands. You will also need to [load the labwide miniconda environment](miniconda.md) and activate the SynthSeg conda environment. 
+This page provides the code on how to train nnUNet manually and an automated version linked at the bottom of the page. You will need to grab [a srun](slurm-params.md#srun) to run these commands. You will also need to [load the labwide miniconda environment](miniconda.md) and activate the SynthSeg conda environment. 
 
 Create min/maxes (hard coded paths):
 
@@ -81,3 +81,23 @@ sbatch NnUnet_plan_and_preprocess_agate.sh
 
 
 For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
+
+# Automated Training nnUNet
+
+This repository [Github](https://github.com/DCAN-Labs/Seg-Model-Creation-GUI.git) contains the instructions and code needed to run the segmentation model training pipeline through the GUI.
+
+## Access Requirement
+
+Before using this pipeline, you must be a member of the **faird** group on MSI.  
+If you do not have access, you will not be able to run the required environment or access the necessary project directories.
+
+## Clone the Repository
+
+Clone the GUI repository and follow instructions posted to the README.md within the repo:
+
+```bash
+git clone https://github.com/DCAN-Labs/Seg-Model-Creation-GUI.git
+```
+
+For questions or issues, please contact the development team: @Emoney and @Kenevan-Carter
+
