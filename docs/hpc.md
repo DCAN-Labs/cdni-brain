@@ -67,34 +67,37 @@ MSI takes "snapshots" every night of the tier 1 space. This means if you want to
 
 Each PI has their own allocation on MSI, which includes storage and compute time. As one account becomes more active, it becomes deprioritized relative to all other accounts on MSI. See [our Fairshare page](fairshare.md) for more information about how prioritization works. These are the current PI groups within CDNI:
 
+* Rick Betzel: `rbetzel`
 * Damien Fair: `faird`
 * Eric Feczko `feczk001`
+* Jesse Kowalski: `kowal225`
+* Bart Larsen: `bart`
 * Oscar Miranda-Dominguez: `miran045`
+* Julia Moser: `moser297`
 * Steve Nelson: `smnelson`
 * Anita Randolph: `rando149`
 * Brenden Tervo-Clemmens: `btervocl`
-* Bart Larsen: `bart`
 
 Each share on MSI follows a similar directory structure:
 
 ```
-|--home
-   |--<group>
-      |--shared
-         |--code
-            |--external
-                |--pipelines
-                |--utilities
-                |--analysis
-                |--envs
-            |--internal
-                |--same subdirs as external
-         |--projects
-         |--data
-      |--<old_home_dirs>
+|--projects
+    |--standard
+       |--<group>
+          |--shared
+             |--code
+                |--external
+                    |--pipelines
+                    |--utilities
+                    |--analysis
+                    |--envs
+                |--internal
+                    |--same subdirs as external
+             |--projects
+             |--data
+          |--<old_home_dirs>
 ```
 
-* **As of August 2025, MSI is in the process of migrating all shares to a new filesystem**, with `miran045` and `bart` already moved. The root directory of the migrated shares is now `/projects/standard/<group>` instead of the old `/home/<group>`. Migrations are done during maintenance day (first Wednesday of each month) and are planned to continue through late 2025 to early 2026. See the [MSI project migration documentation](https://msi.umn.edu/our-resources/knowledge-base/project-migration) for more info. 
 * If you are working on something that other people might need access to, it is best to create a directory under `projects`. 
 * Each user has their own home directory that is separate from the PI's share. If you were added to MSI before the summer of 2024, you also still have your old home directory under the PI share. These are read and write protected directories, meaning **only you** have access to read and write to them. You have the ability to open them up, but it is not recommended.
 
