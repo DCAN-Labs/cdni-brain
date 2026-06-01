@@ -123,12 +123,5 @@ export PATH=/home/dhp/public/storage/s3policy_bin/:$PATH
 ## Gaining Access to Shares 
 To gain access to `faird`, ask Kim or Luci to add you to that share. This is the default share that new people or outside collaborators are added to. This is where most of the commonly used scripts/pipeline/software is stored. 
 
-To gain access to MSI shares containing ABCD derivatives (`feczk001`, `miran045`, `rando149`, `smnelson`), you must be an approved collaborator on the UMN Data Use Certification (DUC).
-
-* Create a [Login.gov account](https://www.login.gov/create-an-account/) 
-* Use your login.gov credentials to [access the NDA](https://nda.nih.gov/user/login_required.html?originator=%2Fuser%2Fdashboard%2Fdashboard.html) - you’ll then be prompted to create an NDA account
-* Email Borgne Raasch `braasch@umn.edu` your NDA username to be added to the next submission batch. Adding new usernames to the DUC only happens once a month so this process can take a while depending on how the timing lines up. 
-* Outside collaborators should follow this link: ​​ [NDA - Adding Affiliated Institutions](https://docs.google.com/document/d/1w5BW14EHFSi4Lr1YDPm9CLTiy8JNdClt5KpKCOYnBH4/edit#heading=h.qdjbnp8qckwr)
-* After Borgne confirms that you have been granted access to the DUC, please reach out directly to the PI whose share you would like to be added to and include proof that you've been added to the DUC (e.g. forward or share a screenshot of confirmation email from Borgne). Learn how to [manage a PI group](https://msi.umn.edu/manage-pi-group) (how to add someone to a PI share).
 
 For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
