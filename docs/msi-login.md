@@ -50,9 +50,9 @@ See [our Tier 1 Resources page](hpc.md) for how to log in to an [OnDemand](https
 
 When you use an OnDemand Desktop, you are automatically placed on a compute node with the resources listed on the Desktop creation page. You will still need to ssh into a login node if you want to grab a srun.
 
-To connect via ssh in a terminal, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. MSI has a [guide for setting up SSH keys](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) for the first time but can be confusing so we have simplified the steps below. You can [learn more about SSH here.](https://www.cloudflare.com/learning/access-management/what-is-ssh/)
+**Local Terminal**
 
-**Setting up SSH Keys**
+To connect via ssh in a terminal, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. MSI has a [guide for setting up SSH keys](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) for the first time but can be confusing so we have simplified the steps below. You can [learn more about SSH here.](https://www.cloudflare.com/learning/access-management/what-is-ssh/)
 
 In a terminal on your **local** computer, run these commands from your home directory:
 
