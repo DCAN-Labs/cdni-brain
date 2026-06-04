@@ -2,11 +2,11 @@
 
 To access the Minnesota Supercomputing Institute (MSI) system smoothly, confirm your eligibility, particularly if your tasks involve data analysis or processing. Visit  [Eligibility & Access Instructions](https://www.msi.umn.edu/content/eligibility-getting-access) for more detailed guidelines on eligibility and access requirements. Do not use MSI without completeing the steps outlined on this page.
 
-## 2-Factor Authentification
+## Duo 2-Factor Authentification
 
 You must set up Duo 2 Factor Authentification in order to use MSI. This provides an added layer of security and is mandatory for accessing any UMN internal site. UMN provides a [Duo Guide](https://it.umn.edu/services-technologies/self-help-guides/duo-set-use-duo-security) which provides instructions for how to register and use Duo.
 
-When you log in to MSI via a terminal you should see this prompt: 
+Whenever you log in to MSI via a terminal you should see this prompt: 
 
 ```
 By using this system you agree to adhere to MSI and UMN Acceptable Use Policies - refer to www.msi.umn.edu for details.
@@ -44,7 +44,11 @@ Once connected, you will be able to log in to MSI.
 
 ## Logging in to MSI
 
+**Remote Desktop**
+
 See [our Tier 1 Resources page](hpc.md) for how to log in to an [OnDemand](https://ondemand.msi.umn.edu/pun/sys/dashboard/batch_connect/sessions) Desktop and other ways to access MSI.
+
+When you use an OnDemand Desktop, you are automatically placed on a compute node with the resources listed on the Desktop creation page. You will still need to ssh into a login node if you want to grab a srun.
 
 To connect via ssh in a terminal, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. MSI has a [guide for setting up SSH keys](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) for the first time but can be confusing so we have simplified the steps below. You can [learn more about SSH here.](https://www.cloudflare.com/learning/access-management/what-is-ssh/)
 
@@ -74,13 +78,9 @@ You could also create the authorized_keys file and directly copy and paste the s
 
 MSI can be accessed through any regular terminal with this command: `ssh -Y <x500>@<cluster>.msi.umn.edu`. This will automatically place you onto a login node, which can be used to browse, view files, etc. When using a cluster to perform more advanced/computational heavy tasks, grab [an srun](slurm-params.md#srun) to enter a compute node. More information about login vs compute nodes can be found on [our Partitions page](partitions.md) 
 
-When you use an OnDemand Desktop, you are automatically placed on a compute node with the resources listed on the Desktop creation page. You will still need to ssh into a login node if you want to grab a srun.
+**VS Code**
 
-You can also access MSI through VSCode, more information about how to do that can be found on [our VS Code page.](vscode.md)
-
-If you are looking for access to an s3 bucket, you will need to have logged into MSI at least once. 
-
-For additional guidance watch this [MSI video tutorial](https://www.youtube.com/watch?v=PgD7WSI6CG4).
+More information about how to access MSI through VSCode can be found on [our VS Code page.](vscode.md)
 
 ## Directory and File Permissions
 
