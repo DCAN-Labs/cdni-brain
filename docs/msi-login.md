@@ -2,11 +2,11 @@
 
 To access the Minnesota Supercomputing Institute (MSI) system smoothly, confirm your eligibility, particularly if your tasks involve data analysis or processing. Visit  [Eligibility & Access Instructions](https://www.msi.umn.edu/content/eligibility-getting-access) for more detailed guidelines on eligibility and access requirements. Do not use MSI without completeing the steps outlined on this page.
 
-## 2-Factor Authentification
+## Duo 2-Factor Authentification
 
 You must set up Duo 2 Factor Authentification in order to use MSI. This provides an added layer of security and is mandatory for accessing any UMN internal site. UMN provides a [Duo Guide](https://it.umn.edu/services-technologies/self-help-guides/duo-set-use-duo-security) which provides instructions for how to register and use Duo.
 
-When you log in to MSI via a terminal you should see this prompt: 
+Whenever you log in to MSI via a terminal you should see this prompt: 
 
 ```
 By using this system you agree to adhere to MSI and UMN Acceptable Use Policies - refer to www.msi.umn.edu for details.
@@ -44,11 +44,15 @@ Once connected, you will be able to log in to MSI.
 
 ## Logging in to MSI
 
+**Remote Desktop**
+
 See [our Tier 1 Resources page](hpc.md) for how to log in to an [OnDemand](https://ondemand.msi.umn.edu/pun/sys/dashboard/batch_connect/sessions) Desktop and other ways to access MSI.
 
-To connect via ssh in a terminal, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. MSI has a [guide for setting up SSH keys](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) for the first time but can be confusing so we have simplified the steps below. You can [learn more about SSH here.](https://www.cloudflare.com/learning/access-management/what-is-ssh/)
+When you use an OnDemand Desktop, you are automatically placed on a compute node with the resources listed on the Desktop creation page. You will still need to ssh into a login node if you want to grab a srun.
 
-**Setting up SSH Keys**
+**Local Terminal**
+
+To connect via ssh in a terminal, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. MSI has a [guide for setting up SSH keys](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) for the first time but can be confusing so we have simplified the steps below. You can [learn more about SSH here.](https://www.cloudflare.com/learning/access-management/what-is-ssh/)
 
 In a terminal on your **local** computer, run these commands from your home directory:
 
@@ -74,13 +78,9 @@ You could also create the authorized_keys file and directly copy and paste the s
 
 MSI can be accessed through any regular terminal with this command: `ssh -Y <x500>@<cluster>.msi.umn.edu`. This will automatically place you onto a login node, which can be used to browse, view files, etc. When using a cluster to perform more advanced/computational heavy tasks, grab [an srun](slurm-params.md#srun) to enter a compute node. More information about login vs compute nodes can be found on [our Partitions page](partitions.md) 
 
-When you use an OnDemand Desktop, you are automatically placed on a compute node with the resources listed on the Desktop creation page. You will still need to ssh into a login node if you want to grab a srun.
+**VS Code**
 
-You can also access MSI through VSCode, more information about how to do that can be found on [our VS Code page.](vscode.md)
-
-If you are looking for access to an s3 bucket, you will need to have logged into MSI at least once. 
-
-For additional guidance watch this [MSI video tutorial](https://www.youtube.com/watch?v=PgD7WSI6CG4).
+More information about how to access MSI through VSCode can be found on [our VS Code page.](vscode.md)
 
 ## Directory and File Permissions
 
@@ -123,12 +123,5 @@ export PATH=/home/dhp/public/storage/s3policy_bin/:$PATH
 ## Gaining Access to Shares 
 To gain access to `faird`, ask Kim or Luci to add you to that share. This is the default share that new people or outside collaborators are added to. This is where most of the commonly used scripts/pipeline/software is stored. 
 
-To gain access to MSI shares containing ABCD derivatives (`feczk001`, `miran045`, `rando149`, `smnelson`), you must be an approved collaborator on the UMN Data Use Certification (DUC).
-
-* Create a [Login.gov account](https://www.login.gov/create-an-account/) 
-* Use your login.gov credentials to [access the NDA](https://nda.nih.gov/user/login_required.html?originator=%2Fuser%2Fdashboard%2Fdashboard.html) - you’ll then be prompted to create an NDA account
-* Email Borgne Raasch `braasch@umn.edu` your NDA username to be added to the next submission batch. Adding new usernames to the DUC only happens once a month so this process can take a while depending on how the timing lines up. 
-* Outside collaborators should follow this link: ​​ [NDA - Adding Affiliated Institutions](https://docs.google.com/document/d/1w5BW14EHFSi4Lr1YDPm9CLTiy8JNdClt5KpKCOYnBH4/edit#heading=h.qdjbnp8qckwr)
-* After Borgne confirms that you have been granted access to the DUC, please reach out directly to the PI whose share you would like to be added to and include proof that you've been added to the DUC (e.g. forward or share a screenshot of confirmation email from Borgne). Learn how to [manage a PI group](https://msi.umn.edu/manage-pi-group) (how to add someone to a PI share).
 
 For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
