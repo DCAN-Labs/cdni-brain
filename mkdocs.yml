@@ -29,10 +29,10 @@ nav:
   - MSI: 
       - Getting Started: msi-login.md
       - Tier 1 (High-Performance Computing): hpc.md
-      - Nodes and Partitions: partitions.md
-      - Module System: modules.md
-      - Data Storage/Tracking: storage.md
       - Tier 2 (S3): s3.md
+      - Nodes and Partitions: partitions.md
+      - Modules: modules.md
+      - CDNI Data Storage & Tracking Policy: storage.md
       - Tips & Tricks: roadblocks.md
   - SLURM:
       - Slurm Commands: slurm.md
@@ -45,7 +45,7 @@ nav:
       - Software Versioning: versioning.md
       - Containers: containers.md
       - Virtual Machine: vm.md
-      - Neuroimaging Softwares: workbench.md
+      - Neuroimaging Software: workbench.md
   - Coding Standards:
       - Best Practices: coding-practices.md
   - GitHub:
@@ -73,7 +73,6 @@ nav:
       - Best Practices: processing-sop.md
   - After processing:
       - file-mapper: filemapper.md    
-      - Precision Mapping Wrapper: precision.md
       - ABCD-BIDS Processing Status: status.md
       - Error Query: error_query.md
       - Infant Quality Assessment: infant-qa.md
@@ -89,11 +88,12 @@ nav:
       - Cifti Conn Matrix: cifti-matrix.md
       - Seed Map Parcellation Wrapper: seed-map.md
       - Template Matching: template-matching.md
+      - Precision Mapping: precision.md
       - F Conn Regression: f-conn.md
       - BWAS: bwas.md
       - Calculating Rest Minutes Pre- and Post-Motion Correction: rest_minutes_motion_correction_calculation.md
-  - Data Uploads and Transfers:
-      - Data Transfers: uploads.md
+  - Data Uploads and Transfer:
+      - Data Transfer: uploads.md
   - Plotting Tools:
       - Figure Maker: figure-maker.md
       - Connectivity Matrices: matrices.md
