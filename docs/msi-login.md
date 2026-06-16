@@ -1,12 +1,12 @@
 # Getting Started with Minnesota Supercomputing Institute (MSI)
 
-To access the Minnesota Supercomputing Institute (MSI) system smoothly, confirm your eligibility, particularly if your tasks involve data analysis or processing. Visit  [Eligibility & Access Instructions](https://www.msi.umn.edu/content/eligibility-getting-access) for more detailed guidelines on eligibility and access requirements. Do not use MSI without completeing the steps outlined on this page.
+If you are going to be processing, analyzing, or otherwise interacting with MRI data, you will need to have access to MSI. Visit  [Eligibility & Access Instructions](https://www.msi.umn.edu/content/eligibility-getting-access) for more detailed guidelines on eligibility and access requirements. This page outlines the steps needed to access MSI. 
 
 ## 2-Factor Authentification
 
-You must set up Duo 2 Factor Authentification in order to use MSI. This provides an added layer of security and is mandatory for accessing any UMN internal site. UMN provides a [Duo Guide](https://it.umn.edu/services-technologies/self-help-guides/duo-set-use-duo-security) which provides instructions for how to register and use Duo.
+You must set up Duo 2 Factor Authentification in order to use MSI and any internal UMN site. This provides an added layer of security. UMN provides a [Duo Guide](https://it.umn.edu/services-technologies/self-help-guides/duo-set-use-duo-security) which provides instructions for how to register and use Duo.
 
-When you log in to MSI via a terminal you should see this prompt: 
+If you log in to MSI via a terminal you will see and complete this prompt to authenticate: 
 
 ```
 By using this system you agree to adhere to MSI and UMN Acceptable Use Policies - refer to www.msi.umn.edu for details.
@@ -36,17 +36,17 @@ To access MSI from a network other than eduroam, you must first establish a secu
 **Connecting to UMN's VPN:**
 
 - Launch Cisco AnyConnect on your device.
-- Choose the "Split Tunnel VPN" option.
+- Choose the "UMN - Split Tunnel - General Access VPN" option.
 - Log in using your credentials.
 - Although the VPN won't directly prompt you, you will have to dual authenticate with Duo every time.
 
 Once connected, you will be able to log in to MSI.
 
-## Logging in to MSI
+## Connecting to MSI
 
-See [our Tier 1 Resources page](hpc.md) for how to log in to an [OnDemand](https://ondemand.msi.umn.edu/pun/sys/dashboard/batch_connect/sessions) Desktop and other ways to access MSI.
+One way to connect to MSI is via an [OnDemand Desktop](https://ondemand.msi.umn.edu/pun/sys/dashboard/batch_connect/sessions), which opens a virtual machine in your browser and allows you to interact with MSI as a typical computer. See our [Tier 1 Resources page](hpc.md#open-ondemand) for information.
 
-To connect via ssh in a terminal, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. MSI has a [guide for setting up SSH keys](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) for the first time but can be confusing so we have simplified the steps below. You can [learn more about SSH here.](https://www.cloudflare.com/learning/access-management/what-is-ssh/)
+You can also directly connect to MSI via your computer's terminal. To do this, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. MSI has a [guide for setting up SSH keys](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) for the first time but can be confusing so we have simplified the steps below. You can learn more about [what SSH is](https://www.cloudflare.com/learning/access-management/what-is-ssh/) here.
 
 **Setting up SSH Keys**
 
@@ -74,7 +74,7 @@ You could also create the authorized_keys file and directly copy and paste the s
 
 MSI can be accessed through any regular terminal with this command: `ssh -Y <x500>@<cluster>.msi.umn.edu`. This will automatically place you onto a login node, which can be used to browse, view files, etc. When using a cluster to perform more advanced/computational heavy tasks, grab [an srun](slurm-params.md#srun) to enter a compute node. More information about login vs compute nodes can be found on [our Partitions page](partitions.md) 
 
-When you use an OnDemand Desktop, you are automatically placed on a compute node with the resources listed on the Desktop creation page. You will still need to ssh into a login node if you want to grab a srun.
+When you use an OnDemand Desktop, you are automatically placed on a compute node with the resources listed on the Desktop creation page. You will still need to ssh into a login node if you want to grab a srun for even more resources.
 
 You can also access MSI through VSCode, more information about how to do that can be found on [our VS Code page.](vscode.md)
 
@@ -84,15 +84,14 @@ For additional guidance watch this [MSI video tutorial](https://www.youtube.com/
 
 ## Directory and File Permissions
 
-To ensure the data and code created can be accessed by all, update your `.bashrc` with the following steps (this only needs to be done the first time you access MSI). [Read what is a .bashrc](https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux) if you would like to understand more about what a .bashrc is.
+To ensure the data and code created can be accessed by all, update your `.bashrc` with the following steps (this only needs to be done the first time you access MSI). [Read what is a .bashrc](https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux) if you would like to understand more but it is essentially a file of commands that are run every time you open a new terminal.
 
-Open your `.bashrc` file with a text editor, e.g. `emacs ~/.bashrc`.
-Set umask to 002. The umask is the default permission applied to the files you create. Permissions are how self, groups (like `faird`) and other users can be given read, write, and execute access. With 002, self and group members can be given those permissions but no one else (this could be anyone in the university). 
+Open your `.bashrc` file with a text editor, e.g. `emacs ~/.bashrc` or `geany ~/.bashrc`.
+Set umask to 002. The umask is the default permission applied to the files you create. Permissions are how self, groups (like `faird`) and other users can be given read, write, and execute access. With 002, self and group members can be given those permissions but no one else. 
 You will also need to add the path to the s3policy_bin, which you can read more about on [our s3 page](s3.md#granting-bucket-access). 
-Close the file and open a terminal to apply the changes.
-Your `.bashrc` is loaded each time you open a new terminal. 
+Close the file and open a new terminal to apply the changes. 
 
-Here is a template for what your `.bashrc` should look like. You can add more as you use MSI more and determine what would be helpful. See [our Tips and Tricks page](roadblocks.md) for some potentially helpful .bashrc additions. 
+Here is a template for what your `.bashrc` should look like. You can add more as you use MSI more and determine what would be helpful. See [our Tips and Tricks page](roadblocks.md#bashrc-additions) for some potentially helpful .bashrc additions. 
 
 ```
 # .bashrc startup script for login shells
@@ -109,7 +108,7 @@ PS1="\u@\h [\w] % "
 
 # Set your environment variables here.
 # export VISUAL=vim
-export PATH=/home/dhp/public/storage/s3policy_bin/:$PATH
+export PATH="/projects/standard/faird/shared/code/internal/utilities/s3policy_bin/:$PATH"
 
 # Uncomment the if statement below to enable bash completion.
 # if [ -f /etc/bash_completion ]; then
@@ -121,7 +120,7 @@ export PATH=/home/dhp/public/storage/s3policy_bin/:$PATH
 ```
 
 ## Gaining Access to Shares 
-To gain access to `faird`, ask Kim or Luci to add you to that share. This is the default share that new people or outside collaborators are added to. This is where most of the commonly used scripts/pipeline/software is stored. 
+To gain access to `faird`, ask Kim or Luci to add you to that share. This is the default share that most new people or outside collaborators are added to. This is where most of the commonly used scripts/pipelines are stored so it is important to have access to this share if you will be working with CDNI softwares.
 
 
 For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
