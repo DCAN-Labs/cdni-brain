@@ -2,7 +2,7 @@
 
 If you are going to be processing, analyzing, or otherwise interacting with MRI data, you will need to have access to MSI. Visit  [Eligibility & Access Instructions](https://www.msi.umn.edu/content/eligibility-getting-access) for more detailed guidelines on eligibility and access requirements. This page outlines the steps needed to access MSI. 
 
-## 2-Factor Authentification
+## Duo 2-Factor Authentification
 
 You must set up Duo 2 Factor Authentification in order to use MSI and any internal UMN site. This provides an added layer of security. UMN provides a [Duo Guide](https://it.umn.edu/services-technologies/self-help-guides/duo-set-use-duo-security) which provides instructions for how to register and use Duo.
 
@@ -44,11 +44,15 @@ Once connected, you will be able to log in to MSI.
 
 ## Connecting to MSI
 
-One way to connect to MSI is via an [OnDemand Desktop](https://ondemand.msi.umn.edu/pun/sys/dashboard/batch_connect/sessions), which opens a virtual machine in your browser and allows you to interact with MSI as a typical computer. See our [Tier 1 Resources page](hpc.md#open-ondemand) for information.
+**Remote Desktop**
 
-You can also directly connect to MSI via your computer's terminal. To do this, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. MSI has a [guide for setting up SSH keys](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) for the first time but can be confusing so we have simplified the steps below. You can learn more about [what SSH is](https://www.cloudflare.com/learning/access-management/what-is-ssh/) here.
+One way to connect to MSI is via an [OnDemand Desktop](https://ondemand.msi.umn.edu/pun/sys/dashboard/batch_connect/sessions), which opens a virtual machine in your browser and allows you to interact with MSI as a typical computer. See our [Tier 1 Resources page](hpc.md#open-ondemand) for more information.
 
-**Setting up SSH Keys**
+When you use an OnDemand Desktop, you are automatically placed on a compute node with the resources listed on the Desktop creation page. You will still need to ssh into a login node if you want to grab a srun.
+
+**Local Terminal**
+
+You can also directly connect to MSI via your computer's terminal. To connect via ssh in a terminal, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. MSI has a [guide for setting up SSH keys](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) for the first time but can be confusing so we have simplified the steps below. You can [learn more about what SSH is here.](https://www.cloudflare.com/learning/access-management/what-is-ssh/)
 
 In a terminal on your **local** computer, run these commands from your home directory:
 
@@ -74,15 +78,11 @@ You could also create the authorized_keys file and directly copy and paste the s
 
 MSI can be accessed through any regular terminal with this command: `ssh -Y <x500>@<cluster>.msi.umn.edu`. This will automatically place you onto a login node, which can be used to browse, view files, etc. When using a cluster to perform more advanced/computational heavy tasks, grab [an srun](slurm-params.md#srun) to enter a compute node. More information about login vs compute nodes can be found on [our Partitions page](partitions.md) 
 
-When you use an OnDemand Desktop, you are automatically placed on a compute node with the resources listed on the Desktop creation page. You will still need to ssh into a login node if you want to grab a srun for even more resources.
+**VS Code**
 
-You can also access MSI through VSCode, more information about how to do that can be found on [our VS Code page.](vscode.md)
+More information about how to access MSI through VSCode can be found on [our VS Code page.](vscode.md)
 
-If you are looking for access to an s3 bucket, you will need to have logged into MSI at least once. 
-
-For additional guidance watch this [MSI video tutorial](https://www.youtube.com/watch?v=PgD7WSI6CG4).
-
-## Directory and File Permissions
+## Permissions and Share Access
 
 To ensure the data and code created can be accessed by all, update your `.bashrc` with the following steps (this only needs to be done the first time you access MSI). [Read what is a .bashrc](https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux) if you would like to understand more but it is essentially a file of commands that are run every time you open a new terminal.
 
@@ -119,8 +119,8 @@ export PATH="/projects/standard/faird/shared/code/internal/utilities/s3policy_bi
 # module load
 ```
 
-## Gaining Access to Shares 
 To gain access to `faird`, ask Kim or Luci to add you to that share. This is the default share that most new people or outside collaborators are added to. This is where most of the commonly used scripts/pipelines are stored so it is important to have access to this share if you will be working with CDNI softwares.
 
+If you are looking for access to an s3 bucket, you will need to have logged into MSI at least once. 
 
 For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
