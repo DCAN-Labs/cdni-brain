@@ -46,8 +46,7 @@ nav:
       - Containers: containers.md
       - Virtual Machine: vm.md
       - Neuroimaging Software: workbench.md
-  - Coding Standards:
-      - Best Practices: coding-practices.md
+      - Coding Standards: coding-practices.md
   - GitHub:
       - Beginner's Guide: github-quick-guide.md
       - Common Git Commands: git-commands.md
