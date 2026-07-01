@@ -25,13 +25,6 @@ This page has the recommended flags and resources for the major pipelines we use
 </table>
 
 Note: the cutoff age for using an adult pipeline depends on the scope of the project. 
-
-<div class="admonition attention">
-    <p class="first admonition-title">Attention</p>
-    <p class="last">
-        ABCD-BIDS should only be used as a preprocessing pipeline when wanting to compare your dataset with other legacy data that was processed that way (i.e. ABCD and HCP). Any newly collected datasets should be processed with fMRIprep and XCP-D.
-    </p>
-</div>
   
 
 Recommended sbatch parameters per 1 subject 1 session process:
@@ -116,7 +109,7 @@ A NiPreps (NeuroImaging PREProcessing toolS) application for the preprocessing o
     
     * `-vv` : level 2 verbose log output, useful for troubleshooting
     
-    * `-w /work` : used to specify a working directory within the same path as the sbatch, named_ /work_.
+    * `-w /work` : used to specify a working directory within the same path as the sbatch, named _/work_.
   
     1a. If outputs need to be deterministic (i.e., identical when the same input data is rerun with the same configuration), use `--omp-nthreads 1`, `--skull-strip-fixed-seed`, and `--random-seed <seed value>`
 
@@ -162,23 +155,23 @@ NiBabies is a robust pre-processing MRI and fMRI workflow that is also a part of
 
 1. Preferred flags:
 
-    * `--participant-label \` : a space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)
+    * `--participant-label` : a space delimited list of participant identifiers or a single identifier (the sub- prefix can be removed)
     
-    * `--age-months \`: used to specify the age in months of the participant that is being processed. (NOTE: this option is planned to be made deprecated; the recommended method to specify age is with a [BIDS sessions or participants file](https://nibabies.readthedocs.io/en/latest/usage.html#participant-ages))
+    * `--age-months`: used to specify the age in months of the participant that is being processed. (NOTE: this option is planned to be made deprecated; the recommended method to specify age is with a [BIDS sessions or participants file](https://nibabies.readthedocs.io/en/latest/usage.html#participant-ages))
 
-    * `--session-id \`: when running a subject with multiple sessions, need to specify which session is being processed as well as the age 
+    * `--session-id`: when running a subject with multiple sessions, need to specify which session is being processed as well as the age 
     
-    * `--derivatives /derivatives \` : NiBabies will use a segmentation from the segmentation pipeline (pre-postBIBSnet). This flag is used to clarify that the precomputed segmentation directory is being utilized. 
+    * `--derivatives /derivatives` : NiBabies will use a segmentation from the segmentation pipeline (pre-postBIBSnet). This flag is used to clarify that the precomputed segmentation directory is being utilized. 
     
-    * `--cifti-output 91k \` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinates can be specified (default is 91k, which equates to 2mm resolution in volumes, ~2mm vertex spacing in surfaces). Default: False
+    * `--cifti-output 91k` : Possible choices: 91k, 170k. Output preprocessed BOLD as a CIFTI-dense time series. Optionally, the number of grayordinates can be specified (default is 91k, which equates to 2mm resolution in volumes, ~2mm vertex spacing in surfaces). Default: False
     
-    * `--output-spaces MNI152NLin6Asym:res-2 \` : Produce volume derivatives in MNI152NLin6Asym 2mm template space
+    * `--output-spaces MNI152NLin6Asym:res-2` : Produce volume derivatives in MNI152NLin6Asym 2mm template space
     
-    * `-vv \` : level 2 verbose log output, useful for troubleshooting
+    * `-vv` : level 2 verbose log output, useful for troubleshooting
     
-    * `--nprocs 32 \` : maximum number of threads across all processes
+    * `--nprocs 32` : maximum number of threads across all processes
     
-    * `--omp-nthreads 3 \` : maximum number of threads per-process (use `1` instead of `3` for deterministic outputs; see (1a) below)
+    * `--omp-nthreads 3` : maximum number of threads per-process (use `1` instead of `3` for deterministic outputs; see (1a) below)
     
     * `-w /work` : used to specify a working directory within the container’s filesystem, named _/work_.
   
@@ -213,6 +206,13 @@ ${singularity} run --cleanenv \
 ```
 
 ## 3. ABCD-BIDS (abcd-hcp-pipeline)
+
+<div class="admonition attention">
+    <p class="first admonition-title">Attention</p>
+    <p class="last">
+        ABCD-BIDS should only be used as a preprocessing pipeline when wanting to compare your dataset with other legacy data that was processed that way (i.e. ABCD and HCP). Any newly collected datasets should be processed with fMRIprep and XCP-D.
+    </p>
+</div>
 
 [abcd-hcp-pipeline ReadTheDocs](https://abcd-hcp-pipeline.readthedocs.io/en/latest/)
 
@@ -270,7 +270,7 @@ The XCP-D workflow takes fMRIPRep, NiBabies, DCAN and HCP outputs in the form of
 
 XCP-D versions 0.8.0 and above have a new required `mode` flag that will set several defaults. The preferred mode to use for processing adult data within the center is the `abcd` mode, which sets the default flags explained below. Any of these inputs can be overridden if necessary, but give careful thought as to why they would need to be different for your dataset. For processing infant data preprocessed with infant-fMRIPrep/NiBabies, the preferred mode is `hbcd` which has the same defaults except for the input-type. 
 
-1. Default flags:
+1. Default flags included in the `abcd` / `hbcd` modes:
     
     * `--fd-thresh/-f 0.3` : framewise displacement threshold for censoring.
     
@@ -294,7 +294,7 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
 
     * `-p`/`--nuisance-regressors` : default is "auto" which means 36P is selected 
 
-    * `--motion-filter-type` : filter to apply to the motion parameters. If this is set to a value other than “none”, then the following parameters are also required.
+    * `--motion-filter-type` : required parameter to filter to apply to the motion parameters. Recommended to use the notch option.
 
         * `--band-stop-min` : Required for "notch" or "lp" choice 
 
@@ -302,7 +302,7 @@ XCP-D versions 0.8.0 and above have a new required `mode` flag that will set sev
 
         * `--motion-filter-order`: Required for "notch" or "lp" choice
 
-        * General guidelines are to use "notch" filtering and to calculate the respiratory artifact for your dataset [using these tools](resp-rate.md). XCP-D also provides [estimated bandstop values](https://xcp-d.readthedocs.io/en/0.9.1/workflows.html#motion-parameter-filtering-optional) based on the age range of your dataset. 
+        * General guidelines are to use "notch" filtering and to calculate the respiratory artifact for your dataset [using these tools](resp-rate.md) or using the [estimated bandstop values](https://xcp-d.readthedocs.io/en/0.9.1/workflows.html#motion-parameter-filtering-optional) based on the age range of your dataset. 
 
 2. Preferred additional flags 
     
