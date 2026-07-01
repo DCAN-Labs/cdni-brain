@@ -94,5 +94,48 @@ git sparse-checkout list
 # Same as cat .git/info/sparse-checkout
 ```
 
+### History Scrub
+
+If you need to remove a file or directory containing sensitive data from your Git repository's history on GitHub, you can use these commands. 
+
+To remove a specific file from the Git history:
+
+```
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch PATH-TO-YOUR-FILE" --prune-empty --tag-name-filter cat -- --all
+```
+
+To remove an entire directory from the Git history:
+
+```
+git filter-branch --tree-filter 'rm -rf PATH-TO-YOUR-DIRECTORY' --prune-empty
+```
+
+After you've executed either of the above commands, follow the next steps, which are the same for both file and directory removal:
+
+
+Remove references to original commits with the following commands:
+
+```
+git for-each-ref --format="%(refname)" refs/original/ | xargs -I {} git update-ref -d {}
+```
+
+Run Git Garbage Collection to optimize the repository:
+
+```
+git gc --prune=now
+git gc --aggressive --prune=now
+```
+
+
+To apply the changes to your remote GitHub repository, use force pushes for both branches and tags:
+
+```
+git push origin --force --all
+git push origin --force --tags
+```
+For more information on these commands, you can also refer to this source: [How to remove sensitive files and their commits from Git history.](https://www.educative.io/answers/how-to-remove-sensitive-files-and-their-commits-from-git-history)
+
+By following these steps, you can effectively scrub sensitive data from your Git repository's history, making it safe for public sharing without exposing confidential information.
+
 
 For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
