@@ -61,7 +61,6 @@ nav:
       - Infant Preprocessing QA: infant-preproc.md
       - MRI Image De-Identification: deidentification.md
       - Preparing for NHP Processing: preprocessing.md
-      - Fast Track QC Comparison (ABCD): fasttrack.md
       - Respiration Rate Settings: resp-rate.md
   - Processing:
       - Pipelines: pipelines.md
