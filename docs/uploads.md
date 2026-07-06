@@ -30,12 +30,13 @@ First you'll need to connect to the CMRR VPN via Cisco AnyConnect.
 
 Then you'll need to log into the CMRR system and find the data you need.
 
-1. From a browser you can follow this [CMRR login SOP.](https://www.cmrr.umn.edu/computeruser/nc-cms/content/upload/C104-05%20-%20Connecting%20Macs%20to%20CMRR%20servers%20with%20NX%201.4.pdf) Or you can connect via a local terminal by running `ssh CMRRusername@range1.cmrr.umn.edu`
+1. From a browser you can navigate to this website: https://login2.cmrr.umn.edu/nxwebplayercan and follow this [CMRR login SOP.](https://www.cmrr.umn.edu/intranet/computer_help/connecting_macs_to_cmrr_servers_with_nx_-_use_instead/) Or you can connect via a local terminal by running `ssh CMRRusername@range1.cmrr.umn.edu`
 2. Navigate to the server where the data was pushed to
     - NAXOS path: `/home/naxos2-raid2/dicom`
     - Concierge path: `/home/range5-raid26/MIDB`
-3. Find your scan data. They are typically named with this format: `dateofscan-STXXX-P`
+3. Find your scan data. They are typically named with this format: `dateofscan-STXXX-PI-SUBID`
     - Date of scan format is year-month-day
+    - Generally the PI's last name and the subject/session ID are included in the folder name
 
 To transfer the data to MSI, you can run this command:
 
