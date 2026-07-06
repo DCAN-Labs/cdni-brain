@@ -1,6 +1,6 @@
 # Neuroimaging Softwares
 
-CDNI commonly uses a few different softwares for visualizing and manipulating MRI data. The most commonly used softwares are Workbench and FSL. This page will walk through some of the common commands and uses of each software.
+CDNI commonly uses a few different softwares for visualizing and manipulating MRI data. The most commonly used softwares are Workbench and FSL. This page will walk through some of the common commands and uses of each software. For each software, once you load the module on MSI, you can run the visualization or manipulation commands directly from the terminal. If you have questions on these softwares, Thomas Madison is probably the best person to ask (within CDNI).
 
 ## Workbench
 
@@ -95,6 +95,8 @@ FSLeyes is the FSL tool to visualize data. FSL is primarily for use with volume 
 
 ### Manipulation
 
+FSL also has it's own collection of commands used to manipulate neuroimaging data. It can perform a variety of operations on images, including arithmetic functions, printing out file information, and manipulating the size of an image. Below are some commonly used commands. 
+
 `cluster`
 - Detects contiguous chunks of voxels, used for cleaning brainmasks
 
@@ -108,7 +110,7 @@ FSLeyes is the FSL tool to visualize data. FSL is primarily for use with volume 
 - Print header information. fslhd is more verbose
 
 `fslmaths` 
-- Arthimatic manipulations, apply brainmask, subtract an image from another, binarize, make masks, realigning, etc
+- Arithmetic manipulations, apply brainmask, subtract an image from another, binarize, make masks, realigning, etc
 
 `fslmerge` 
 - Concat images across space/time
