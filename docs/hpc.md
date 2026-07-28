@@ -1,6 +1,6 @@
 # High-Performance Computing (HPC) Resources 
 
-[Read: HPC @ MSI](https://www.msi.umn.edu/content/interactive-hpc)
+[Read: HPC @ MSI](https://msi.umn.edu/computing/interactive-real-time-computing)
 
 MSI offers an intensive amount of computing resources and several options for remote access. These allow you to access stored data, run processing jobs, and perform other computing-intensive tasks. 
 
@@ -98,10 +98,10 @@ Each share on MSI follows a similar directory structure:
 
 ## Scratch Space
 
-`/scratch.global/` is an open filesystem that is accessible for any MSI user. Each group still has a quota, but here it is 40TB and 10 million files. Data in global scratch is deleted after 30 days (meaning 30 days after the data was first put into scratch). This is helpful for if you are running jobs that produce large outputs that you want access to right away (instead of pushing them to the s3) or when you only need the outputs stored temporarily. 
+`/scratch.global/` is an open filesystem that is accessible for any MSI user. Each group still has a quota, but here it is 40TB and 13.2 million files. As of June 2026, there is also a per-user quota of 40TB. Data in global scratch is deleted after 30 days (meaning 30 days after the data was first put into scratch). This is helpful for if you are running jobs that produce large outputs that you want access to right away (instead of pushing them to the s3) or when you only need the outputs stored temporarily. 
 
 Most users create their own x500-named working directory, i.e. `/scratch.global/faird/` to work under.
 
-You can read more about [MSI's scratch space here](https://msi.umn.edu/about-msi-services/data-storage/high-performance-storage/scratch-storage)
+You can read more about [MSI's scratch space here](https://msi.umn.edu/storage/scratch-storage)
 
 For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
