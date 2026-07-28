@@ -1,10 +1,10 @@
 # Getting Started with Minnesota Supercomputing Institute (MSI)
 
-If you are going to be processing, analyzing, or otherwise interacting with MRI data, you will need to have access to MSI. Visit  [Eligibility & Access Instructions](https://www.msi.umn.edu/content/eligibility-getting-access) for more detailed guidelines on eligibility and access requirements. This page outlines the steps needed to access MSI. 
+If you are going to be processing, analyzing, or otherwise interacting with MRI data, you will need to have access to MSI. See [Who Can Get Access](https://msi.umn.edu/getting-started#section6561-1) for more detailed guidelines on eligibility and access requirements. This page outlines the steps needed to access MSI. 
 
-## Duo 2-Factor Authentification
+## Duo 2-Factor Authentication
 
-You must set up Duo 2 Factor Authentification in order to use MSI and any internal UMN site. This provides an added layer of security. UMN provides a [Duo Guide](https://it.umn.edu/services-technologies/self-help-guides/duo-set-use-duo-security) which provides instructions for how to register and use Duo.
+You must set up Duo 2 Factor Authentication in order to use MSI and any internal UMN site. This provides an added layer of security. UMN provides a [Duo Guide](https://it.umn.edu/services-technologies/self-help-guides/duo-set-use-duo-security) which provides instructions for how to register and use Duo.
 
 If you log in to MSI via a terminal you will see and complete this prompt to authenticate: 
 
@@ -52,7 +52,7 @@ When you use an OnDemand Desktop, you are automatically placed on a compute node
 
 **Local Terminal**
 
-You can also directly connect to MSI via your computer's terminal. To connect via ssh in a terminal, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. MSI has a [guide for setting up SSH keys](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) for the first time but can be confusing so we have simplified the steps below. You can [learn more about what SSH is here.](https://www.cloudflare.com/learning/access-management/what-is-ssh/)
+You can also directly connect to MSI via your computer's terminal. To connect via ssh in a terminal, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. MSI has a [guide for setting up SSH keys](https://msi.umn.edu/getting-started/getting-started-and-access/interactive-connections-faqs/how-do-i-set-up-ssh-keys) for the first time but can be confusing so we have simplified the steps below. You can [learn more about what SSH is here.](https://www.cloudflare.com/learning/access-management/what-is-ssh/)
 
 In a terminal on your **local** computer, run these commands from your home directory:
 
