@@ -2,7 +2,7 @@
 
 Read:
 
-* [Slurm @ MSI documentation ](https://www.msi.umn.edu/slurm)
+* [Slurm Job Submission and Scheduling](https://msi.umn.edu/computing/slurm-job-submission-and-scheduling)
 * [Slurm official site](https://slurm.schedmd.com/documentation.html)
 * [Slurm commands cheat sheet](https://slurm.schedmd.com/pdfs/summary.pdf)
 
@@ -69,7 +69,7 @@ Below is a table summarizing some commands that can be used inside Slurm job scr
   <tr>
    <td>-A, --account=<em>share</em>
    </td>
-   <td><em>Optional:</em> Charge resources used by this job to the specified account. <br /> The account may be changed after job submission using the scontrol command. <br /> To choose an optimal share, see the Fairshare explanation <a href="fairshare.md">here</a>.
+   <td><em>Optional:</em> Charge resources used by this job to the specified account. <br /> The account may be changed after job submission using the scontrol command. <br /> To choose an optimal share, see the Fairshare explanation <a href="optimizing.md">here</a>.
    </td>
   </tr>
   <tr>
@@ -115,7 +115,7 @@ Below is a table summarizing some commands that can be used inside Slurm job scr
 <p>
 --partition=small,mygroup 
    </td>
-   <td><em>Optional:</em> Specifies the partition to be the “small” or "mygroup" partition. <br /> The job will start at the earliest time one of these partitions can accommodate the job. <br /> You must be logged into the correct cluster access corresponding partitions. For more info, see <a href="paritions.md">here</a>.
+   <td><em>Optional:</em> Specifies the partition to be the “small” or "mygroup" partition. <br /> The job will start at the earliest time one of these partitions can accommodate the job. <br /> You must be logged into the correct cluster access corresponding partitions. For more info, see <a href="partitions.md">here</a>.
    </td>
   </tr>
   <tr>
