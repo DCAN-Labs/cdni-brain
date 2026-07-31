@@ -22,7 +22,7 @@ Can we predict the basic math skills of an individual from the brain functional 
 
 **[Brain Wide Associations (BWAS) to model the link between brain features and behavior](https://drive.google.com/file/d/17iRMUb62wZMTrepX129hL_om3mi9gGUk/view?usp=sharing)**
 
-*[Oscar Miranda Dominguez](https://innovation.umn.edu/developmental-cognition-and-neuroimaging-lab/our-team/leadership/)* - September 20, 2021
+*[Oscar Miranda Dominguez](https://cdni.umn.edu/our-team/leadership)* - September 20, 2021
 
 In this talk, you will hear about how brain wide associations (BWAS) and polyneuro risk scores (PNRS) are used to model associations between brain features (e.g., resting-state functional connectivity, cortical thickness) and behavior using large samples (N>1000). The speaker will describe the rationale behind following this approach and, using data from the ABCD study, will show how BWAS/PNRS can be useful to disambiguate between focal or globally distributed effects.
 
