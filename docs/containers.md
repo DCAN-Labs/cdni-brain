@@ -6,7 +6,7 @@ Read:
 * [Intro to Containers @ MSI](https://learning.umn.edu/search/publicCourseSearchDetails.do?method=load&courseId=43513021)
 * [Official Apptainer Quick Start Guide](https://apptainer.org/docs/user/main/quick_start.html)
 
-_`singularity` and `apptainer` can be used interchangeably on MSI._
+_The commands `singularity` and `apptainer` can be used interchangeably on MSI._
  
 The primary container format used by CDNI on MSI is Singularity (aka Apptainer). Containers are used to access multiple data files on a host system, by binding those files together within a container. **Note that Singularity by default mounts your home directory into the container, meaning the container is not fully isolated.** Recommended in general to use the `--cleanenv` and `--no-home` options when running a Singularity container to avoid potential issues caused by the user’s environment or home directory.
 
