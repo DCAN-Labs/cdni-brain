@@ -1,12 +1,16 @@
 # Basecamp
 
-## Adding a New Project to the [DCAN Labs Basecamp](https://3.basecamp.com/5032058/)
+Basecamp is a task-tracking website that is used by some research projects within CDNI. Even if you work with a PI who does not use Basecamp to track their projects, it can be a useful tool to track your own to-do lists and find previously posted information and files.
 
-Aside from personal project boards and teams, all research projects associated with a PI must be assigned a project number and be tracked on a new Basecamp Project board. If you have questions about where on Basecamp something should be tracked or whether a new Basecamp Project board is needed or not, please reach out to the DCAN project managers directly for guidance. In order to obtain a project number and set up a Basecamp, please do the following:
+Everyone should have access to the [DCAN Labs Basecamp](https://3.basecamp.com/5032058/) and should be granted access to the CDNI HQ project. Here is where you can find helpful messages about administrative workflows in CDNI and add your Out of Office time to the calendar.
+
+## Adding a New Project 
+
+Aside from personal project boards and teams, all research projects associated with a PI must be assigned a project number and be tracked on a new Basecamp Project board. If you have questions about where on Basecamp something should be tracked or whether a new Basecamp Project board is needed or not, please reach out to the CDNI project managers directly for guidance. In order to obtain a project number and set up a Basecamp, please do the following:
 
 **Step 1: Request a project number from the project managers**
 
-Fill out the [Project Request Form](https://forms.gle/1ddNGf6pbe5WE2QV8) to request a project number. Please consult the list of [current active projects](https://docs.google.com/spreadsheets/d/1ZYwQIaH2aJP3ClCwHZL6pmaTSNGbAkg91co2ENcIYl0/edit?usp=sharing) to make sure that your project name is distinct. The PMs will also confirm that the project name and goals are distinct from exisiting projects.   
+Fill out the [Project Request Form](https://forms.gle/1ddNGf6pbe5WE2QV8) to request a project number. The PMs will also confirm that the project name and goals are distinct from exisiting projects.   
 
 **Step 2: Create a new project on Basecamp utilizing the template**
  - Go to the Basecamp dashboard and select **Make a New Project** at the top of the page
@@ -25,7 +29,7 @@ Fill out the [Project Request Form](https://forms.gle/1ddNGf6pbe5WE2QV8) to requ
  - Add all necessary people to the project
  - Fill out the **Project Overview** under **Docs & Files**
 
- ## Personal Project Board Recommendations
+## Personal Project Board Recommendations
 
 If you do not have a personal board, you can create one for yourself following the instructions above and activate whichever tools you want to use (do not use a template). Personal boards are just that, personal. It can be used however you wish, below are some recommendations for things to add to your personal board.
 
