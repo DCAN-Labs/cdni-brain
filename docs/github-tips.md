@@ -35,7 +35,7 @@ This page contains some helpful information for using Github and common issues y
 
 [GitHub webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks) are used to trigger an action in a connected website or application in response to an action on GitHub. Examples include [initiating a Docker image build on Dockerhub](https://docs.docker.com/docker-hub/webhooks/) or [updating a Zenodo entry](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content/) 
  
-Webhooks require the GitHub user publishing the release to have repo admin permissions. If you plan on publishing releases on the [DCAN Labs GitHub](https://www.github.com/DCAN-Labs), reach out to the project manager. Project managers will give you admin privileges on the repo so that webhooks will execute.
+Webhooks require the GitHub user publishing the release to have repo admin permissions. If you plan on publishing releases on the [DCAN Labs/CDNI GitHub](https://www.github.com/DCAN-Labs), reach out to the project manager. Project managers will give you admin privileges on the repo so that webhooks will execute.
 
 ## Watch a Repo 
 
@@ -71,12 +71,12 @@ In order to set this, type either of the following:
 -  `git config pull.rebase false` to merge 
 
     ![merge](img/merge.png)
-    Source: https://www.simplilearn.com/what-is-git-rebase-command-article
 
 -  `git config pull.rebase true` to rebase (recommended)
 
     ![rebase](img/rebase.png)
-    Source: https://www.simplilearn.com/what-is-git-rebase-command-article
+
+    [Images Source](https://www.simplilearn.com/what-is-git-rebase-command-article)
 
 -  `git config pull.ff only` to fast-forward only
 

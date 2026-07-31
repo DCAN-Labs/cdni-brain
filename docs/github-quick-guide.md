@@ -63,7 +63,7 @@ By following these steps, you establish a secure and authenticated connection be
 
 ## Creating a GitHub Repository
 
-To see more commonly used github commands with more description, see [this page.](git-commands.md)
+To see more commonly used github commands with more description, see [our common git commands page.](git-commands.md)
 
 **Sign up for GitHub:**
 
