@@ -105,24 +105,25 @@ First we want to set up VS Code to automatically activate your base python envio
 
 Activate your base conda environment by running `conda init` (may need to run `module load conda` first)
 
-- This should add the following code block to your .bashrc which will automatically activate your base environment. 
+- If it is not already present, add the following code block to your .bashrc to automatically activate your base environment. 
+```
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/common/software/install/manual/miniforge3/24.3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/common/software/install/manual/miniforge3/24.3/etc/profile.d/conda.sh" ]; then
+        . "/common/software/install/manual/miniforge3/24.3/etc/profile.d/conda.sh"
+    else
+        export PATH="/common/software/install/manual/miniforge3/24.3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+```
 
-        # >>> conda initialize >>>
-        # !! Contents within this block are managed by 'conda init' !!
-        __conda_setup="$('/common/software/install/migrated/anaconda/python3-2020.07-mamba/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-        if [ $? -eq 0 ]; then
-            eval "$__conda_setup"
-        else
-            if [ -f "/common/software/install/migrated/anaconda/python3-2020.07-mamba/etc/profile.d/conda.sh" ]; then
-                . "/common/software/install/migrated/anaconda/python3-2020.07-mamba/etc/profile.d/conda.sh"
-            else
-                export PATH="/common/software/install/migrated/anaconda/python3-2020.07-mamba/bin:$PATH"
-            fi
-        fi
-        unset __conda_setup
-        # <<< conda initialize <<<
-
-- Now when you run `which python`, it should match the folder path above (`/common/software/install/migrated/anaconda/python3-2020.07-mamba/bin` in this example)
+- Now when you run `which python`, it should match the folder path above (`/common/software/install/manual/miniforge3/24.3/bin/python` in this example)
 - Note: you can use any base conda environment profile path here
 
 Your base environment is automatically located in your home directory, but you can store packages in an external file path to prevent your home directory filling up by adding a path to your `.condarc`. 
@@ -132,7 +133,7 @@ Your base environment is automatically located in your home directory, but you c
 - Add the below line to the top of the file, replacing SHARE with whichever share you would like and substituting in your MSI usermane. 
 
         pkgs_dirs:
-            - /home/<SHARE>/shared/code/external/envs/<MSI_USERNAME>/conda/pkgs
+            - /projects/standard/<SHARE>/shared/code/external/envs/<MSI_USERNAME>/conda/pkgs
 
 ### Creating a new conda environment
 
@@ -142,7 +143,7 @@ Each repository should include its own conda environment so that different users
 
 * Include a name for the environment with the `--name` flag to make it easier to activate. **Note:** If you don't name your environment when you originally create it, you cannot add a name later.
 
-* Environments that are used for ABCC related repositories are stored in `/home/rando149/shared/code/external/envs` otherwise store your environments in `/projects/standard/faird/shared/code/external/envs`. Make sure you are in the directory where the conda environment needs to be stored when creating the environment.
+* Environments that are used for ABCC related repositories are stored in `/projects/standard/rando149/shared/code/external/envs` otherwise store your environments in `/projects/standard/faird/shared/code/external/envs`. Make sure you are in the directory where the conda environment needs to be stored when creating the environment.
 
 ### Activating a new conda environment 
 
