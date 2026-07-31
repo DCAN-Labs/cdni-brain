@@ -2,6 +2,8 @@
  
 This page will explain how to identify the proper band-stop for upper and lower respiration rate settings.
 
+You can find the [recommended cutoff values](https://xcp-d.readthedocs.io/en/latest/workflows.html#id17) for the notch filter on the XCP-D readthedocs. These values are generally sufficient for processing data but you can also perform the analysis explained below to determine a more exact respiratory filter for your specific dataset. 
+
 Material presented here is derived from the manuscript [Correction of respiratory artifacts in MRI head motion estimates](https://www.sciencedirect.com/science/article/pii/S1053811919309917) and supporting functions made available in this [repo](https://github.com/DCAN-Labs/movement_regressors_power_plots)
 
 **What are respiratory artifacts?** Several physiological processes distort the data collected during MRI sessions. This includes the subject’s movement related to respiration blurs, classified as "structured noise", i.e. oscillations fluctuating with the subject's breathing rate. For the respiratory artifact, we can use tools from signal processing to minimize their deleterious effect on the BOLD data
@@ -14,7 +16,7 @@ You can use a band-stop filter to remove the artifact induced by the respiratory
 
 1. Use the real values for the range of the respiration range of the subject being processed, *min* and *max* in breaths per minute. This is assuming respiration rate was collected during the MRI. 
 
-2. Read the peaks of frequencies on the Movement Regressor files as described [here](motion-regressor.md) and by visual inspection select an appropriate range to remove signal in the vicinity of the peak value. Finally, convert those frequency values from Hz to breaths per minute by multiplying the number in Hz by 60.
+2. Read the peaks of frequencies on the [Movement Regressor files](motion-regressor.md) and by visual inspection select an appropriate range to remove signal in the vicinity of the peak value. Finally, convert those frequency values from Hz to breaths per minute by multiplying the number in Hz by 60.
 
 3. If you do not know the real values, pool data from several participants (the more the better, recommended 60 runs at least), use [this tool](https://github.com/DCAN-Labs/movement_regressors_power_plots/blob/master/01_to_run_cat_mov_reg_power.pdf) to look at the concatenated power spectra of the estimates of head movement, then use [this tool](https://github.com/DCAN-Labs/movement_regressors_power_plots/blob/master/03_to_run_get_peaks_from_movement_regressors.pdf) to identify the peaks that are likely related to the respiratory signal, and use the interquartile range of those peaks as cutoff frequency values for the filter. To do this, you can implement a for loop to read the peaks for all the runs. Here is an example:
 
@@ -30,12 +32,12 @@ ans =
  
   6×1 cell array
  
-    {'~/data/anonymized_human/fake_ID_01/fake_visit_1/func/fake_ID_01_fake_visit_1_task-rest_run-1_motion.tsv'}
-    {'~/data/anonymized_human/fake_ID_01/fake_visit_1/func/fake_ID_01_fake_visit_1_task-rest_run-2_motion.tsv'}
-    {'~/data/anonymized_human/fake_ID_01/fake_visit_1/func/fake_ID_01_fake_visit_1_task-rest_run-3_motion.tsv'}
-   {'~/data/anonymized_human/fake_ID_01/fake_visit_1/func/fake_ID_01_fake_visit_1_task-rest_run-4_motion.tsv'}
-    {'~/data/anonymized_human/fake_ID_02/fake_visit_1/func/fake_ID_02_fake_visit_1_task-rest_run-1_motion.tsv'}
-    {'~/data/anonymized_human/fake_ID_14/fake_visit_1/func/fake_ID_14_fake_visit_1_task-rest_run-4_motion.tsv'}
+    {'/path/to/func/sub-ID_ses-ID_task-rest_run-1_motion.tsv'}
+    {'/path/to/func/sub-ID_ses-ID_task-rest_run-2_motion.tsv'}
+    {'/path/to/func/sub-ID_ses-ID_task-rest_run-3_motion.tsv'}
+   {'/path/to/func/sub-ID_ses-ID_task-rest_run-4_motion.tsv'}
+    {'/path/to/func/sub-ID_ses-ID_task-rest_run-1_motion.tsv'}
+    {'/path/to/func/sub-ID_ses-ID_task-rest_run-4_motion.tsv'}
  
 %% Find peaks
 % Pre-allocate memory to read peaks

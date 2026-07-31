@@ -2,28 +2,19 @@
 
 Read:
 
-* [Slurm @ MSI documentation ](https://www.msi.umn.edu/slurm)
+* [Slurm @ MSI documentation ](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html)
 * [Slurm official site](https://slurm.schedmd.com/documentation.html)
 * [Slurm commands cheat sheet](https://slurm.schedmd.com/pdfs/summary.pdf)
 
 **Slurm** is MSI’s job scheduling system. It is responsible for managing the allocation of computing resources among MSI users and user groups. In the CDNI, most data processing and analysis tasks are executed via Slurm job submissions, in the form of **batch scripts** submitted with the `sbatch` command. A batch script is a text file that specifies both the resources (e.g. CPUs, RAM, time) and the commands to be run for a processing job. Slurm jobs can be used for any process that requires more computing resources than is available within a normal terminal. 
 
-Slurm also has “interactive” jobs (srun), which allow access to compute resources directly from the terminal, as opposed to batch job submissions which run in the background (sbatch).
+Slurm also has “interactive” jobs (srun), which allow access to compute resources directly from the terminal, as opposed to batch job submissions which run in the background (sbatch). Requesting an srun will place you on a compute node, which is helpful for scripts that require longer than 15 minutes to run or use more resources than normally available in your terminal. Read more about login vs compute nodes on [the partition page](partitions.md#nodes)
 
-<div class="admonition note">
-   <p class="first admonition-title">Note</p>
-   <p class="last">
-      Processes on login nodes are automatically terminated after 15 minutes.
-   </p>
-</div>
-
-Read more about login vs compute nodes on [the partition page](partitions.md#nodes)
-
-Also available are various commands for job accounting, job management, and environment configuration. (See cheat sheet linked below)
+Slurm also has various commands for job accounting, job management, and environment configuration.
 
 ## Job Parameters
 
-Below is a table summarizing some commands that can be used inside Slurm job scripts (see [sruns and sbatch](slurm-params.md)). The first four commands are required, while the other commands are optional. See [the SLURM documentation](https://slurm.schedmd.com/sbatch.html) for a larger list of options. For parameter optimization, [refer to using seff on the resource optimization page](optimizing.md).
+Below is a table summarizing some commands that can be used inside Slurm job scripts (see [sruns and sbatch](slurm-params.md)). It is recommended to define at least the time, memory needed, account, and partition. See [the SLURM documentation](https://slurm.schedmd.com/sbatch.html) for a larger list of options. For parameter optimization, refer to using seff on the [resource optimization page](optimizing.md).
 
 
 <table>
@@ -37,7 +28,7 @@ Below is a table summarizing some commands that can be used inside Slurm job scr
   <tr>
    <td>#!/bin/bash -l  
    </td>
-   <td><em>Required for sbatch:</em> Specifies how the Slurm file should be read (by the bash interpreter). <br /> A statement like this is required to be the first time of a Slurm script
+   <td><em>Required for sbatch:</em> Specifies how the Slurm file should be read (by the bash interpreter). <br /> A statement like this is required to be the first line of a Slurm script
    </td>
   </tr>
   <tr>
@@ -49,9 +40,43 @@ Below is a table summarizing some commands that can be used inside Slurm job scr
    </td>
   </tr>
   <tr>
+   <td>-A <em>share</em>
+   <p>
+   --account=<em>share</em>
+   </td>
+   <td><em>Recommended:</em> Charge resources used by this job to the specified account. <br /> The account may be changed after job submission using the scontrol command. <br /> To choose an optimal share, see the Fairshare explanation <a href="https://cdnis-brain.readthedocs.io/optimizing/#fairshare">here</a>.
+   </td>
+  </tr>
+  <tr>
+   <td>-c 3
+<p>
+--cpus-per-task=3
+   </td>
+   <td><em>Optional:</em> Choose how many processors on a node are needed for a task. <br /> By default, SLURM will just try to allocate one processor per task. Say a job had 4 tasks <br /> that each need 3 processors and the cluster had a quad-processor node, if you <br /> simply ask for 12 processes, SLURM will only give 3 nodes. With this option, <br /> SLURM knows that each task requires 3 processors on the same node, and will give one node per task.
+   </td>
+  </tr>
+  <tr>
+   <td>--mem=10g
+   </td>
+   <td><em>Recommended:</em> Specifies the maximum limit for memory usage for the entire job. <br /> This job will die if the application tries to use more than 10GB of memory*
+   </td>
+  </tr>
+  <tr>
+   <td>--mail-type=ALL
+   </td>
+   <td><em>Recommended:</em> Specifies which events will trigger an email message. Other options here <br /> include NONE, BEGIN, END, and FAIL. Not recommended for 100+ subject jobs
+   </td>
+  </tr>
+  <tr>
+   <td>--mail-user=x500@umn.edu
+   </td>
+   <td><em>Recommended:</em> Specifies the email address that should be used when the Slurm system sends message emails. <br /> Make sure to double check each time. People frequently get emails from others <br /> due to other people copying and running their sbatches
+   </td>
+  </tr>
+  <tr>
    <td>--ntasks=8
    </td>
-   <td><em>Required:</em> Specifies the number of processors (cores) that will be reserved for the job
+   <td><em>Optional:</em> Specifies the number of processors (cores) that will be reserved for the job
    </td>
   </tr>
   <tr>
@@ -67,55 +92,31 @@ Below is a table summarizing some commands that can be used inside Slurm job scr
    </td>
   </tr>
   <tr>
-   <td>-A, --account=<em>share</em>
-   </td>
-   <td><em>Optional:</em> Charge resources used by this job to the specified account. <br /> The account may be changed after job submission using the scontrol command. <br /> To choose an optimal share, see the Fairshare explanation <a href="fairshare.md">here</a>.
-   </td>
-  </tr>
-  <tr>
-   <td>-c 3
-<p>
---cpus-per-task=3
-   </td>
-   <td><em>Optional:</em> Choose how many processors on a node are needed for a task. <br /> By default, SLURM will just try to allocate one processor per task. Say a job had 4 tasks <br /> that each need 3 processors and the cluster had a quad-processor node, if you <br /> simply ask for 12 processes, SLURM will only give 3 nodes. With this option, <br /> SLURM knows that each task requires 3 processors on the same node, and will give one node per task.
-   </td>
-  </tr>
-  <tr>
-   <td>--mem=10g
-   </td>
-   <td><em>Optional:</em> Specifies the maximum limit for memory usage for the entire job. <br /> This job will die if the application tries to use more than 10GB of memory*
-   </td>
-  </tr>
-  <tr>
    <td>--mem-per-cpu=<em>&lt;size>[units]</em>
    </td>
    <td><em>Optional:</em> Minimum memory required per allocated CPU. 
    </td>
   </tr>
   <tr>
-   <td>--tmp=10g
-   </td>
-   <td><em>Optional:</em> Specifies 10GB of temporary disk space will be available for this job in /tmp. <br /> Should only be used if you are specifying /tmp folders for inputs, outputs, or working directories*
-   </td>
-  </tr>
-  <tr>
-   <td>--mail-type=ALL
-   </td>
-   <td><em>Optional:</em> Specifies which events will trigger an email message. Other options here <br /> include NONE, BEGIN, END, and FAIL. Not recommended for 100+ subject jobs
-   </td>
-  </tr>
-  <tr>
-   <td>--mail-user=x500@umn.edu
-   </td>
-   <td><em>Optional:</em> Specifies the email address that should be used when the Slurm system sends message emails. <br /> Make sure to double check each time. People frequently get emails from others <br /> due to other people copying and running their sbatches
-   </td>
+   <td>-o /path/to/output_logs/jobname_%A.out
+<p>
+-e /path/to/output_logs/jobname_%A.err
+  </td>
+  <td><em>Recommended:</em> Specifies where the output and error logs will be written to. Can provide an absolute or relative path. <br /> %A is variable for the Slurm job number that will be assigned when it is submitted. 
+  </td>
   </tr>
   <tr>
    <td>-p small,mygroup 
 <p>
 --partition=small,mygroup 
    </td>
-   <td><em>Optional:</em> Specifies the partition to be the “small” or "mygroup" partition. <br /> The job will start at the earliest time one of these partitions can accommodate the job. <br /> You must be logged into the correct cluster access corresponding partitions. For more info, see <a href="paritions.md">here</a>.
+   <td><em>Recommended:</em> Specifies the partition to be the “small” or "mygroup" partition. <br /> The job will start at the earliest time one of these partitions can accommodate the job. <br /> You must be logged into the correct cluster access corresponding partitions. For more info, see <a href="paritions.md">here</a>.
+   </td>
+  </tr>
+  <tr>
+   <td>--tmp=10g
+   </td>
+   <td><em>Optional:</em> Specifies 10GB of temporary disk space will be available for this job in /tmp. <br /> Should only be used if you are specifying /tmp folders for inputs, outputs, or working directories*
    </td>
   </tr>
   <tr>
@@ -130,7 +131,7 @@ Below is a table summarizing some commands that can be used inside Slurm job scr
 
 
 
-*`--mem` is the amount of RAM (random access memory) on a CPU (central processing unit), while `--tmp` indicates the amount of temporary storage that you can utilize for a job. With whatever storage amount is specified for `--tmp`, that amount will be created for you within the /tmp folder to output your processing derivatives. 
+**NOTE:** `--mem` is the amount of RAM (random access memory) on a CPU (central processing unit), while `--tmp` indicates the amount of temporary storage that you can utilize for a job. With whatever storage amount is specified for `--tmp`, that amount will be created for you within the `/tmp` folder to output your processing derivatives. 
 
 ## Job Status
 

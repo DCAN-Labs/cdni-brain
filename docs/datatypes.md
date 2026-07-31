@@ -72,9 +72,9 @@ MRI data needs to be processed for a variety of reasons. First of all, the data 
 
 1. [DICOM to BIDS](dcm2bids.md) - convert raw DICOMS to NIFTIs using the BIDS format
 2. [NORDIC](nordic.md) - a thermal denoising algorithm to reduce unstructured noise
-3. BIBSnet - for infant processing, creates better brain segmentation and mask to feed into infant processing pipeline
-4. Pre-processing (ABCD-BIDS or NiBabies/fMRIprep) - anatomical processing (intensity correction, alignment, tissue segmentation, normalization, surface reconstruction) and functional processing (brain mask, motion and distortion correction) with outputs mapped to a standard atlas space
-5. Post-processing (XCP-D) - further functional processing to generate denoised BOLD images, parcellated time series, and functional connectivity matrices
+3. [BIBSnet](pipelines.md#7-bibsnet) - for infant processing, creates a better brain segmentation and mask to feed into infant processing pipeline
+4. Pre-processing ([ABCD-BIDS](pipelines.md#3-abcd-bids-abcd-hcp-pipeline) or [fMRIprep](pipelines.md#1-fmriprep)/[NiBabies](pipelines.md#2-infant-fmriprep-aka-nibabies/fMRIprep)) - anatomical processing (intensity correction, alignment, tissue segmentation, normalization, surface reconstruction) and functional processing (brain mask, motion and distortion correction) with outputs mapped to a standard atlas space
+5. Post-processing ([XCP-D](pipelines.md#4-xcp-d)) - further functional processing to generate denoised BOLD images, parcellated time series, and functional connectivity matrices
 6. Further analyses - [template matching](template-matching.md) is a popular next step but there are many options
 
 This is only a brief overview of the general steps of MRI data processing. We have dedicated pages to almost each of these steps to explain in further detail how to do each step, including a [processing workflow section](processing-sop.md#processing-workflow) to explain how to process data on MSI. 

@@ -1,6 +1,6 @@
 # sbatch/srun Parameters 
 
-srun and sbatch are used for running jobs on MSI. srun is for running more interactive jobs, where you are running commands in the terminal. sbatch is for submitting job scripts, where you can still work on MSI while the job is running in the background. 
+srun and sbatch are used for running jobs on MSI. srun is for running interactive jobs directly in the terminal. sbatch is for submitting job scripts, where you can still work on MSI while the job is running in the background. 
 
 ## srun
 
@@ -14,7 +14,7 @@ Read: [Interactive queue use with srun @ MSI](https://www.msi.umn.edu/content/in
 4. Before grabbing an srun, you need to make sure you are ssh'd into a login node on one of the clusters: `ssh -Y agate/mangi`.
     * If you get a "not enough memory" error when trying to grab a srun, its because you're not on a login node
 5. Ex: `srun --time=8:00:00 --mem=32GB --tmp=20gb -p interactive -A feczk001 --x11 --pty bash`
-    * This interactive job is grabbing 8 hours on 4 cpus on the interactive partition with 8 gigabytes of memory per cpu, 20gb of temporary storage total, x11 enabled, and the ability to use your terminal, utilizing the feczk001 account’s allocated resources.
+    * This interactive job is grabbing 8 hours on 4 cpus on the interactive partition with 8 gigabytes of memory per cpu, 20gb of temporary storage total, x11 enabled (for GUIs), and the ability to use your terminal, utilizing the feczk001 account’s allocated resources.
     * Use `groupquota` to check which account you are currently using. If the account you specified in the interactive job does not match the account listed when you run `groupquota`, then use `sg {share}` to switch to the specified account. Then use `groupquota` again to make sure you are now on the correct share.
     * x11 forwarding (`--x11`) enables X11 graphical apps to render correctly via remote connection.
 
