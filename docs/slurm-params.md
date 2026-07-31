@@ -73,7 +73,7 @@ python continuous_slurm_submitter.py --partition small,amdsmall --job-name abcd-
 
 The `array-size` is how many jobs you are submitting at once. The `submission-interval` is the amount of time in minutes to wait until submitting another array of jobs. 
 
-3. Check the [fairshare](fairshare.md) to know which account to use for processing.
+3. Check the [fairshare](optimizing.md#fairshare) to know which account to use for processing.
 4. If you have a command or script that outputs to a different group than your primary MSI group (i.e. the group with your home directory), you can use `sg` to run as the group that matches the output directory instead. Recommended for abcd-hcp-pipeline, infant-abcd-bids-pipeline, and nhp-abcd-bids-pipeline to avoid permission errors in the FreeSurfer stage of the pipeline.
 
     * Example for when your output directory is on faird: `sg faird -c "singularity run <...>"`
