@@ -3,11 +3,12 @@
 Read:
 
 * [Intro to Singularity and Docker Containers @ Cornell BioHPC](https://biohpc.cornell.edu/doc/singularity_v3.pdf)
-* [Singularity on CentOS7 @ MSI](https://www.msi.umn.edu/support/faq/how-do-i-use-singularity-centos-7)
-* [Singularity tutorial @ MSI](https://www.msi.umn.edu/tutorials/singularity-containers)
-* [Singularity quick start guide @ Syllabus](https://docs.sylabs.io/guides/latest/user-guide/quick_start.html)
+* [Intro to Containers @ MSI](https://learning.umn.edu/search/publicCourseSearchDetails.do?method=load&courseId=43513021)
+* [Official Apptainer Quick Start Guide](https://apptainer.org/docs/user/main/quick_start.html)
 
-The primary container format used by DCAN Labs on MSI is Singularity. Containers are used to access multiple data files on a host system, by binding those files together within a container. **Note that Singularity by default mounts your home directory into the container, meaning the container is not fully isolated.** Recommended in general to use the `--cleanenv` and `--no-home` options when running a Singularity container to avoid potential issues caused by the user’s environment or home directory.
+_`singularity` and `apptainer` can be used interchangeably on MSI._
+ 
+The primary container format used by CDNI on MSI is Singularity (aka Apptainer). Containers are used to access multiple data files on a host system, by binding those files together within a container. **Note that Singularity by default mounts your home directory into the container, meaning the container is not fully isolated.** Recommended in general to use the `--cleanenv` and `--no-home` options when running a Singularity container to avoid potential issues caused by the user’s environment or home directory.
 
 
 Singularity can pull and build Docker images from Dockerhub in Singularity format (note: Docker format images cannot be run on MSI as they require root permissions.) 
@@ -15,7 +16,7 @@ Singularity can pull and build Docker images from Dockerhub in Singularity forma
 
 Example:
 
-`ssh -Y mangi/mesabi/agate`
+`ssh -Y agate`
 
 
 `srun -N 1 -n 1 -c 1 --mem=128G --tmp=200G -t 720 -p interactive --pty bash`
@@ -53,11 +54,11 @@ Once you have access, open a terminal at MSI and ssh into the VM
 
 - Run `ssh umii-midbig-dev-docker.oit.umn.edu`
 
-Assuming you have a github repository that has the dockerfile to build your image and any prerequisite files, download the repository to the machine
+Assuming you have a GitHub repository that has the Dockerfile to build your image and any prerequisite files, download the repository to the machine
 
 - Run `git clone html-to-repo --branch name-of-branch-to-clone`
 
-- If you are asked for your credentials, enter your github username, then open GitHub and go to Settings -> Developer Settings (located at very bottom) -> Personal Access Tokens and click Generate New Token. Enter the new token ID as your password.
+- If you are asked for your credentials, enter your GitHub username, then open GitHub and go to Settings -> Developer Settings (located at very bottom) -> Personal Access Tokens and click Generate New Token. Enter the new token ID as your password.
 
 Navigate into the cloned repository 
 
@@ -83,7 +84,7 @@ If the virtual machine runs out of memory while you're doing this try the follow
 
 - Run  `docker system prune`; this is a good option if you've already removed larger files and containers
 
-- Delete some of your old filles
+- Delete some of your old files
 
 - Delete specific containers by first finding their ID with `ls`, then removing them 
 
@@ -105,7 +106,7 @@ If you want to push the image with multiple tags, add tags to the image before y
         sudo docker image tag container-name dcanumn/container-name:stable
         sudo docker push --all-tags dcanumn/container-name
 
-Start an interactive job on mesabi to use to build the container, requesting about twice the amount of temp space (`--tmp`) as the size of the container
+Start an interactive job on agate to use to build the container, requesting about twice the amount of temp space (`--tmp`) as the size of the container
 
 - Example srun command: `srun -N 1 --ntasks-per-node=1  --tmp=100g --mem-per-cpu=30g -t 3:00:00 -p interactive --pty bash`
 
@@ -125,7 +126,7 @@ If the build was successful but there is not a repository on Dockerhub for you t
 
 Send the tar'd docker image to the main file storage system at MSI so that we can use the singularity instance installed at MSI to convert the docker image into a singularity image 
 
-- Run `scp /path/to/tar/file/on/virtual_machine/pipeline-name.tar user_id@mesabi.msi.umn.edu:/path/at/msi/to/store/container/` 
+- Run `scp /path/to/tar/file/on/virtual_machine/pipeline-name.tar user_id@agate.msi.umn.edu:/path/at/msi/to/store/container/` 
 
 To build the image from docker archive, grab an srun then run:
 
@@ -139,9 +140,7 @@ To build the image from docker archive, grab an srun then run:
 
 **PLEASE NOTE: This does NOT apply to the regular NHP ABCD BIDS pipeline.**
 
-This container needs to be built on the VM, it is too large to be built on DockerHub. This container will take up around 20GB of space so make sure to first check that there is enough space on the VM to build it. 
-
-This pipeline doesn't use a layered build (with internal- and external-tools) like the normal NHP, Infant, and DCAN ACBD BIDS pipelines use. It instead uses gitsubmodules and gitlfs to link certain dependencies such as the DCAN Bold Processing repo and the macaque image templates. 
+This pipeline doesn't use the layered build with **internal-tools** and **external-software** like the normal NHP, Infant, and DCAN ACBD BIDS pipelines use. It instead uses git submodules and git lfs to link certain dependencies such as the DCAN Bold Processing repo and the macaque image templates. 
 
 In order to build this container, you first need to clone the correct repository and initialize the git submodules. You can do this by running the following commands: 
 
