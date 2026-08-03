@@ -7,26 +7,66 @@
     </p>
 </div>
 
-This page provides the code on how to train nnUNet manually and an automated version linked at the bottom of the page. You will need to grab [a srun](slurm-params.md#srun) to run these commands. You will also need to [load the labwide miniconda environment](miniconda.md) and activate the SynthSeg conda environment. 
+This page provides the code on how to train segmentation models manually outside of the streamlined GUI. You will need to grab [a srun](slurm-params.md#srun) to run these commands. You will also need to [load the labwide miniconda environment](miniconda.md) and activate the `SynthSeg-fixed-perms` conda environment. You will also need to have stable local copies of these two github repositories: [dcan-nn-unet](https://github.com/DCAN-Labs/dcan-nn-unet) and [SynthSeg](https://github.com/DCAN-Labs/SynthSeg). Currently, there are copies of all necessary code available here: `/projects/standard/faird/shared/code/stable/utilities/segmentation_model_training/`. These copies will be used for the examples below (set as the variable `$stable_code_path=/projects/standard/faird/shared/code/stable/utilities/segmentation_model_training/`), but they are stable versions and should **not** be altered. Any testing should be done on your own local copies of the code. Run the set of commands below after setting up your dataset on `scratch.global` with the following example data structure:
 
-Create min/maxes (hard coded paths):
+```
+    scratch.global/some_general_name/
+    ├── nnUNet_raw_data_base
+    │   ├── nnUNet_raw_data
+    │   │   ├── Task###
+    │   │   │   ├── imagesTr
+    │   │   │   ├── imagesTs
+    │   │   │   ├── labelsTr
+    │   │   │   ├── labelsTs
+    │   ├── nnUNet_preprocessed
+    │   ├── nnUNet_cropped_data
+```
+
+**Resize images**
 
 ```
 source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
-conda activate SynthSeg
-cd ~/SynthSeg
+conda activate SynthSeg-fixed-perms
+cd ${stable_code_path}
+```
 
-export PYTHONPATH=${PYTHONPATH}:/projects/standard/faird/lundq163/SynthSeg/
-export PYTHONPATH=${PYTHONPATH}:/projects/standard/faird/lundq163/SynthSeg/SynthSeg/
+Rename current subfolders under Task### to "Old_$$$$$" (ex: Old_imagesTr, Old_imagesTs, etc.), and make new empty copies with the original name to be used as destination folders.
+
+```
+python ${stable_code_path}/dcan-nn-unet/dcan/img_processing/resize_images.py /scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_raw_data/Task###/Old_labelsTr/ /scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_raw_data/Task###/labelsTr/	
+```
+
+**Create min/maxes (hard coded paths):**
+
+```
+ssh -Y agate
+
+srun --time=96:00:00 --mem=128GB --tmp=40gb -p msismall -A $account --x11 --pty bash
+
+source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
+
+conda activate SynthSeg-fixed-perms
+
+cd ${stable_code_path}/SynthSeg
+
+export PYTHONPATH=${PYTHONPATH}:${stable_code_path}/SynthSeg/
+
+export PYTHONPATH=${PYTHONPATH}:${stable_code_path}/SynthSeg/SynthSeg/
 
 python ./SynthSeg/dcan/ten_fold_uniformity_estimation_test.py
 ```
 
-Running SynthSeg:
+***Running SynthSeg:***
 
 ```
-cd ~/SynthSeg
+ssh -Y agate
+
+srun --time=96:00:00 --mem=256GB --tmp=80gb -p msismall -A $account --x11 --pty bash
+
+cd ${stable_code_path}/SynthSeg
+
 export PYTHONPATH=${PYTHONPATH}:/projects/standard/faird/lundq163/SynthSeg/
+
 export PYTHONPATH=${PYTHONPATH}:/projects/standard/faird/lundq163/SynthSeg/SynthSeg/
 
 python ./SynthSeg/dcan/image_generation_for_all_ages.py /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task528/ /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task528/SynthSeg_generated/ /projects/standard/faird/lundq163/SynthSeg/data/labels_classes_priors/dcan/uniform/528/mins_maxes.npy 2000 --distribution="uniform"

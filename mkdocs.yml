@@ -97,7 +97,8 @@ nav:
       - Connectivity Matrices: matrices.md
       - Skinny Plot: skinny-plot.md
   - Segmentation Model:
-      - Model Training: training-nnunet.md
+      - Seg-Model-Creation-GUI: automation_training_interface.md
+      - Model Training Outside of the GUI: training-nnunet.md
   - MR Image:
       - MR-Image-Translation: mr-image-translation.md
   - Lab Resources:
