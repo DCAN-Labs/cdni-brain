@@ -69,6 +69,8 @@ export PYTHONPATH=${PYTHONPATH}:${stable_code_path}/SynthSeg/
 
 export PYTHONPATH=${PYTHONPATH}:${stable_code_path}/SynthSeg/SynthSeg/
 
+test
+
 python ./SynthSeg/dcan/image_generation_for_all_ages.py /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task528/ /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task528/SynthSeg_generated/ /projects/standard/faird/lundq163/SynthSeg/data/labels_classes_priors/dcan/uniform/528/mins_maxes.npy 2000 --distribution="uniform"
 
 python ./SynthSeg/dcan/image_generation_for_all_ages.py /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task527_HBCD/ /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task527_HBCD/SynthSeg_generated/ /projects/standard/faird/lundq163/SynthSeg/data/labels_classes_priors/dcan/uniform/527/mins_maxes.npy 1000 --distribution="uniform"
