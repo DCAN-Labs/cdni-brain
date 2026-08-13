@@ -16,17 +16,26 @@ Rename the image ending to 0000.nii.gz and 0001.nii.gz for the T1 and T2 image r
 
 **Prepare and Run sbatch Script**
 
-Go to code folder and edit `infer_script.sh` according to subject and session you are currently running
+Go to code folder (`/projects/standard/faird/shared/code/internal/nnUNet-v1/slurm_scripts_stable/`) and make a copy of `infer_agate.sh` then edit it according to subject and session you are currently running
 
-Main command: `nnUNet_predict -i <input> -o <output directory> -t <model_number> -m 3d_fullres`
+Main command: `nnUNet_predict -i <input> -o <output directory> -t <model_number> -tr nnUNetTrainerV2_noMirroring -m 3d_fullres --disable_tta`
 
 Choose the model number based on what images you have:
 
-552 - T1 and T2 images
+Infant Segmentation:
+    - 552 - T1 and T2 images
+    - 514 - T1 only image
+    - 515 - T2 only image
 
-514 - T1 only image
+Anomalous Infant Segmentation:
+    - 
+    - 
+    - 
 
-515 - T2 only image
+Lifespan Segmentation:
+    - 
+    - 
+    
 
 Run script:  `sbatch infer_script.sh`
 To check your job status: `squeue -al -–me`

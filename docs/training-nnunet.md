@@ -26,7 +26,9 @@ This page provides the code on how to train segmentation models manually outside
 
 ```
 source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
+
 conda activate SynthSeg-fixed-perms
+
 cd ${stable_code_path}
 ```
 
@@ -56,7 +58,7 @@ export PYTHONPATH=${PYTHONPATH}:${stable_code_path}/SynthSeg/SynthSeg/
 python ./SynthSeg/dcan/ten_fold_uniformity_estimation_test.py
 ```
 
-***Running SynthSeg:***
+**Running SynthSeg:**
 
 ```
 ssh -Y agate
@@ -69,75 +71,103 @@ export PYTHONPATH=${PYTHONPATH}:${stable_code_path}/SynthSeg/
 
 export PYTHONPATH=${PYTHONPATH}:${stable_code_path}/SynthSeg/SynthSeg/
 
-python ./SynthSeg/dcan/image_generation_for_all_ages.py /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task528/ /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task528/SynthSeg_generated/ /projects/standard/faird/lundq163/SynthSeg/data/labels_classes_priors/dcan/uniform/528/mins_maxes.npy 2000 --distribution="uniform"
-
-python ./SynthSeg/dcan/image_generation_for_all_ages.py /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task527_HBCD/ /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task527_HBCD/SynthSeg_generated/ /projects/standard/faird/lundq163/SynthSeg/data/labels_classes_priors/dcan/uniform/527/mins_maxes.npy 1000 --distribution="uniform"
-
-python ./SynthSeg/dcan/image_generation_for_all_ages.py /scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_raw_data/Task700_T1_T2_Fold0/ /scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_raw_data/Task700_T1_T2_Fold0/SynthSeg_generated/ /projects/standard/faird/lundq163/SynthSeg/data/labels_classes_priors/dcan/uniform/mins_maxes_fold_0.npy 1000 --distribution="uniform"
+python ./SynthSeg/dcan/image_generation_for_all_ages.py /scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_raw_data/Task###/ /scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_raw_data/Task###/SynthSeg_generated/ ./SynthSeg/data/labels_classes_priors/dcan/uniform/###/mins_maxes.npy 1000 --distribution="uniform"
 ```
 
-Running one fold of nnUNet:
-First - copy over synthseg images to training folders:
+**Setting up running one fold of nnUNet:**
+
+First - copy over Synthseg images to training folders:
 
 ```
-python copy_over_augmented_image_files.py /scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_raw_data/Task70X/SynthSeg_generated/images/ /scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_raw_data/Task70X/imagesTr/ /scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_raw_data/Task70X/labelsTr/
+source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
 
-python copy_over_augmented_image_files.py /scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_raw_data/Task70X/SynthSeg_generated/labels/ /scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_raw_data/Task70X/imagesTr/ /scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_raw_data/Task70X/labelsTr/
+conda activate SynthSeg-fixed-perms
 
-cd /scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_raw_data/Task70X/
-mv ./imagesTr/*_SynthSeg_generated_0000.nii.gz ./labelsTr/ -v
-mv ./imagesTr/*_SynthSeg_generated_0001.nii.gz ./labelsTr/ -v
-ls ./imagesTr/ | wc -l
-ls ./labelsTr/ | wc -l
-rm SynthSeg_generated/ -r
-```
-imagesTr should have 18162, and labelsTr should have 9081, and then SynthSeg_generated can be removed
+cd ${stable_code_path}/dcan-nn-unet
 
+python ./dcan/util/copy_over_augmented_image_files.py /scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_raw_data/Task###/SynthSeg_generated/images/ /scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_raw_data/Task###/imagesTr/ /scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_raw_data/Task###/labelsTr/
 
-Create dataset json for nnunet plan and preprocess:
+python ./dcan/util/copy_over_augmented_image_files.py /scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_raw_data/Task###/SynthSeg_generated/labels/ /scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_raw_data/Task###/imagesTr/ /scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_raw_data/Task###/labelsTr/
 
-```
-cd /scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_raw_data/Task700/
-
-export PYTHONPATH=${PYTHONPATH}:/projects/standard/faird/lundq163/dcan-nn-unet/
-export nnUNet_raw_data_base="/scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/"
-export nnUNet_preprocessed="/scratch.global/lundq163/nnUNet/BOBSnet_raw_data_base/nnUNet_preprocessed/"
-export RESULTS_FOLDER="/projects/standard/feczk001/shared/data/nnUNet/nnUNet_raw_data_base/nnUNet_trained_models"
-
-python /projects/standard/faird/lundq163/dcan-nn-unet/dcan/dataset_conversion/create_json_file.py TaskXXX
-
-export PYTHONPATH=${PYTHONPATH}:/projects/standard/faird/lundq163/dcan-nn-unet/dcan/
-
-python /projects/standard/faird/lundq163/dcan-nn-unet/dcan/dataset_conversion/fix_json_file.py ./dataset.json ./dataset2.json
-'next remove comma after vermis in dataset2, then delete dataset and save dataset2 as dataset'
+rm -r /scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_raw_data/Task###/SynthSeg_generated/
 ```
 
-Run plan and preprocess:
+***Create dataset.json for nnUNet plan and preprocess:***
 
 ```
-cd /projects/standard/faird/shared/code/internal/nnUNet/slurm_scripts/70X
-sbatch NnUnet_plan_and_preprocess_agate.sh
+cd /scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_raw_data/Task###/
+
+export PYTHONPATH=${PYTHONPATH}:${stable_code_path}/dcan-nn-unet/
+
+export nnUNet_raw_data_base="/scratch.global/some_general_name/nnUNet_raw_data_base/"
+
+export nnUNet_preprocessed="/scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_preprocessed/"
+
+export RESULTS_FOLDER="/projects/standard/faird/shared/data/nnUNet-v1/nnUNet_raw_data_base/nnUNet_trained_models/"
+
+python ${stable_code_path}/dcan-nn-unet/dcan/dataset_conversion/create_json_file.py Task###
+
+export PYTHONPATH=${PYTHONPATH}:${stable_code_path}/dcan-nn-unet/dcan/
+
+python ${stable_code_path}/dcan-nn-unet/dcan/dataset_conversion/fix_json_file.py ./dataset.json ./dataset2.json
 ```
 
+Finally, remove comma after vermis in `dataset2.json`, then delete `dataset.json` and save `dataset2.json` as `dataset.json`
+
+***Run plan and preprocess:***
+
+```
+cd /projects/standard/faird/shared/code/internal/nnUNet-v1/slurm_scripts_stable/
+
+sbatch NnUnet_plan_and_preprocess_agate.sh /scratch.global/some_general_name/nnUNet_raw_data_base/ ### /projects/standard/faird/shared/data/nnUNet-v1/nnUNet_raw_data_base/nnUNet_trained_models/
+```
+
+***Run nnUNet train:***
+
+```
+cd /projects/standard/faird/shared/code/internal/nnUNet-v1/slurm_scripts_stable/
+
+sbatch NnUnetTrain_agate.sh ${fold_number} ${Account} ### /scratch.global/some_general_name/nnUNet_raw_data_base/ /projects/standard/faird/shared/data/nnUNet-v1/nnUNet_raw_data_base/nnUNet_trained_models/ [-c]
+```
+
+Only include [-c] if continuing a job. Monitor the logs - once fold 0 hits epoch 1 then you can submit the remaining folds (i.e. folds 1-4)
+
+**Run nnUNet predict:**
+
+This step is to be done after training folds have completely finished (you should see a `model_final_checkpoint.model` zip file and pkl file in each fold directory in the results folder).
+
+```
+cd /projects/standard/faird/shared/code/internal/nnUNet-v1/slurm_scripts_stable/
+
+sbatch infer_agate.sh
+```
+
+`infer_agate.sh` is hard coded, so edit your paths accordingly. 
+
+**Optional - Review the inferred segmentations (we usually have too many):**
+
+```
+fslmerge -t ${inferred_segs_dir} `ls *.nii.gz`
+```
+
+**Calculate dice scores and create plots**
+
+Remove the inferred_segs_all file if necessary and run the following commands:
+
+```
+ssh -Y agate
+
+srun --time=24:00:00 --mem=32GB --tmp=20gb -p interactive -A ${Account} --x11 --pty bash
+
+cd ${stable_code_path}/SynthSeg/SynthSeg/dcan/paper
+
+source /projects/standard/faird/shared/code/external/envs/miniconda3/load_miniconda3.sh
+
+conda activate SynthSeg-fixed-perms
+
+export PYTHONPATH=${PYTHONPATH}:${stable_code_path}/SynthSeg
+
+python evaluate_results.py /scratch.global/some_general_name/nnUNet_raw_data_base/nnUNet_raw_data/Task###/labelsTs/ /scratch.global/some_general_name/predict_test/ /scratch.global/some_general_name/predict_results/
+```
 
 For questions, suggestions, or to note any errors, post an issue on our [Github](https://github.com/DCAN-Labs/cdni-brain/issues).
-
-# Automated Training nnUNet
-
-This repository [Github](https://github.com/DCAN-Labs/Seg-Model-Creation-GUI.git) contains the instructions and code needed to run the segmentation model training pipeline through the GUI.
-
-## Access Requirement
-
-Before using this pipeline, you must be a member of the **faird** group on MSI.  
-If you do not have access, you will not be able to run the required environment or access the necessary project directories.
-
-## Clone the Repository
-
-Clone the GUI repository and follow instructions posted to the README.md within the repo:
-
-```bash
-git clone https://github.com/DCAN-Labs/Seg-Model-Creation-GUI.git
-```
-
-For questions or issues, please contact the development team: @Emoney and @Kenevan-Carter
-
