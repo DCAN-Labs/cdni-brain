@@ -1,12 +1,5 @@
 # Manual Training nnUNet
 
-<div class="admonition attention">
-    <p class="first admonition-title">Attention</p>
-    <p class="last">
-        This page is still under construction. Please keep that in mind when reading.
-    </p>
-</div>
-
 This page provides the code on how to train segmentation models manually outside of the streamlined GUI. You will need to grab [a srun](slurm-params.md#srun) to run these commands. You will also need to [load the labwide miniconda environment](miniconda.md) and activate the `SynthSeg-fixed-perms` conda environment. You will also need to have stable local copies of these two github repositories: [dcan-nn-unet](https://github.com/DCAN-Labs/dcan-nn-unet) and [SynthSeg](https://github.com/DCAN-Labs/SynthSeg). Currently, there are copies of all necessary code available here: `/projects/standard/faird/shared/code/stable/utilities/segmentation_model_training/`. These copies will be used for the examples below (set as the variable `$stable_code_path=/projects/standard/faird/shared/code/stable/utilities/segmentation_model_training/`), but they are stable versions and should **not** be altered. Any testing should be done on your own local copies of the code. Run the set of commands below after setting up your dataset on `scratch.global` with the following example data structure:
 
 ```
