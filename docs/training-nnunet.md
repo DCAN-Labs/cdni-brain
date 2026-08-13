@@ -65,9 +65,9 @@ srun --time=96:00:00 --mem=256GB --tmp=80gb -p msismall -A $account --x11 --pty 
 
 cd ${stable_code_path}/SynthSeg
 
-export PYTHONPATH=${PYTHONPATH}:/projects/standard/faird/lundq163/SynthSeg/
+export PYTHONPATH=${PYTHONPATH}:${stable_code_path}/SynthSeg/
 
-export PYTHONPATH=${PYTHONPATH}:/projects/standard/faird/lundq163/SynthSeg/SynthSeg/
+export PYTHONPATH=${PYTHONPATH}:${stable_code_path}/SynthSeg/SynthSeg/
 
 python ./SynthSeg/dcan/image_generation_for_all_ages.py /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task528/ /scratch.global/lundq163/nnUNet_HBCD/nnUNet_raw_data_base/nnUNet_raw_data/Task528/SynthSeg_generated/ /projects/standard/faird/lundq163/SynthSeg/data/labels_classes_priors/dcan/uniform/528/mins_maxes.npy 2000 --distribution="uniform"
 
