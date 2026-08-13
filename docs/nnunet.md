@@ -22,25 +22,25 @@ Main command: `nnUNet_predict -i <input> -o <output directory> -t <model_number>
 
 Choose the model number based on what images you have:
 
-Infant Segmentation:
-    - 552 - T1 and T2 images
-    - 514 - T1 only image
-    - 515 - T2 only image
+Infant Segmentation (500 series):
+    - 543 - T1 and T2 images
+    - 547 - T1 only image
+    - 548 - T2 only image
 
-Anomalous Infant Segmentation:
-    - 
-    - 
-    - 
+Anomalous Infant Segmentation (600 series):
+    - 643 - T1 and T2 images
+    - 644 - T1 only images
+    - 645 - T2 only images
 
-Lifespan Segmentation:
-    - 
-    - 
-    
+Lifespan Segmentation (700 series):
+    - 704 - T1 specified w/ lesion labels
+    - 702 - T1 specified no lesion labels
 
-Run script:  `sbatch infer_script.sh`
+
+Run script:  `sbatch infer_agate.sh`
 To check your job status: `squeue -al -–me`
 
-**Note that nnUNet predict only works with images that are the same size as the data it was trained on, which are preprocessed intermediate pipeline outputs from PreFreeSurfer in the DCAN-infant-pipeline. If you are using raw data or data in some other space, you will need to perform the following preprocessing steps before running nnUNet predict.**
+**Note that nnUNet predict works best with preprocessed images. If you are using raw data or data in some other space, you may need to perform the following preprocessing steps before running nnUNet predict for optimal results.**
 
 ## Preprocessing
 
