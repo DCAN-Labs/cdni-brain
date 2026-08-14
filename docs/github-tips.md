@@ -15,7 +15,7 @@ This page contains some helpful information for using Github and common issues y
     - In this lab, we interact with A LOT of codebases quite regularly. Pinning your main projects ensures they don't get lost.
 4. There are certain commands that are easier on command line, and certain commands that are easier with IDE extensions.
     - EX: Commits, staging commits, pushes, pulls (everyday tasks) are easier via [vscode source control](vscode.md). I recommend exploring that page often.
-    - EX: [Scrubbing a repository](github-scrub.md) of a commit or data within a commit is easier via command line.
+    - EX: [Scrubbing a repository](git-commands.md#history-scrub) of a commit or data within a commit is easier via command line.
 5. Put a README.md within all your codebases, even if you are the only person using it.
     - You will forget how to run you own code, trust me.
 6. Get a DOI for your codebase if it is being used by others.
