@@ -29,10 +29,10 @@ The recommended method to apply NORDIC denoising is using the dcm2bids3 NORDIC w
 ```
 - Load the `dcm2bids3` conda environment and run dcm2bids on your dataset with the first config file (everything but phase), **then** run dcm2bids again with the second config file (to convert phase data and run the NORDIC wrapper via post-op command). **Use the same options for input / output paths, particpant and session ids on both runs -- the only difference is the config file used**.
 
-Notes:
-- Dcm2bids 2 config files are **not** compatible with Dcm2bids 3! (The `dcm2bids` and `dcm2bids_xa30_test` environments use Dcm2bids 2).
-  -  See [documentation for how to "upgrade" old-version config files](https://unfmontreal.github.io/Dcm2Bids/3.0.2/upgrade/#description-keys)
-  - A script to convert Dcm2bids 2 config files to Dcm2bids 3 is at `/projects/standard/faird/shared/code/internal/utilities/Dcm2bids3_NORDIC_wrapper/` 
+**NOTE: Dcm2bids 2 config files are **not** compatible with Dcm2bids 3! (The `dcm2bids` and `dcm2bids_xa30_test` environments use Dcm2bids 2).**
+
+- See [documentation for how to "upgrade" old-version config files](https://unfmontreal.github.io/Dcm2Bids/3.0.2/upgrade/#description-keys)
+- A script to convert Dcm2bids 2 config files to Dcm2bids 3 is at `/projects/standard/faird/shared/code/internal/utilities/Dcm2bids3_NORDIC_wrapper/` 
     - Usage: `python3 convert_dcmbids2_config.py /path/to/dcm2bids2_config.json paht/to/dcm2bids3_config.json`
     - This script does **not** split the config file into two parts as expected by the wrapper, nor does it add a post-op command to run NORDIC.
 
