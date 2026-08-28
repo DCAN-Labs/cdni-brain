@@ -232,7 +232,7 @@ This pipeline provides an interface for processing BIDS-formatted MRI datasets u
     
     * `--custom-clean` : Runs DCAN cleaning script after the pipeline completes successfully to delete pipeline outputs based on the file structure specified in the custom-clean JSON. Required for the custom clean stage.
     
-    * `--bandstop` : Parameters for motion regressor band-stop filter. It is recommended for the boundaries to match the inter-quartile range for participant group respiratory rate (breaths per minute), or to match [BIDS physio data directly](https://www.biorxiv.org/content/10.1101/337360v1). These parameters are highly recommended for data acquired with a frequency of greater than 1 Hz (TR less than 1 second). Default is no filter. Suggested filter ranges can also be found in [this table](https://xcp-d.readthedocs.io/en/latest/generalworkflow.html#id3).
+    * `--bandstop` : Parameters for motion regressor band-stop filter. It is recommended for the boundaries to match the inter-quartile range for participant group respiratory rate (breaths per minute), or to match [BIDS physio data directly](https://www.biorxiv.org/content/10.1101/337360v1). These parameters are highly recommended for data acquired with a frequency of greater than 1 Hz (TR less than 1 second). Default is no filter. Suggested filter ranges can also be found in [this table](https://xcp-d.readthedocs.io/en/26.2.0/workflows.html#id17).
 
 2. If an error is encountered, check for a solution on the [troubleshooting page](troubleshooting.md#abcd-bids) and consider creating a [Github issue](https://github.com/DCAN-Labs/cdni-brain/issues) or adding it yourself if your error is not there.
 
