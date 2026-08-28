@@ -20,8 +20,6 @@ Are you having any issues with any of our pipelines?
 
 * Please post a GitHub issue to the appropriate repository:
 
-    * [ABCD-DICOM2BIDS](https://github.com/DCAN-Labs/abcd-dicom2bids/issues/new/choose)
-
     * [ABCD-HCP Pipeline](https://github.com/DCAN-Labs/abcd-hcp-pipeline/issues/new/choose)
 
     * [BIBSnet](https://github.com/DCAN-Labs/BIBSnet/issues/new/choose)
@@ -29,10 +27,6 @@ Are you having any issues with any of our pipelines?
     * [CABINET](https://github.com/DCAN-Labs/CABINET/issues/new/choose)
 
     * [DCAN Infant](https://github.com/DCAN-Labs/infant-abcd-bids-pipeline/issues/new)
-
-    * [NDA Downloader](https://github.com/DCAN-Labs/nda-abcd-s3-downloader/issues/new/choose)
-
-    * [NDA Uploader](https://github.com/DCAN-Labs/nda-bids-upload/issues/new/choose)
 
     * [NHP ABCD BIDS Pipeline](https://github.com/DCAN-Labs/nhp-abcd-bids-pipeline/issues/new)
 
