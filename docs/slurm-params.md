@@ -1,88 +1,92 @@
-# sbatch/srun Parameters 
+# sbatch/srun and Job Submission
 
-srun and sbatch are used for running jobs on MSI. srun is for running interactive jobs directly in the terminal. sbatch is for submitting job scripts, where you can still work on MSI while the job is running in the background. 
+Read:
+
+* [Interactive HPC @ MSI](https://userdocs.msi.umn.edu/compute/interactive_compute.html)
+* [Slurm Job Submission and Scheduling @ MSI](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html)
+* [Shared Partitions @ MSI](https://userdocs.msi.umn.edu/compute/shared_partitions.html)
+* [Compute Need to Know @ MSI](https://userdocs.msi.umn.edu/compute/cluster_info.html)
+
+`srun` and `sbatch` are used to run jobs through MSI's Slurm scheduler. `srun` is commonly used for interactive work on a compute node, while `sbatch` submits a script to run as a batch job.
+
+MSI maintains the current documentation for Slurm resources, partitions, job limits, and job submission. The sections below focus on basic usage and CDNI-specific workflows.
 
 ## srun
 
-Used to immediately run a command using the specified compute resources
+`srun` can be used to start an interactive session on a compute node for testing workflows or running work that should not be performed on a login node.
 
-Read: [Interactive queue use with srun @ MSI](https://www.msi.umn.edu/content/interactive-queue-use-srun)
+For current `srun` examples and resource options, see [Interactive HPC @ MSI](https://userdocs.msi.umn.edu/compute/interactive_compute.html).
 
-1. **srun** is primarily useful for jobs that will take longer than 15 minutes to run on a [login node](partitions.md#nodes) or need more computing resources (i.e. RAM). They are also very useful for loading a Matlab session (or something similar) with sufficient resources. 
-2. This will allow you to work directly in a terminal, allowing you to run resource intensive software on it. You get the outputs in your terminal and you cannot write other commands until it is finished. (If you append the “&” symbol to the command it will execute in the background, allowing continued use of the current terminal.)
-3. If you disconnect from the node, you will lose control over srun jobs, or they might be killed (depending on whether they use stdout or not). They will also be killed if the machine to which you connect to submit jobs is rebooted.  
-4. Before grabbing an srun, you need to make sure you are ssh'd into a login node on one of the clusters: `ssh -Y agate/mangi`.
-    * If you get a "not enough memory" error when trying to grab a srun, its because you're not on a login node
-5. Ex: `srun --time=8:00:00 --mem=32GB --tmp=20gb -p interactive -A feczk001 --x11 --pty bash`
-    * This interactive job is grabbing 8 hours on 4 cpus on the interactive partition with 8 gigabytes of memory per cpu, 20gb of temporary storage total, x11 enabled (for GUIs), and the ability to use your terminal, utilizing the feczk001 account’s allocated resources.
-    * Use `groupquota` to check which account you are currently using. If the account you specified in the interactive job does not match the account listed when you run `groupquota`, then use `sg {share}` to switch to the specified account. Then use `groupquota` again to make sure you are now on the correct share.
-    * x11 forwarding (`--x11`) enables X11 graphical apps to render correctly via remote connection.
+MSI's [Open OnDemand](https://userdocs.msi.umn.edu/compute/open-ondemand-support.html) is another option for interactive compute and provides browser-based shell access, desktops, Jupyter, MATLAB, and other applications.
 
 ## sbatch
 
-This version of job submission copies the script in an internal storage and then uploads it on the compute node when the job starts.
+`sbatch` submits a job script to Slurm. After the script is successfully submitted, it can wait in the queue and run independently of your terminal session.
 
-Read: [Job Submission & Scheduling @ MSI](https://www.msi.umn.edu/content/job-submission-and-scheduling-slurm)
+To submit a script:
 
-The job script needs to stay the same until the job starts to produce the correct results. If you make changes to a script before the job starts, those edits will be reflected in the job. Some of the possible parameters used in sbatch scripts can be found on [the SLURM Commands page.](slurm.md#job-parameters)
+```bash
+sbatch scriptname.sh
+```
 
-1. Results are written out as your script specifies. `stdout` and `stderr` will be outputted if the `-o` and `-e` flags are specified, and you can submit other commands right away.
-2. An sbatch job is handled by Slurm; you can disconnect (not run interactively), kill your terminal, etc. with no consequence
-3. To run an sbatch, use this command: `sbatch scriptname.sh`
+For current job script examples, `#SBATCH` options, resource requests, job arrays, output/error logs, and job monitoring, see [Slurm Job Submission and Scheduling @ MSI](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
-    1. Example sbatch layout: 
-
-    ![singularity_example](img/singularity_image.png)
-
-    2. The line `#!/bin/bash -l` in needed to indicate that this is a bash script.
-    3. The name of the job is “_abcd-xcp_”, which is a descriptive name that will appear when running `squeue -al --me` in the command line. 
-    4. It will send all types of mail to the specified email address “lundq163@umn.edu”
-    5. The resources utilized by this sbatch job include:
-        * a maximum time of 8 hours 
-        * 8 cpus per task 
-        * queueing on the `msismall` partition 
-        * 160 gigabytes of total RAM 
-        * utilizing the account _rando149_’s queue
-    6. There are full paths to a directory that will hold both `stdout` and `stderr` files, which are listed above as `output_logs/xcp_full_%A.out` and `output_logs/xcp_full_%A.err`. The `%A` signifies that the job ID number will be added to the filename.
-        * Note: make sure that the _output_logs_ directory exists prior to job submission, if you choose to use one. You can also change that path or not have a sub folder altogether if you want. It is recommended to specify the full path.
-        * If you are submitting a sbatch for a [pipeline wrapper](wrappers.md), you can use `output_logs/xcp_full_%A_%a.err` for the output logs path. The `%a` indicates the array number that is being submitted.
-    7. All of the text after the #SBATCH parameters are the commands needed to run an XCP-D [singularity container](containers.md). This is one example of what can be in an sbatch, and it can be substituted for any command that may need to be run via an sbatch. Read more about the [XCP-D specific flags](https://xcp-d.readthedocs.io/en/latest/usage.html)
-        1. The input and output directory paths are bound to the container’s filesystem using the `-B` syntax. There is also a path to a `.sif` file that will utilize the jobs resources in order to produce the desired outputs using what's in the input directory. This .sif file is a [singularity image](containers.md) that is being run on the specified input files.   
-            * Note: these input, output and singularity image paths need to exist prior to running the sbatch. 
-            * The input file is binded with the `:ro` option, which indicates it is read only. This is done to ensure that running the command won't accidentally alter the input file. 
-    8. If an sbatch job is running for >3 minutes, there are most likely no errors in the run command, and job doesn't need to be closely monitored before completion.
+For CDNI-specific job management commands, see the [Slurm Commands page](slurm.md). For container and pipeline-specific commands used within batch jobs, see the [Containers page](containers.md) and relevant pipeline documentation.
 
 ## Continuous Job Submission
- 
-If a submission is above 2000 jobs (slurm’s max in-queue number of jobs), or you would like to space out job submission, use the continuous submitter.
 
-* Path to continuous submitter: `/projects/standard/faird/shared/code/internal/utilities/SLURM_wrappers/continuous_submitter`
+For large workflows or when jobs need to be submitted gradually, CDNI provides a continuous Slurm submitter. The submitter adds jobs to the queue in configurable batches and intervals.
 
-* The code can be found [on GitHub.](https://github.com/DCAN-Labs/SLURM_wrappers/tree/main/continuous_submitter)
+Path:
 
-* This command needs to be run on a persistent desktop, or at least a desktop with as many hours as it will take to submit all the jobs based on how far apart the submission interval is. 
+`/projects/standard/faird/shared/code/internal/utilities/SLURM_wrappers/continuous_submitter`
 
-* Below is an example of what the submitter command will look like:
+The code and available arguments can be found in the [DCAN-Labs SLURM_wrappers repository](https://github.com/DCAN-Labs/SLURM_wrappers/tree/main/continuous_submitter).
 
+Run the submitter from a persistent session that will remain active while jobs are being submitted.
+
+Example:
+
+```bash
+python continuous_slurm_submitter.py \
+  --partition msismall \
+  --job-name example-job \
+  --log-dir /path/to/logs \
+  --run_folder /path/to/run_files \
+  --n_cpus 8 \
+  --time_limit 48:00:00 \
+  --total_memory 20 \
+  --tmp_storage 100 \
+  --array-size 1000 \
+  --submission-interval 300 \
+  --account_name <account> \
+  --emailed_user <x500>@umn.edu
 ```
-python continuous_slurm_submitter.py --partition small,amdsmall --job-name abcd-hcp-pipeline_full 
---log-dir /path/to/cont_slurm_submitter_logs --run_folder /path/to/project/folder/run_files.abcd-hcp-pipeline_full/ 
---n_cpus 8 --time_limit 48:00:00 --total_memory 20 --tmp_storage 100 --array-size 1000 
---submission-interval 300 --account-name feczk001 --mail_user x500@umn.edu
+
+`--array-size` controls the number of jobs the submitter attempts to keep in the queue, while `--submission-interval` controls how long it waits between submission attempts.
+
+Before submitting a large workflow, check the current [MSI user resource limits](https://userdocs.msi.umn.edu/compute/cluster_info.html#user-resource-limits) and [Shared Partitions](https://userdocs.msi.umn.edu/compute/shared_partitions.html).
+
+### Group Permissions
+
+If a workflow writes output to a project group different from your primary MSI group, it may need to run under the group that owns the output directory.
+
+For example:
+
+```bash
+sg faird -c "singularity run <...>"
 ```
 
-The `array-size` is how many jobs you are submitting at once. The `submission-interval` is the amount of time in minutes to wait until submitting another array of jobs. 
+The same approach can be used when submitting a batch script:
 
-3. Check the [fairshare](fairshare.md) to know which account to use for processing.
-4. If you have a command or script that outputs to a different group than your primary MSI group (i.e. the group with your home directory), you can use `sg` to run as the group that matches the output directory instead. Recommended for abcd-hcp-pipeline, infant-abcd-bids-pipeline, and nhp-abcd-bids-pipeline to avoid permission errors in the FreeSurfer stage of the pipeline.
+```bash
+sg faird -c "sbatch sbatchscript.sh"
+```
 
-    * Example for when your output directory is on faird: `sg faird -c "singularity run <...>"`
+This may be useful for workflows such as `abcd-hcp-pipeline`, `infant-abcd-bids-pipeline`, and `nhp-abcd-bids-pipeline` when group permissions would otherwise cause errors.
 
-    * This includes batch scripts. (e.g. `sg faird -c "sbatch sbatchscript.sh"`)
+For Open OnDemand sessions, use MSI's [Open OnDemand Support](https://userdocs.msi.umn.edu/compute/open-ondemand-support.html) for current project group selection guidance.
 
-    * [More info on sg](https://linux.die.net/man/1/sg)
+After submitting a large workflow, check that jobs are not immediately failing because of permissions, job configuration, or data issues.
 
-5. Make sure a ton of jobs aren’t failing right away. Permissions errors, job set up issues, and data issues are common causes.
-
-
-For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
+For questions, suggestions, or to note any errors, [post a GitHub issue](https://github.com/DCAN-Labs/cdni-brain/issues).
