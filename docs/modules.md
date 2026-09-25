@@ -2,7 +2,7 @@
 
 Read: 
 
-* [MSI module system](https://www.msi.umn.edu/support/faq/what-software-does-msi-offer-how-do-i-access-it)
+* [Software Modules](https://userdocs.msi.umn.edu/software/software_modules.html)
 
 * [List of MSI software modules](https://www.msi.umn.edu/software)
 
@@ -10,10 +10,9 @@ Read:
 
 ## Loading Modules
 
-MSI uses the Environment Modules "module" system for providing access to various software packages. Often there are multiple versions of a given module available with one designated as the default to load.  `module avail <module name>` will display a list of all available versions. Modules are loaded from the command line with `module load <module name>/<version>`.
+MSI uses the Environment Modules "module" system for providing access to various software packages. See more information here: [Software Modules](https://userdocs.msi.umn.edu/software/software_modules.html). 
 
 Commonly used modules by our lab include:
-
 * fsl 
 * workbench 
     - Note that the default version used to be 1.5.0 but is now 2.0.1, which has different default settings. Depending on use case you may need to load workbench/1.5.0, 1.4.2, or another older version for compatability
