@@ -1,18 +1,23 @@
 # MSI Module System (Loading Software Packages)
 
-MSI uses software modules to provide access to software packages and different software versions without requiring users to install them individually.
+MSI uses software modules to provide access to installed software packages and different software versions.
 
-For current instructions on finding, loading, unloading, and managing software modules, see the [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
+For current instructions on finding, loading, unloading, and managing modules, see the [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
 
-For the current software available on MSI systems, see the [MSI Available Software documentation](https://userdocs.msi.umn.edu/software/).
+For the current list of software available on MSI systems, see the [MSI Available Software documentation](https://userdocs.msi.umn.edu/software/package_docs/index.html).
+
+## Loading Modules
+
+The sections below highlight modules commonly used within CDNI. For current module syntax and available versions, refer to MSI's documentation above.
 
 Commonly used modules by our lab include:
 
 * fsl 
-* workbench 
-    - Note that the default version used to be 1.5.0 but is now 2.0.1, which has different default settings. Depending on use case you may need to load workbench/1.5.0, 1.4.2, or another older version for compatability
+* workbench
+    * Some CDNI workflows may require a specific Workbench version for compatibility. Use `module avail workbench` to see the versions currently available on MSI, and load the version required by your workflow.
 * freesurfer
-* matlab (most versions from R2010b through R2023b available)
+* matlab
+    * Use `module avail matlab` to see the versions currently available on MSI.
 
 Some other helpful modules include:
 
