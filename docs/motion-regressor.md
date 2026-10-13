@@ -16,15 +16,21 @@ git clone https://github.com/DCAN-Labs/movement_regressors_power_plots/
 
 Check the NIfTI headers to find the TR value, which represents the time between succesive scans, it may vary depending on the data.
 
-To find with fsl run: 
-```
-module load fsl
+To inspect the NIfTI header with FSL, use `fslinfo`. For current MSI FSL availability and module-loading instructions, see the [MSI Available Software documentation](https://userdocs.msi.umn.edu/software/package_docs/index.html).
+
+For example:
+
+```bash
 fslinfo sub-***_task-movieDM_bold.nii.gz
 ```
 
 To find with workbrench run:
 ```
-module load workbench
+To inspect file information with Connectome Workbench, use `wb_command -file-information`. For current MSI Workbench availability and module-loading instructions, see the [MSI Connectome Workbench documentation](https://userdocs.msi.umn.edu/software/package_docs/pages/connectome-workbench.html).
+
+For example:
+
+```bash
 wb_command -file-information sub-***_task-movieDM_DM.bold.nii.gz
 ```
 
