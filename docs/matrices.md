@@ -1,7 +1,12 @@
 # Connectivity Matrices
 
-This code visualizes conntecivity matrices. The most basic functionality is to only display a 2D matrix. If you provide extra (optional) arguments, you can group connectivity values per fuinctional system and mess with the coloring schema and visualization ranges. All code and documentation originally developed by Oscar Miranda-Dominguez. The code can be found at `/projects/standard/miran045/shared/code/internal/utilities/plotting-tools/showM/`. Expanded documentation (which includes more example pictures for all of the arugments and the 3 special functions) can be found in the `html` subdirectory of the same directory. 
+This code visualizes connectivity matrices. The most basic functionality displays a 2D matrix. Optional arguments allow connectivity values to be grouped by functional system and the color scheme and visualization ranges to be customized. The code and documentation were originally developed by Oscar Miranda-Dominguez.
 
+The CDNI `showM` utility is available on MSI at:
+
+```text
+/projects/standard/miran045/shared/code/internal/utilities/plotting-tools/showM/
+```
 ## Inputs
 
 **Required**

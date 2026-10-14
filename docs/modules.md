@@ -1,24 +1,23 @@
 # MSI Module System (Loading Software Packages)
 
-Read: 
+MSI uses software modules to provide access to installed software packages and different software versions.
 
-* [MSI module system](https://www.msi.umn.edu/support/faq/what-software-does-msi-offer-how-do-i-access-it)
+For current instructions on finding, loading, unloading, and managing modules, see the [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
 
-* [List of MSI software modules](https://www.msi.umn.edu/software)
-
-* [Environment Modules official documentation](https://modules.readthedocs.io/en/latest/)
+For the current list of software available on MSI systems, see the [MSI Available Software documentation](https://userdocs.msi.umn.edu/software/package_docs/index.html).
 
 ## Loading Modules
 
-MSI uses the Environment Modules "module" system for providing access to various software packages. Often there are multiple versions of a given module available with one designated as the default to load.  `module avail <module name>` will display a list of all available versions. Modules are loaded from the command line with `module load <module name>/<version>`.
+The sections below highlight modules commonly used within CDNI. For current module syntax and available versions, refer to MSI's documentation above.
 
 Commonly used modules by our lab include:
 
 * fsl 
-* workbench 
-    - Note that the default version used to be 1.5.0 but is now 2.0.1, which has different default settings. Depending on use case you may need to load workbench/1.5.0, 1.4.2, or another older version for compatability
+* workbench
+    * Some CDNI workflows may require a specific Workbench version for compatibility. Use `module avail workbench` to see the versions currently available on MSI, and load the version required by your workflow.
 * freesurfer
-* matlab (most versions from R2010b through R2023b available)
+* matlab
+    * Use `module avail matlab` to see the versions currently available on MSI.
 
 Some other helpful modules include:
 
@@ -37,13 +36,20 @@ Some other helpful modules include:
 * singularity
     - For building/accessing singularity (/ Apptainer) images 
 
-## Removing Modules and Resolving Conflicts 
+## Removing Modules and Resolving Conflicts
 
-Modules modify the user’s PATH variable while loaded, which can occasionally conflict with other modules and tools. This is why it is recommened to not load too many modules by default in your `.bashrc`. Unloading a module can be done with `module rm <module name>`. Unloading reverts the PATH variable, which should resolve conflicts. Note that loading certain modules triggers the loading of additional modules as dependencies; e.g. `module load freesurfer` also loads `matlab` and `netcdf`. In these cases, unloading the first module `module rm freesurfer` does **not** unload those additional modules. 
+Loaded modules can modify environment variables such as `PATH`, which can occasionally cause conflicts between software packages or user-installed tools.
 
-Conda environments and user profile installs can also cause conflicts with the module system on MSI. If running `module load <module name>` doesn't successfully load the specified module, this potentially means that module is already being called from another spot. Use `which <module name>` to see where it is coming from. However, this won't always work for determining the version. 
+For current instructions on viewing, unloading, and clearing modules, see the [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
 
-Possible ways to resolving these conflicts include deactivating your current conda environment or clearing out your local user installs (if that is the specified path where from which your module is loaded). However, deactivating your current conda environment may not make sense if you need other installs within that environment for your use case.  
+Useful commands include:
+
+```bash
+module list
+module unload <package-name>
+module purge
+module show <package-name>
+```
 
 ## Requesting a Module from MSI
 
@@ -51,7 +57,6 @@ To request the inclusion of a new module within MSI's infrastructure, follow the
 
 Use the provided email structure below as a template:
 
-```
 Subject: Module Support Request: [Module Name] for [Description]
 
 Hi,

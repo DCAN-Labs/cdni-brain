@@ -1,7 +1,10 @@
 # Using Slurm with Cronjobs
 
-You may have noticed that users of MSI are not allowed to schedule scripts to run with cronjobs. 
-Good news! MSI has the scrontab [module](modules.md) that behaves just like a cronjob but employs Slurm.
+For recurring jobs on MSI, `scrontab` can be used to schedule Slurm jobs at specified times using cron-style scheduling.
+
+Because `scrontab` jobs are still managed through Slurm, they are subject to the same scheduler, resource availability, and job limits as other Slurm jobs.
+
+For general MSI guidance on Slurm jobs and resource requests, see the [MSI Slurm Job Submission and Scheduling documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
 ## What is a cronjob?
 
@@ -64,7 +67,9 @@ Jobs created with scrontab are assigned a single job id.
 * Opening the scrontab with `crontab -e` (even if not updated or saved) cancels the old job and creates a new job id.
 
 
-scrontab attempts to run things on schedule but is subject to resource limitations like other slurm jobs. Some jobs may not run exactly when specified.
+`scrontab` attempts to launch jobs according to the requested schedule, but the jobs are still subject to Slurm resource availability and scheduling priority. As a result, a job may enter the queue at the scheduled time but begin running later.
+
+For general information about why Slurm jobs may remain pending, see the [MSI Slurm Job Submission and Scheduling documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
 
 For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).

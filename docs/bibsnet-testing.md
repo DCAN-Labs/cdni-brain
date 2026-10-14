@@ -21,9 +21,11 @@ Duplicate `bibsnet_testing.sh`
 
 1. `SBATCH -e /path/to/logs/dir` (can be same as above)
 
-1. Might need to edit `SBATCH -A` for fairshare optimization
+1. Set `SBATCH -A` to the MSI account associated with the project or data being processed.
 
-1. Might have to edit `SBATCH -p` for other partitions when using Mesabi/Agate/Mangi
+1. Choose a partition that supports the resources required by the job. For current partition names, limits, and available hardware, see the [MSI Shared Partitions documentation](https://userdocs.msi.umn.edu/compute/shared_partitions.html).
+
+For general Slurm job parameters and account usage, see the [MSI Slurm Job Submission and Scheduling documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
 ### Edit Binds:
 
@@ -39,7 +41,7 @@ Duplicate `bibsnet_testing.sh`
 
 ### Edit sif file:
 
-1. Needs to be the most up to date version
+1. Use the BIBSnet container version appropriate for the code version being tested.
 
 1. [Instructions on how to pull the container](https://3.basecamp.com/5032058/buckets/21517584/messages/4239484815)
 
@@ -75,14 +77,17 @@ These are the directories you specified in the `bibsnet_testing.sh` file
 
     `mkdir work` (optional, if you don’t need to see this for your testing, you don’t need this)
 
-Run the `test.sh`
+## Run the Test
 
-Log into Mesabi/Mangi/Agate
+Submit the test job from an MSI login node or terminal session:
 
-`sbatch bibsnet_testing.sh`
+```bash
+sbatch bibsnet_testing.sh
+```
 
-You will get emails about how it's going. 
-- Make sure you put your email in the steps above!
+If email notifications are enabled in the Slurm script, you will receive job-status emails at the address specified with `--mail-user`.
+
+Job output and error logs will be written to the paths configured above. Make sure those directories exist before submitting the job.
 
 Your logs will go to the logs path specified above
 - make sure this directory exists!
@@ -108,7 +113,7 @@ Spot check them
 
 1. `fsleyes sub-123456_ses-session_space-orig_desc-aseg_dseg.nii.gz sub-123456_ses-session_space-orig_desc-brain_mask.nii.gz &`
 
-    Do this in an openondemand session if you weren’t already using it
+    Run FSLeyes from an MSI Open OnDemand desktop or another graphical MSI session. For current instructions on launching an interactive desktop, see the [MSI Open OnDemand documentation](https://userdocs.msi.umn.edu/compute/open-ondemand-support.html).
 
 1. Load in the T1 “add from file”
 

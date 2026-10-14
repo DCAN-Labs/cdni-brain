@@ -1,8 +1,13 @@
 # BIDS Validation
 
+
 ## CuBIDS (Curation of BIDS)
 
-Used to make sure the data is BIDS valid (utilizing the [bids-validator package 1.7.2](https://cubids.readthedocs.io/en/latest/installation.html#:~:text=Now%20that%20we,%24), which will already be installed on MSI) and to ensure all of the acquisition parameters of the data are what you expect them to be. If you are running CuBIDS on data that has more than ten subjects, then use an [srun](slurm-params.md#srun) or an [sbatch](slurm-params.md#sbatch).
+Before running validation or making large copies of BIDS datasets, confirm that the data are stored in an appropriate MSI location. See the [MSI File Storage documentation](https://userdocs.msi.umn.edu/storage/storage.html) for current project-space, scratch, and Tier 2 guidance.
+
+CuBIDS is used to check BIDS validity and inspect whether acquisition parameters are consistent with what you expect for the dataset.
+
+For larger datasets or other compute-intensive CuBIDS workflows, run the commands on an MSI compute node rather than directly on a login node. For current guidance on interactive jobs and batch jobs, see the [MSI Interactive HPC documentation](https://userdocs.msi.umn.edu/compute/interactive_compute.html) and [MSI Slurm Job Submission and Scheduling documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
 14. Here's how to load the CuBIDS environment: 
 
@@ -60,7 +65,7 @@ Used to make sure the data is BIDS valid (utilizing the [bids-validator package 
 
         - For how to use, `insert_command --help` or `man insert_command` 
 
-    - CuBIDS or the pipeline .err / .out files will let you know what is needed to fix – the degree of BIDS-valid is determined by the pipeline.
+    - CuBIDS output and pipeline `.err` / `.out` files can help identify data issues that need to be corrected. A dataset may pass general BIDS validation but still fail a specific pipeline if that pipeline has additional input requirements.
 
     - Common errors: 
 

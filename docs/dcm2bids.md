@@ -43,7 +43,7 @@ Watch: [Dcm2bids CDNI tutorial recording](https://drive.google.com/drive/folders
     
 * The `criteria` section is used to match unique identifiers in the sidecar files with values entered in the section. `SeriesDescription` will find any file that contains the specified value. In this example, `SeriesDescription` is looking for any file that contains ABCD_T1w_MPR somewhere in the file name. It is also looking for `SidecarFilename` fields that starts with 007_, which is the series number in the DICOM folders.
 
-* To view these fields in the DICOM metadata, you can use `dcmdump` on any .dcm file (on MSI, first `module load dcmtk`)
+* * To view these fields in the DICOM metadata, you can use `dcmdump` on any `.dcm` file. For current MSI software availability and module-loading instructions, see the [MSI Available Software documentation](https://userdocs.msi.umn.edu/software/package_docs/index.html) and [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
 
 ## dcm2bids Helper Scripts
     
@@ -87,7 +87,7 @@ Second, create a summary tsv with information from the file headers by reading t
 
 * `python nii_init_gpt5.py /path/to/bids/tmp_dcm2bids/sub-ID -p subID -s sesID -o /path/to/output.tsv`
 
-    - Run `module load fsl` first!
+    - * This step requires FSL. For current MSI FSL availability and module-loading instructions, see the [MSI Available Software documentation](https://userdocs.msi.umn.edu/software/package_docs/index.html).
     - Provide the path to the output of the convert_helper script.
     - You can either provide the subject (`-p`) and session (`-s`) IDs (with or without the sub- and ses- labels), which will allow the script to create a tsv with the format subID_sesID.tsv in the directory from which you ran the script, or you can provide the path to where and what you want the tsv file to be named with the `-o` flag.
     - This script will iterate through the converted NIFTI files to create a summary tsv that will label the runs of interest. 

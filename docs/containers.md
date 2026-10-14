@@ -1,28 +1,18 @@
 # Containers
 
-Read:
+DCAN Labs commonly uses Singularity/Apptainer containers on MSI to package software and dependencies for reproducible workflows.
 
-* [Intro to Singularity and Docker Containers @ Cornell BioHPC](https://biohpc.cornell.edu/doc/singularity_v3.pdf)
-* [Singularity on CentOS7 @ MSI](https://www.msi.umn.edu/support/faq/how-do-i-use-singularity-centos-7)
-* [Singularity tutorial @ MSI](https://www.msi.umn.edu/tutorials/singularity-containers)
-* [Singularity quick start guide @ Syllabus](https://docs.sylabs.io/guides/latest/user-guide/quick_start.html)
+For current MSI guidance on software modules and container-based software, see the [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
 
-The primary container format used by DCAN Labs on MSI is Singularity. Containers are used to access multiple data files on a host system, by binding those files together within a container. **Note that Singularity by default mounts your home directory into the container, meaning the container is not fully isolated.** Recommended in general to use the `--cleanenv` and `--no-home` options when running a Singularity container to avoid potential issues caused by the user’s environment or home directory.
+When using Singularity containers, options such as `--cleanenv` and `--no-home` may help reduce interference from the user's environment or home directory. Containers can also bind MSI files and directories into the container as needed by the workflow.
 
+MSI supports running Singularity containers on compute resources. Docker images can be used as a source for Singularity images, while Docker itself is not run directly on standard MSI compute nodes.
 
-Singularity can pull and build Docker images from Dockerhub in Singularity format (note: Docker format images cannot be run on MSI as they require root permissions.) 
+Before running or building a Singularity image, request appropriate compute resources through Slurm and load the Singularity module:
 
-
-Example:
-
-`ssh -Y mangi/mesabi/agate`
-
-
-`srun -N 1 -n 1 -c 1 --mem=128G --tmp=200G -t 720 -p interactive --pty bash`
-
-
-`module load singularity`
-
+```bash
+module load singularity
+```
 
 `singularity pull name_of_singularity_image.sif docker://path_to_docker_image`
 
@@ -83,7 +73,7 @@ If the virtual machine runs out of memory while you're doing this try the follow
 
 - Run  `docker system prune`; this is a good option if you've already removed larger files and containers
 
-- Delete some of your old filles
+- Delete some of your old files
 
 - Delete specific containers by first finding their ID with `ls`, then removing them 
 
@@ -105,9 +95,9 @@ If you want to push the image with multiple tags, add tags to the image before y
         sudo docker image tag container-name dcanumn/container-name:stable
         sudo docker push --all-tags dcanumn/container-name
 
-Start an interactive job on mesabi to use to build the container, requesting about twice the amount of temp space (`--tmp`) as the size of the container
+Before pulling or converting the image on MSI, request an interactive compute session with sufficient memory and temporary storage for the image being created.
 
-- Example srun command: `srun -N 1 --ntasks-per-node=1  --tmp=100g --mem-per-cpu=30g -t 3:00:00 -p interactive --pty bash`
+For current interactive-job syntax, local scratch behavior, and resource limits, see the [MSI Interactive HPC documentation](https://userdocs.msi.umn.edu/compute/interactive_compute.html) and [MSI Shared Partitions documentation](https://userdocs.msi.umn.edu/compute/shared_partitions.html).
 
 To build the singularity image from Docker Hub run: 
 
@@ -123,9 +113,11 @@ If the build was successful but there is not a repository on Dockerhub for you t
 
 - Run `sudo docker save pipeline-name:pipeline_version > /path/to/save/tar/image/pipeline_name_version.tar` 
 
-Send the tar'd docker image to the main file storage system at MSI so that we can use the singularity instance installed at MSI to convert the docker image into a singularity image 
+If the image cannot be pushed to Docker Hub, transfer the Docker archive from the build VM to an appropriate MSI project storage location.
 
-- Run `scp /path/to/tar/file/on/virtual_machine/pipeline-name.tar user_id@mesabi.msi.umn.edu:/path/at/msi/to/store/container/` 
+For current MSI file-transfer methods and connection guidance, see [Transferring Data To and From MSI](https://userdocs.msi.umn.edu/storage/transferring_data.html).
+
+Once the archive is available on MSI, request compute resources before converting it to a Singularity image.
 
 To build the image from docker archive, grab an srun then run:
 
