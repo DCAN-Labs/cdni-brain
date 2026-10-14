@@ -21,39 +21,17 @@ To list the available environments within the miniconda environment:
 
      conda info --envs
 
-To activate a specific environment: 
-
-     conda activate environment_name 
-
 To list the packages within an environment (if the environment is activated you do not need to specify the name):
 
      conda list -n environment_name
 
 ## Creating Environments
 
-To create a new conda environment, follow these instructions:
-
-1. Load the miniconda3 base environment - as seen above
-2. Check to make sure your environment does not already exist by running `conda info --envs`
-3. Run `conda create --name your_env_name`
-4. Run `conda activate your_env_name`
-5. If you need to install with pip, run `conda install pip` 
-6. For installs on things included with miniconda3 run `conda install package_name1 package_name2`
-
-    Note: It is a list without commas. You can also install one by one.
+To create a new conda environment and managing conda environments on MSI, see [MSI Conda Best Practices](https://userdocs.msi.umn.edu/software/best-practices-conda.html).
 
 More information about creating and using conda environments within VS code can be found on the [VSCode page](vscode.md#conda-environments)
 
-** **
-
-You can also create an environment with a YAML file of requirements.
-
-1. Load the miniconda3 base environment - as seen above
-2. Check to make sure your environment does not already exist by using `conda info --envs`
-3. Run `conda env create -f /path/to/yaml/for/build.yml`
-4. Run `conda activate the_env_name`
-
-    Check out the [conda user documentation](https://docs.conda.io/projects/conda/en/stable/index.html) and [cheat sheet](https://docs.conda.io/projects/conda/en/stable/user-guide/cheatsheet.html) for further information.
+Check out the [Conda user documentation](https://docs.conda.io/projects/conda/en/stable/index.html) and [cheat sheet](https://docs.conda.io/projects/conda/en/stable/user-guide/cheatsheet.html) for further information.
 
 ## Available Environments
 
