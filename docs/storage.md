@@ -13,6 +13,24 @@ When planning a CDNI processing workflow, it is still useful to estimate the tot
 du -sh --total /input/or/output/path
 ```
 
+Query Tier 1 quota usage for a group with:
+
+```bash
+groupquota -g <groupname>
+```
+
+Query Global Scratch quota usage for a group with:
+
+```bash
+groupquota -r -g <groupname>
+```
+Query your Tier 2 user storage quota for a group with:
+
+```bash
+s3info
+```
+
+
 CDNI data are often used by multiple researchers and analysts. Please [document data locations](https://docs.google.com/spreadsheets/u/0/d/1QpKYJQqhuxoQhErBscAEev9npsd1RgKS8KdCL6FiuEo/edit) to prevent 'double dipping' on storage space, especially when your work requires more than 1TB of space. For Tier 1 use, submit a storage [request form](https://docs.google.com/forms/d/e/1FAIpQLSd1QI_Hmi3khwITVctnaDJYY2M1NegsAWYPR6AXoodUCrrpZw/viewform?usp=sf_link) about what kinds of data you will be putting onto Tier 1 storage and why Tier 1 is needed, specifically.
 
 ## Data Storage Options
@@ -30,7 +48,7 @@ For CDNI-specific Tier 2 and S3 workflows, see our [S3 documentation](s3.md).
 <div class="admonition attention">
     <p class="first admonition-title">Attention</p>
     <p class="last">
-        Outputs using ABCD/ABCC data CANNOT BE STORED ON TIER 1. These spaces are not under control of the UMN ABCD designated user credentials (DUC), which is required to access ABCD data. All ABCD outputs should either be stored on the `cdni-nih-bdc` share, or processed in tmp space and synced to the s3.
+        Outputs using ABCD/ABCC data CANNOT BE STORED ON TIER 1. These spaces are not under control of the UMN ABCD designated user credentials (DUC), which is required to access ABCD data. All ABCD outputs should either be stored on the `cdni-nih-bdc` share, or processed in tmp space and synced to the S3.
     </p>
 </div>
 
