@@ -32,6 +32,8 @@ For current MSI guidance on Conda environment creation, package installation, ch
 
 For information about using Conda environments with VS Code in CDNI workflows, see our [VS Code page](vscode.md).
 
+For more about Conda, see the [conda user documentation](https://docs.conda.io/projects/conda/en/stable/index.html) and [cheat sheet](https://docs.conda.io/projects/conda/en/stable/user-guide/cheatsheet.html).
+
 If you create a new shared CDNI environment, document it in the CDNI Miniconda tracking spreadsheet described below.
 
 ## Available Environments
