@@ -24,11 +24,7 @@ For example:
 fslinfo sub-***_task-movieDM_bold.nii.gz
 ```
 
-To find with workbrench run:
-```
-To inspect file information with Connectome Workbench, use `wb_command -file-information`. For current MSI Workbench availability and module-loading instructions, see the [MSI Connectome Workbench documentation](https://userdocs.msi.umn.edu/software/package_docs/pages/connectome-workbench.html).
-
-For example:
+To find with Connectome Workbench, run:
 
 ```bash
 wb_command -file-information sub-***_task-movieDM_DM.bold.nii.gz
