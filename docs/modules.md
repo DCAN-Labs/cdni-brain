@@ -39,11 +39,6 @@ For further information on viewing, unloading, and clearing modules, see the [MS
 
 Useful commands include:
 
-```bash
-module list
-module unload <package-name>
-module purge
-module show <package-name>
 ```
 
 ## Requesting a Module from MSI
