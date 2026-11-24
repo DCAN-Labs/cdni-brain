@@ -87,7 +87,7 @@ Second, create a summary tsv with information from the file headers by reading t
 
 * `python nii_init_gpt5.py /path/to/bids/tmp_dcm2bids/sub-ID -p subID -s sesID -o /path/to/output.tsv`
 
-    - * This step requires FSL. For current MSI FSL availability and module-loading instructions, see the [MSI Available Software documentation](https://userdocs.msi.umn.edu/software/package_docs/index.html).
+    - * This step requires FSL, so run `module load fsl` first.
     - Provide the path to the output of the convert_helper script.
     - You can either provide the subject (`-p`) and session (`-s`) IDs (with or without the sub- and ses- labels), which will allow the script to create a tsv with the format subID_sesID.tsv in the directory from which you ran the script, or you can provide the path to where and what you want the tsv file to be named with the `-o` flag.
     - This script will iterate through the converted NIFTI files to create a summary tsv that will label the runs of interest. 
