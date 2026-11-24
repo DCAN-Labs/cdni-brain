@@ -3,6 +3,8 @@
 
 ## CuBIDS (Curation of BIDS)
 
+[CuBIDS](https://cubids.readthedocs.io/) is "a workflow and software package designed to facilitate reproducible curation of neuroimaging [BIDS](https://bids-specification.readthedocs.io/) datasets." 
+
 Before running validation or making large copies of BIDS datasets, confirm that the data are stored in an appropriate MSI location. See the [MSI File Storage documentation](https://userdocs.msi.umn.edu/storage/storage.html) for current project-space, scratch, and Tier 2 guidance.
 
 CuBIDS is used to check BIDS validity and inspect whether acquisition parameters are consistent with what you expect for the dataset.
