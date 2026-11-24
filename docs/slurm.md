@@ -4,6 +4,11 @@ Slurm is MSI's job scheduling and resource management system. Within CDNI, most 
 
 For current MSI guidance on writing job scripts, submitting jobs, monitoring jobs, and managing resources, see the [MSI Slurm Job Submission and Scheduling documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
+Also see:
+(https://userdocs.msi.umn.edu/compute/slurm_job_submission.html)
+* [Slurm official site](https://slurm.schedmd.com/documentation.html)
+* [Slurm commands cheat sheet](https://slurm.schedmd.com/pdfs/summary.pdf)
+
 For interactive sessions using `srun`, see the [MSI Interactive HPC documentation](https://userdocs.msi.umn.edu/compute/interactive_compute.html).
 
 For information about login nodes versus compute nodes, see our [Nodes and Partitions page](partitions.md).
