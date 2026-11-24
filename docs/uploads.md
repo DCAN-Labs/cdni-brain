@@ -16,7 +16,7 @@ For information on how to use MSI to transfer/track data, see [the Data Storage 
 
 ## S3 Transfers
 
-For external transfers, instructions on setting up an .s3cfg and examples of transferring data using s3cmd can be found on the [s3 page.](s3.md)
+For current MSI guidance on Tier 2 storage and S3 access methods, see the [MSI File Storage documentation](https://userdocs.msi.umn.edu/storage/storage.html) and [Tier 2 Data Management](https://userdocs.msi.umn.edu/storage/tier-2-data-management.html).
 
 ## scp Transfers
 
@@ -46,17 +46,13 @@ To transfer the data to MSI, you can run this command:
 
 - You can check the file count of the both directories to validate all of the expected data was transferred with the command `find /path/to/dicoms -type f | wc -l`
 
-Note: Transfers are often more successful when transferring to your MSI home directory than a shared directory (e.g., `/projects/standard/faird/shared`). Once the data are in your home directory, you can move the data to a shared directory with a mv command. 
+For general MSI guidance on transferring files into Tier 1 storage, including home and project space, see [Transferring Data To and From MSI](https://userdocs.msi.umn.edu/storage/transferring_data.html).
 
 ## Globus
 
-Watch [this Globus tutorial](https://drive.google.com/file/d/1Yb_5L9pxIl0fquAtC83XeYleRl_uJo6S/view?usp=drive_link) for how to use Globus within a browser. 
+For current instructions on using Globus with MSI, including transfers between a local computer, Tier 1 (`UMN MSI Home`), and Tier 2 (`UMN MSI Tier2`), see the [MSI Globus documentation](https://userdocs.msi.umn.edu/storage/globus.html).
 
-To set up Globus on your local computer or a system without Globus already installed, follow the [instructions to install Globus connect personal](https://docs.globus.org/globus-connect-personal/) and log in using UMN credentials. Next, create a personal connect point. 
-
-To transfer data to tier 2 storage (an s3 bucket), using the Globus file manager, choose **UMN MSI Tier2** on one side and your connect point on the other side. Find more information about [transferring to tier 2 storage](https://www.msi.umn.edu/support/faq/how-do-i-use-globus-transfer-data-second-tier-storage-msi). If you are wanting to transfer data to tier 1 storage, choose **UMN MSI Home** as your location. MSI also has a page on how to [transfer data to/from MSI via Globus](https://www.msi.umn.edu/support/faq/how-do-i-use-globus-transfer-data-msi-0).
-
-Globus also has documentation on [using Globus via command line](https://docs.globus.org/cli/reference/).
+For guidance on choosing between Globus, SFTP, `rclone`, and other MSI-supported transfer methods, see [Transferring Data To and From MSI](https://userdocs.msi.umn.edu/storage/transferring_data.html).
 
 
 For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).

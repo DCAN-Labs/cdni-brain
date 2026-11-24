@@ -2,189 +2,70 @@
 
 Read:
 
-* [Slurm @ MSI documentation ](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html)
+* [Slurm @ MSI documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html)
 * [Slurm official site](https://slurm.schedmd.com/documentation.html)
 * [Slurm commands cheat sheet](https://slurm.schedmd.com/pdfs/summary.pdf)
 
-**Slurm** is MSI’s job scheduling system. It is responsible for managing the allocation of computing resources among MSI users and user groups. In the CDNI, most data processing and analysis tasks are executed via Slurm job submissions, in the form of **batch scripts** submitted with the `sbatch` command. A batch script is a text file that specifies both the resources (e.g. CPUs, RAM, time) and the commands to be run for a processing job. Slurm jobs can be used for any process that requires more computing resources than is available within a normal terminal. 
+**Slurm** is MSI's job scheduling system. CDNI uses Slurm for most data processing and analysis jobs.
 
-Slurm also has “interactive” jobs (srun), which allow access to compute resources directly from the terminal, as opposed to batch job submissions which run in the background (sbatch). Requesting an srun will place you on a compute node, which is helpful for scripts that require longer than 15 minutes to run or use more resources than normally available in your terminal. Read more about login vs compute nodes on [the partition page](partitions.md#nodes)
+For general information about writing job scripts, requesting resources, submitting jobs, GPU jobs, job arrays, monitoring jobs, canceling jobs, and Fairshare, refer to the [MSI Slurm documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
-Slurm also has various commands for job accounting, job management, and environment configuration.
+This page focuses on commands and workflows that are particularly useful for CDNI users.
 
-## Job Parameters
+## Interactive Jobs
 
-Below is a table summarizing some commands that can be used inside Slurm job scripts (see [sruns and sbatch](slurm-params.md)). It is recommended to define at least the time, memory needed, account, and partition. See [the SLURM documentation](https://slurm.schedmd.com/sbatch.html) for a larger list of options. For parameter optimization, refer to using seff on the [resource optimization page](optimizing.md).
+Slurm interactive jobs (`srun`) provide access to compute resources directly from the terminal, rather than running a batch job in the background with `sbatch`.
 
+An interactive job places you on a compute node and can be useful for testing or running commands that require more resources or longer runtime than is appropriate on a login node.
 
-<table>
-  <tr>
-   <td>
-<strong>Slurm command</strong>
-   </td>
-   <td><strong>Effect</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>#!/bin/bash -l  
-   </td>
-   <td><em>Required for sbatch:</em> Specifies how the Slurm file should be read (by the bash interpreter). <br /> A statement like this is required to be the first line of a Slurm script
-   </td>
-  </tr>
-  <tr>
-   <td>-t 8:00:00
-<p>
---time=8:00:00
-   </td>
-   <td><em>Required:</em> Specifies the maximum limit for how long the job will be allowed to run 
-   </td>
-  </tr>
-  <tr>
-   <td>-A <em>share</em>
-   <p>
-   --account=<em>share</em>
-   </td>
-   <td><em>Recommended:</em> Charge resources used by this job to the specified account. <br /> The account may be changed after job submission using the scontrol command. <br /> To choose an optimal share, see the Fairshare explanation <a href="https://cdnis-brain.readthedocs.io/optimizing/#fairshare">here</a>.
-   </td>
-  </tr>
-  <tr>
-   <td>-c 3
-<p>
---cpus-per-task=3
-   </td>
-   <td><em>Optional:</em> Choose how many processors on a node are needed for a task. <br /> By default, SLURM will just try to allocate one processor per task. Say a job had 4 tasks <br /> that each need 3 processors and the cluster had a quad-processor node, if you <br /> simply ask for 12 processes, SLURM will only give 3 nodes. With this option, <br /> SLURM knows that each task requires 3 processors on the same node, and will give one node per task.
-   </td>
-  </tr>
-  <tr>
-   <td>--mem=10g
-   </td>
-   <td><em>Recommended:</em> Specifies the maximum limit for memory usage for the entire job. <br /> This job will die if the application tries to use more than 10GB of memory*
-   </td>
-  </tr>
-  <tr>
-   <td>--mail-type=ALL
-   </td>
-   <td><em>Recommended:</em> Specifies which events will trigger an email message. Other options here <br /> include NONE, BEGIN, END, and FAIL. Not recommended for 100+ subject jobs
-   </td>
-  </tr>
-  <tr>
-   <td>--mail-user=x500@umn.edu
-   </td>
-   <td><em>Recommended:</em> Specifies the email address that should be used when the Slurm system sends message emails. <br /> Make sure to double check each time. People frequently get emails from others <br /> due to other people copying and running their sbatches
-   </td>
-  </tr>
-  <tr>
-   <td>--ntasks=8
-   </td>
-   <td><em>Optional:</em> Specifies the number of processors (cores) that will be reserved for the job
-   </td>
-  </tr>
-  <tr>
-   <td>--nodes=2
-   </td>
-   <td><em>Optional:</em> Specifies the number of nodes that the job will run on
-   </td>
-  </tr>
-  <tr>
-   <td>--ntasks-per-nodes=4
-   </td>
-   <td><em>Optional:</em> Specifies the number of core that each node will have reserved for the job
-   </td>
-  </tr>
-  <tr>
-   <td>--mem-per-cpu=<em>&lt;size>[units]</em>
-   </td>
-   <td><em>Optional:</em> Minimum memory required per allocated CPU. 
-   </td>
-  </tr>
-  <tr>
-   <td>-o /path/to/output_logs/jobname_%A.out
-<p>
--e /path/to/output_logs/jobname_%A.err
-  </td>
-  <td><em>Recommended:</em> Specifies where the output and error logs will be written to. Can provide an absolute or relative path. <br /> %A is variable for the Slurm job number that will be assigned when it is submitted. 
-  </td>
-  </tr>
-  <tr>
-   <td>-p small,mygroup 
-<p>
---partition=small,mygroup 
-   </td>
-   <td><em>Recommended:</em> Specifies the partition to be the “small” or "mygroup" partition. <br /> The job will start at the earliest time one of these partitions can accommodate the job. <br /> You must be logged into the correct cluster access corresponding partitions. For more info, see <a href="paritions.md">here</a>.
-   </td>
-  </tr>
-  <tr>
-   <td>--tmp=10g
-   </td>
-   <td><em>Optional:</em> Specifies 10GB of temporary disk space will be available for this job in /tmp. <br /> Should only be used if you are specifying /tmp folders for inputs, outputs, or working directories*
-   </td>
-  </tr>
-  <tr>
-   <td>--gres=gpu:v100:2
-<p>
--p v100
-   </td>
-   <td><em>Optional:</em> Request two v100 GPUs for a job submitted to the V100 group
-   </td>
-  </tr>
-</table>
+Read more about login vs. compute nodes on the [partition page](partitions.md#nodes).
 
+## CDNI Slurm Accounts
 
+CDNI users may have access to multiple Slurm group accounts.
 
-**NOTE:** `--mem` is the amount of RAM (random access memory) on a CPU (central processing unit), while `--tmp` indicates the amount of temporary storage that you can utilize for a job. With whatever storage amount is specified for `--tmp`, that amount will be created for you within the `/tmp` folder to output your processing derivatives. 
+Check jobs associated with a particular group:
 
-## Job Status
+` squeue -A <group> `
 
-This section has commands that can be used to check on the status of your job submission, cancel a job, or change the resources of your job. 
+Change the account for an already submitted job:
 
-### squeue
+` scontrol update JobId=<job_id> Account=<group> `
 
-`squeue -al --me`: determine specifc jobs for your own account
+This can be useful when working across multiple PI or group accounts.
 
-`squeue -u username`: view all jobs submitted by a given user 
+For general information about Slurm scheduling and Fairshare, see the [MSI Slurm documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
-`squeue -A group_name`: check the queue for all groups one is under to determine which to submit under
+## Useful Queue Commands
 
-`squeue -u <username> -h -t pending,running -r | wc -l`: count how many jobs you have in your queue, you can add more statuses if needed
+Count your pending and running jobs:
 
-OOD also has a [Jobs Dashboard](https://ondemand.msi.umn.edu/pun/sys/dashboard/activejobs) on their website to see the status of jobs that are running. 
+` squeue -u <x500> -h -t pending,running -r | wc -l `
 
-### scancel
+You can also view active jobs using the [MSI Open OnDemand Jobs Dashboard](https://ondemand.msi.umn.edu/pun/sys/dashboard/activejobs).
 
-`scancel jobID_number`: cancel a submitted job
+For general `squeue`, `sacct`, and `scancel` usage, refer to the [MSI Slurm documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
-- Can also be used for job arrays by listing the job ID numbers as a comma separated list
+## Changing a Submitted Job
 
-### sacct
+Change the account:
 
-`sacct`: display accounting data for all jobs and job steps in the Slurm job accounting log or Slurm database
+` scontrol update JobId=<job_id> Account=<group> `
 
-`sacct -X -j JOBID_ARRAY# -o JobID,NNodes,State,ExitCode,DerivedExitCode,Comment`: check the status of a job even after it has exited, JOBID_ARRAY can also just be JOBID
+Change the partition:
 
-[The SLURM documentation](https://slurm.schedmd.com/sacct.html) has more options for using `sacct`.
+` scontrol update JobId=<job_id> Partition=<partition> `
 
-### scontrol
+Refer to MSI documentation for current partition and resource information.
 
-`scontrol update JobId=#### Account=new_group`: change job account for a submitted job
+## Releasing Held Jobs
 
-- Each PI in the lab has their own Slurm group account with its own allocation of resources and queue priority. It is sometimes useful to change accounts to distribute resource requests for large processing jobs, or when an account has low queue priority due to heavy usage 
+If a job appears in the queue with the status `(launch failed requeued held)`, release it so it can re-enter the queue:
 
-- Example command for moving _Job 234293_ that was originally submitted under _miran045_ and change it to _feczk001_: `scontrol update JobId=234293 Account=feczk001`
+` scontrol release <job_id> `
 
-`scontrol update JobId=#### Partition=new_partition`: change a SLURM job parition
+To release multiple pending jobs for an account:
 
-- Example command for moving _Job 234293_ that was originally submitted with the _msismall_ parition and change it to _msiqgu_: `scontrol update JobId=234293 Partition=msigpu`
+` for job in $(squeue -u <x500> -A <group> --state=PD --Format=JobID --noheader); do scontrol release $job; done `
 
-`scontrol update JobId=#### EndTime=HH:MM:SS`: change the amount of time a SLURM job runs
-
-- Example command for moving  _Job 234293_ that was originally submitted at the following time for 96 hours: _StartTime=2022-08-29T13:04:45_ and change it to 48 hours:  `scontrol update JobId=234293 EndTime=2022-08-31T13:04:45`
-
-`scontrol show JobId=####`: find time information for a job
-
-`scontrol release JOBID`: If you see a job in your queue with the status `(launch failed requeued held)` under `NODELIST (REASON)`, you will need to release them to re-enter your queue. Jobs will enter the held state when its launch fails and the scheduler determines that re-queueing will result in the same failed start.
-
-- To loop over multiple jobs with this status, you can use this for loop: `for job in $(squeue -u <x500> -A <group> --state=PD --Format=JobID --noheader);do scontrol release $job; done`
-
-
-
-For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
+For questions, suggestions, or to note any errors, [post a GitHub issue](https://github.com/DCAN-Labs/cdni-brain/issues).
