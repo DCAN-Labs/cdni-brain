@@ -1,5 +1,9 @@
 # Containers
+Read:
 
+* [Intro to Singularity and Docker Containers @ Cornell BioHPC](https://biohpc.cornell.edu/doc/singularity_v3.pdf)
+
+* [Apptainer Quick Start Guide](https://apptainer.org/docs/user/main/quick_start.html)
 DCAN Labs commonly uses Singularity/Apptainer containers on MSI to package software and dependencies for reproducible workflows.
 
 For current MSI guidance on software modules and container-based software, see the [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
