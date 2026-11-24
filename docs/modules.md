@@ -37,7 +37,6 @@ Loaded modules can modify environment variables such as `PATH`, which can occasi
 
 For further information on viewing, unloading, and clearing modules, see the [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
 
-Useful commands include:
 
 
 ## Requesting a Module from MSI
