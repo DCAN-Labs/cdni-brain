@@ -6,85 +6,41 @@ If you are going to be processing, analyzing, or otherwise interacting with MRI 
 
 You must set up Duo 2 Factor Authentification in order to use MSI and any internal UMN site. This provides an added layer of security. UMN provides a [Duo Guide](https://it.umn.edu/services-technologies/self-help-guides/duo-set-use-duo-security) which provides instructions for how to register and use Duo.
 
-If you log in to MSI via a terminal you will see and complete this prompt to authenticate: 
-
-```
-By using this system you agree to adhere to MSI and UMN Acceptable Use Policies - refer to www.msi.umn.edu for details.
-(your_x500@cluster.msi.umn.edu) Duo two-factor login for your_x500
-
-Enter a passcode or select one of the following options:
-
- 1. Duo Push to XXX-XXX-4690
- 2. Phone call to XXX-XXX-4690
-
-Passcode or option (1-2):
-```
+When connecting to MSI through SSH, you will be prompted to complete Duo authentication. See the [MSI SSH Keys guide](https://userdocs.msi.umn.edu/connect/ssh_keys.html) for the current SSH authentication and connection process.
 
 ## Connecting to the UMN VPN
 
-To access MSI from a network other than eduroam, you must first establish a secure connection using a Virtual Private Network (VPN). If you are using eduroam, you do not need to connect to the VPN. If you try to connect to MSI without the proper network/VPN connection, the OpenOnDemand page will not load. 
+Access to MSI requires a connection to the UMN network. When on campus, you can connect through `eduroam` or the campus network. When working off campus, connect to the UMN VPN before accessing MSI.
 
-- Find detailed VPN instructions on the [MSI VPN](https://it.umn.edu/services-technologies/virtual-private-network-vpn) page.
-- Scroll halfway down the page to discover installers for Cisco AnyConnect on different operating systems.
-- The page will also explain the difference between split-tunnel, full-tunnel, and departmental. Split-tunnel is the default and preferred method of connecting unless an app requires full-tunnel (MSI doesn't).
-
-**Cisco AnyConnect Installation:**
-
-- Download and install Cisco AnyConnect based on your operating system.
-- Follow the installation prompts to complete the setup.
-
-**Connecting to UMN's VPN:**
-
-- Launch Cisco AnyConnect on your device.
-- Choose the "UMN - Split Tunnel - General Access VPN" option.
-- Log in using your credentials.
-- Although the VPN won't directly prompt you, you will have to dual authenticate with Duo every time.
-
-Once connected, you will be able to log in to MSI.
+For MSI-specific network requirements, see the [MSI Interactive HPC documentation](https://userdocs.msi.umn.edu/compute/interactive_compute.html). For VPN installation and connection instructions, see the [UMN VPN guide](https://it.umn.edu/services-technologies/virtual-private-network-vpn).
 
 ## Connecting to MSI
 
 **Remote Desktop**
 
-One way to connect to MSI is via an [OnDemand Desktop](https://ondemand.msi.umn.edu/pun/sys/dashboard/batch_connect/sessions), which opens a virtual machine in your browser and allows you to interact with MSI as a typical computer. See our [Tier 1 Resources page](hpc.md#open-ondemand) for more information.
+MSI's Open OnDemand service provides browser-based access to interactive desktops, files, terminal sessions, jobs, and applications running on MSI resources. For current instructions on accessing and using Open OnDemand, see the [MSI Open OnDemand documentation](https://userdocs.msi.umn.edu/compute/open-ondemand-support.html).
 
-When you use an OnDemand Desktop, you are automatically placed on a compute node with the resources listed on the Desktop creation page. You will still need to ssh into a login node if you want to grab a srun.
+For information about interactive compute sessions and when to use Open OnDemand versus the command line, see [Interactive HPC](https://userdocs.msi.umn.edu/compute/interactive_compute.html).
 
 **Local Terminal**
 
-You can also directly connect to MSI via your computer's terminal. To connect via ssh in a terminal, you will have to have the SSH keys properly configured for the MSI cluster you are trying to connect to. MSI has a [guide for setting up SSH keys](https://www.msi.umn.edu/support/faq/how-do-i-setup-ssh-keys) for the first time but can be confusing so we have simplified the steps below. You can [learn more about what SSH is here.](https://www.cloudflare.com/learning/access-management/what-is-ssh/)
+MSI can also be accessed through SSH from a terminal on your local computer. MSI maintains the current SSH configuration and key setup instructions, including directions for macOS, Linux, and Windows.
 
-In a terminal on your **local** computer, run these commands from your home directory:
+Follow the [MSI SSH Keys guide](https://userdocs.msi.umn.edu/connect/ssh_keys.html) to configure SSH access.
 
-```
-ssh-keygen -t rsa -b 4096
-cat ~/.ssh/id_rsa.pub >> temp.pub
-```
-
-- The `keygen` command will prompt you to enter a password to further increase the security of your SSH keys but you can just press enter for those prompts to skip that step. 
-
-Upload the `temp.pub` file to your home directory on MSI via the files tab on OpenOnDemand.
-
-In a terminal on **MSI**, run these commands from your home directory:
-
-```
-mkdir .ssh
-cat ~/temp.pub >> .ssh/authorized_keys
-chmod 600 .ssh/authorized_keys
-rm temp.pub
-```
-
-You could also create the authorized_keys file and directly copy and paste the ssh key from your local computer into that file, then run just the chmod command. 
-
-MSI can be accessed through any regular terminal with this command: `ssh -Y <x500>@<cluster>.msi.umn.edu`. This will automatically place you onto a login node, which can be used to browse, view files, etc. When using a cluster to perform more advanced/computational heavy tasks, grab [an srun](slurm-params.md#srun) to enter a compute node. More information about login vs compute nodes can be found on [our Partitions page](partitions.md) 
+For information about login nodes, compute nodes, and appropriate usage of each, see [MSI Compute Need to Know](https://userdocs.msi.umn.edu/compute/cluster_info.html). For interactive command-line jobs using `srun`, see [Interactive HPC](https://userdocs.msi.umn.edu/compute/interactive_compute.html).
 
 **VS Code**
 
-More information about how to access MSI through VSCode can be found on [our VS Code page.](vscode.md)
+MSI supports connecting to compute resources through Visual Studio Code using SSH. See [MSI's Connecting to Compute documentation](https://userdocs.msi.umn.edu/connect/connect_compute.html#connect-from-visual-studio-code-vscode) for MSI-specific connection guidance.
+
+For CDNI-specific VS Code configuration and workflows, see our [VS Code page](vscode.md).
 
 ## Permissions and Share Access
 
-To ensure the data and code created can be accessed by all, update your `.bashrc` with the following steps (this only needs to be done the first time you access MSI). [Read what is a .bashrc](https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux) if you would like to understand more but it is essentially a file of commands that are run every time you open a new terminal.
+To ensure that data and code created within CDNI projects can be appropriately shared with collaborators, configure your `.bashrc` as described below. This CDNI-specific configuration only needs to be completed once.
+
+For general information about MSI project and shared storage locations, see the [MSI File Storage documentation](https://userdocs.msi.umn.edu/storage/storage.html).
 
 Open your `.bashrc` file with a text editor, e.g. `emacs ~/.bashrc` or `geany ~/.bashrc`.
 Set umask to 002. The umask is the default permission applied to the files you create. Permissions are how self, groups (like `faird`) and other users can be given read, write, and execute access. With 002, self and group members can be given those permissions but no one else. 

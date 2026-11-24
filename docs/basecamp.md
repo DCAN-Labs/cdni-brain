@@ -47,7 +47,7 @@ If you do not have a personal board, you can create one for yourself following t
     - Time-off related tasks like requesting coverage, prepping notes earlier than normal, etc
     - Updating your ORCID profile
 - Workflow Improvement
-    - Adding personal SSH keys
+    - * Setting up SSH access to MSI — see the [MSI SSH Keys documentation](https://userdocs.msi.umn.edu/connect/ssh_keys.html) for current setup instructions.
     - Installations
     - Gaining access to something
     - Set up on a given application

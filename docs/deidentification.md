@@ -2,6 +2,10 @@
 
 *Please note that de-identification policies can vary between studies and institutions. Be sure to check the specific IRB requirements for your study to ensure your data is thoroughly de-identified according to those standards.*
 
+When working with identifiable or otherwise regulated data on MSI, use the storage location approved for that data classification and project. Sensitive or regulated data should not be stored in a standard personal home directory.
+
+For current MSI guidance on regulated and restricted project storage, see the [MSI File Storage documentation](https://userdocs.msi.umn.edu/storage/storage.html) and the [Blackwell storage documentation](https://userdocs.msi.umn.edu/blackwell/storage.html).
+
 ### Defacing
 
 Defacing is performed in order to mask out the eyes, nose, and mouth from MRI images. These features could hypothetically be used to reconstruct someone's facial structure, which is considered indirect identifiable information. Skull-stripping can also be used for defacing, however this limits what kind of preprocessing can be performed with the data in the event that head images are required.

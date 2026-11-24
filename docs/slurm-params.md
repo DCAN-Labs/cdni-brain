@@ -1,43 +1,59 @@
-# sbatch/srun and Job Submission
+# sbatch/srun Parameters
 
-Read:
+MSI uses Slurm to manage compute resources. `srun` is commonly used for interactive compute sessions, while `sbatch` is used to submit non-interactive batch jobs that run through the scheduler.
 
-* [Interactive HPC @ MSI](https://userdocs.msi.umn.edu/compute/interactive_compute.html)
-* [Slurm Job Submission and Scheduling @ MSI](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html)
-* [Shared Partitions @ MSI](https://userdocs.msi.umn.edu/compute/shared_partitions.html)
-* [Compute Need to Know @ MSI](https://userdocs.msi.umn.edu/compute/cluster_info.html)
+For current MSI guidance on interactive jobs, see the [MSI Interactive HPC documentation](https://userdocs.msi.umn.edu/compute/interactive_compute.html).
 
-`srun` and `sbatch` are used to run jobs through MSI's Slurm scheduler. `srun` is commonly used for interactive work on a compute node, while `sbatch` submits a script to run as a batch job.
-
-MSI maintains the current documentation for Slurm resources, partitions, job limits, and job submission. The sections below focus on basic usage and CDNI-specific workflows.
+For current MSI guidance on writing and submitting batch jobs, see the [MSI Slurm Job Submission and Scheduling documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
 ## srun
 
-`srun` can be used to start an interactive session on a compute node for testing workflows or running work that should not be performed on a login node.
+`srun` is used to request interactive compute resources through Slurm. Interactive sessions are useful for testing commands, running software interactively, or performing work that should not be run directly on a login node.
 
-For current `srun` examples and resource options, see [Interactive HPC @ MSI](https://userdocs.msi.umn.edu/compute/interactive_compute.html).
+For current `srun` syntax, resource options, X11 usage, and interactive partition guidance, see the [MSI Interactive HPC documentation](https://userdocs.msi.umn.edu/compute/interactive_compute.html).
 
-MSI's [Open OnDemand](https://userdocs.msi.umn.edu/compute/open-ondemand-support.html) is another option for interactive compute and provides browser-based shell access, desktops, Jupyter, MATLAB, and other applications.
+Within CDNI, make sure the Slurm account you use matches the project or group associated with your work. You can use:
+
+```bash
+groupquota
+```
 
 ## sbatch
 
-`sbatch` submits a job script to Slurm. After the script is successfully submitted, it can wait in the queue and run independently of your terminal session.
+`sbatch` is used to submit non-interactive job scripts to the Slurm scheduler. Once submitted, the job is managed by Slurm and can continue running even if you disconnect from MSI.
 
-To submit a script:
+For current instructions on writing and submitting Slurm job scripts, see the [MSI Slurm Job Submission and Scheduling documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
-```bash
-sbatch scriptname.sh
-```
+For CDNI-specific Slurm command examples and troubleshooting, see our [Slurm Commands page](slurm.md).
 
 For current job script examples, `#SBATCH` options, resource requests, job arrays, output/error logs, and job monitoring, see [Slurm Job Submission and Scheduling @ MSI](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
-For CDNI-specific job management commands, see the [Slurm Commands page](slurm.md). For container and pipeline-specific commands used within batch jobs, see the [Containers page](containers.md) and relevant pipeline documentation.
+A typical CDNI batch script may include:
+
+- a descriptive job name;
+- an appropriate partition and Slurm account;
+- requested walltime, CPUs, memory, and temporary storage;
+- output and error log paths;
+- email notifications;
+- module loads or container setup;
+- the command or pipeline being executed.
+
+For current Slurm parameter syntax and partition limits, see the [MSI Slurm Job Submission and Scheduling documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html) and [MSI Shared Partitions documentation](https://userdocs.msi.umn.edu/compute/shared_partitions.html).
+
+When using containers in CDNI workflows, input directories should generally be mounted read-only when appropriate to reduce the risk of accidentally modifying source data.
+
+If you are submitting a job array or pipeline wrapper, output logs may use Slurm placeholders such as:
+
+```text
+%A
+```
+If an sbatch job is running for >3 minutes, there are most likely no errors in the run command, and job doesn't need to be closely monitored before completion.
 
 ## Continuous Job Submission
+ 
+For very large CDNI workflows, or when jobs need to be submitted gradually rather than all at once, use the CDNI continuous submitter.
 
-For large workflows or when jobs need to be submitted gradually, CDNI provides a continuous Slurm submitter. The submitter adds jobs to the queue in configurable batches and intervals.
-
-Path:
+MSI job-count and resource limits can change, so check the [MSI Shared Partitions documentation](https://userdocs.msi.umn.edu/compute/shared_partitions.html) for current per-user and per-group limits before launching a large workflow.
 
 `/projects/standard/faird/shared/code/internal/utilities/SLURM_wrappers/continuous_submitter`
 
@@ -65,7 +81,11 @@ python continuous_slurm_submitter.py \
 
 `--array-size` controls the number of jobs the submitter attempts to keep in the queue, while `--submission-interval` controls how long it waits between submission attempts.
 
-Before submitting a large workflow, check the current [MSI user resource limits](https://userdocs.msi.umn.edu/compute/cluster_info.html#user-resource-limits) and [Shared Partitions](https://userdocs.msi.umn.edu/compute/shared_partitions.html).
+3. Check the [fairshare](fairshare.md) and confirm which CDNI account is appropriate for the workflow before submitting large numbers of jobs.
+
+For general information about MSI scheduling and fairshare behavior, see the [MSI Slurm Job Submission and Scheduling documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
+
+4. If you have a command or script that outputs to a different group than your primary MSI group (i.e. the group with your home directory), you can use `sg` to run as the group that matches the output directory instead. Recommended for abcd-hcp-pipeline, infant-abcd-bids-pipeline, and nhp-abcd-bids-pipeline to avoid permission errors in the FreeSurfer stage of the pipeline.
 
 ### Group Permissions
 
@@ -89,4 +109,4 @@ For Open OnDemand sessions, use MSI's [Open OnDemand Support](https://userdocs.m
 
 After submitting a large workflow, check that jobs are not immediately failing because of permissions, job configuration, or data issues.
 
-For questions, suggestions, or to note any errors, [post a GitHub issue](https://github.com/DCAN-Labs/cdni-brain/issues).
+For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).

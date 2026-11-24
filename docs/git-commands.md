@@ -6,7 +6,12 @@ This page contains common commands used to work with GitHub repositories via git
 
 `git clone https://url-to-repo OR git@github.com:repo/location.git`
 
-- Clone a GitHub repo. Two methods: HTTPS or SSH. SSH is recommended as it will not require a token every time you interact with the repo (push/pull/etc) on MSI. Learn how to set up SSH with GitHub [on this page](github-quick-guide.md). If you do use HTTPS on MSI you will need to [create a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) and enter it every time you interact with the repo. 
+- * Clone a GitHub repository using either HTTPS or SSH. SSH is generally more convenient for repeated Git operations because it avoids repeatedly entering HTTPS credentials.
+
+  GitHub SSH authentication is separate from the SSH configuration used to connect to MSI. For MSI's current SSH connection setup, see the [MSI SSH Keys documentation](https://userdocs.msi.umn.edu/connect/ssh_keys.html).
+
+  For GitHub authentication, follow the linked GitHub SSH or Personal Access Token instructions appropriate for your account.
+  
 - If you would like to only clone a specific branch, add `-b branch_name --single-branch` after `clone`.
 
 `git status`

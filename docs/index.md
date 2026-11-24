@@ -11,7 +11,11 @@
     </p>
 </div>
 
-This handbook outlines key tools and resources used by the Center for Developmental NeuroImaging (CDNI). Topics covered range from using MSI to basecamp tips. For a full list of topics, see the menu to the left. The broad categories as defined as follows:
+This handbook outlines key tools, workflows, and resources used by the Center for Developmental NeuroImaging (CDNI). Topics range from CDNI-specific MSI workflows to processing pipelines, coding practices, analysis tools, and Basecamp tips.
+
+For general MSI access, compute, storage, software, and system usage, refer to the [MSI User Documentation](https://userdocs.msi.umn.edu/). The MSI-related pages in this handbook focus primarily on CDNI-specific workflows and recommendations.
+
+For a full list of topics, see the menu to the left. The broad categories are defined as follows:
 
 <table>
   <tr>
@@ -30,13 +34,13 @@ This handbook outlines key tools and resources used by the Center for Developmen
   <tr>
    <td>MSI
    </td>
-   <td>General MSI usage tips, mostly focused on storage and access
+   <td> CDNI-specific MSI workflows and recommendations; see the [MSI User Documentation](https://userdocs.msi.umn.edu/) for general MSI usage
    </td>
   </tr>
   <tr>
    <td>SLURM
    </td>
-   <td>Tips and notes on using SLURM on MSI
+   <td> CDNI-specific Slurm workflows, resource recommendations, and job-management tips
    </td>
   </tr>
   <tr>

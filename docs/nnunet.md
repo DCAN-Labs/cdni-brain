@@ -14,31 +14,13 @@ Rename the image ending to 0000.nii.gz and 0001.nii.gz for the T1 and T2 image r
 
 - **If you only have a T2 image, rename the file to 0000.nii.gz instead of 0001.nii.gz**
 
-**Prepare and Run sbatch Script**
+### Prepare and Run the Slurm Script
 
-Go to code folder (`/projects/standard/faird/shared/code/internal/nnUNet-v1/slurm_scripts_stable/`) and make a copy of `infer_agate.sh` then edit it according to subject and session you are currently running
+Go to the CDNI nnUNet Slurm-script directory:
 
-Main command: `nnUNet_predict -i <input> -o <output directory> -t <model_number> -tr nnUNetTrainerV2_noMirroring -m 3d_fullres --disable_tta`
-
-Choose the model number based on what images you have:
-
-Infant Segmentation (500 series):
-    - 543 - T1 and T2 images
-    - 547 - T1 only image
-    - 548 - T2 only image
-
-Anomalous Infant Segmentation (600 series):
-    - 643 - T1 and T2 images
-    - 644 - T1 only images
-    - 645 - T2 only images
-
-Lifespan Segmentation (700 series):
-    - 704 - T1 specified w/ lesion labels
-    - 702 - T1 specified no lesion labels
-
-
-Run script:  `sbatch infer_agate.sh`
-To check your job status: `squeue -al -–me`
+```text
+/projects/standard/faird/shared/code/internal/nnUNet-v1/slurm_scripts_stable/
+```
 
 **Note that nnUNet predict works best with preprocessed images. If you are using raw data or data in some other space, you may need to perform the following preprocessing steps before running nnUNet predict for optimal results.**
 
@@ -46,18 +28,12 @@ To check your job status: `squeue -al -–me`
 
 **Step 1: Check Image Orientation**
 
-If needed, reorient the images to standard using fsl. Load an image with `fslview_deprecated` or `fsleyes`. 
+If needed, reorient the images to standard using FSL. FSL is available on MSI; for current software availability and module-loading guidance, see the [MSI Available Software documentation](https://userdocs.msi.umn.edu/software/package_docs/index.html) and [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
 
-To reorient images, use [fslreorient2std.](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils)
+To reorient an image, use:
 
-Use the command `fslreorient2std <input_file> <output_filename>`
-
-Example:
-
-```
-cd /data/sub-XXX/ses-XXX/raw
-module load fsl
-fslreorient2std sub-XXX_ses-XXX_0000.nii.gz sub-XXX_ses-XXX_reoriented_0000.nii.gz 
+```bash
+fslreorient2std <input_file> <output_filename>
 ```
 
 Rare cases may require [fslorient](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils) instead - make sure to read the documentation on this utility before using it (specfically: “We only recommend using fslorient to change orientation information in the case of incorrect labels - otherwise there is a real risk of accidentally changing the left-right order and we strongly discourage its use because of this. As stated in the page on Orientation Explained the only case where we recommend changing orientation information (except for the use of fslreorient2std which is always safe) is when the labels are incorrect.”)
@@ -131,8 +107,11 @@ Follow these steps to perform the correction:
 
 **Step 6: Re-resize and Un-crop Image**
 
-Change directory to session folder `cd ../data/sub-XXX/ses-XXX`
-Both steps use flirt, which is an fsl command. So in case not already done: `module load fsl`  
+Change to the session directory:
+
+```bash
+cd ../data/sub-XXX/ses-XXX
+```
 
 Re-resize:
 Use cropped image (before resizing) as reference to bring back segmentations in original dimensions
