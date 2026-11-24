@@ -26,9 +26,7 @@ For current instructions on writing and submitting Slurm job scripts, see the [M
 
 For CDNI-specific Slurm command examples and troubleshooting, see our [Slurm Commands page](slurm.md).
 
-1. Results are written out as your script specifies. `stdout` and `stderr` will be outputted if the `-o` and `-e` flags are specified, and you can submit other commands right away.
-2. An sbatch job is handled by Slurm; you can disconnect (not run interactively), kill your terminal, etc. with no consequence
-3. To run an sbatch, use this command: `sbatch scriptname.sh`
+For current job script examples, `#SBATCH` options, resource requests, job arrays, output/error logs, and job monitoring, see [Slurm Job Submission and Scheduling @ MSI](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
 A typical CDNI batch script may include:
 
@@ -57,22 +55,31 @@ For very large CDNI workflows, or when jobs need to be submitted gradually rathe
 
 MSI job-count and resource limits can change, so check the [MSI Shared Partitions documentation](https://userdocs.msi.umn.edu/compute/shared_partitions.html) for current per-user and per-group limits before launching a large workflow.
 
-* Path to continuous submitter: `/projects/standard/faird/shared/code/internal/utilities/SLURM_wrappers/continuous_submitter`
+`/projects/standard/faird/shared/code/internal/utilities/SLURM_wrappers/continuous_submitter`
 
-* The code can be found [on GitHub.](https://github.com/DCAN-Labs/SLURM_wrappers/tree/main/continuous_submitter)
+The code and available arguments can be found in the [DCAN-Labs SLURM_wrappers repository](https://github.com/DCAN-Labs/SLURM_wrappers/tree/main/continuous_submitter).
 
-* This command needs to be run on a persistent desktop, or at least a desktop with as many hours as it will take to submit all the jobs based on how far apart the submission interval is. 
+Run the submitter from a persistent session that will remain active while jobs are being submitted.
 
-* Below is an example of what the submitter command will look like:
+Example:
 
+```bash
+python continuous_slurm_submitter.py \
+  --partition msismall \
+  --job-name example-job \
+  --log-dir /path/to/logs \
+  --run_folder /path/to/run_files \
+  --n_cpus 8 \
+  --time_limit 48:00:00 \
+  --total_memory 20 \
+  --tmp_storage 100 \
+  --array-size 1000 \
+  --submission-interval 300 \
+  --account_name <account> \
+  --emailed_user <x500>@umn.edu
 ```
-python continuous_slurm_submitter.py --partition small,amdsmall --job-name abcd-hcp-pipeline_full 
---log-dir /path/to/cont_slurm_submitter_logs --run_folder /path/to/project/folder/run_files.abcd-hcp-pipeline_full/ 
---n_cpus 8 --time_limit 48:00:00 --total_memory 20 --tmp_storage 100 --array-size 1000 
---submission-interval 300 --account-name feczk001 --mail_user x500@umn.edu
-```
 
-The `array-size` is how many jobs you are submitting at once. The `submission-interval` is the amount of time in minutes to wait until submitting another array of jobs. 
+`--array-size` controls the number of jobs the submitter attempts to keep in the queue, while `--submission-interval` controls how long it waits between submission attempts.
 
 3. Check the [fairshare](fairshare.md) and confirm which CDNI account is appropriate for the workflow before submitting large numbers of jobs.
 
@@ -80,13 +87,26 @@ For general information about MSI scheduling and fairshare behavior, see the [MS
 
 4. If you have a command or script that outputs to a different group than your primary MSI group (i.e. the group with your home directory), you can use `sg` to run as the group that matches the output directory instead. Recommended for abcd-hcp-pipeline, infant-abcd-bids-pipeline, and nhp-abcd-bids-pipeline to avoid permission errors in the FreeSurfer stage of the pipeline.
 
-    * Example for when your output directory is on faird: `sg faird -c "singularity run <...>"`
+### Group Permissions
 
-    * This includes batch scripts. (e.g. `sg faird -c "sbatch sbatchscript.sh"`)
+If a workflow writes output to a project group different from your primary MSI group, it may need to run under the group that owns the output directory.
 
-    * [More info on sg](https://linux.die.net/man/1/sg)
+For example:
 
-5. Make sure a ton of jobs aren’t failing right away. Permissions errors, job set up issues, and data issues are common causes.
+```bash
+sg faird -c "singularity run <...>"
+```
 
+The same approach can be used when submitting a batch script:
+
+```bash
+sg faird -c "sbatch sbatchscript.sh"
+```
+
+This may be useful for workflows such as `abcd-hcp-pipeline`, `infant-abcd-bids-pipeline`, and `nhp-abcd-bids-pipeline` when group permissions would otherwise cause errors.
+
+For Open OnDemand sessions, use MSI's [Open OnDemand Support](https://userdocs.msi.umn.edu/compute/open-ondemand-support.html) for current project group selection guidance.
+
+After submitting a large workflow, check that jobs are not immediately failing because of permissions, job configuration, or data issues.
 
 For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).

@@ -6,25 +6,20 @@ For current MSI guidance on estimating CPU, memory, GPU, node, and walltime requ
 
 For CDNI workflows, it is helpful to run a small number of representative subjects before launching a full dataset. These test jobs can be used to estimate the resources required for the larger submission. See our [pipeline-specific resource guidelines](processing.md) when available.
 
-## seff
+## Checking resource utilization with seff
 
 1. Run a few subjects with the pipeline. You can use the same 3-5 jobs you used for [storage estimates](storage.md) to estimate job specifications. Keep track of the job ID when you submit them.
    
-2. After the test jobs complete successfully, review their actual resource usage before scaling up the workflow.
+2. After the test jobs complete successfully, review their actual resource usage before scaling up the workflow with `seff <job ID>`
 
-MSI provides job-efficiency information that can be used to compare the resources requested with the resources actually used. CPU, memory, and walltime requests can then be adjusted for future jobs.
+`seff` provides job-efficiency information that can be used to compare the resources requested with the resources actually used. CPU, memory, and walltime requests can then be adjusted for future jobs.
 
 For current MSI guidance on interpreting resource usage and right-sizing jobs, see the [MSI Job Sizing and Efficiency documentation](https://userdocs.msi.umn.edu/compute/job_sizing.html).
 
-You can also use:
-
-```bash
-sacct -S YYYY-MM-DD -u <x500>
-```
 
 ## Storage
 
-When you're submitting a job that produces output files, you need to consider where those outputs will be stored (i.e. tier1 vs s3 and on which share). See [the Data Storage page](storage.md) for more information about where and how to store your outputs. Remember, **DO NOT** store ABCC/ABCD data on the `faird` share. 
+When you're submitting a job that produces output files, you need to consider where those outputs will be stored (i.e. which Tier 1 share, or Tier 1 versus Tier 2 versus Global Scratch). See [the Data Storage page](storage.md) for more information about where and how to store your outputs. Remember, **DO NOT** store ABCC/ABCD data on the `faird` share. 
 
 ## Fairshare
 

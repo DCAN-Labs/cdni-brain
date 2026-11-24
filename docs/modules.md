@@ -1,17 +1,12 @@
 # MSI Module System (Loading Software Packages)
 
-MSI uses software modules to provide access to installed software packages and different software versions.
+Environment Modules "module" system for providing access to various software packages. See more information here: [Software Modules](https://userdocs.msi.umn.edu/software/software_modules.html). 
 
 For current instructions on finding, loading, unloading, and managing modules, see the [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
 
 For the current list of software available on MSI systems, see the [MSI Available Software documentation](https://userdocs.msi.umn.edu/software/package_docs/index.html).
 
-## Loading Modules
-
-The sections below highlight modules commonly used within CDNI. For current module syntax and available versions, refer to MSI's documentation above.
-
-Commonly used modules by our lab include:
-
+## Commonly Used Modules in CDNI
 * fsl 
 * workbench
     * Some CDNI workflows may require a specific Workbench version for compatibility. Use `module avail workbench` to see the versions currently available on MSI, and load the version required by your workflow.

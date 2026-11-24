@@ -16,7 +16,7 @@ For the current list of shared partitions, resource limits, and guidance on choo
 
 MSI's current primary HPC system is Agate. Check the [MSI Status page](https://status.msi.umn.edu/) for current system availability and maintenance notices.
 
-![Table of Available Partitions](img/federated_partitions.png)
+Note: Now that MSI has retired the old Mesabi cluster and collapsed the Mangi nodes onto the Agate cluster, all partitions should be available to you when requesting resources.
 
 When submitting jobs to Slurm, it is important to choose a partition that matches the resources required by your job. [Our resource optimization section](slurm-params.md#resource-optimization) provides CDNI-specific guidance for estimating appropriate resource requests.
 

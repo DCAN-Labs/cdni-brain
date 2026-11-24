@@ -54,11 +54,11 @@ OOD also has a [Jobs Dashboard](https://ondemand.msi.umn.edu/pun/sys/dashboard/a
 
 `sacct`: display accounting data for all jobs and job steps in the Slurm job accounting log or Slurm database
 
-`sacct -X -j JOBID_ARRAY# -o JobID,NNodes,State,ExitCode,DerivedExitCode,Comment`: check the status of a job even after it has exited, JOBID_ARRAY can also just be JOBID
+For general information about writing job scripts, requesting resources, submitting jobs, GPU jobs, job arrays, monitoring jobs, canceling jobs, and Fairshare, refer to the [MSI Slurm documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
 For current MSI guidance on checking completed jobs and job history, see the [MSI Slurm Job Submission and Scheduling documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
-### scontrol
+## Interactive Jobs
 
 `scontrol` can be used to inspect or modify certain properties of pending or running Slurm jobs.
 
@@ -76,10 +76,42 @@ Some job properties can be modified with `scontrol`, but walltime changes may be
 
 For current guidance on walltime and modifying jobs, see the [MSI Slurm Job Submission and Scheduling documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
-`scontrol release JOBID`: If you see a job in your queue with the status `(launch failed requeued held)` under `NODELIST (REASON)`, you will need to release them to re-enter your queue. Jobs will enter the held state when its launch fails and the scheduler determines that re-queueing will result in the same failed start.
+` scontrol update JobId=<job_id> Account=<group> `
 
-- To loop over multiple jobs with this status, you can use this for loop: `for job in $(squeue -u <x500> -A <group> --state=PD --Format=JobID --noheader);do scontrol release $job; done`
+This can be useful when working across multiple PI or group accounts.
 
+For general information about Slurm scheduling and Fairshare, see the [MSI Slurm documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
 
+## Useful Queue Commands
 
-For questions, suggestions, or to note any errors, [post a Github issue](https://github.com/DCAN-Labs/cdni-brain/issues).
+Count your pending and running jobs:
+
+` squeue -u <x500> -h -t pending,running -r | wc -l `
+
+You can also view active jobs using the [MSI Open OnDemand Jobs Dashboard](https://ondemand.msi.umn.edu/pun/sys/dashboard/activejobs).
+
+For general `squeue`, `sacct`, and `scancel` usage, refer to the [MSI Slurm documentation](https://userdocs.msi.umn.edu/compute/slurm_job_submission.html).
+
+## Changing a Submitted Job
+
+Change the account:
+
+` scontrol update JobId=<job_id> Account=<group> `
+
+Change the partition:
+
+` scontrol update JobId=<job_id> Partition=<partition> `
+
+Refer to MSI documentation for current partition and resource information.
+
+## Releasing Held Jobs
+
+If a job appears in the queue with the status `(launch failed requeued held)`, release it so it can re-enter the queue:
+
+` scontrol release <job_id> `
+
+To release multiple pending jobs for an account:
+
+` for job in $(squeue -u <x500> -A <group> --state=PD --Format=JobID --noheader); do scontrol release $job; done `
+
+For questions, suggestions, or to note any errors, [post a GitHub issue](https://github.com/DCAN-Labs/cdni-brain/issues).
