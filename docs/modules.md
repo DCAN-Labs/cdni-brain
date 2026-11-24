@@ -2,7 +2,9 @@
 
 Environment Modules "module" system for providing access to various software packages. See more information here: [Software Modules](https://userdocs.msi.umn.edu/software/software_modules.html). 
 
-For current instructions on finding, loading, unloading, and managing modules, see the [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
+For information on finding, loading, unloading, and managing modules, see the [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
+
+Also see the [Environment Modules official documentation](https://modules.readthedocs.io/en/latest/).
 
 For a current list of documented software available on MSI systems, see the [MSI Available Software documentation](https://userdocs.msi.umn.edu/software/package_docs/index.html). Note that MSI hosts additional software modules not in this list; use `module avail` to check for them. 
 
