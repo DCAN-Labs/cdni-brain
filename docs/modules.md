@@ -4,7 +4,7 @@ Environment Modules "module" system for providing access to various software pac
 
 For current instructions on finding, loading, unloading, and managing modules, see the [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
 
-For the current list of software available on MSI systems, see the [MSI Available Software documentation](https://userdocs.msi.umn.edu/software/package_docs/index.html).
+For a current list of documented software available on MSI systems, see the [MSI Available Software documentation](https://userdocs.msi.umn.edu/software/package_docs/index.html). Note that MSI hosts additional software modules not in this list; use `module avail` to check for them. 
 
 ## Commonly Used Modules in CDNI
 * fsl 
