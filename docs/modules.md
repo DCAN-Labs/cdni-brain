@@ -39,7 +39,6 @@ For further information on viewing, unloading, and clearing modules, see the [MS
 
 Useful commands include:
 
-```
 
 ## Requesting a Module from MSI
 
