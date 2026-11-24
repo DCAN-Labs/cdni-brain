@@ -43,7 +43,7 @@ Watch: [Dcm2bids CDNI tutorial recording](https://drive.google.com/drive/folders
     
 * The `criteria` section is used to match unique identifiers in the sidecar files with values entered in the section. `SeriesDescription` will find any file that contains the specified value. In this example, `SeriesDescription` is looking for any file that contains ABCD_T1w_MPR somewhere in the file name. It is also looking for `SidecarFilename` fields that starts with 007_, which is the series number in the DICOM folders.
 
-* * To view these fields in the DICOM metadata, you can use `dcmdump` on any `.dcm` file. For current MSI software availability and module-loading instructions, see the [MSI Available Software documentation](https://userdocs.msi.umn.edu/software/package_docs/index.html) and [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
+* To view these fields in the DICOM metadata, you can use `dcmdump` on any .dcm file (on MSI, first `module load dcmtk`)
 
 ## dcm2bids Helper Scripts
     
