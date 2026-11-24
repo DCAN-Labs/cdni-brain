@@ -35,7 +35,7 @@ Some other helpful modules include:
 
 Loaded modules can modify environment variables such as `PATH`, which can occasionally cause conflicts between software packages or user-installed tools.
 
-For current instructions on viewing, unloading, and clearing modules, see the [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
+For further information on viewing, unloading, and clearing modules, see the [MSI Software Modules documentation](https://userdocs.msi.umn.edu/software/software_modules.html).
 
 Useful commands include:
 
